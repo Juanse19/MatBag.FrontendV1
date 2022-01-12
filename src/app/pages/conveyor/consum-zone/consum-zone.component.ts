@@ -14,6 +14,29 @@ interface conzone {
   value: number;
 }
 
+interface equipo {
+  Bloqueado: string,
+  SemiautomaticoMotor: false,
+  ManualForwardMotor: false,
+  ManualReverseMotor: false,
+  ResetHorometro: false,
+  ResetContadorMaletas: false,
+  Estado: 6,
+  NumeroAlarma: 0,
+  NumeroFalla: 0,
+  HorasOperacion: 3,
+  MinutosOperacion: 28,
+  SegundosOperacion: 9,
+  ContadorMaletas: 546,
+  SetVelocidadModoAutoMotor: 66.9000015258789,
+  SetVelocidadModoManualMotor: 66.9000015258789,
+  VelocidadActualMotor: 0,
+  CorrienteActualMotor: 0.0007690429338254035,
+  PotenciaActualMotor: 0,
+  TorqueActualMotor: 0,
+  KWh: 107.21247863769531
+}
+
 @Component({
   selector: 'ngx-consum-zone',
   templateUrl: './consum-zone.component.html',
@@ -206,6 +229,15 @@ export class ConsumZoneComponent implements OnInit {
         .subscribe((res: any)=>{
           this.zonConsData = res;
           // console.log('Energy Zones', this.zonConsData);
+        });
+      }
+
+      public consumeSf1(){
+        this.http.get(this.api.apiUrlNode1 + '/api/sf11')
+        .pipe(takeWhile(() => this.alive))
+        .subscribe((res: any)=>{
+          this.zonConsData = res;
+          console.log('Energy Zones', this.zonConsData);
         });
       }
 
