@@ -86,13 +86,13 @@
         <div class="row show-grid" >
           <div class="col-md-4">
             <nb-card >
-              <nb-card-header>Security Feed Check In</nb-card-header>
+              <nb-card-header>SF1-1</nb-card-header>
               <nb-card-body >
                 <div class="col-lg-4 col-md-4 col-4 progress-container">
                     <div class="progress-container-align">
                         <div id="pause">
                             <ejs-progressbar #annotation2 id='pause-container' [type]='type2' [maximum]='max2' [minimum]='min2'
-                                [value]='consumeData[6]?.porcent' [width]='width' [height]='height' [animation]='animation'  (load)='load($event)'>
+                                [value]='teaLista?.SF1_1_SetVelocidadModoAutoMotor' [width]='width' [height]='height' [animation]='animation'  (load)='load($event)'>
                                 <e-progressbar-annotations>
                                     <e-progressbar-annotation
                                         content='<div id="point1" style="font-size:20px;font-weight:bold;color:#black;fill:#black"><span>80%</span></div>'>
@@ -105,14 +105,14 @@
                 </div>
                 <div class="info">
                     <div>
-                        <img
+                        <!-- <img
                           src="./assets/img/sfc.png"
                           class="rounded float-right"
                           width="80px"
                           alt="..."
-                        />
+                        /> -->
                       </div>
-                  <div class="h4 value"> {{consumeData[6]?.KWh}} kWh</div>
+                  <div class="h4 value"> {{teaLista?.SF1_1_CorrienteActualMotor | number:'4.1-5'  }} kWh</div>
                   
                 </div>
               </nb-card-body>

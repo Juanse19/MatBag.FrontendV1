@@ -1,3 +1,4 @@
+import { Team } from './../team/team.component';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ProgressBar, ProgressAnnotation, IProgressValueEventArgs, ILoadedEventArgs, ProgressTheme,
   AnimationModel } from '@syncfusion/ej2-progressbar';
@@ -14,28 +15,31 @@ interface conzone {
   value: number;
 }
 
-interface equipo {
-  Bloqueado: string,
-  SemiautomaticoMotor: false,
-  ManualForwardMotor: false,
-  ManualReverseMotor: false,
-  ResetHorometro: false,
-  ResetContadorMaletas: false,
-  Estado: 6,
-  NumeroAlarma: 0,
-  NumeroFalla: 0,
-  HorasOperacion: 3,
-  MinutosOperacion: 28,
-  SegundosOperacion: 9,
-  ContadorMaletas: 546,
-  SetVelocidadModoAutoMotor: 66.9000015258789,
-  SetVelocidadModoManualMotor: 66.9000015258789,
-  VelocidadActualMotor: 0,
-  CorrienteActualMotor: 0.0007690429338254035,
-  PotenciaActualMotor: 0,
-  TorqueActualMotor: 0,
-  KWh: 107.21247863769531
+interface team {
+  SF1_1_Bloqueado: boolean,
+SF1_1_SemiautomaticoMotor: boolean,
+SF1_1_ManualForwardMotor: boolean,
+SF1_1_ManualReverseMotor: boolean,
+SF1_1_ResetHorometro: boolean,
+SF1_1_ResetContadorMaletas: boolean,
+SF1_1_Estado: number,
+SF1_1_NumeroAlarma: number,
+SF1_1_NumeroFalla: number,
+SF1_1_HorasOperacion: number,
+SF1_1_MinutosOperacion: number,
+SF1_1_SegundosOperacion: number,
+SF1_1_ContadorMaletas: number,
+SF1_1_SetVelocidadModoAutoMotor: number,
+SF1_1_SetVelocidadModoManualMotor: number,
+SF1_1_VelocidadActualMotor: number,
+SF1_1_CorrienteActualMotor: number,
+SF1_1_PotenciaActualMotor: number,
+SF1_1_TorqueActualMotor: number,
+SF1_1_KWh: number,
 }
+
+let TEA: team
+
 
 @Component({
   selector: 'ngx-consum-zone',
@@ -44,6 +48,9 @@ interface equipo {
   encapsulation: ViewEncapsulation.None
 })
 export class ConsumZoneComponent implements OnInit {
+
+  teaLista = TEA; 
+  public consumeteam: team[]=[]; 
 
     public clearTimeout1: number;
     public clearTimeout2: number;
@@ -212,6 +219,7 @@ export class ConsumZoneComponent implements OnInit {
       ngOnInit(): void {
         this.consumeCharge();
         this.consumeZoneCharge();
+        this.consumeSf1();
       }
     
       public consumeCharge(){
@@ -236,8 +244,9 @@ export class ConsumZoneComponent implements OnInit {
         this.http.get(this.api.apiUrlNode1 + '/api/sf11')
         .pipe(takeWhile(() => this.alive))
         .subscribe((res: any)=>{
-          this.zonConsData = res;
-          console.log('Energy Zones', this.zonConsData);
+          TEA = res
+          this.teaLista = TEA
+          console.log('Energy Zones', this.teaLista.SF1_1_Bloqueado);
         });
       }
 

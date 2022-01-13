@@ -55,6 +55,11 @@ const routes: Routes = [{
         .then(m => m.ConveyorModule),
     },
     {
+      path: 'zone-teams',
+      loadChildren: () => import('./zone-teams/zone-teams.module')
+        .then(m => m.ZoneTeamsModule),
+    },
+    {
       path: 'reports-pia',
       loadChildren: () => import('./reports-pia/reports-pia.module')
         .then(m => m.ReportsPiaModule),
