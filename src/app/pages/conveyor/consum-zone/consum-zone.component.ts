@@ -7,6 +7,8 @@ import { HttpService } from '../../../@core/backend/common/api/http.service';
 import { HttpClient } from '@angular/common/http';
 import { consume } from '../_interfaces/MatBag.model'
 import { takeWhile } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
 ProgressBar.Inject(ProgressAnnotation);
 
 interface conzone {
@@ -40,6 +42,34 @@ SF1_1_KWh: number,
 
 let TEA: team
 
+export interface SF1_1 {
+  SF1_1_VelocidadActualMotor: number,
+  SF1_1_CorrienteActualMotor: number,
+  SF1_1_PotenciaActualMotor: number,
+  SF1_1_TorqueActualMotor: number,
+  SF1_1_KWh: number
+}
+
+export interface SF1_2 {
+  SF1_2_VelocidadActualMotor: number,
+  SF1_2_CorrienteActualMotor: number,
+  SF1_2_PotenciaActualMotor: number,
+  SF1_2_TorqueActualMotor: number,
+  SF1_2_KWh: number
+}
+
+export interface SF3_1 {
+  SF3_1_VelocidadActualMotor: number,
+  SF3_1_CorrienteActualMotor: number,
+  SF3_1_PotenciaActualMotor: number,
+  SF3_1_TorqueActualMotor: number,
+  SF3_1_KWh: number
+}
+
+let TeamSF1_1: SF1_1;
+let TeamSF1_2: SF1_2;
+
+let TeamSF3_1: SF3_1;
 
 @Component({
   selector: 'ngx-consum-zone',
@@ -211,15 +241,21 @@ export class ConsumZoneComponent implements OnInit {
 
     public zonConsData: conzone[]=[];
 
+    dataSF1_2 = TeamSF1_2
+  dataSF3_1 = TeamSF3_1
+
     constructor(
       private http: HttpClient,
-      private api: HttpService) {
+      private api: HttpService,
+      private router: Router,) {
       }
 
       ngOnInit(): void {
         this.consumeCharge();
         this.consumeZoneCharge();
-        this.consumeSf1();
+        // this.consumeSf1();
+        // this.changeSF1_2();
+        // this.changeSF3_1()
       }
     
       public consumeCharge(){
@@ -246,8 +282,70 @@ export class ConsumZoneComponent implements OnInit {
         .subscribe((res: any)=>{
           TEA = res
           this.teaLista = TEA
-          console.log('Energy Zones', this.teaLista.SF1_1_Bloqueado);
+          console.log('Energy Zones', this.teaLista.SF1_1_SetVelocidadModoAutoMotor);
         });
+      }
+
+      changeSF1_2() {
+        this.http.get(this.api.apiUrlNode1 + '/CCP1_CCP2_RT?Zona=SF1_2_')
+        .pipe(takeWhile(() => this.alive))
+        .subscribe((res: any)=>{
+          TeamSF1_2 = res
+          this.dataSF1_2 = TeamSF1_2
+          console.log('dataSF1_2', this.dataSF1_2);
+        });
+      }
+    
+      changeSF3_1() {
+        this.http.get(this.api.apiUrlNode1 + '/CCP1_CCP2_RT?Zona=SF3_1_')
+        .pipe(takeWhile(() => this.alive))
+        .subscribe((res: any)=>{
+          TeamSF3_1 = res
+          this.dataSF3_1 = TeamSF3_1
+          console.log('dataSF3_1', this.dataSF3_1);
+        });
+      }
+
+      gosfc() {
+        this.router.navigate(['/pages/zone-teams/teamsfc']);
+      }
+
+      gosf() {
+        this.router.navigate(['/pages/zone-teams/teamsf']);
+      }
+      goss() {
+        this.router.navigate(['/pages/zone-teams/teamss']);
+      }
+      goOx() {
+        this.router.navigate(['/pages/zone-teams/teamox']);
+      }
+
+      goOsr() {
+        this.router.navigate(['/pages/zone-teams/teamosr']);
+      }
+
+      gomu() {
+        this.router.navigate(['/pages/zone-teams/teammu']);
+      }
+
+      gome() {
+        this.router.navigate(['/pages/zone-teams/teamme']);
+      }
+
+      gotx() {
+        this.router.navigate(['/pages/zone-teams/teamtx']);
+      }
+
+      gocl() {
+        this.router.navigate(['/pages/zone-teams/teamcl']);
+      }
+
+      goal() {
+        this.router.navigate(['/pages/zone-teams/teamal']);
+      }
+
+      ngOnDestroy(): void {
+        this.alive = false;
       }
 
 }

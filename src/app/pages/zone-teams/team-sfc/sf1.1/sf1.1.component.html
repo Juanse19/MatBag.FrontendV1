@@ -1,0 +1,25 @@
+
+    <nb-card>
+        <nb-card-header>
+            SF1-1
+        </nb-card-header>
+    <nb-card-body>
+    <ejs-circulargauge  #gauge1 id="container_1" style='display: block; height:150px; '>
+        <e-axes>
+            <e-axis startAngle=260 endAngle=100 [majorTicks]="majorTicks" [minorTicks]=""
+                [labelStyle]="labelStyle" [lineStyle]="lineStyle" [ranges]="ranges" [pointers]="pointers1">
+                <e-annotations>
+                    <e-annotation [content]="annotation" angle=180 radius='30%' zIndex='1'></e-annotation>
+                    <!-- <e-annotation [content]="annotation2" angle=180 radius='65%' zIndex='1'></e-annotation> -->
+                </e-annotations>
+            </e-axis>
+        </e-axes>
+    </ejs-circulargauge>
+    <div  style="margin-left: 23%; margin-top: -0%; padding-top: -40px; padding-block-start: -98px;"> 
+       <p> {{TeamSF1_1?.SF1_1_CorrienteActualMotor | number : '4.1-5' }} Corriente </p>
+       <p> {{TeamSF1_1?.SF1_1_PotenciaActualMotor | number : '4.1-5' }} Potencia </p>
+       <p> {{TeamSF1_1?.SF1_1_KWh | number : '4.1-5' }} kWh </p>
+       
+    </div>
+</nb-card-body>
+</nb-card>

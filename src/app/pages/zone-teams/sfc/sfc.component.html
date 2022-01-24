@@ -1,5 +1,208 @@
-<nb-card>
+
+<!-- <nb-card>
     <div class="container">
-        <h3>Equipo SFC</h3>
+    <div class="row show-grid" >
+    <div class="col-md-4">
+        <nb-card >
+          <nb-card-header>SF1-1</nb-card-header>
+          <nb-card-body >
+            <div class="col-lg-4 col-md-4 col-4 ">
+                <div >
+                    <div id="pause">
+                       
+                    </div>
+                    
+                </div>
+                <ejs-circulargauge (load)='load($event)' id='gauge' (tooltipRender)='tooltipRender($event)' (dragEnd)='dragEnd($event)' style="display: block;" #tooltipContainer='' enablePointerDrag='true'
+                >
+                 <e-axes>
+                     <e-axis radius='190%' minimum=0 maximum=100 startAngle=260 endAngle=100 [minorTicks]='minorTicks'
+                         [majorTicks]='majorTicks' [labelStyle]='labelStyle' [lineStyle]="lineStyle">
+                         <e-pointers>
+                             <e-pointer value='teaLista?.SF1_1_SetVelocidadModoAutoMotor'  radius='40%' [cap]='cap' [animation]='animation' color='#33BCBD'>
+                             </e-pointer>
+                         </e-pointers>
+                         <e-ranges>
+                             <e-range start=0 end=50 [startWidth]="rangeWidth" [endWidth]="rangeWidth" radius='102%' color='#3A5DC8'>
+                             </e-range>
+                             <e-range start=50 end=120 radius='102%' [startWidth]="rangeWidth" [endWidth]="rangeWidth" color='#33BCBD'>
+                             </e-range>
+                         </e-ranges>
+                     </e-axis>
+                 </e-axes>
+             </ejs-circulargauge>
+            </div>
+            <div class="info">
+                <div>
+                    <img
+                      src="./assets/img/sfc.png"
+                      class="rounded float-right"
+                      width="80px"
+                      alt="..."
+                    />
+                  </div>
+              <div class="h4 value"> {{teaLista?.SF1_1_CorrienteActualMotor | number:'4.1-5'  }} kWh</div>
+              
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
     </div>
+    </div>
+</nb-card> -->
+
+<!-- <nb-card>
+    <ejs-circulargauge  style='display:block;' id='range-container' #range=''>
+
+        <e-axes>
+      
+            <e-axis minimum=0 radius='80%' maximum=100 startAngle=260 endAngle=100 [majorTicks]='majorTicks' [labelStyle]='labelStyle' [annotations]='annotaions'
+      
+                [lineStyle]='lineStyle' [minorTicks]='minorTicks' >
+      
+                <e-ranges>
+      
+                    <e-range start=0 end=40 color='#30B32D'></e-range>
+      
+                    <e-range start=40 end=80 color='#FFDD00'></e-range>
+      
+                    <e-range start=80 end=120 color='#F03E3E'></e-range>
+      
+                </e-ranges>
+      
+                <e-pointers>
+      
+                    <e-pointer value="" radius='60%' color='#757575' pointer Width=8 [needleTail]='tail' [cap]="pointerCap">
+      
+                    </e-pointer>
+      
+                </e-pointers>
+      
+            </e-axis>
+      
+        </e-axes>
+      
+      </ejs-circulargauge>
+</nb-card> -->
+<nb-card>
+    <nb-card-header>
+        Teams SFC
+    </nb-card-header>
+    <div class="container">
+
+   
+<div class="control-section">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-4">
+                    <nb-card>
+                        <nb-card-header> 
+                            SF1-1
+                        </nb-card-header>
+                    <nb-card-body>
+                    <ejs-circulargauge (load)='load($event)' #gauge1 id="sample-data" style='display: block; height:150px; '>
+                        <e-axes>
+                            <e-axis startAngle=260 endAngle=100 [majorTicks]="majorTicks" [minorTicks]=""
+                                [labelStyle]="labelStyle" [lineStyle]="lineStyle" [ranges]="ranges" [pointers]="pointers1">
+                                <e-annotations>
+                                    <e-annotation [content]="annotation1" angle=180 radius='30%' zIndex='1'></e-annotation>
+                                    <!-- <e-annotation [content]="annotation2" angle=180 radius='65%' zIndex='1'></e-annotation> -->
+                                </e-annotations>
+                            </e-axis>
+                        </e-axes>
+                    </ejs-circulargauge>
+                    <div class="h4 value" style="margin-left: 23%; margin-top: -0%; padding-top: -40px; padding-block-start: -98px;"> 
+                       <p> {{dataSF1_1?.SF1_1_CorrienteActualMotor | number : '4.1-5' }} Corriente </p>
+                       <p> {{dataSF1_1?.SF1_1_PotenciaActualMotor | number : '4.1-5' }} Potencia </p>
+                       <p> {{dataSF1_1?.SF1_1_KWh | number : '4.1-5' }} kWh </p>
+                    </div>
+                </nb-card-body>
+                    <!-- <nb-card-footer>
+                        <p>Corriente</p>
+                    </nb-card-footer> -->
+                </nb-card>
+                </div>
+                <div class="col-sm-4">
+                    <nb-card>
+                        <nb-card-header>
+                            SF1-2
+                        </nb-card-header>
+                    <nb-card-body>
+                    <ejs-circulargauge (load)='load($event)' #gauge2 id="container2" style='display: block; height:150px;'>
+                        <e-axes>
+                            <e-axis startAngle=260 endAngle=100 [majorTicks]="majorTicks" [minorTicks]=""
+                                [labelStyle]="labelStyle" [lineStyle]="lineStyle" [ranges]="ranges" [pointers]="pointers2">
+                                <e-annotations>
+                                    <e-annotation [content]="annotation1" angle=180 radius='30%' zIndex='1'></e-annotation>
+                                    <!-- <e-annotation [content]="annotation3" angle=180 radius='65%' zIndex='1'></e-annotation> -->
+                                </e-annotations>
+                            </e-axis>
+                        </e-axes>
+                    </ejs-circulargauge>
+                    <div class="h4 value" style="margin-left: 23%; margin-top: -0%; padding-top: -40px; padding-block-start: -98px;"> 
+                        <p> {{dataSF1_2?.SF1_2_CorrienteActualMotor | number : '4.1-5' }} Corriente </p>
+                        <p> {{dataSF1_2?.SF1_2_PotenciaActualMotor | number : '4.1-5' }} Potencia </p>
+                        <p> {{dataSF1_2?.SF1_2_KWh | number : '4.1-5' }} kWh </p>
+                     </div>
+                 </nb-card-body>
+                    </nb-card>
+                </div>
+                <div class="col-sm-4">
+                    <nb-card>
+                        <nb-card-header>
+                            SF3-1
+                        </nb-card-header>
+                    <nb-card-body>
+                    <ejs-circulargauge (load)='load($event)' #gauge3 id="container_3" style='display: block; height:150px;'>
+                        <e-axes>
+                            <e-axis startAngle=260 endAngle=100 [majorTicks]="majorTicks" [minorTicks]=""
+                                [labelStyle]="labelStyle" [lineStyle]="lineStyle" [ranges]="ranges" [pointers]="pointers1">
+                                <e-annotations>
+                                    <e-annotation [content]="annotation5" angle=180 radius='30%' zIndex='1'></e-annotation>
+                                    <!-- <e-annotation [content]="annotation4" angle=180 radius='65%' zIndex='1'></e-annotation> -->
+                                </e-annotations>
+                            </e-axis>
+                        </e-axes>
+                    </ejs-circulargauge>
+                    <div class="h4 value" style="margin-left: 23%; margin-top: -0%; padding-top: -40px; padding-block-start: -98px;"> 
+                        <p> {{dataSF3_1?.SF3_1_CorrienteActualMotor | number : '4.1-5' }} Corriente </p>
+                        <p> {{dataSF3_1?.SF3_1_PotenciaActualMotor | number : '4.1-5' }} Potencia </p>
+                        <p> {{dataSF3_1?.SF3_1_KWh | number : '4.1-5' }} kWh </p>
+                     </div>
+                 </nb-card-body>
+                    </nb-card>
+                </div>
+
+                <!-- <div class="col-sm-4">
+                    <nb-card>
+                        <nb-card-header>
+                            SF1
+                        </nb-card-header>
+                    <nb-card-body>
+                    <ejs-circulargauge (load)='load($event)' #team id="container4" style='display: block; height:150px;'>
+                        <e-axes>
+                            <e-axis startAngle=260 endAngle=100 [majorTicks]="majorTicks" [minorTicks]=""
+                                [labelStyle]="labelStyle" [lineStyle]="lineStyle" [ranges]="ranges" [pointers]="pointers1">
+                                <e-annotations>
+                                    <e-annotation [content]="annotation5" angle=180 radius='30%' zIndex='1'></e-annotation>
+                                    <e-annotation [content]="annotation4" angle=180 radius='65%' zIndex='1'></e-annotation>
+                                </e-annotations>
+                            </e-axis>
+                        </e-axes>
+                    </ejs-circulargauge>
+                    <div class="h4 value" style="margin-left: 23%; margin-top: -0%; padding-top: -40px; padding-block-start: -98px;"> 
+                        <p> {{dataSF1_1?.SF1_1_CorrienteActualMotor | number : '4.1-5' }} Corriente </p>
+                        <p> {{dataSF1_1?.SF1_1_PotenciaActualMotor | number : '4.1-5' }} Potencia </p>
+                        <p> {{dataSF1_1?.SF1_1_KWh | number : '4.1-5' }} kWh </p>
+                     </div>
+                 </nb-card-body>
+                    </nb-card>
+                </div> -->
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
 </nb-card>

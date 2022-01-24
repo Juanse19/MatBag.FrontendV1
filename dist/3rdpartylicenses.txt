@@ -295,10 +295,16 @@ SOFTWARE.
 @syncfusion/ej2-angular-base
 SEE LICENSE IN license
 
+@syncfusion/ej2-angular-buttons
+SEE LICENSE IN license
+
 @syncfusion/ej2-angular-calendars
 SEE LICENSE IN license
 
 @syncfusion/ej2-angular-charts
+SEE LICENSE IN license
+
+@syncfusion/ej2-angular-circulargauge
 SEE LICENSE IN license
 
 @syncfusion/ej2-angular-dropdowns
@@ -329,6 +335,9 @@ SEE LICENSE IN license
 SEE LICENSE IN license
 
 @syncfusion/ej2-charts
+SEE LICENSE IN license
+
+@syncfusion/ej2-circulargauge
 SEE LICENSE IN license
 
 @syncfusion/ej2-compression

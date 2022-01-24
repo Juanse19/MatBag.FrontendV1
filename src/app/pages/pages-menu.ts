@@ -379,10 +379,14 @@ export class PagesMenu {
           title: 'Consumo energético',
           link: '/pages/conveyor/energy',
         },
-        {
-          title: 'Consumo energético por equipos',
-          link: '/pages/zone-teams/sfc',
-        },
+        // {
+        //   title: 'Consumo energético por equipos',
+        //   link: '/pages/zone-teams/sfc',
+        // },
+        // {
+        //   title: 'Equipos SFC',
+        //   link: '/pages/zone-teams/teamsfc',
+        // },
       ],
     };
 

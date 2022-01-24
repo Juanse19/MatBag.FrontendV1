@@ -1,6 +1,6 @@
-<nb-card>
+<!-- <nb-card>
 <div class="control-section progress-bar-parent">
-    <div class="row">
+    <div class="row"> -->
         <!-- <div class="col-lg-4 col-md-4 col-4 progress-container">
             <div class="progress-container-align">
                 <div id="annotation">
@@ -75,9 +75,9 @@
             </div>
         </div> -->
 
-    </div> 
+    <!-- </div> 
 </div>
-</nb-card>
+</nb-card> -->
 
 <nb-card>
 <div class="container">
@@ -85,14 +85,14 @@
      <nb-tab tabTitle="Consumo energetico por zonas">
         <div class="row show-grid" >
           <div class="col-md-4">
-            <nb-card >
-              <nb-card-header>SF1-1</nb-card-header>
+            <nb-card (click)="gosfc()" >
+              <nb-card-header>Security Feed Check In</nb-card-header>
               <nb-card-body >
                 <div class="col-lg-4 col-md-4 col-4 progress-container">
                     <div class="progress-container-align">
                         <div id="pause">
                             <ejs-progressbar #annotation2 id='pause-container' [type]='type2' [maximum]='max2' [minimum]='min2'
-                                [value]='teaLista?.SF1_1_SetVelocidadModoAutoMotor' [width]='width' [height]='height' [animation]='animation'  (load)='load($event)'>
+                                [value]='zonConsData[6]?.value' [width]='width' [height]='height' [animation]='animation'  (load)='load($event)'>
                                 <e-progressbar-annotations>
                                     <e-progressbar-annotation
                                         content='<div id="point1" style="font-size:20px;font-weight:bold;color:#black;fill:#black"><span>80%</span></div>'>
@@ -105,14 +105,14 @@
                 </div>
                 <div class="info">
                     <div>
-                        <!-- <img
+                        <img
                           src="./assets/img/sfc.png"
                           class="rounded float-right"
                           width="80px"
                           alt="..."
-                        /> -->
+                        />
                       </div>
-                  <div class="h4 value"> {{teaLista?.SF1_1_CorrienteActualMotor | number:'4.1-5'  }} kWh</div>
+                  <div class="h4 value"> {{consumeData[6]?.KWh}} kWh</div>
                   
                 </div>
               </nb-card-body>
@@ -120,13 +120,14 @@
           </div>
     
           <div class="col-md-4">
-            <nb-card >
+            <nb-card (click)="gosf()">
               <nb-card-header>Security Feed</nb-card-header>
               <nb-card-body>
                 <div class="col-lg-4 col-md-4 col-4 progress-container">
                     <div class="progress-container-align">
                         <div id="download">
-                            <ejs-progressbar #annotation3 id='download-container' [type]='type3' [maximum]='max3' [minimum]='min3' [value]='consumeData[5]?.porcent' [width]='width' [height]='height' [animation]='animation'
+                            <ejs-progressbar #annotation3 id='download-container' [type]='type3' [maximum]='max3' [minimum]='min3' 
+                            [value]='zonConsData[5]?.value' [width]='width' [height]='height' [animation]='animation'
                                  (load)='load($event)'>
                                  <e-progressbar-annotations>
                                     <e-progressbar-annotation
@@ -145,7 +146,7 @@
                       width="80px"
                       alt="..."
                     />
-                  </div> 
+                  </div>
                   <div class="h4 value">{{consumeData[5]?.KWh}}  kWh</div>
                 </div>
               </nb-card-body>
@@ -186,7 +187,7 @@
           </div>
     
           <div class="col-md-4">
-            <nb-card>
+            <nb-card (click)="gotx()">
               <nb-card-header>Transfer Line</nb-card-header>
               <nb-card-body>
                 <div class="col-lg-4 col-md-4 col-4 progress-container">
@@ -223,7 +224,7 @@
           </div>
     
            <div class="col-md-4">
-            <nb-card>
+            <nb-card (click)="gome()">
               <nb-card-header>Manual Encode</nb-card-header>
               <nb-card-body>
                 <div class="col-lg-4 col-md-4 col-4 progress-container">
@@ -256,7 +257,7 @@
           </div>
     
           <div class="col-md-4">
-            <nb-card>
+            <nb-card (click)="goal()">
               <nb-card-header>Alarm Line</nb-card-header>
               <nb-card-body>
                 <div class="progress-container-align">
@@ -287,7 +288,7 @@
           </div>
     
           <div class="col-md-4">
-            <nb-card>
+            <nb-card (click)="gocl()">
               <nb-card-header>Clear Line</nb-card-header>
               <nb-card-body>
                 <div class="progress-container-align">
@@ -319,7 +320,7 @@
           </div>
     
          <div class="col-md-4">
-            <nb-card>
+            <nb-card (click)="goss()">
               <nb-card-header>Security shunt</nb-card-header>
               <nb-card-body>
                 <div class="progress-container-align">
@@ -350,7 +351,7 @@
           </div>
     
           <div class="col-md-4">
-            <nb-card>
+            <nb-card (click)="goOsr()">
               <nb-card-header>On screen resolution</nb-card-header>
               <nb-card-body>
                 <div class="progress-container-align">
@@ -381,7 +382,7 @@
           </div>
     
           <div class="col-md-4">
-            <nb-card>
+            <nb-card (click)="gomu()">
               <nb-card-header>Make up</nb-card-header>
               <nb-card-body>
                 <div class="progress-container-align">
@@ -423,9 +424,9 @@
                             <ejs-progressbar #annotation14 id='ib2-container'  [type]='type12' [maximum]='max12' [minimum]='min12'
                                 [value]='zonConsData[9]?.value' [width]='width' [height]='height' [animation]='animation'  (load)='load($event)'>
                                 <e-progressbar-annotations >
-                                    <e-progressbar-annotation style="position: absolute; z-index: 1; left: 75px; top: -71px; transform: translate(-50%, -50%);"
-                                        content='<div id="point1" style="font-size:20px;font-weight:bold;color:#black;fill:#black"><span>50%</span></div>'>
-                                    </e-progressbar-annotation>
+                                    <e-progressbar-annotation
+                                    content='<div id="point1" style="font-size:20px;font-weight:bold;color:#black;fill:#black"><span>80%</span></div>'>
+                                </e-progressbar-annotation>
                                 </e-progressbar-annotations>
                             </ejs-progressbar>
                         </div>
