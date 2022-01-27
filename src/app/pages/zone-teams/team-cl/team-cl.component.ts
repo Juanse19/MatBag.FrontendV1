@@ -120,7 +120,7 @@ export class TeamclComponent implements OnDestroy {
   ngOnInit(): void {}
 
   back() {
-    this.router.navigate(["/pages/conveyor/energy"]);
+    this.router.navigate(["/pages/conveyor/energyZone"]);
     return false;
   }
 

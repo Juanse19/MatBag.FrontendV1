@@ -14,7 +14,8 @@ export interface SF1_1 {
   SF1_1_CorrienteActualMotor: number,
   SF1_1_PotenciaActualMotor: number,
   SF1_1_TorqueActualMotor: number,
-  SF1_1_KWh: number
+  SF1_1_KWh: number,
+  SF1_1_voltaje: number
 }
 
 // let TeamSF1_1: SF1_1;
@@ -33,13 +34,14 @@ export class Sf1_1Component implements OnInit {
 
   private alive=true;
   // dataSF1_1 = TeamSF1_1
-  public TeamSF1_1: SF1_1 = {
-    SF1_1_VelocidadActualMotor: 0,
-    SF1_1_CorrienteActualMotor: 0,
-    SF1_1_PotenciaActualMotor: 0,
-    SF1_1_TorqueActualMotor: 0,
-    SF1_1_KWh: 0
-  }
+  public TeamSF1_1: SF1_1 
+  // = {
+  //   SF1_1_VelocidadActualMotor: 0,
+  //   SF1_1_CorrienteActualMotor: 0,
+  //   SF1_1_PotenciaActualMotor: 0,
+  //   SF1_1_TorqueActualMotor: 0,
+  //   SF1_1_KWh: 0
+  // }
   public velocidadSf1_1: any = 0;
   intervalSubscriptionItems?: Subscription;
 
@@ -61,7 +63,7 @@ public minorTicks: Object = { width: 0 };
 public labelStyle: Object = { font: { size: '0' } };
 //Initializing Annotation
 public annotation: string = "<div id='templateWrap'>" +
-"<div class='fontDes' style='width: 16px;height: 16px;margin-top: 4px;'>${pointers[0].value} rpm</div></div></div>";
+"<div class='fontDes' style='width: 16px;height: 16px;margin-top: 4px;'>${pointers[0].value}rpm</div></div></div>";
 public annotation2: string = "<div class='fontDes1'>Germany</div>"
 public annotation3: string = "<div class='fontDes1'>USA</div>"
 public annotation4: string = "<div class='fontDes1'>UK</div>"
@@ -125,7 +127,7 @@ public tooltipInterval1: number;
 
   ngOnInit(): void {
     this.changeSF1_1();
-    // this.dataSF1()
+    this.dataSF1()
     
   }
 
@@ -219,15 +221,16 @@ public tooltipInterval1: number;
     .subscribe((res: any)=>{
       if (JSON.stringify(res)=='{}') {
         console.log('No hay data SF1_1');
-        res.SF1_1_VelocidadActualMotor = 0;
-        res.SF1_1_PotenciaActualMotor = 0;
-        res.SF1_1_KWh = 0;
-        res.SF1_1_CorrienteActualMotor = 0;
+        // res.SF1_1_VelocidadActualMotor = 0;
+        // res.SF1_1_PotenciaActualMotor = 0;
+        // res.SF1_1_KWh = 0;
+        // res.SF1_1_CorrienteActualMotor = 0;
         
       } else {
       this.TeamSF1_1 = res
       // this.dataSF1_1 = TeamSF1_1
-      this.velocidadSf1_1 = this.decimalPipe.transform(this.TeamSF1_1?.SF1_1_VelocidadActualMotor) ?? 0;
+      // this.velocidadSf1_1 = this.decimalPipe.transform(this.TeamSF1_1?.SF1_1_VelocidadActualMotor) ?? 0;
+      this.velocidadSf1_1 = this.TeamSF1_1?.SF1_1_VelocidadActualMotor ?? 0;
       // console.log('SF1_1:', this.TeamSF1_1);
     }
     });
@@ -239,7 +242,7 @@ public tooltipInterval1: number;
       this.intervalSubscriptionItems.unsubscribe();
     }
 
-    this.intervalSubscriptionItems = interval(3000)
+    this.intervalSubscriptionItems = interval(10000)
     .pipe(
       takeWhile(() => this.alive),
       switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF1_1'))
@@ -247,15 +250,16 @@ public tooltipInterval1: number;
     .subscribe((res: any) => {
       if (JSON.stringify(res)=='{}') {
             console.log('no hay data SF1_1');
-            res.SF1_1_VelocidadActualMotor = 0;
-            res.SF1_1_PotenciaActualMotor = 0;
-            res.SF1_1_KWh = 0;
-            res.SF1_1_CorrienteActualMotor = 0;
+            // res.SF1_1_VelocidadActualMotor = 0;
+            // res.SF1_1_PotenciaActualMotor = 0;
+            // res.SF1_1_KWh = 0;
+            // res.SF1_1_CorrienteActualMotor = 0;
           } else {
             this.TeamSF1_1 = res
             // this.dataSF1_1 = TeamSF1_1
-            this.velocidadSf1_1 = this.decimalPipe.transform(this.TeamSF1_1?.SF1_1_VelocidadActualMotor) ?? 0;
-            console.log('SF1_1:', this.TeamSF1_1);
+            // this.velocidadSf1_1 = this.decimalPipe.transform(this.TeamSF1_1?.SF1_1_VelocidadActualMotor) ?? 0;
+            this.velocidadSf1_1 = this.TeamSF1_1?.SF1_1_VelocidadActualMotor ?? 0;
+            // console.log('SF1_1:', this.TeamSF1_1);
           }
 
     },(error) => (console.log(error)),

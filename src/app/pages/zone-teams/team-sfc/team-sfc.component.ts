@@ -17,50 +17,50 @@ import { takeWhile } from "rxjs/operators";
             <h5 class="h">SECURITY FEED CHECK-IN</h5>
         </nav>
       </nb-card-header>
-        <div class="container">
+        <!-- <div class="container"> -->
           <nb-card-body>
       <div class="col-sm-12">
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-sf1_1></ngx-sf1_1>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-sf1_2></ngx-sf1_2>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-sf3_1></ngx-sf3_1>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-sf3_2></ngx-sf3_2>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-cs1_3></ngx-cs1_3>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-cs1_4></ngx-cs1_4>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-cs1_5></ngx-cs1_5>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-cs1_6></ngx-cs1_6>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-cs1_7></ngx-cs1_7>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-cs3_3></ngx-cs3_3>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-cs3_4></ngx-cs3_4>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-cs3_5></ngx-cs3_5>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-cs3_6></ngx-cs3_6>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <ngx-cs3_7></ngx-cs3_7>
           </div>
 
@@ -74,7 +74,7 @@ import { takeWhile } from "rxjs/operators";
         </div>
       </div>
 </nb-card-body>
-      </div>
+      <!-- </div> -->
 
     </nb-card>
 
@@ -100,7 +100,7 @@ export class TeamSfcComponent implements OnDestroy {
   ngOnInit(): void {}
 
   back() {
-    this.router.navigate(['/pages/conveyor/energy']);
+    this.router.navigate(['/pages/conveyor/energyZone']);
     return false;
   }
 

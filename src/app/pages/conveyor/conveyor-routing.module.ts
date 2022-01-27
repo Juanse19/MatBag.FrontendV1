@@ -20,8 +20,9 @@ import { Ib2Component } from './ib2/ib2.component';
 import { Ib3Component } from './ib3/ib3.component';
 import { Bhs9Component } from './bhs9/bhs9.component';
 import { Bhs10Component } from './bhs10/bhs10.component';
-import { WindowComponent } from './window/window.component'
-import { EnergyComponent } from './energy/energy.component'
+import { WindowComponent } from './window/window.component';
+import { EnergyComponent } from './energy/energy.component';
+import { ConsumZoneComponent } from './consum-zone/consum-zone.component';
 
 const routes: Routes = [
   {
@@ -111,6 +112,10 @@ const routes: Routes = [
       {
         path: 'energy',
         component: EnergyComponent,
+      },
+      {
+        path: 'energyZone',
+        component: ConsumZoneComponent,
       },
     ],
   },

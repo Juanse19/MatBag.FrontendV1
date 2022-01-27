@@ -15,7 +15,7 @@ export interface osr1_1 {
   OSR1_1_PotenciaActualMotor: number,
   OSR1_1_TorqueActualMotor: number,
   OSR1_1_KWh: number,
-  Voltaje: number,
+  OSR1_1_voltaje: number,
 }
  
 @Component({
@@ -34,7 +34,7 @@ export class Osr1_1Component implements OnInit {
     OSR1_1_PotenciaActualMotor: 0,
     OSR1_1_TorqueActualMotor: 0,
     OSR1_1_KWh: 0,
-    Voltaje: 0
+    OSR1_1_voltaje: 0
   }
 
   public velocidadOSR1_1: any = 0;
@@ -214,13 +214,8 @@ public tooltipInterval1: number;
       } else {
       this.TeamOSR1_1 = res
       // this.dataSF1_1 = TeamSF1_1
-      this.velocidadOSR1_1 = this.decimalPipe.transform(this.TeamOSR1_1?.OSR1_1_VelocidadActualMotor) ?? 0;
-      console.log('OSR1_1:', this.TeamOSR1_1);
-      this.TeamOSR1_1.Voltaje = this.TeamOSR1_1.OSR1_1_PotenciaActualMotor / this.TeamOSR1_1.OSR1_1_CorrienteActualMotor
-      console.log('Voltaje:', this.TeamOSR1_1.Voltaje);
-      // let volt = this.TeamOSR1_1.OSR1_1_PotenciaActualMotor / this.TeamOSR1_1.OSR1_1_CorrienteActualMotor 
-      // console.log('volt', volt);
-      // this.TeamOSR1_1.Voltaje = volt;
+      // this.velocidadOSR1_1 = this.decimalPipe.transform(this.TeamOSR1_1?.OSR1_1_VelocidadActualMotor) ?? 0;
+      this.velocidadOSR1_1 = this.TeamOSR1_1?.OSR1_1_VelocidadActualMotor ?? 0;
     }
     });
   }
@@ -244,11 +239,8 @@ public tooltipInterval1: number;
             res.OSR1_1_KWh = 0;
           } else {
             this.TeamOSR1_1 = res
-            // this.dataSF1_1 = TeamSF1_1
-            this.velocidadOSR1_1 = this.decimalPipe.transform(this.TeamOSR1_1?.OSR1_1_VelocidadActualMotor) ?? 0;
-            console.log('OSR1_1:', this.TeamOSR1_1?.OSR1_1_VelocidadActualMotor);
-            this.TeamOSR1_1.Voltaje = this.TeamOSR1_1.OSR1_1_PotenciaActualMotor / this.TeamOSR1_1.OSR1_1_CorrienteActualMotor
-            console.log('Voltaje:', this.TeamOSR1_1.Voltaje);
+            this.velocidadOSR1_1 = this.TeamOSR1_1?.OSR1_1_VelocidadActualMotor ?? 0;
+            
           }
 
     },(error) => (console.log(error)),

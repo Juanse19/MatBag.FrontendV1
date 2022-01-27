@@ -356,6 +356,22 @@ export class PagesMenu {
       ],
     };
 
+    const cosumeMenu: NbMenuItem = {
+      title: 'Consumo energético',
+      icon: 'archive-outline',
+      // link: '/pages/analytics/analytics',
+      children: [
+        {
+          title: 'Consumo generales',
+          link: '/pages/conveyor/energy',
+        },
+        {
+          title: 'Consumo por zonas',
+          link: '/pages/conveyor/energyZone',
+        },
+      ],
+    };
+
     const functionMenu: NbMenuItem = {
       title: 'Informacion',
       icon: 'archive-outline',
@@ -375,13 +391,13 @@ export class PagesMenu {
           link: '/pages/conveyor/accumulation',
         },
         
-        {
-          title: 'Consumo energético',
-          link: '/pages/conveyor/energy',
-        },
         // {
-        //   title: 'Consumo energético por equipos',
-        //   link: '/pages/zone-teams/sfc',
+        //   title: 'Consumo energético',
+        //   link: '/pages/conveyor/energy',
+        // },
+        // {
+        //   title: 'SECURITY FEED CHECK-IN',
+        //   link: '/pages/zone-teams/teamsfc',
         // },
         // {
         //   title: 'Equipos SFC',
@@ -544,7 +560,7 @@ export class PagesMenu {
           // return [...dashboardMenu, orderMenu, userMenu, ...menu,registerMenu];
           // return [...dashboardMenu, orderMenu, reportMenu, analyticsMenu, userMenu, alarmMenu, registerMenu];
           // return [...dashboardMenu, orderMenu, sicsyncroMenu, repoMenu, analyticsMenu, userMenu, alarmMenu];
-          return [...dashboardMenu, dassh2Menu, paraMenu, functionMenu, repocbisMenu, configurationMenu, alarmMenu];
+          return [...dashboardMenu, dassh2Menu, paraMenu, functionMenu, cosumeMenu, repocbisMenu, configurationMenu, alarmMenu];
         } else {
           //return [...dashboardMenu, ...menu];
           return [...dashboardMenu, alarmMenu];

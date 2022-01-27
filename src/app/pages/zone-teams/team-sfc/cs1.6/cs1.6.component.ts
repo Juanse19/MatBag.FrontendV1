@@ -14,7 +14,8 @@ export interface CS1_6M01 {
   CS1_6M01_CorrienteActualMotor: number,
   CS1_6M01_PotenciaActualMotor: number,
   CS1_6M01_TorqueActualMotor: number,
-  CS1_6M01_KWh: number
+  CS1_6M01_KWh: number,
+  CS1_6M01_voltaje: number
 }
 
 @Component({
@@ -31,7 +32,8 @@ export class Cs1_6Component implements OnInit {
     CS1_6M01_CorrienteActualMotor: 0,
     CS1_6M01_PotenciaActualMotor: 0,
     CS1_6M01_TorqueActualMotor: 0,
-    CS1_6M01_KWh: 0
+    CS1_6M01_KWh: 0,
+    CS1_6M01_voltaje: 0
   }
 
   public velocidadCS1_6M01: any = 0;

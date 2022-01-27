@@ -15,6 +15,7 @@ export interface SF1_12 {
   SF1_12_PotenciaActualMotor: number,
   SF1_12_TorqueActualMotor: number,
   SF1_12_KWh: number,
+  SF1_12_voltaje: number
 }
 
 @Component({
@@ -31,7 +32,8 @@ export class Sf1_12Component implements OnInit {
     SF1_12_CorrienteActualMotor: 0,
     SF1_12_PotenciaActualMotor: 0,
     SF1_12_TorqueActualMotor: 0,
-    SF1_12_KWh: 0
+    SF1_12_KWh: 0,
+    SF1_12_voltaje: 0
   }
 
   public velocidadSF1_12: any = 0;

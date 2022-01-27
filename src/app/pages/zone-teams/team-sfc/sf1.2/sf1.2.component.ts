@@ -118,7 +118,7 @@ public tooltipInterval1: number;
 
   ngOnInit(): void {
     this.changeSF1_2();
-    // this.dataSF1()
+    this.dataSF1_2()
   }
 
   gauge(){
@@ -210,16 +210,17 @@ public tooltipInterval1: number;
     .subscribe((res: any)=>{
       if (JSON.stringify(res)=='{}') {
         console.log('No hay data SF1_2');
-        res.SF1_2_VelocidadActualMotor = 0;
-        res.SF1_2_CorrienteActualMotor = 0;
-        res.SF1_2_PotenciaActualMotor = 0;
-        res.SF1_2_voltaje = 0;
-        res.SF1_2_KWh = 0;
+        // res.SF1_2_VelocidadActualMotor = 0;
+        // res.SF1_2_CorrienteActualMotor = 0;
+        // res.SF1_2_PotenciaActualMotor = 0;
+        // res.SF1_2_voltaje = 0;
+        // res.SF1_2_KWh = 0;
       } else {
       this.TeamSF1_2 = res
       // this.dataSF1_1 = TeamSF1_1
-      this.velocidadSF1_2 = this.decimalPipe.transform(this.TeamSF1_2?.SF1_2_VelocidadActualMotor) ?? 0;
-      console.log('SF1_2:', this.TeamSF1_2);
+      // this.velocidadSF1_2 = this.decimalPipe.transform(this.TeamSF1_2?.SF1_2_VelocidadActualMotor, '1.0-0') ?? 0;
+      this.velocidadSF1_2 = this.TeamSF1_2?.SF1_2_VelocidadActualMotor ?? 0;
+      // console.log('SF1_2:', this.TeamSF1_2);
     }
     });
   }
@@ -229,7 +230,7 @@ public tooltipInterval1: number;
       this.intervalSubscriptionItems.unsubscribe();
     }
 
-    this.intervalSubscriptionItems = interval(3000)
+    this.intervalSubscriptionItems = interval(10000)
     .pipe(
       takeWhile(() => this.alive),
       switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF1_2'))
@@ -237,16 +238,17 @@ public tooltipInterval1: number;
     .subscribe((res: any) => {
       if (JSON.stringify(res)=='{}') {
             console.log('no hay data SF1_2');
-            res.SF1_2_VelocidadActualMotor = 0;
-            res.SF1_2_CorrienteActualMotor = 0;
-            res.SF1_2_PotenciaActualMotor = 0;
-            res.SF1_2_voltaje = 0;
-            res.SF1_2_KWh = 0;
+            // res.SF1_2_VelocidadActualMotor = 0;
+            // res.SF1_2_CorrienteActualMotor = 0;
+            // res.SF1_2_PotenciaActualMotor = 0;
+            // res.SF1_2_voltaje = 0;
+            // res.SF1_2_KWh = 0;
           } else {
             this.TeamSF1_2 = res
             // this.dataSF1_1 = TeamSF1_1
-            this.velocidadSF1_2 = this.decimalPipe.transform(this.TeamSF1_2?.SF1_2_VelocidadActualMotor) ?? 0;
-            console.log('SF1_2:', this.TeamSF1_2?.SF1_2_VelocidadActualMotor);
+            // this.velocidadSF1_2 = this.decimalPipe.transform(this.TeamSF1_2?.SF1_2_VelocidadActualMotor) ?? 0;
+            this.velocidadSF1_2 = this.TeamSF1_2?.SF1_2_VelocidadActualMotor ?? 0;
+            // console.log('SF1_2:', this.TeamSF1_2?.SF1_2_VelocidadActualMotor);
           }
 
     },(error) => (console.log(error)),

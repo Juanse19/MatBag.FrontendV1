@@ -14,7 +14,8 @@ export interface SF3_2 {
   SF3_2_CorrienteActualMotor: number,
   SF3_2_PotenciaActualMotor: number,
   SF3_2_TorqueActualMotor: number,
-  SF3_2_KWh: number
+  SF3_2_KWh: number,
+  SF3_2_voltaje: number
 }
  
 let TeamSF3_2: SF3_2;
@@ -37,7 +38,8 @@ export class Sf3_2Component implements OnInit {
     SF3_2_CorrienteActualMotor: 0,
     SF3_2_PotenciaActualMotor: 0,
     SF3_2_TorqueActualMotor: 0,
-    SF3_2_KWh: 0
+    SF3_2_KWh: 0,
+    SF3_2_voltaje: 0
   }
 
   public velocidadSF3_2: any = 0;

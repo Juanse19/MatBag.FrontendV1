@@ -16,11 +16,16 @@
         </e-axes>
     </ejs-circulargauge>
     <div  style="margin-left: 23%; margin-top: -0%; padding-top: -40px; padding-block-start: -98px;"> 
-       <p> {{TeamOSR1_1?.OSR1_1_CorrienteActualMotor | number  }} Corriente </p>
+       <!-- <p> {{TeamOSR1_1?.OSR1_1_CorrienteActualMotor | number  }} Corriente </p>
        <p> {{TeamOSR1_1?.OSR1_1_PotenciaActualMotor | number  }} Potencia </p>
        <p> {{TeamOSR1_1?.Voltaje | number }} Voltaje </p>
-       <p> {{TeamOSR1_1?.OSR1_1_KWh | number : '4.1-5' }} kWh </p>
+       <p> {{TeamOSR1_1?.OSR1_1_KWh | number : '4.1-5' }} kWh </p> -->
        
+       <pre style="padding: 0.5625em 0.625em; margin-top: -0.10rem;"><b>Corriente:</b>  {{TeamOSR1_1?.OSR1_1_CorrienteActualMotor}}  &nbsp; A</pre>
+       <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Potencia:</b>   {{TeamOSR1_1?.OSR1_1_PotenciaActualMotor}} &nbsp; W</pre>
+       <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Voltaje:</b>    {{TeamOSR1_1?.OSR1_1_voltaje}}   VAC </pre>
+       <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Consumo:</b>    {{TeamOSR1_1?.OSR1_1_KWh | number}}  &nbsp; kwh </pre>
+
     </div>
 </nb-card-body>
 </nb-card>

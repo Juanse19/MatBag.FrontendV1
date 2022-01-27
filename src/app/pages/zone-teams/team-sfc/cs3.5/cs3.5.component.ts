@@ -14,7 +14,8 @@ export interface CS3_5M01 {
   CS3_5M01_CorrienteActualMotor: number,
   CS3_5M01_PotenciaActualMotor: number,
   CS3_5M01_TorqueActualMotor: number,
-  CS3_5M01_KWh: number
+  CS3_5M01_KWh: number,
+  CS3_5M01_voltaje: number
 }
 
 @Component({
@@ -31,7 +32,8 @@ export class Cs3_5Component implements OnInit {
     CS3_5M01_CorrienteActualMotor: 0,
     CS3_5M01_PotenciaActualMotor: 0,
     CS3_5M01_TorqueActualMotor: 0,
-    CS3_5M01_KWh: 0
+    CS3_5M01_KWh: 0,
+    CS3_5M01_voltaje: 0
   }
 
   public velocidadCS3_5M01: any = 0;

@@ -15,6 +15,7 @@ export interface CL1_9 {
   CL1_9_PotenciaActualMotor: number,
   CL1_9_TorqueActualMotor: number,
   CL1_9_KWh: number,
+  CL1_9_voltaje: number
 }
 
 @Component({
@@ -31,7 +32,8 @@ export class Cl1_9Component implements OnInit {
     CL1_9_CorrienteActualMotor: 0,
     CL1_9_PotenciaActualMotor: 0,
     CL1_9_TorqueActualMotor: 0,
-    CL1_9_KWh: 0
+    CL1_9_KWh: 0,
+    CL1_9_voltaje: 0
   }
 
   public velocidadCL1_9: any = 0;

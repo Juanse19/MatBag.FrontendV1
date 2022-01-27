@@ -14,7 +14,8 @@ export interface osr1_4 {
   OSR1_4_CorrienteActualMotor: number,
   OSR1_4_PotenciaActualMotor: number,
   OSR1_4_TorqueActualMotor: number,
-  OSR1_4_KWh: number
+  OSR1_4_KWh: number,
+  OSR1_4_voltaje: number
 }
 
 @Component({
@@ -31,7 +32,8 @@ export class Osr1_4Component implements OnInit {
     OSR1_4_CorrienteActualMotor: 0,
     OSR1_4_PotenciaActualMotor: 0,
     OSR1_4_TorqueActualMotor: 0,
-    OSR1_4_KWh: 0
+    OSR1_4_KWh: 0,
+    OSR1_4_voltaje: 0
   }
 
   public velocidadOSR1_4: any = 0;
@@ -211,7 +213,8 @@ public tooltipInterval1: number;
       } else {
       this.TeamOSR1_4 = res
       // this.dataSF1_1 = TeamSF1_1
-      this.velocidadOSR1_4 = this.decimalPipe.transform(this.TeamOSR1_4?.OSR1_4_VelocidadActualMotor) ?? 0;
+      // this.velocidadOSR1_4 = this.decimalPipe.transform(this.TeamOSR1_4?.OSR1_4_VelocidadActualMotor) ?? 0;
+      this.velocidadOSR1_4 = this.TeamOSR1_4?.OSR1_4_VelocidadActualMotor ?? 0;
       // console.log('SF1_1:', this.TeamSF1_1);
     }
     });
@@ -237,8 +240,8 @@ public tooltipInterval1: number;
           } else {
             this.TeamOSR1_4 = res
             // this.dataSF1_1 = TeamSF1_1
-            this.velocidadOSR1_4 = this.decimalPipe.transform(this.TeamOSR1_4?.OSR1_4_VelocidadActualMotor) ?? 0;
-            console.log('OSR1_4:', this.TeamOSR1_4?.OSR1_4_VelocidadActualMotor);
+            this.velocidadOSR1_4 = this.TeamOSR1_4?.OSR1_4_VelocidadActualMotor ?? 0;
+            // console.log('OSR1_4:', this.TeamOSR1_4?.OSR1_4_VelocidadActualMotor);
           }
 
     },(error) => (console.log(error)),

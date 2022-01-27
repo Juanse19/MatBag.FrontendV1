@@ -22,32 +22,32 @@ import { takeWhile } from "rxjs/operators";
             <h5 class="h">SECURITY SHUNT</h5>
           </nav>
         </nb-card-header>
-        <div class="container">
+        
           <nb-card-body>
             <div class="col-sm-12">
               <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                   <ngx-ss1_1></ngx-ss1_1>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                   <ngx-ss1_2></ngx-ss1_2>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                 <ngx-ss1_3></ngx-ss1_3>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                 <ngx-ss1_4></ngx-ss1_4>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                 <ngx-ss1_5></ngx-ss1_5>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                 <ngx-ss1_6></ngx-ss1_6>
                 </div>
               </div>
             </div>
           </nb-card-body>
-        </div>
+        
         <style>
           .contenedor {
             position: relative;
@@ -83,7 +83,7 @@ export class TeamSsComponent implements OnDestroy {
   ngOnInit(): void {}
 
   back() {
-    this.router.navigate(["/pages/conveyor/energy"]);
+    this.router.navigate(["/pages/conveyor/energyZone"]);
     return false;
   }
 

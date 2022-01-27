@@ -16,10 +16,15 @@
         </e-axes>
     </ejs-circulargauge>
     <div  style="margin-left: 23%; margin-top: -0%; padding-top: -40px; padding-block-start: -98px;"> 
-       <p> {{TeamSF1_10?.SF1_10_CorrienteActualMotor | number : '1.2-2' }} Corriente </p>
+       <!-- <p> {{TeamSF1_10?.SF1_10_CorrienteActualMotor | number : '1.2-2' }} Corriente </p>
        <p> {{TeamSF1_10?.SF1_10_PotenciaActualMotor | number : '1.0-2' }} Potencia </p>
-       <p> {{TeamSF1_10?.SF1_10_KWh | number : '4.1-5' }} kWh </p>
+       <p> {{TeamSF1_10?.SF1_10_KWh | number : '4.1-5' }} kWh </p> -->
        
+       <pre style="padding: 0.5625em 0.625em; margin-top: -0.10rem;"><b>Corriente:</b>  {{TeamSF1_10?.SF1_10_CorrienteActualMotor}}  &nbsp; A</pre>
+       <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Potencia:</b>   {{TeamSF1_10?.SF1_10_PotenciaActualMotor}} &nbsp; W</pre>
+       <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Voltaje:</b>    {{TeamSF1_10?.SF1_10_voltaje}}   VAC </pre>
+       <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Consumo:</b>    {{TeamSF1_10?.SF1_10_KWh | number}}  &nbsp; kwh </pre>
+
     </div>
 </nb-card-body>
 </nb-card>

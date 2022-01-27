@@ -16,10 +16,15 @@
         </e-axes>
     </ejs-circulargauge>
     <div  style="margin-left: 23%; margin-top: -0%; padding-top: -40px; padding-block-start: -98px;"> 
-       <p> {{TeamCS3_7M01?.CS3_7M01_CorrienteActualMotor | number : '1.4-5' }} Corriente </p>
+       <!-- <p> {{TeamCS3_7M01?.CS3_7M01_CorrienteActualMotor | number : '1.4-5' }} Corriente </p>
        <p> {{TeamCS3_7M01?.CS3_7M01_PotenciaActualMotor | number : '1.2-2' }} Potencia </p>
-       <p> {{TeamCS3_7M01?.CS3_7M01_KWh | number : '1.4-5' }} kWh </p>
+       <p> {{TeamCS3_7M01?.CS3_7M01_KWh | number : '1.4-5' }} kWh </p> -->
        
+       <pre style="padding: 0.5625em 0.625em; margin-top: -0.10rem;"><b>Corriente:</b>  {{TeamCS3_7M01?.CS3_7M01_CorrienteActualMotor}}  &nbsp; <span>A</span> </pre>
+        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Potencia:</b>   {{TeamCS3_7M01?.CS3_7M01_PotenciaActualMotor}} &nbsp; W</pre>
+        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Voltaje:</b>    {{TeamCS3_7M01?.CS3_7M01_voltaje}}   VAC </pre>
+        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Consumo:</b>    {{TeamCS3_7M01?.CS3_7M01_KWh | number}}   kwh </pre>
+
     </div>
 </nb-card-body>
 </nb-card>

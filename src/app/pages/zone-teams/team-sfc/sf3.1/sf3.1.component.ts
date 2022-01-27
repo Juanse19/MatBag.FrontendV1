@@ -14,6 +14,7 @@ export interface SF3_1 {
   SF3_1_CorrienteActualMotor: number,
   SF3_1_PotenciaActualMotor: number,
   SF3_1_TorqueActualMotor: number,
+  SF3_1_voltaje: number,
   SF3_1_KWh: number
 }
 
@@ -33,10 +34,11 @@ export class Sf3_1Component implements OnInit {
   private alive=true;
   // dataSF3_1? = TeamSF3_1
   public TeamSF3_1: SF3_1 = {
-    SF3_1_VelocidadActualMotor: 40,
+    SF3_1_VelocidadActualMotor: 0,
     SF3_1_CorrienteActualMotor: 0,
     SF3_1_PotenciaActualMotor: 0,
     SF3_1_TorqueActualMotor: 0,
+    SF3_1_voltaje: 0,
     SF3_1_KWh: 0
   }
   public velocidadSf3_1?: any = 0;
@@ -60,19 +62,19 @@ public minorTicks: Object = { width: 0 };
 public labelStyle: Object = { font: { size: '0' } };
 //Initializing Annotation
 public annotation1: string = "<div id='templateWrap'>" +
-"<div class='fontDes' style='width: 16px;height: 16px;margin-top: 4px;'>${pointers[0].value}%</div></div></div>";
+"<div class='fontDes' style='width: 16px;height: 16px;margin-top: 4px;'>${pointers[0].value}rpm</div></div></div>";
 public annotation2: string = "<div class='fontDes1'>Germany</div>"
 public annotation3: string = "<div class='fontDes1'>USA</div>"
 public annotation4: string = "<div class='fontDes1'>UK</div>"
 public annotation5: string = "<div id='templateWrap'>" +
-"<div class='fontDes'>${pointers[0].value}%</div></div></div>";
+"<div class='fontDes'>${pointers[0].value}rpm</div></div></div>";
 // public annotation6: string = `<div id='templateWrap'><div class='fontDes3'>cantidad ${this.dataSF1_1?.SF1_1_VelocidadActualMotor}</div></div></div>`;
 
 
 public sf3_1Annotation: Object[] = [{
     content:  "<div id='templateWrap'>"
-    +"<img style='width: 16px;height: 16px;margin-top: 4px;' src='./assets/circular-gauge/images/positive.png' />" 
-    + "<div style='float: right;color: #424242;font-size: 10px;'>${pointers[0].value}%</div></div></div>",
+    +"<img style='width: 16px;height: 16px;margin-top: 4px;' src='./assets/circular-gauge/images/positive.png' />"
+    + "<div style='float: right;color: #424242;font-size: 10px;'>${pointers[0].value}rpm</div></div></div>",
     angle: 180,
     radius: '130%'
 }, {
@@ -87,12 +89,12 @@ public sf3_1Annotation: Object[] = [{
   start: 0, end: 40,
   startWidth: 15, endWidth: 15,
   color: '#30B32D'
-}, 
+},
 {
   start: 40, end: 70,
   startWidth: 15, endWidth: 15,
   color: '#FFDD00'
-}, 
+},
 {
   start: 70, end: 100,
   startWidth: 15, endWidth: 15,
@@ -125,7 +127,7 @@ public tooltipInterval3: number;
   ngOnInit(): void {
     this.changeSF3_1();
     // this.test3();
-    // this.dataSF3();
+    this.dataSF3();
   }
 
   test3(){
@@ -137,7 +139,7 @@ public tooltipInterval3: number;
               let value3: number = data;
 
               this.sf3_1.axes[0].pointers[0].animation.enable = true;
-             
+
               this.sf3_1.setPointerValue(0, 0, value3);
               this.sf3_1.setAnnotationValue(0, 0, this.sf3_1.axes[0].annotations[0].content);
           } else {
@@ -146,9 +148,9 @@ public tooltipInterval3: number;
       },
       1000);
   }
-  
+
   ngAfterViewInit(): void {
-  
+
 
     this.tooltipInterval3 = window.setInterval(
 
@@ -203,15 +205,17 @@ changeSF3_1(): void {
   .pipe(takeWhile(() => this.alive))
   .subscribe((data: any)=>{
     if (JSON.stringify(data)=='{}') {
-      data.SF3_1_VelocidadActualMotor = 0;
-      data.SF3_1_PotenciaActualMotor = 0;
-      data.SF3_1_KWh = 0;
-      data.SF3_1_CorrienteActualMotor = 0;
+      // data.SF3_1_VelocidadActualMotor = 0;
+      // data.SF3_1_PotenciaActualMotor = 0;
+      // data.SF3_1_voltaje = 0;
+      // data.SF3_1_KWh = 0;
+      // data.SF3_1_CorrienteActualMotor = 0;
     } else {
     this.TeamSF3_1 = data
     // this.dataSF3_1 = TeamSF3_1
-    this.velocidadSf3_1 =  this.decimalPipe.transform( this.TeamSF3_1.SF3_1_VelocidadActualMotor) ?? 0;
-    console.log('SF3:', this.velocidadSf3_1);
+    // this.velocidadSf3_1 =  this.decimalPipe.transform( this.TeamSF3_1.SF3_1_VelocidadActualMotor, '1.0-0') ?? 0;
+    this.velocidadSf3_1 =  this.TeamSF3_1.SF3_1_VelocidadActualMotor ?? 0;
+    // console.log('SF3:', this.velocidadSf3_1);
     }
 
   });
@@ -222,26 +226,28 @@ dataSF3(){
     this.intervalSubscriptionItems3.unsubscribe();
   }
 
-  this.intervalSubscriptionItems3 = interval(5000)
+  this.intervalSubscriptionItems3 = interval(10000)
   .pipe(
     takeWhile(() => this.alive),
     switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF3_1'))
   )
   .subscribe((data: any) => {
     if (JSON.stringify(data)=='{}') {
-      data.SF3_1_VelocidadActualMotor = 0;
-      data.SF3_1_PotenciaActualMotor = 0;
-      data.SF3_1_KWh = 0;
-      data.SF3_1_CorrienteActualMotor = 0;
+      // data.SF3_1_VelocidadActualMotor = 0;
+      // data.SF3_1_PotenciaActualMotor = 0;
+      // data.SF3_1_voltaje = 0;
+      // data.SF3_1_KWh = 0;
+      // data.SF3_1_CorrienteActualMotor = 0;
     } else {
     this.TeamSF3_1 = data
     // this.dataSF3_1 = TeamSF3_1
-    this.velocidadSf3_1 =  this.decimalPipe.transform( this.TeamSF3_1.SF3_1_VelocidadActualMotor) ?? 0;
+    // this.velocidadSf3_1 =  this.decimalPipe.transform( this.TeamSF3_1.SF3_1_VelocidadActualMotor, '1.0-0') ?? 0;
+    this.velocidadSf3_1 =  this.TeamSF3_1.SF3_1_VelocidadActualMotor ?? 0;
     console.log('SF3_1:', this.velocidadSf3_1);
     }
 
   },(error) => (console.log(error)),
-  () => console.log('Error..!' ),
+  () => console.log('Error SF3_1..!' ),
 );
 }
 
