@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ZoneTeamsComponent } from './zone-teams.component';
-import { SfcComponent } from './sfc/sfc.component';
 import { TeamSfcComponent } from './team-sfc/team-sfc.component';
 
 const routes: Routes = [
@@ -9,10 +8,6 @@ const routes: Routes = [
     path: '',
     component: ZoneTeamsComponent,
     children: [
-    // {
-    //   path: 'sfc',
-    //   component: SfcComponent,
-    // },
     {
       path: 'teamsfc',
       loadChildren: () => import('./team-sfc/team-sfc.module')

@@ -18,7 +18,6 @@ import {
 
 import { ZoneTeamsRoutingModule } from "./zone-teams-routing.module";
 import { ZoneTeamsComponent } from "./zone-teams.component";
-import { SfcComponent } from "./sfc/sfc.component";
 import { ButtonModule, CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
 
 import { GridModule } from '@syncfusion/ej2-angular-grids';
@@ -30,7 +29,7 @@ import { TeamSSModule } from './team-ss/team-ss.module'
 import { AppComponent } from "../../app.component";
 
 @NgModule({
-  declarations: [ZoneTeamsComponent, SfcComponent],
+  declarations: [ZoneTeamsComponent, ],
   imports: [
     CommonModule,
     ZoneTeamsRoutingModule,
