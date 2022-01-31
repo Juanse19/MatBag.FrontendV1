@@ -21,7 +21,7 @@ import { Router } from "@angular/router";
             <h5 class="h">MAKE UP</h5>
           </nav>
         </nb-card-header>
-        <nb-card-body>
+        <!-- <nb-card-body>
           <div class="contenedor">
             <img
               src="./assets/img/construction.gif"
@@ -34,7 +34,30 @@ import { Router } from "@angular/router";
               <font size="4">Sitio en Construcción</font>
             </div>
           </div>
+        </nb-card-body> -->
+
+        <nb-card-body>
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-3">
+                  <ngx-mu1_1></ngx-mu1_1>
+                </div>
+                <div class="col-sm-3">
+                  <ngx-mu1_2></ngx-mu1_2>
+                </div>
+                <div class="col-sm-3">
+                  <ngx-mu1_3></ngx-mu1_3>
+                </div>
+                <div class="col-sm-3">
+                  <ngx-mu1_4></ngx-mu1_4>
+                </div>
+                <div class="col-sm-3">
+                  <ngx-mu1_5></ngx-mu1_5>
+                </div>
+              </div>
+            </div>
         </nb-card-body>
+
         <style>
           .contenedor {
             position: relative;

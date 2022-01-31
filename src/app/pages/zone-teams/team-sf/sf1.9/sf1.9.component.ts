@@ -213,8 +213,7 @@ public tooltipInterval1: number;
       } else {
       this.TeamSF1_9 = res
       // this.dataSF1_1 = TeamSF1_1
-      this.velocidadSF1_9 = this.decimalPipe.transform(this.TeamSF1_9?.SF1_9_VelocidadActualMotor) ?? 0;
-      console.log('SF1_1:', this.TeamSF1_9);
+      this.velocidadSF1_9 = this.TeamSF1_9?.SF1_9_VelocidadActualMotor ?? 0;
     }
     });
   }
@@ -239,8 +238,7 @@ public tooltipInterval1: number;
           } else {
             this.TeamSF1_9 = res
             // this.dataSF1_1 = TeamSF1_1
-            this.velocidadSF1_9 = this.decimalPipe.transform(this.TeamSF1_9?.SF1_9_VelocidadActualMotor) ?? 0;
-            console.log('SF1_9:', this.TeamSF1_9?.SF1_9_VelocidadActualMotor);
+            this.velocidadSF1_9 = this.TeamSF1_9?.SF1_9_VelocidadActualMotor ?? 0;
           }
 
     },(error) => (console.log(error)),
