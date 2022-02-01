@@ -23,6 +23,7 @@ import { Bhs10Component } from './bhs10/bhs10.component';
 import { WindowComponent } from './window/window.component';
 import { EnergyComponent } from './energy/energy.component';
 import { ConsumZoneComponent } from './consum-zone/consum-zone.component';
+import { BsdComponent } from './bsd/bsd.component';
 
 const routes: Routes = [
   {
@@ -116,6 +117,10 @@ const routes: Routes = [
       {
         path: 'energyZone',
         component: ConsumZoneComponent,
+      },
+      {
+        path: 'bsd',
+        component: BsdComponent,
       },
     ],
   },

@@ -114,7 +114,7 @@ public tooltipInterval1: number;
 
   ngOnInit(): void {
     this.changeSF3_10();
-    // this.dataSF1()
+    this.dataSF3_10()
   }
 
   gauge(){
@@ -213,8 +213,9 @@ public tooltipInterval1: number;
       } else {
       this.TeamSF3_10 = res
       // this.dataSF1_1 = TeamSF1_1
-      this.velocidadSF3_10 = this.decimalPipe.transform(this.TeamSF3_10?.SF3_10_VelocidadActualMotor) ?? 0;
-      console.log('SF1_1:', this.TeamSF3_10);
+      // this.velocidadSF3_10 = this.decimalPipe.transform(this.TeamSF3_10?.SF3_10_VelocidadActualMotor) ?? 0;
+      // console.log('SF1_1:', this.TeamSF3_10);
+      this.velocidadSF3_10 = this.TeamSF3_10?.SF3_10_VelocidadActualMotor ?? 0;
     }
     });
   }
@@ -224,7 +225,7 @@ public tooltipInterval1: number;
       this.intervalSubscriptionItems.unsubscribe();
     }
 
-    this.intervalSubscriptionItems = interval(3000)
+    this.intervalSubscriptionItems = interval(10000)
     .pipe(
       takeWhile(() => this.alive),
       switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF3_10'))
@@ -239,8 +240,7 @@ public tooltipInterval1: number;
           } else {
             this.TeamSF3_10 = res
             // this.dataSF1_1 = TeamSF1_1
-            this.velocidadSF3_10 = this.decimalPipe.transform(this.TeamSF3_10?.SF3_10_VelocidadActualMotor) ?? 0;
-            console.log('SF3_10:', this.TeamSF3_10?.SF3_10_VelocidadActualMotor);
+            this.velocidadSF3_10 = this.TeamSF3_10?.SF3_10_VelocidadActualMotor ?? 0;
           }
 
     },(error) => (console.log(error)),

@@ -16,16 +16,10 @@
 
                 <div class="media-body" *ngFor="let tx1 of divices1">
 
-                    <!-- <b>Id equipo:</b>
-                    <p>{{tx1?.DeviceId}}</p> -->
+                    <b>Id equipo:</b>
+                    <p>{{tx1?.DeviceId}}</p>
 
-                    <pre style="padding: 0.5625em 0.625em; margin-top: -0.10rem;">Id equipo:        {{tx1?.DeviceId}}</pre>
-                    <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Estado:            {{tx1?.Estado}}</pre>
-                    <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Consumo (KWH):     {{tx1?.Consumo}}</pre>
-                    <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Tiempo Encendido:  {{tx1?.TiempoOn}}</pre>
-                    <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Tiempo apagado:    {{tx1?.TiempoOff}}</pre>
-
-                    <!-- <b>Estado:</b>
+                    <b>Estado:</b>
                     <p>{{tx1?.Estado}}</p>
 
                     <b>Consumo (KWH):</b>
@@ -35,7 +29,14 @@
                     <p>{{tx1?.TiempoOn}}</p>
 
                     <b>Tiempo apagado:</b>
-                    <p>{{tx1?.TiempoOff}}</p> -->
+                    <p>{{tx1?.TiempoOff}}</p>
+
+                    <!-- <pre style="padding: 0.5625em 0.625em; margin-top: -0.10rem;"><b>Id equipo:</b>        {{tx1?.DeviceId}}</pre>
+                    <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Estado:</b>            {{tx1?.Estado}}</pre>
+                    <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Consumo (KWH):</b>     {{tx1?.Consumo}}</pre>
+                    <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Tiempo Encendido:</b>  {{tx1?.TiempoOn}}</pre>
+                    <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Tiempo apagado:</b>    {{tx1?.TiempoOff}}</pre> -->
+
                 </div>
             </div>
         </ng-template>

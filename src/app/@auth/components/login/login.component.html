@@ -4,8 +4,15 @@
   ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
   -->
 
-<h1 id="title" class="title">Inicia Sesión</h1>
-<p class="sub-title">¡Hola! Inicie sesión con su correo electrónico.</p>
+  <!-- <img src="./../../../../assets/images/MATEC_l_White_Logo.svg" alt="Matec" style="width: 237px; margin-left: 45%;"> -->
+
+  <a>
+   
+    <img src="./../../../../assets/images/MATEC l Blue Logo.png" alt="Matec" style="width: 50%; margin-left: 22%;">
+</a>
+
+<!-- <h1 id="title" class="title">Inicia Sesión</h1>
+<p class="sub-title"> Inicie sesión con su correo electrónico.</p> -->
 
 <nb-alert *ngIf="showMessages.error && errors?.length && !submitted" outline="danger" role="alert">
     <p class="alert-title"><b>¡Oh cielos!</b></p>
@@ -23,8 +30,8 @@
 
 <div [formGroup]="loginForm" aria-labelledby="title">
     <div class="form-control-group">
-        <label for="input-email">correo electrónico:</label>
-        <input nbInput fullWidth id="input-email" formControlName="email" [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : 'basic'" [attr.aria-invalid]="email.invalid && email.touched ? true : null" placeholder="Email address" >
+        <label class="label" for="input-email">correo electrónico:</label>
+        <input nbInput fullWidth id="input-email" formControlName="email" [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : 'basic'" [attr.aria-invalid]="email.invalid && email.touched ? true : null" placeholder="Correo electronico" >
         <ngx-validation-message label="Email address" [showPattern]="email?.hasError('pattern') && email.touched" [showRequired]="email?.errors?.required && email.touched"></ngx-validation-message>
     </div>
  
@@ -33,7 +40,7 @@
       <label class="label" for="input-password">Contraseña:</label>
       
     </span>
-        <input nbInput fullWidth id="input-password" formControlName="password" type="password" [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : 'basic'" placeholder="Password" >
+        <input nbInput fullWidth id="input-password" formControlName="password" type="password" [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : 'basic'" placeholder="Contraseña" >
         <ngx-validation-message label="Password" [showMinLength]="password?.hasError('minlength') && password.touched" [showMaxLength]="password?.hasError('maxlength') && password.touched" [showRequired]="password?.errors?.required && password.touched" [minLength]="minLength"
             [maxLength]="maxLength"></ngx-validation-message>
     </div>
@@ -43,7 +50,8 @@
     </div>
 
     <button nbButton fullWidth status="primary" size="large" (click)="login()" [class.btn-pulse]="submitted">
-    INICIAR SESIÓN
+    <!-- INICIAR SESIÓN -->
+    Iniciar Sesión
   </button>
 </div>
 

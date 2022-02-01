@@ -273,7 +273,7 @@ export class NgxLoginComponent implements OnInit {
                         });
                       } else {
                         Swal.fire({
-                          title: "Se finalizó la seseón, Ya puede iniciar sesión!",
+                          title: "Se finalizó la sesión, Ya puede ¡iniciar sesión!",
                           icon: "success",
                           timer: 2000,
                           showConfirmButton: false,

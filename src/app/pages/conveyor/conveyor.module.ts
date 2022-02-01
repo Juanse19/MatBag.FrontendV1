@@ -58,6 +58,7 @@ import { ElectricityChartComponent } from './electricity/electricity-chart/elect
 import { ConsumZoneComponent } from './consum-zone/consum-zone.component';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { ProgressBarAllModule } from '@syncfusion/ej2-angular-progressbar';
+import { BsdComponent } from './bsd/bsd.component';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { ProgressBarAllModule } from '@syncfusion/ej2-angular-progressbar';
     ElectricityComponent,
     ElectricityChartComponent,
     ConsumZoneComponent,
+    BsdComponent,
   ],
   imports: [
     CommonModule,

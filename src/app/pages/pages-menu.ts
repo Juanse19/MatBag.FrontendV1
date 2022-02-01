@@ -373,7 +373,7 @@ export class PagesMenu {
     };
 
     const functionMenu: NbMenuItem = {
-      title: 'Informacion',
+      title: 'Información',
       icon: 'archive-outline',
       // link: '/pages/analytics/analytics',
       children: [
@@ -554,13 +554,31 @@ export class PagesMenu {
         },
       ],
     };
+
+    const BSDMenu: NbMenuItem = {
+      title: 'Pantalla de estado equipaje',
+      icon: 'book-outline',
+      // link: '/pages/charts/charts-report',
+      children:[
+        // {
+        //   title: 'Window',
+        //   link: '/pages/conveyor/window',
+        // },
+        {
+          title: 'BSD',
+          link: '/pages/conveyor/bsd',
+        },
+      ],
+    };
+
     return this.accessChecker.isGranted('view', 'fullMenu')
       .pipe(map(hasAccess => {
         if (hasAccess) {
           // return [...dashboardMenu, orderMenu, userMenu, ...menu,registerMenu];
           // return [...dashboardMenu, orderMenu, reportMenu, analyticsMenu, userMenu, alarmMenu, registerMenu];
           // return [...dashboardMenu, orderMenu, sicsyncroMenu, repoMenu, analyticsMenu, userMenu, alarmMenu];
-          return [...dashboardMenu, dassh2Menu, paraMenu, functionMenu, cosumeMenu, repocbisMenu, configurationMenu, alarmMenu];
+          // return [...dashboardMenu, dassh2Menu, paraMenu, functionMenu, cosumeMenu, repocbisMenu, configurationMenu, alarmMenu];
+          return [...dashboardMenu, dassh2Menu, functionMenu, cosumeMenu, repocbisMenu, BSDMenu, configurationMenu, alarmMenu];
         } else {
           //return [...dashboardMenu, ...menu];
           return [...dashboardMenu, alarmMenu];

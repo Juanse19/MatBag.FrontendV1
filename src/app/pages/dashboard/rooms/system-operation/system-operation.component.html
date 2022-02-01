@@ -31871,8 +31871,8 @@ er0feedEQvj/FfvjNE5lJChOkuZljUz93/0j8S8BBgBNqpA7UQtFBQAAAABJRU5ErkJggg==" transf
                 <ng-template #content>
  
                     <div class="media-body" *ngFor="let tx of tXData">
-
-                        <b>Nombre:</b>
+ 
+                        <!-- <b>Nombre:</b>
                         <p>{{tx.ZoneName}}</p>
 
                         <b>Id equipo:</b>
@@ -31891,14 +31891,23 @@ er0feedEQvj/FfvjNE5lJChOkuZljUz93/0j8S8BBgBNqpA7UQtFBQAAAABJRU5ErkJggg==" transf
                         <p>{{tx.TiempoOn}} </p>
 
                         <b>TiempoOff:</b>
-                        <p>{{tx.TiempoOff}} </p>
+                        <p>{{tx.TiempoOff}} </p> -->
+
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -0.10rem;">Nombre:          {{tx.ZoneName}}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Id equipo:        {{tx.ZoneId}}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Estado:           {{tx.Estado}}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Consumo (KWH):    {{tx.Consumo}}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Cantidad Maletas: {{tx.ContadorMaletas}}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">TiempoOn:         {{tx.TiempoOn}}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">TiempoOff:        {{tx.TiempoOff}}</pre>
+
                     </div>
                 </ng-template>
             </ejs-dialog>
         </div>
 
         <div #container class='root-container'>
-            <ejs-dialog id='ejDialogSF' #ejDialogSF allowDragging='true' header='' [visible]='hidden' content='' [position]='position' [target]='targetElement' width='250px' [showCloseIcon]='showCloseIcon'>
+            <ejs-dialog id='ejDialogSF' #ejDialogSF allowDragging='true' header='' [visible]='hidden'  [position]='position' [target]='targetElement' width='250px' [showCloseIcon]='showCloseIcon'>
                 <ng-template #content>
 
                     <div class="media-body" *ngFor="let sf of sFData">
@@ -31913,7 +31922,7 @@ er0feedEQvj/FfvjNE5lJChOkuZljUz93/0j8S8BBgBNqpA7UQtFBQAAAABJRU5ErkJggg==" transf
                         <p>{{sf.Estado}}</p>
 
                         <b>Consumo (KWH):</b>
-                        <p>{{sf.Consumo}} </p>
+                        <p>{{sf.Consumo | number: '1.0-0'}} </p>
 
                         <b>Cantidad Maletas</b>
                         <p>{{sf.ContadorMaletas}} </p>
@@ -31944,7 +31953,7 @@ er0feedEQvj/FfvjNE5lJChOkuZljUz93/0j8S8BBgBNqpA7UQtFBQAAAABJRU5ErkJggg==" transf
                         <p>{{ss.Estado}}</p>
 
                         <b>Consumo (KWH):</b>
-                        <p>{{ss.Consumo}} </p>
+                        <p>{{ss.Consumo | number: '1.0-0'}} </p>
 
                         <b>Cantidad Maletas</b>
                         <p>{{ss.ContadorMaletas}} </p>
@@ -31975,7 +31984,7 @@ er0feedEQvj/FfvjNE5lJChOkuZljUz93/0j8S8BBgBNqpA7UQtFBQAAAABJRU5ErkJggg==" transf
                         <p>{{mu.Estado}}</p>
 
                         <b>Consumo (KWH):</b>
-                        <p>{{mu.Consumo}} </p>
+                        <p>{{mu.Consumo | number: '1.0-0'}} </p>
 
                         <b>Cantidad Maletas</b>
                         <p>{{mu.ContadorMaletas}} </p>
@@ -32006,7 +32015,7 @@ er0feedEQvj/FfvjNE5lJChOkuZljUz93/0j8S8BBgBNqpA7UQtFBQAAAABJRU5ErkJggg==" transf
                         <p>{{al.Estado}}</p>
 
                         <b>Consumo (KWH):</b>
-                        <p>{{al.Consumo}} </p>
+                        <p>{{al.Consumo | number: '1.0-0'}} </p>
 
                         <b>Cantidad Maletas</b>
                         <p>{{al.ContadorMaletas}} </p>
@@ -32037,16 +32046,25 @@ er0feedEQvj/FfvjNE5lJChOkuZljUz93/0j8S8BBgBNqpA7UQtFBQAAAABJRU5ErkJggg==" transf
                         <p>{{sfc.Estado}}</p>
 
                         <b>Consumo (KWH):</b>
-                        <p>{{sfc.Consumo}} </p>
+                        <p>{{sfc.Consumo | number: '1.0-0'}} </p>
 
                         <b>Cantidad Maletas</b>
                         <p>{{sfc.ContadorMaletas}} </p>
 
                         <b>TiempoOn:</b>
-                        <p>{{sfc.TiempoOn}} </p>
+                        <p>{{sfc.TiempoOn | number: '1.0-0'}} </p>
 
                         <b>TiempoOff:</b>
-                        <p>{{sfc.TiempoOff}} </p>
+                        <p>{{sfc.TiempoOff | number: '1.0-0'}} </p>
+
+                        <!-- <pre style="padding: 0.5625em 0.625em; margin-top: -0.10rem;">Nombre:          {{sfc.ZoneName}}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Id equipo:        {{sfc.ZoneId}}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Estado:           {{sfc.Estado}}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Consumo (KWH):    {{sfc.Consumo | number:'1.0-2' }}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">Cantidad Maletas: {{sfc.ContadorMaletas}}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">TiempoOn:         {{sfc.TiempoOn | number : '1.0-0' }}</pre>
+                        <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;">TiempoOff:        {{sfc.TiempoOff  }}</pre> -->
+
                     </div>
                 </ng-template>
             </ejs-dialog>
@@ -32068,7 +32086,7 @@ er0feedEQvj/FfvjNE5lJChOkuZljUz93/0j8S8BBgBNqpA7UQtFBQAAAABJRU5ErkJggg==" transf
                         <p>{{osr.Estado}}</p>
 
                         <b>Consumo (KWH):</b>
-                        <p>{{osr.Consumo}} </p>
+                        <p>{{osr.Consumo | number: '1.0-0'}} </p>
 
                         <b>Cantidad Maletas</b>
                         <p>{{osr.ContadorMaletas}} </p>
@@ -32099,7 +32117,7 @@ er0feedEQvj/FfvjNE5lJChOkuZljUz93/0j8S8BBgBNqpA7UQtFBQAAAABJRU5ErkJggg==" transf
                         <p>{{cl.Estado}}</p>
 
                         <b>Consumo (KWH):</b>
-                        <p>{{cl.Consumo}} </p>
+                        <p>{{cl.Consumo | number: '1.0-0'}} </p>
 
                         <b>Cantidad Maletas</b>
                         <p>{{cl.ContadorMaletas}} </p>
@@ -32130,7 +32148,7 @@ er0feedEQvj/FfvjNE5lJChOkuZljUz93/0j8S8BBgBNqpA7UQtFBQAAAABJRU5ErkJggg==" transf
                         <p>{{me.Estado}}</p>
 
                         <b>Consumo (KWH):</b>
-                        <p>{{me.Consumo}} </p>
+                        <p>{{me.Consumo | number: '1.0-0'}} </p>
 
                         <b>Cantidad Maletas</b>
                         <p>{{me.ContadorMaletas}} </p>
@@ -32161,7 +32179,7 @@ er0feedEQvj/FfvjNE5lJChOkuZljUz93/0j8S8BBgBNqpA7UQtFBQAAAABJRU5ErkJggg==" transf
                         <p>{{xo.Estado}}</p>
 
                         <b>Consumo (KWH):</b>
-                        <p>{{xo.Consumo}} </p>
+                        <p>{{xo.Consumo | number: '1.0-0'}} </p>
 
                         <b>Cantidad Maletas</b>
                         <p>{{xo.ContadorMaletas}} </p>
