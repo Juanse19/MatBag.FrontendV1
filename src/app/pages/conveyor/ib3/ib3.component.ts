@@ -36,7 +36,7 @@ export class Ib3Component implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/pages/conveyor/info']);
+    this.router.navigate(['/pages/conveyor/info'],{skipLocationChange: true});
     return false;
   }
 

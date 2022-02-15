@@ -64,6 +64,11 @@ const routes: Routes = [{
       loadChildren: () => import('./reports-pia/reports-pia.module')
         .then(m => m.ReportsPiaModule),
     },
+    {
+      path: 'sita',
+      loadChildren: () => import('./sita/sita.module')
+        .then(m => m.SitaModule),
+    },
     // {
     //   path: 'animation',
     //   loadChildren: () => import('./animation/animation.module')

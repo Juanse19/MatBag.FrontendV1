@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
 import { NbToastrService } from '@nebular/theme';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
 
+
 export interface cbisHourly {
   CreateDate: string;
   NumberBags: string;
@@ -38,8 +39,15 @@ export class CbisThroughputComponent implements OnInit {
 
   public editSettings: Object;
 
+  public reportServiceUrl?: string;
+  public reportServerUrl?: string;
+  public serviceAuthorizationToken?: string;
+  public reportPath?: string;
+
   @ViewChild('grid')
     public grid: GridComponent;
+
+    
 
   constructor(private fb: FormBuilder,
     private http: HttpClient,
@@ -53,13 +61,22 @@ export class CbisThroughputComponent implements OnInit {
     this.filterOptions = {
       type: 'Menu',
    };
-    this.initForm();
+    // this.initForm();
+    
+    this.dataReport();
 
     this.toolbar = [
       //  'ExcelExport', 'PdfExport',
      { text: 'Exportar Pdf', tooltipText: 'Click', prefixIcon: 'far fa-file-pdf', id: 'Click' },
      { text: 'Exportar Excel', tooltipText: 'Clicks', prefixIcon: 'far fa-file-excel', id: 'Clicks' }];
 
+  }
+
+  dataReport() {
+    // this.reportServiceUrl = 'http://10.100.22.92:51801/reporting/reportservice/api/Viewer';
+    // this.reportServerUrl = 'http://10.100.22.92:51801/reporting/api/site/matreport';
+    // this.serviceAuthorizationToken = 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1sYWRtaW5AbWF0ZWMuY29tLmNvIiwibmFtZWlkIjoiMSIsInVuaXF1ZV9uYW1lIjoiYTIyYzM1MmItOGVkOC00NTlkLWFlZjQtZGZkMmQ3NmViNmQ3IiwiSVAiOiIxMC4xMDAuMjIuOTIiLCJpc3N1ZWRfZGF0ZSI6IjE2NDM3NDkyNTMiLCJuYmYiOjE2NDM3NDkyNTMsImV4cCI6MTY0NDM1NDA1MywiaWF0IjoxNjQzNzQ5MjUzLCJpc3MiOiJodHRwOi8vMTAuMTAwLjIyLjkyOjUxODAxL3JlcG9ydGluZy9zaXRlL21hdHJlcG9ydCIsImF1ZCI6Imh0dHA6Ly8xMC4xMDAuMjIuOTI6NTE4MDEvcmVwb3J0aW5nL3NpdGUvbWF0cmVwb3J0In0.mZ5wg2NpdwXDoRaplL7vDuP-TWbYfC3cc4yaDrKAR70';
+    // this.reportPath = '/Sample Reports/Rendimiento por hora CBIS'
   }
 
   initForm() {

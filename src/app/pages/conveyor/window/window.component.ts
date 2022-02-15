@@ -186,14 +186,23 @@ export class WindowComponent implements OnInit {
       // debugger
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any [])=>{
+      .subscribe((res: any )=>{
         // debugger
-        if(res === null){
-          this.device1.hide();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices1=res;
+          // console.log('divices1: ', this.divices1);
+          this.device1.show();
         }else{
           this.divices1=res;
-          // console.log('Test: ', this.divices1);
           this.device1.show();
+          // console.log('Test: ', this.divices1);
           // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
         }
       },
@@ -205,11 +214,23 @@ export class WindowComponent implements OnInit {
       // debugger
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any [])=>{
-        this.divices2=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
+      .subscribe((res: any )=>{
+        
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices2=res;
+        } else {
+          this.divices2=res;
         this.device2.show();
-        // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        // console.log('Zons:', res , 'states', this.states[0]?.Color);
+        }
+        
       },
       err=>console.log('Error', err));
     }

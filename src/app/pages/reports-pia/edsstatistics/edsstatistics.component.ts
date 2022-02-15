@@ -64,6 +64,13 @@ export class EdsstatisticsComponent implements OnInit {
 
   public editSettings: Object;
 
+  
+
+  public reportServiceUrl3?: string;
+  public reportServerUrl3?: string;
+  public serviceAuthorizationToken?: string;
+  public reportPath3?: string;
+
   @ViewChild('grid')
     public grid: GridComponent;
 
@@ -82,7 +89,9 @@ export class EdsstatisticsComponent implements OnInit {
     this.filterOptions = {
       type: 'Menu',
    };
-   this.initForm();
+  //  this.initForm();
+
+  this.dataReports();
 
    this.toolbar = [
     //  'ExcelExport', 'PdfExport',
@@ -90,6 +99,14 @@ export class EdsstatisticsComponent implements OnInit {
    { text: 'Exportar Excel', tooltipText: 'Clicks', prefixIcon: 'far fa-file-excel', id: 'Clicks' }];
 
   } 
+
+  dataReports() {
+    
+    this.reportServiceUrl3 = 'http://10.120.18.8:56997/reporting/reportservice/api/Viewer';
+    this.reportServerUrl3 = 'http://10.120.18.8:56997/reporting/api/site/site1';
+    this.serviceAuthorizationToken = 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1sYWRtaW5AbWF0ZWMuY29tLmNvIiwibmFtZWlkIjoiMSIsInVuaXF1ZV9uYW1lIjoiNzMxODczYjUtMDllNy00ODU4LWE0NGMtOWY0NGQ2NzJhMmFkIiwiSVAiOiIxMC4xMjAuMTguOCIsImlzc3VlZF9kYXRlIjoiMTY0NDMzMTQwMCIsIm5iZiI6MTY0NDMzMTQwMCwiZXhwIjoxNjQ0OTM2MjAwLCJpYXQiOjE2NDQzMzE0MDAsImlzcyI6Imh0dHA6Ly8xMC4xMjAuMTguODo1Njk5Ny9yZXBvcnRpbmcvc2l0ZS9zaXRlMSIsImF1ZCI6Imh0dHA6Ly8xMC4xMjAuMTguODo1Njk5Ny9yZXBvcnRpbmcvc2l0ZS9zaXRlMSJ9.A8PPwUtMfOExPyBcyyMKJkhgfxjL7HzI3VdQqhpV_mI';
+    this.reportPath3 = '/Reports Pia/Informe ejecutivo BHS - SSI'
+  }
 
   initForm() {
     this.airForm = this.fb.group({
@@ -532,7 +549,7 @@ private getPdfExportProperties(): any {
             widths: ['*','*','*','*','auto','*'],
             body: [
               ['Nombre', 'Bag','Total', 'Alarm','Clear','Clean'],
-              ...this.daDate.map(p => ([p.Name, p.CountStatudBagAlarm, p.Total,p.PercAlarm,p.CountStatudBagClear,p.PercClear])),
+              // ...this.daDate.map(p => ([p.Name, p.CountStatudBagAlarm, p.Total,p.PercAlarm,p.CountStatudBagClear,p.PercClear])),
               // [{text: 'Total Amount', colSpan: 3}, {}, {}, this.daDate.products.reduce((sum, p)=> sum + (p.qty * p.price), 0).toFixed(2)]
             ]
           }

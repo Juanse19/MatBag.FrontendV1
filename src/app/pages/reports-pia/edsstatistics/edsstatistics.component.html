@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-12">
         <nb-card class="inline-form-card">
             <nb-card-header>
@@ -11,7 +11,7 @@
                     <div class="form-group mx-sm-4 mb-3">
                         <ejs-datepicker formControlName="StartTime" name=" StartTime " id="StartTime " data-name="StartTime " placeholder='Consultar' floatLabelType='Always' required>
                         </ejs-datepicker>
-                    </div>
+                    </div> -->
 
                     <!-- <div>
                         <input nbInput placeholder="Seleccione una fecha" formControlName="StartTime" [nbDatepicker]="formpicker">
@@ -19,11 +19,11 @@
                     </div> -->
 
 
-                    <button nbButton status="primary " class="btn btn-primary" (click)="date(airForm.controls.StartTime.value)">Cosultar</button>
+                    <!-- <button nbButton status="primary " class="btn btn-primary" (click)="date(airForm.controls.StartTime.value)">Cosultar</button> -->
                     <!-- <button nbButton status="success " class="btn btn-success" (click)="generatePDF('open')">Abrir a PDF</button>
                     <button type="button" class="btn btn-secondary" disabled="true" (click)="generatePDF('download')">Descargar pdf</button> -->
                     <!-- <button nbButton status="info " [disabled]="false " hero>Atras</button> -->
-                </form>
+                <!-- </form>
 
                 <div class="row ">
         
@@ -46,7 +46,11 @@
             </nb-card-body>
         </nb-card>
     </div>
-</div>
+</div> -->
+
+<bold-reportviewer id="reportViewer_Control4" [reportServiceUrl] = "reportServiceUrl3" [reportServerUrl]="reportServerUrl3" 
+  [serviceAuthorizationToken]="serviceAuthorizationToken"  [reportPath] = "reportPath3" style="width: 100%;height: 950px">
+</bold-reportviewer>
 
 <!-- <nb-card-body>
     <table>
@@ -97,3 +101,7 @@
         </div>
     </div> -->
 <!-- </nb-card> -->
+
+<!-- <bold-reportviewer id="reportViewer_Control4" [reportServiceUrl] = "reportServiceUrl" [reportServerUrl]="reportServerUrl" 
+  [serviceAuthorizationToken]="serviceAuthorizationToken"  [reportPath] = "reportPath" style="width: 100%;height: 950px">
+</bold-reportviewer> -->

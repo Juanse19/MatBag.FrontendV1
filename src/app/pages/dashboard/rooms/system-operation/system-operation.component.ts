@@ -31,8 +31,29 @@ export class SystemOperationComponent implements OnInit {
 
   private alive=true;
 
+   mostarTX: boolean;
+   mostarSF: boolean;
+   mostarSFC = false;
+   mostarSS: boolean;
+   mostarMU: boolean;
+   mostarAL: boolean;
+   mostarOSR: boolean;
+   mostarCL: boolean;
+   mostarME: boolean;
+   mostarXO: boolean;
+
   /** ---------------------------------------- */
-  public tXData: Consumezone[] = [];
+  public tXData: Consumezone [] 
+  
+  // = {
+  //   ZoneId: 0,
+  //   ZoneName: "TX",
+  //   Estado: "",
+  //   Consumo: "",
+  //   ContadorMaletas: "0",
+  //   TiempoOn: 0,
+  //   TiempoOff: 0,
+  // }
 
   public sFData: Consumezone[] = [];
 
@@ -196,33 +217,32 @@ export class SystemOperationComponent implements OnInit {
     });
   }
 
-
-  // openWindowWithoutBackdrop(idDevice?: number) {
-  //   this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevice)
-  //   .pipe()
-  //   .subscribe((res: any)=>{
-  //     this.tXData=res;
-  //     console.log('Zons:', res );
-  //   });
-  //  this.windowService.open(
-  //   this.disabledEscTemplate,
-  //   {
-  //     title: this.tXData[0].ZoneName,
-  //     hasBackdrop: false,
-  //     closeOnEsc: false,
-  //   },
-  // );
-  // }
-
   
   changestest(idDevice?: number){
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevice)
     .pipe()
     .subscribe((res: any)=>{
-      this.tXData=res;
-      this.ejDialogTX.show();
-      this.ejDialogTX.position = { X: 90.3125, Y: 330.125 };
+      if (res.length === 0) {
+      
+        res = [{
+        // ZoneId: 0,
+        ZoneName: "TX",
+        Estado: "0",
+        Consumo: "0",
+        ContadorMaletas: "0",
+        TiempoOn: 0,
+        TiempoOff: 0,
+        }]
+        this.tXData=res;
+        this.ejDialogTX.show();
+        this.ejDialogTX.position = { X: 90.3125, Y: 330.125 };
+      } else {
+        this.tXData=res;
+        this.ejDialogTX.show();
+        this.ejDialogTX.position = { X: 90.3125, Y: 330.125 };
       // console.log('Zons:', res , 'states');
+      }
+      
     });
   }
 
@@ -235,10 +255,26 @@ export class SystemOperationComponent implements OnInit {
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevices)
     .pipe()
     .subscribe((res: any)=>{
-      this.sFData=res;
-      this.ejDialogSF.show();
-      this.ejDialogSF.position = { X: 570.312, Y: 153.125 };
+      if (res.length === 0) {
+        res = [{
+          // ZoneId: 0,
+          ZoneName: "SF",
+          Estado: "0",
+          Consumo: "0",
+          ContadorMaletas: "0",
+          TiempoOn: 0,
+          TiempoOff: 0,
+          }]
+          this.sFData=res;
+          this.ejDialogSF.show();
+          this.ejDialogSF.position = { X: 570.312, Y: 153.125 };
+      } else {
+        this.sFData=res;
+        this.ejDialogSF.show();
+        this.ejDialogSF.position = { X: 570.312, Y: 153.125 };
       // console.log('Zons:', res , 'states');
+      }
+      
     });
   }
 
@@ -246,10 +282,26 @@ export class SystemOperationComponent implements OnInit {
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevic)
     .pipe()
     .subscribe((res: any)=>{
-      this.sSData=res;
+      if (res.length === 0) {
+        res = [{
+          // ZoneId: 0,
+          ZoneName: "SS",
+          Estado: "0",
+          Consumo: "0",
+          ContadorMaletas: "0",
+          TiempoOn: 0,
+          TiempoOff: 0,
+          }]
+          this.sSData=res;
+        this.ejDialogSS.show();
+      this.ejDialogSS.position = { X: 716.312, Y: 137.125 };
+      } else {
+        this.sSData=res;
       this.ejDialogSS.show();
       this.ejDialogSS.position = { X: 716.312, Y: 137.125 };
       // console.log('Zons:', res , 'states');
+      }
+      
     });
   }
 
@@ -262,10 +314,26 @@ export class SystemOperationComponent implements OnInit {
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevices)
     .pipe()
     .subscribe((res: any)=>{
-      this.mUData=res;
+      if (res.length === 0) {
+        res = [{
+          // ZoneId: 0,
+          ZoneName: "MU",
+          Estado: "0",
+          Consumo: "0",
+          ContadorMaletas: "0",
+          TiempoOn: 0,
+          TiempoOff: 0,
+          }]
+          this.mUData=res;
+        this.ejDialogMU.show();
+        this.ejDialogMU.position = { X: 670.312, Y: 334.125 };
+      } else {
+        this.mUData=res;
       this.ejDialogMU.show();
       this.ejDialogMU.position = { X: 670.312, Y: 334.125 };
       // console.log('Zons:', res , 'states');
+      }
+      
     });
   }
 
@@ -274,12 +342,23 @@ export class SystemOperationComponent implements OnInit {
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevices)
     .pipe()
     .subscribe((res: any)=>{
-      if(res === null){
-        this.ejDialogAL.hide();
+      if (res.length === 0) {
+        res = [{
+          // ZoneId: 0,
+          ZoneName: "AL",
+          Estado: "0",
+          Consumo: "0",
+          ContadorMaletas: "0",
+          TiempoOn: 0,
+          TiempoOff: 0,
+          }]
+          this.aLData=res;
+        this.ejDialogAL.show();
+        this.ejDialogAL.position = { X: 186.479, Y: 465.25 };
       }else{
-      this.aLData=res;
-      this.ejDialogAL.show();
-      this.ejDialogAL.position = { X: 186.479, Y: 465.25 };
+        this.aLData=res;
+        this.ejDialogAL.show();
+        this.ejDialogAL.position = { X: 186.479, Y: 465.25 };
       }
       
       // console.log('Zons:', res , 'states');
@@ -291,10 +370,28 @@ export class SystemOperationComponent implements OnInit {
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevices)
     .pipe()
     .subscribe((res: any [])=>{
+
+      if (res.length === 0) {
+        res = [{
+        // ZoneId: 0,
+        ZoneName: "SFC",
+        Estado: "0",
+        Consumo: "0",
+        ContadorMaletas: "0",
+        TiempoOn: 0,
+        TiempoOff: 0,
+        }]
+        this.sFCData=res;
+        console.log('SFC', this.sFCData);
+        this.ejDialogSFC.show();
+        this.ejDialogSFC.position = { X: 90.3125, Y: 330.125 };
+      } else {
       this.sFCData=res;
       this.ejDialogSFC.show();
-      this.ejDialogSFC.position = { X: 99.2917, Y: 19.125 };
+      this.ejDialogSFC.position = { X: 90.3125, Y: 330.125 };
       // console.log('Zons:', res , 'states');
+      }
+      
     });
   }
 
@@ -303,10 +400,27 @@ export class SystemOperationComponent implements OnInit {
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevices)
     .pipe()
     .subscribe((res: any [])=>{
-      this.oSRData=res;
-      this.ejDialogOSR.show();
+      if (res.length === 0) {
+        res = [{
+          // ZoneId: 0,
+          ZoneName: "OSR",
+          Estado: "0",
+          Consumo: "0",
+          ContadorMaletas: "0",
+          TiempoOn: 0,
+          TiempoOff: 0,
+          }]
+          this.oSRData=res;
+        this.ejDialogOSR.show();
       this.ejDialogOSR.position = { X: 968, Y: 260.292 };
+      } else {
+        this.oSRData=res;
+        this.mostarOSR === true;
+        this.ejDialogOSR.show();
+        this.ejDialogOSR.position = { X: 968, Y: 260.292 };
       // console.log('Zons:', res , 'states');
+      }
+      
     });
   }
 
@@ -315,10 +429,26 @@ export class SystemOperationComponent implements OnInit {
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevices)
     .pipe()
     .subscribe((res: any)=>{
-      this.cLData=res;
-      this.ejDialogCL.show();
+      if (res.length === 0) {
+        res = [{
+          // ZoneId: 0,
+          ZoneName: "CL",
+          Estado: "0",
+          Consumo: "0",
+          ContadorMaletas: "0",
+          TiempoOn: 0,
+          TiempoOff: 0,
+          }]
+          this.cLData=res;
+        this.ejDialogCL.show();
       this.ejDialogCL.position = { X: 715.313, Y: 547 };
+      } else {
+        this.cLData=res;
+        this.ejDialogCL.show();
+        this.ejDialogCL.position = { X: 715.313, Y: 547 };
       // console.log('Zons:', res , 'states');
+      }
+      
     });
   }
 
@@ -327,10 +457,26 @@ export class SystemOperationComponent implements OnInit {
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevices)
     .pipe()
     .subscribe((res: any[])=>{
-      this.mEData=res;
-      this.ejDialogME.show();
+      if (res.length === 0) {
+        res = [{
+          // ZoneId: 0,
+          ZoneName: "ME",
+          Estado: "0",
+          Consumo: "0",
+          ContadorMaletas: "0",
+          TiempoOn: 0,
+          TiempoOff: 0,
+          }]
+          this.mEData=res;
+        this.ejDialogME.show();
       this.ejDialogME.position = { X: 455.292, Y: 535.125 };
+      } else {
+        this.mEData=res;
+        this.ejDialogME.show();
+        this.ejDialogME.position = { X: 455.292, Y: 535.125 };
       // console.log('Zons:', res , 'states');
+      }
+      
     });
   }
 
@@ -339,14 +485,32 @@ export class SystemOperationComponent implements OnInit {
     // debugger
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevices)
     .pipe()
-    .subscribe((res: any[])=>{
-      this.xOData=res;
+    .subscribe((res: any)=>{
+ 
+      if (res.length === 0) {
+        res = [{
+          // ZoneId: 0,
+          ZoneName: "XO",
+          Estado: "0",
+          Consumo: "0",
+          ContadorMaletas: "0",
+          TiempoOn: 0,
+          TiempoOff: 0,
+          }]
+          this.xOData=res;
+        this.ejDialogXO.show();
+        this.ejDialogXO.position = { X: 345.312, Y: 57.125 };
+      } else {
+        this.xOData=res;
       this.ejDialogXO.show();
       this.ejDialogXO.position = { X: 345.312, Y: 57.125 };
       // console.log('Zons:', res );
+      }
+
+      
     });
   }
-
+ 
   //Abrir ventana de cada zona
 
   ClicTX() {

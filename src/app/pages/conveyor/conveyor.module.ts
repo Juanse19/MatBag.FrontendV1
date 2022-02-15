@@ -130,10 +130,12 @@ import { BsdComponent } from './bsd/bsd.component';
     DropDownListModule,
     ProgressBarAllModule,
   ],
-  providers: [PageService,
+  providers: [
+    PageService,
     SortService,
     FilterService,
     GroupService,
-    CategoryService, LineSeriesService]
+    CategoryService, 
+    LineSeriesService]
 })
 export class ConveyorModule { }

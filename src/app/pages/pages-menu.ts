@@ -447,46 +447,119 @@ export class PagesMenu {
     };
 
     const repocbisMenu: NbMenuItem = {
-      title: 'Reportes CBIS',
+      title: 'Reportes',
       icon: 'pie-chart-outline',
       // link: '/pages/charts/charts-report',
       children:[
+        // {
+        //   title: 'reportdesigner ',
+        //   link: '/pages/reports-pia/bold',
+        // },
         {
-          title: 'seguimiento de maletas',
-          link: '/pages/reports-pia/bagtracking',
+          title: 'Informe resumen diario',
+          link: '/pages/reports-pia/tracking',
         },
         {
-          title: 'Estadísticas de EDS',
-          link: '/pages/reports-pia/edsstatistics',
+          title: 'Informe resumen diario por hora',
+          link: '/pages/reports-pia/report1',
         },
         {
-          title: 'Datos del equipaje',
-          link: '/pages/reports-pia/baggagedata',
-        }, 
-        {
-          title: 'Rendimiento por hora CBIS',
-          link: '/pages/reports-pia/throughput',
+          title: 'Informe diario volumen equipaje',
+          link: '/pages/reports-pia/report2',
         },
         {
-          title: 'Seguimiento crítico de PEC',
-          link: '/pages/reports-pia/bag',
+          title: 'Informe ejecutivo BHS - SSI',
+          link: '/pages/reports-pia/report3',
         },
         {
-          title: 'Fallos del BHS',
-          link: '/pages/reports-pia/bhsfaults',
+          title: 'Informe ejecutivo CBRA - SSI',
+          link: '/pages/reports-pia/report4',
         },
         {
-          title: 'Eventos BHS', 
-          link: '/pages/reports-pia/bhsevents',
+          title: 'Informe seguimiento de PEC',
+          link: '/pages/reports-pia/report5',
         },
         {
-          title: 'Desempeño del ATR',
-          link: '/pages/reports-pia/atrperformance',
+          title: 'Informe equipaje CBRA',
+          link: '/pages/reports-pia/report6',
         },
+        {
+          title: 'Informe de rendimiento por hora BHS ( Througput)',
+          link: '/pages/reports-pia/report7',
+        },
+        {
+          title: 'Informe resumen diario por hora',
+          link: '/pages/reports-pia/report8',
+        },
+        {
+          title: 'volumen de equipaje',
+          link: '/pages/reports-pia/BoldReport',
+        },
+        // {
+        //   title: 'volumen de equipaje ',
+        //   link: '/pages/reports-pia/BoldReport',
+        // },
+        // {
+        //   title: 'Informe diario por volumen de equipaje',
+        //   link: '/pages/reports-pia/bagtracking',
+        // },
+        // {
+        //   title: 'seguimiento de maletas',
+        //   link: '/pages/reports-pia/tracking',
+        // },
+        // {
+        //   title: 'Estadísticas de EDS',
+        //   link: '/pages/reports-pia/edsstatistics',
+        // },
+        // {
+        //   title: 'Datos del equipaje',
+        //   link: '/pages/reports-pia/baggagedata',
+        // }, 
+        // {
+        //   title: 'Rendimiento por hora',
+        //   link: '/pages/reports-pia/throughput',
+        // },
+        // {
+        //   title: 'Seguimiento crítico de PEC',
+        //   link: '/pages/reports-pia/bag',
+        // },
+        // {
+        //   title: 'Fallos del BHS',
+        //   link: '/pages/reports-pia/bhsfaults',
+        // },
+        // {
+        //   title: 'Eventos BHS', 
+        //   link: '/pages/reports-pia/bhsevents',
+        // },
+        // {
+        //   title: 'Desempeño del ATR',
+        //   link: '/pages/reports-pia/atrperformance',
+        // },
+       
         
         // {
         //   title: 'Estadísticas del CBRA',
         //   link: '/pages/charts/report',
+        // },
+      ],
+    };
+
+    const sitaMenu: NbMenuItem = {
+      title: 'Sita',
+      icon: 'message-square-outline',
+      // link: '/pages/charts/charts-report',
+      children:[
+        {
+          title: 'Mensajes',
+          link: '/pages/sita/SitaMessage',
+        },
+        // {
+        //   title: 'Reporte Sistema',
+        //   link: '/pages/charts/charts-report',
+        // },
+        // {
+        //   title: 'Reportes',
+        //   link: '/pages/charts/charts-reports2',
         // },
       ],
     };
@@ -578,7 +651,7 @@ export class PagesMenu {
           // return [...dashboardMenu, orderMenu, reportMenu, analyticsMenu, userMenu, alarmMenu, registerMenu];
           // return [...dashboardMenu, orderMenu, sicsyncroMenu, repoMenu, analyticsMenu, userMenu, alarmMenu];
           // return [...dashboardMenu, dassh2Menu, paraMenu, functionMenu, cosumeMenu, repocbisMenu, configurationMenu, alarmMenu];
-          return [...dashboardMenu, dassh2Menu, functionMenu, cosumeMenu, repocbisMenu, BSDMenu, configurationMenu, alarmMenu];
+          return [...dashboardMenu, dassh2Menu, functionMenu, cosumeMenu, repocbisMenu, BSDMenu, sitaMenu, configurationMenu, alarmMenu];
         } else {
           //return [...dashboardMenu, ...menu];
           return [...dashboardMenu, alarmMenu];

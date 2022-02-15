@@ -101,7 +101,7 @@ export class BaggagedataComponent implements OnInit {
 
     const fechaFormateada = this.miDatePipe.transform(StartTime, 'yyyy-MM-dd');
 
-    // console.log('fecha: ', fechaFormateada);
+    console.log('fecha: ', fechaFormateada);
     
 
     // console.log('test: ', StartTime);

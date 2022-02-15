@@ -22,10 +22,32 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { BagtagTrackingComponent } from './bagtag-tracking/bagtag-tracking.component';
 import { CbisThroughputComponent } from './cbis-throughput/cbis-throughput.component';
+import { BoldComponent } from './bold/bold.component';
+import { BoldReportDesignerModule  } from '@boldreports/angular-reporting-components';
+// Report viewer
+import '@boldreports/javascript-reporting-controls/Scripts/bold.report-viewer.min';
+// Report Designer
+import '@boldreports/javascript-reporting-controls/Scripts/bold.report-designer.min';
 
+// data-visualization
+import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.bulletgraph.min';
+import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.chart.min';
+import { BoldReportComponent } from './bold-report/bold-report.component';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
+import { SeguimientoComponent } from './seguimiento/seguimiento.component';
+import { Report1Component } from './report1/report1.component';
+import { Report2Component } from './report2/report2.component';
+import { Report3Component } from './report3/report3.component';
+import { Report4Component } from './report4/report4.component';
+import { Report5Component } from './report5/report5.component';
+import { Report6Component } from './report6/report6.component';
+import { Report7Component } from './report7/report7.component';
+import { Report8Component } from './report8/report8.component';
+import { Report9Component } from './report9/report9.component';
+import { Report10Component } from './report10/report10.component';
 
 @NgModule({
-  declarations: [ReportsPiaComponent, BaggagedataComponent, PhotoelectricComponent, BhsFaultsComponent, BhsEventsComponent, EdsstatisticsComponent, AtrperformanceComponent, BagtagTrackingComponent, CbisThroughputComponent,],
+  declarations: [ReportsPiaComponent, BaggagedataComponent, PhotoelectricComponent, BhsFaultsComponent, BhsEventsComponent, EdsstatisticsComponent, AtrperformanceComponent, BagtagTrackingComponent, CbisThroughputComponent, BoldComponent, BoldReportComponent, SeguimientoComponent, Report1Component, Report2Component, Report3Component, Report4Component, Report5Component, Report6Component, Report7Component, Report8Component, Report9Component, Report10Component,],
   imports: [
     CommonModule,
     ReportsPiaRoutingModule,
@@ -44,6 +66,8 @@ import { CbisThroughputComponent } from './cbis-throughput/cbis-throughput.compo
     DropDownListModule,
     FormsModule, 
     ReactiveFormsModule,
+    BoldReportDesignerModule,
+    BoldReportViewerModule,
   ],
   providers: [PageService,
     SortService,

@@ -84,15 +84,16 @@
     <nb-tabset fullWidth>
      <nb-tab tabTitle="Consumo energetico por zonas">
         <div class="row show-grid" >
-          <div class="col-md-4">
+          <div class="col-md-3">
             <nb-card (click)="gosfc()" >
-              <nb-card-header>Security Feed Check In</nb-card-header>
+              <!-- <nb-card-header>Security Feed Check In</nb-card-header> -->
+              <nb-card-header>{{consumeData[6]?.ZoneName}}</nb-card-header>
               <nb-card-body >
                 <div class="col-lg-4 col-md-4 col-4 progress-container">
                     <div class="progress-container-align">
                         <div id="pause">
                             <ejs-progressbar #annotation2 id='pause-container' [type]='type2' [maximum]='max2' [minimum]='min2'
-                                [value]='zonConsData[6]?.value' [width]='width' [height]='height' [animation]='animation'  (load)='load($event)'>
+                                [value]='consumeData[6]?.porcent' [width]='width' [height]='height' [animation]='animation'  (load)='load($event)'>
                                 <e-progressbar-annotations>
                                     <e-progressbar-annotation
                                         content='<div id="point1" style="font-size:20px;font-weight:bold;color:#black;fill:#black"><span>80%</span></div>'>
@@ -100,7 +101,7 @@
                                 </e-progressbar-annotations>
                             </ejs-progressbar>
                         </div>
-                        
+                         
                     </div>
                 </div>
                 <div class="info">
@@ -112,22 +113,24 @@
                           alt="..."
                         />
                       </div>
-                  <div class="h4 value"> {{consumeData[6]?.KWh}} kWh</div>
-                  
+                  <!-- <div class="h4 value"> {{consumeData[6]?.KWh}} kWh</div>
+                  <div class="h4 value"> {{consumeData[6]?.kwhTotal}} KWh Total</div> -->
+                  <pre><b>KWh:</b>        {{consumeData[6]?.KWh}}</pre>
+                  <pre><b>KWh Total:</b>  {{consumeData[6]?.kwhTotal}}</pre>
                 </div>
               </nb-card-body>
             </nb-card>
           </div>
     
-          <div class="col-md-4">
+          <div class="col-md-3">
             <nb-card (click)="gosf()">
-              <nb-card-header>Security Feed</nb-card-header>
+              <nb-card-header>{{consumeData[5]?.ZoneName}}</nb-card-header>
               <nb-card-body>
                 <div class="col-lg-4 col-md-4 col-4 progress-container">
                     <div class="progress-container-align">
                         <div id="download">
                             <ejs-progressbar #annotation3 id='download-container' [type]='type3' [maximum]='max3' [minimum]='min3' 
-                            [value]='zonConsData[5]?.value' [width]='width' [height]='height' [animation]='animation'
+                            [value]='consumeData[5]?.porcent' [width]='width' [height]='height' [animation]='animation'
                                  (load)='load($event)'>
                                  <e-progressbar-annotations>
                                     <e-progressbar-annotation
@@ -147,13 +150,15 @@
                       alt="..."
                     />
                   </div>
-                  <div class="h4 value">{{consumeData[5]?.KWh}}  kWh</div>
+                  <!-- <div class="h4 value">{{consumeData[5]?.KWh}}  kWh</div> -->
+                  <pre><b>KWh:</b>        {{consumeData[5]?.KWh}}</pre>
+                  <pre><b>KWh Total:</b>  {{consumeData[5]?.kwhTotal}}</pre>
                 </div>
               </nb-card-body>
             </nb-card>
           </div>
     
-          <div class="col-md-4">
+          <div class="col-md-3">
             <nb-card>
               <nb-card-header>Crossover</nb-card-header>
               <nb-card-body>
@@ -186,7 +191,7 @@
             </nb-card>
           </div>
     
-          <div class="col-md-4">
+          <div class="col-md-3">
             <nb-card (click)="gotx()">
               <nb-card-header>Transfer Line</nb-card-header>
               <nb-card-body>
@@ -223,7 +228,7 @@
             </nb-card>
           </div>
     
-           <div class="col-md-4">
+           <div class="col-md-3">
             <nb-card (click)="gome()">
               <nb-card-header>Manual Encode</nb-card-header>
               <nb-card-body>
@@ -256,7 +261,7 @@
             </nb-card>
           </div>
     
-          <div class="col-md-4">
+          <div class="col-md-3">
             <nb-card (click)="goal()">
               <nb-card-header>Alarm Line</nb-card-header>
               <nb-card-body>
@@ -287,9 +292,9 @@
             </nb-card>
           </div>
     
-          <div class="col-md-4">
+          <div class="col-md-3">
             <nb-card (click)="gocl()">
-              <nb-card-header>Clear Line</nb-card-header>
+              <nb-card-header>{{consumeData[0]?.ZoneName}}</nb-card-header>
               <nb-card-body>
                 <div class="progress-container-align">
                     <div id="cl">
@@ -304,14 +309,16 @@
                     </div>
                 </div>
                 <div class="info">
-                  <div class="h4 value">{{consumeData[0]?.KWh}} kWh</div>
-                  
+                  <!-- <div class="h4 value">{{consumeData[0]?.KWh}} kWh</div> -->
+                  <pre><b>KWh:</b>        {{consumeData[0]?.KWh}}</pre>
+                  <pre><b>KWh Total:</b>  {{consumeData[0]?.kwhTotal}}</pre>                  
                   <div>
                     <img
                       src="./assets/img/cl.png"
                       class="rounded float-right"
                       width="80px"
                       alt="..."
+                      style="margin-top: -68px;"
                     />
                   </div>
                 </div>
@@ -319,9 +326,9 @@
             </nb-card>
           </div>
     
-         <div class="col-md-4">
+         <div class="col-md-3">
             <nb-card (click)="goss()">
-              <nb-card-header>Security shunt</nb-card-header>
+              <nb-card-header>{{consumeData[7]?.ZoneName}}</nb-card-header>
               <nb-card-body>
                 <div class="progress-container-align">
                     <div id="ss">
@@ -344,15 +351,17 @@
                       alt="..."
                     />
                   </div>
-                  <div class="h4 value">{{consumeData[7]?.KWh}} kWh</div>
+                  <!-- <div class="h4 value">{{consumeData[7]?.KWh}} kWh</div> -->
+                  <pre><b>KWh:</b>        {{consumeData[7]?.KWh}}</pre>
+                  <pre><b>KWh Total:</b>  {{consumeData[7]?.kwhTotal}}</pre> 
                 </div>
               </nb-card-body>
             </nb-card>
           </div>
     
-          <div class="col-md-4">
+          <div class="col-md-3">
             <nb-card (click)="goOsr()">
-              <nb-card-header>On screen resolution</nb-card-header>
+              <nb-card-header>{{consumeData[4]?.ZoneName}}</nb-card-header>
               <nb-card-body>
                 <div class="progress-container-align">
                     <div id="osr">
@@ -375,15 +384,17 @@
                       alt="..."
                     />
                   </div>
-                  <div class="h4 value">{{consumeData[4]?.KWh}} kWh</div>
+                  <!-- <div class="h4 value">{{consumeData[4]?.KWh}} kWh</div> -->
+                  <pre><b>KWh:</b>        {{consumeData[4]?.KWh}}</pre>
+                  <pre><b>KWh Total:</b>  {{consumeData[4]?.kwhTotal}}</pre> 
                 </div>
               </nb-card-body>
             </nb-card>
           </div>
     
-          <div class="col-md-4">
+          <div class="col-md-3">
             <nb-card (click)="gomu()">
-              <nb-card-header>Make up</nb-card-header>
+              <nb-card-header>{{consumeData[3]?.ZoneName}}</nb-card-header>
               <nb-card-body>
                 <div class="progress-container-align">
                     <div id="mu">
@@ -406,15 +417,17 @@
                           alt="..."
                         />
                       </div>
-                  <div class="h4 value">{{consumeData[3]?.KWh}} kWh</div>
+                  <!-- <div class="h4 value">{{consumeData[3]?.KWh}} kWh</div> -->
+                  <pre><b>KWh:</b>        {{consumeData[3]?.KWh}}</pre>
+                  <pre><b>KWh Total:</b>  {{consumeData[3]?.kwhTotal}}</pre> 
                 </div>
               </nb-card-body>
             </nb-card>
           </div> 
 
-          <div class="col-md-4">
+          <div class="col-md-3">
             <nb-card>
-              <nb-card-header>Inbound 1</nb-card-header>
+              <nb-card-header>{{consumeData[1]?.ZoneName}}</nb-card-header>
               <nb-card-body>
                 <div class="control-section progress-bar-parent">
                     <div class="row">
@@ -422,7 +435,7 @@
                     <div class="progress-container-align">
                         <div id="ib">
                             <ejs-progressbar #annotation14 id='ib2-container'  [type]='type12' [maximum]='max12' [minimum]='min12'
-                                [value]='zonConsData[9]?.value' [width]='width' [height]='height' [animation]='animation'  (load)='load($event)'>
+                                [value]='consumeData[1]?.porcent' [width]='width' [height]='height' [animation]='animation'  (load)='load($event)'>
                                 <e-progressbar-annotations >
                                     <e-progressbar-annotation
                                     content='<div id="point1" style="font-size:20px;font-weight:bold;color:#black;fill:#black"><span>80%</span></div>'>
@@ -443,20 +456,22 @@
                           alt="..."
                         />
                       </div>
-                  <div class="h4 value">{{zonConsData[9]?.KWh}} kWh</div>
+                  <!-- <div class="h4 value">{{zonConsData[9]?.KWh}} kWh</div> -->
+                  <pre><b>KWh:</b>        {{consumeData[1]?.KWh}}</pre>
+                  <pre><b>KWh Total:</b>  {{consumeData[1]?.kwhTotal}}</pre> 
                 </div>
               </nb-card-body>
             </nb-card>
           </div>
     
-          <div class="col-md-4">
+          <div class="col-md-3">
             <nb-card>
-              <nb-card-header>Inbound 2</nb-card-header>
+              <nb-card-header>{{consumeData[2]?.ZoneName}}</nb-card-header>
               <nb-card-body>
                 <div class="progress-container-align">
                     <div id="ib02">
                         <ejs-progressbar #annotation12 id='ib02-container' [type]='type12' [maximum]='max12' [minimum]='min12'
-                            [value]='zonConsData[10]?.value' [width]='width' [height]='height' [animation]='animation'  (load)='load($event)'>
+                            [value]='consumeData[2]?.porcent' [width]='width' [height]='height' [animation]='animation'  (load)='load($event)'>
                             <e-progressbar-annotations>
                                 <e-progressbar-annotation
                                     content='<div id="point1" style="font-size:20px;font-weight:bold;color:#black;fill:#black"><span>80%</span></div>'>
@@ -472,15 +487,18 @@
                           class="rounded float-right"
                           width="80px"
                           alt="..."
+                          style="    margin-top: -18px;"
                         />
                       </div>
-                  <div class="h4 value">{{zonConsData[10]?.KWh}} kWh</div>
+                  <!-- <div class="h4 value">{{zonConsData[10]?.KWh}} kWh</div> -->
+                  <pre><b>KWh:</b>        {{consumeData[2]?.KWh}}</pre>
+                  <pre><b>KWh Total:</b>  {{consumeData[2]?.kwhTotal}}</pre> 
                 </div>
               </nb-card-body>
             </nb-card>
           </div>
     
-          <div class="col-md-4">
+          <div class="col-md-3">
             <nb-card>
               <nb-card-header>Inbound 3</nb-card-header>
               <nb-card-body>

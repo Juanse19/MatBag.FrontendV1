@@ -8550,8 +8550,8 @@ MDAwMDAwMFzJ+P8FGACXHc5AS/+n6AAAAABJRU5ErkJggg==" transform="matrix(0.24 0 0 0.2
                         <b>Nombre:</b>
                         <p>{{zo.ZoneName}}</p>
 
-                        <b>Id equipo:</b>
-                        <p>{{zo.ZoneId}}</p>
+                        <!-- <b>Id equipo:</b>
+                        <p>{{zo.ZoneId}}</p> -->
 
                         <b>Estado:</b>
                         <p>{{zo.Estado}}</p>
@@ -8586,8 +8586,8 @@ MDAwMDAwMFzJ+P8FGACXHc5AS/+n6AAAAABJRU5ErkJggg==" transform="matrix(0.24 0 0 0.2
                         <b>Nombre:</b>
                         <p>{{opt.ZoneName}}</p>
 
-                        <b>Id equipo:</b>
-                        <p>{{opt.ZoneId}}</p>
+                        <!-- <b>Id equipo:</b>
+                        <p>{{opt.ZoneId}}</p> -->
 
                         <b>Estado:</b>
                         <p>{{opt.Estado}}</p>
@@ -8609,20 +8609,15 @@ MDAwMDAwMFzJ+P8FGACXHc5AS/+n6AAAAABJRU5ErkJggg==" transform="matrix(0.24 0 0 0.2
 
             <div #container class='root-container'></div>
             <ejs-dialog id='ejDialog2' #ejDialog2 allowDragging='true' header='' [position]='position' [visible]='hidden'  [target]='targetElement' width='250px' height="auto" left='100%' top='90%' [showCloseIcon]='showCloseIcon'>
-                <ng-template #content>
-                    <!-- <ul *ngFor="let option of zoData">
-                      <li>{{option.ZoneName}}</li>
-                      <li>{{option.Estado}}</li>
-                      <li>{{option.TiempoOn}}</li>
-                      <li>{{option.TiempoOff}}</li>
-                  </ul> -->
+              
+              <ng-template #content *ngIf="zoData">
                     <div class="media-body" *ngFor="let option of zoData">
 
                         <b>Nombre:</b>
                         <p>{{option.ZoneName}}</p>
-
-                        <b>Id equipo:</b>
-                        <p>{{option.ZoneId}}</p>
+ 
+                        <!-- <b>Id equipo:</b>
+                        <p>{{option.ZoneId}}</p> -->
 
                         <b>Estado:</b>
                         <p>{{option.Estado}}</p>

@@ -39,13 +39,13 @@ export interface teams{
 }
 
 export interface Consumezone {
-ZoneId?: string;
+ZoneId?: number;
 ZoneName?: string;
 Estado?: string;
 Consumo?: string;
 ContadorMaletas?: string;
-TiempoOn?: string;
-TiempoOff?: string;
+TiempoOn?: number;
+TiempoOff?: number;
 }
 
 export const Zonass = {
@@ -254,6 +254,7 @@ export interface consume {
     ZoneName?: string;
     KWh?: number;
     porcent?: number;
+    kwhTotal: number;
 }
 
 export interface BagData {

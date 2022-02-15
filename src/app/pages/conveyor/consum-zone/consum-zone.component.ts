@@ -307,41 +307,41 @@ export class ConsumZoneComponent implements OnInit {
       }
 
       gosfc() {
-        this.router.navigate(['/pages/zone-teams/teamsfc']);
+        this.router.navigate(['/pages/zone-teams/teamsfc'],{skipLocationChange: true});
       }
 
       gosf() {
-        this.router.navigate(['/pages/zone-teams/teamsf']);
+        this.router.navigate(['/pages/zone-teams/teamsf'],{skipLocationChange: true});
       }
       goss() {
-        this.router.navigate(['/pages/zone-teams/teamss']);
+        this.router.navigate(['/pages/zone-teams/teamss'],{skipLocationChange: true});
       }
       goOx() {
-        this.router.navigate(['/pages/zone-teams/teamox']);
+        this.router.navigate(['/pages/zone-teams/teamox'],{skipLocationChange: true});
       }
 
       goOsr() {
-        this.router.navigate(['/pages/zone-teams/teamosr']);
+        this.router.navigate(['/pages/zone-teams/teamosr'],{skipLocationChange: true});
       }
 
       gomu() {
-        this.router.navigate(['/pages/zone-teams/teammu']);
+        this.router.navigate(['/pages/zone-teams/teammu'],{skipLocationChange: true});
       }
 
       gome() {
-        this.router.navigate(['/pages/zone-teams/teamme']);
+        this.router.navigate(['/pages/zone-teams/teamme'],{skipLocationChange: true});
       }
 
       gotx() {
-        this.router.navigate(['/pages/zone-teams/teamtx']);
+        this.router.navigate(['/pages/zone-teams/teamtx'],{skipLocationChange: true});
       }
 
       gocl() {
-        this.router.navigate(['/pages/zone-teams/teamcl']);
+        this.router.navigate(['/pages/zone-teams/teamcl'],{skipLocationChange: true});
       }
 
       goal() {
-        this.router.navigate(['/pages/zone-teams/teamal']);
+        this.router.navigate(['/pages/zone-teams/teamal'],{skipLocationChange: true});
       }
 
       ngOnDestroy(): void {

@@ -16,7 +16,15 @@ import { AuthModule } from './@auth/auth.module';
 // import { ScheduleAllModule, RecurrenceEditorAllModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 // import { GridModule } from '@syncfusion/ej2-angular-grids';
 // import { DialogModule } from '@syncfusion/ej2-angular-popups';
+import { BoldReportDesignerModule  } from '@boldreports/angular-reporting-components';
+// Report viewer
+import '@boldreports/javascript-reporting-controls/Scripts/bold.report-viewer.min';
+// Report Designer
+import '@boldreports/javascript-reporting-controls/Scripts/bold.report-designer.min';
 
+// data-visualization
+import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.bulletgraph.min';
+import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.chart.min';
 
 import {
   NbChatModule,
@@ -53,6 +61,7 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+    BoldReportDesignerModule,
   ],
   bootstrap: [AppComponent],
   // providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],

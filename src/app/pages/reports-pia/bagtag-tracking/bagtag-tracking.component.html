@@ -1,17 +1,17 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-12">
     <nb-card class="inline-form-card">
       <nb-card-header>
         <h6 id="h6">Seguimiento de maletas</h6>
       </nb-card-header>
       <nb-card-body id="form">
-        <form [formGroup]="airForm" class="form-inline" novalidate id="formId">
+        <form [formGroup]="airForm" class="form-inline" novalidate id="formId"> -->
           <!-- <div class="form-group mx-sm-4 mb-3">
                         <ejs-datepicker formControlName="Bag" name="Bag" placeholder='Consultar' required>
                         </ejs-datepicker>
                     </div> -->
 
-          <div class="col-xs-6 col-sm-4 col-lg-4 col-md-3">
+          <!-- <div class="col-xs-6 col-sm-4 col-lg-4 col-md-3">
             <div class="e-input-group">
               <input
                 class="e-input"
@@ -21,7 +21,7 @@
                 [(ngModel)]="bagtag"
               />
             </div>
-          </div>
+          </div> -->
 
           <!-- <div class="form-group mx-sm-4 mb-3">
                         <input type="text" id="firstname" name="firstname" class="required" formControlName="Bag" required>
@@ -35,7 +35,7 @@
                     </div> -->
 
           <!-- <button nbButton status="primary " class="btn btn-primary">Cosultar</button> -->
-          <button
+          <!-- <button
             nbButton
             status="primary "
             class="btn btn-primary"
@@ -88,7 +88,7 @@
       </nb-card-body>
     </nb-card>
   </div>
-</div>
+</div> -->
 
 <!-- <div>
   <nb-card> -->
@@ -150,3 +150,7 @@
     </nb-card-body>
   </nb-card>
 </div> -->
+
+<bold-reportviewer id="reportViewer_Control3" [reportServiceUrl] = "reportServiceUrl1" [reportServerUrl]="reportServerUrl1" 
+  [serviceAuthorizationToken]="serviceAuthorizationToken"  [reportPath] = "reportPath14" style="width: 100%;height: 950px">
+</bold-reportviewer>

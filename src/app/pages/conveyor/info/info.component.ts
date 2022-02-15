@@ -1,11 +1,21 @@
 import { Component, OnInit, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { Consumezone, Zones } from '../_interfaces/MatBag.model';
+import {  Zones } from '../_interfaces/MatBag.model';
 import { HttpService } from '../../../@core/backend/common/api/http.service';
 import { HttpClient } from '@angular/common/http';
 import { switchMap, takeWhile } from 'rxjs/operators';
 import { DialogComponent, ResizeDirections } from '@syncfusion/ej2-angular-popups';
 import { EmitType } from '@syncfusion/ej2-base';
+
+export interface Consumezones {
+  ZoneId?: string;
+  ZoneName?: string;
+  Estado?: string;
+  Consumo?: string;
+  ContadorMaletas?: string;
+  TiempoOn?: string;
+  TiempoOff?: string;
+  }
 
 @Component({
   selector: 'ngx-info',
@@ -16,15 +26,17 @@ export class InfoComponent implements OnInit {
 
   public zone: Zones[] = [];
 
-  public consumezoneData: Consumezone[] = [];
+  public consumezoneData: Consumezones [] = [];
 
-  public zoneData: Consumezone[] = [];
+  public zoneData: Consumezones[] = [];
 
-  public zoData: Consumezone[] = [];
+  public zoData: Consumezones [] = [];
 
+  public mostarIB03: boolean;
+ 
   private alive=true;
 
-  public showCloseIcon: Boolean = true;
+  public showCloseIcon: Boolean = true ;
 
   constructor(private router: Router,
     private http: HttpClient,
@@ -110,7 +122,7 @@ export class InfoComponent implements OnInit {
     .subscribe((res: any [])=>{
       this.consumezoneData=res;
       this.ejDialog.show();
-      // console.log('Zons:', res , 'states');
+      console.log('Zons1:', res , 'states');
       this.ejDialog.position = { X: 165.438, Y: 257.813 };
     });
   }
@@ -125,7 +137,7 @@ export class InfoComponent implements OnInit {
     .subscribe((res: any [])=>{
       this.zoneData=res;
       this.ejDialog1.show();
-      // console.log('Zons:', res , 'states');
+      console.log('Zons:', this.zoneData , 'states');
       this.ejDialog1.position = { X: 438.438, Y: 74.2083 };
     });
   }
@@ -137,11 +149,27 @@ export class InfoComponent implements OnInit {
   changeIB03(idDevic?: number){
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevic)
     .pipe()
-    .subscribe((res: any [])=>{
-      this.zoData=res;
-      this.ejDialog2.show();
-      // console.log('Zons:', res , 'states');
-      this.ejDialog2.position = { X: 807.313, Y: 317.208};
+    .subscribe((res: any )=>{
+      if (res.length === 0) {
+        res = [{
+          // ZoneId: 0,
+          ZoneName: "IB03",
+          Estado: "0",
+          Consumo: "0",
+          ContadorMaletas: "0",
+          TiempoOn: 0,
+          TiempoOff: 0,
+          }]
+          this.zoData=res;
+        this.ejDialog2.show();
+        this.ejDialog2.position = { X: 807.313, Y: 317.208};
+      } else {
+        this.zoData=res;
+        this.ejDialog2.show();
+        // console.log('Zons:', res , 'states');
+        this.ejDialog2.position = { X: 807.313, Y: 317.208};
+      }
+      
     });
   }
 
@@ -162,15 +190,15 @@ export class InfoComponent implements OnInit {
     }
 
   ib1() {
-    this.router.navigate(['/pages/conveyor/ib1']);
+    this.router.navigate(['/pages/conveyor/ib1'],{skipLocationChange: true});
    }
 
    ib2() {
-    this.router.navigate(['/pages/conveyor/ib2']);
+    this.router.navigate(['/pages/conveyor/ib2'],{skipLocationChange: true});
    }
 
    ib3() {
-    this.router.navigate(['/pages/conveyor/ib3']);
+    this.router.navigate(['/pages/conveyor/ib3'],{skipLocationChange: true});
    }
 
    close(){
