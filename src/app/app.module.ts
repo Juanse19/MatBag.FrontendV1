@@ -64,6 +64,7 @@ import {
     BoldReportDesignerModule,
   ],
   bootstrap: [AppComponent],
+  providers: [],
   // providers: [DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
 })
 export class AppModule {

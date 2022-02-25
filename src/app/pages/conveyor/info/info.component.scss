@@ -157,7 +157,7 @@ nb-card-body {
 
 svg {
     width: 100%;
-    height: 100%;
+    height: auto;
     cursor: move;
 }
 
@@ -166,32 +166,36 @@ svg {
     max-width: 18rem;
 }
 
-#positi {
-    max-height: 495px; 
-    z-index: 1011;
-     width: 250px; 
-     left: 73%; 
-     top: 20.218%;
-    position: absolute;
-}
+// #positi {
+//     max-height: 495px; 
+//     z-index: 1011;
+//      width: 250px; 
+//      left: 73%; 
+//      top: 20.218%;
+//     position: absolute;
+// }
 
-#dialog-container {
-    display: block;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-    width: 100%;
-}
+// #dialog-container {
+//     display: block;
+//     height: 100%;
+//     margin: 0;
+//     overflow: hidden;
+//     width: 100%;
+// }
 
-#container {
-    visibility: hidden;
-}
+// #container {
+//     visibility: hidden;
+// }
 
-#loader {
-    color: #008cff;
-    height: 40px;
-    left: 45%;
-    position: absolute;
-    top: 45%;
-    width: 30%;
+// #loader {
+//     color: #008cff;
+//     height: 40px;
+//     left: 45%;
+//     position: absolute;
+//     top: 45%;
+//     width: 30%;
+// }
+
+.pre {
+    margin-top: -1rem;
 }

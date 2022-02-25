@@ -8,11 +8,18 @@ import { interval, Subscription } from 'rxjs';
 import { GridComponent, PageSettingsModel, FilterSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { WindowComponent } from './../window/window.component';
 
+// export interface bhsosr {
+//   Bagtag: string;
+//   BagId: string;
+//   Device: string;
+//   Log: string;
+// }
+
 export interface bhsosr {
-  Bagtag: string;
-  BagId: string;
-  Device: string;
-  Log: string;
+  ATR: string,
+  Id: number,
+  BagId: number,
+  BagTag: number,
 }
 
 @Component({
@@ -40,12 +47,16 @@ export class Bhs7Component implements OnInit {
 
   intervalSubscriptionStatusAlarm: Subscription;
 
+  public loading: boolean;
+
   @ViewChild(WindowComponent, { static: true }) public dialog: WindowComponent;
 
   constructor(
     private router: Router,
     private http: HttpClient,
-    private api: HttpService) { }
+    private api: HttpService) { 
+      this.loading = true;
+     }
 
   ngOnInit(): void {
     // this.bandaNameCharge();
@@ -61,7 +72,7 @@ export class Bhs7Component implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/pages/iot-dashboard']);
+    this.router.navigate(['/pages/conveyor/BhsSalidas']);
     return false;
   }
 
@@ -118,19 +129,21 @@ export class Bhs7Component implements OnInit {
   }
 
   chargeData() {
-    this.http.get(this.api.apiUrlNode1 + '/oss')
+    this.http.get(this.api.apiUrlNode1 + '/apiTracking')
     .pipe(takeWhile(() => this.alive))
     .subscribe((res: any) => {
       // tslint:disable-next-line: no-console
       // console.log('bhsOsrData: ', res);
+      this.loading = false;
       this.osrData = res;
     });
-    const contador = interval(40000)
+    const contador = interval(50000)
     contador.subscribe((n) => {
-      this.http.get(this.api.apiUrlNode1 + '/oss')
+      this.http.get(this.api.apiUrlNode1 + '/apiTracking')
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any) => {
         this.osrData = res;
+        this.loading = false;
       });
     });
   }

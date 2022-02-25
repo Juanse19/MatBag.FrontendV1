@@ -33,6 +33,8 @@ export class AccumulationComponent  {
 
   private alive = true;
 
+  public loading: boolean;
+
   settings = {
     mode: 'external',
     actions: {
@@ -64,7 +66,9 @@ export class AccumulationComponent  {
     public apiGetComp: ApiGetService,
     private http: HttpClient,
     private api: HttpService
-    ) {}
+    ) {
+      this.loading = true;
+    }
 
  ngOnInit() {
    this.chargeData();
@@ -80,14 +84,16 @@ export class AccumulationComponent  {
   .subscribe((res: any) => {
     // tslint:disable-next-line: no-console
     // console.log('acoData: ', res);
+    this.loading = false;
     this.acumuData = res;
   });
-  const contador = interval(40000)
+  const contador = interval(60000)
   contador.subscribe((n) => {
     this.http.get(this.api.apiUrlNode1 + '/aco')
     .pipe(takeWhile(() => this.alive))
     .subscribe((res: any) => {
       this.acumuData = res;
+      this.loading = false;
     });
   });
 }

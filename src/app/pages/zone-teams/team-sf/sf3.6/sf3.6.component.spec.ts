@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Sf3.6Component } from './sf3.6.component';
+import { Sf3_6Component } from './sf3.6.component';
 
-describe('Sf3.6Component', () => {
-  let component: Sf3.6Component;
-  let fixture: ComponentFixture<Sf3.6Component>;
+describe('Sf3_6Component', () => {
+  let component: Sf3_6Component;
+  let fixture: ComponentFixture<Sf3_6Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Sf3.6Component ]
+      declarations: [ Sf3_6Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Sf3.6Component);
+    fixture = TestBed.createComponent(Sf3_6Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

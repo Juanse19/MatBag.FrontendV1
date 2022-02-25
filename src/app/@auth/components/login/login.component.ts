@@ -45,6 +45,8 @@ export class NgxLoginComponent implements OnInit {
   // correo = "mladmin@matec.com.co";
   // contrasena = "admin";
 
+  public loading: boolean;
+
   intervalSubscriptionSesion: Subscription;
 
   minLength: number = this.getConfigValue(
@@ -97,7 +99,9 @@ export class NgxLoginComponent implements OnInit {
     private api: HttpService,
     private apiGetComp: ApiGetService,
     private toasterService: NbToastrService
-  ) {}
+  ) {
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     const emailValidators = [Validators.pattern(EMAIL_PATTERN)];
@@ -150,6 +154,7 @@ export class NgxLoginComponent implements OnInit {
       )
       .subscribe((res: any) => {
         this.validData = res;
+        
         // debugger
         // console.log('Email ValidData: ', this.validData[0].Id)
         // console.log('Email ValidData: ', this.validData[0].States)
@@ -175,9 +180,10 @@ export class NgxLoginComponent implements OnInit {
             .authenticate(this.strategy, this.user)
             .subscribe((result: NbAuthResult) => {
               this.submitted = false;
-
+              // this.loading = false;
               if (result.isSuccess()) {
                 this.messages = result.getMessages();
+                // this.loading = false;
                 this.initUserService.initCurrentUser().subscribe();
               } else {
                 this.errors = result.getErrors();

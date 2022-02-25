@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Osr1.5Component } from './osr1.5.component';
+import { Osr1_5Component } from './osr1.5.component';
 
-describe('Osr1.5Component', () => {
-  let component: Osr1.5Component;
-  let fixture: ComponentFixture<Osr1.5Component>;
+describe('Osr1_5Component', () => {
+  let component: Osr1_5Component;
+  let fixture: ComponentFixture<Osr1_5Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Osr1.5Component ]
+      declarations: [ Osr1_5Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Osr1.5Component);
+    fixture = TestBed.createComponent(Osr1_5Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

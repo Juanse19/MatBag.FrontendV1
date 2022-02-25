@@ -197,7 +197,7 @@ export class WindowComponent implements OnInit {
             TiempoOff: 0
           }]
           this.divices1=res;
-          // console.log('divices1: ', this.divices1);
+          console.log('divices1: ', this.divices1);
           this.device1.show();
         }else{
           this.divices1=res;
@@ -225,6 +225,7 @@ export class WindowComponent implements OnInit {
             TiempoOff: 0
           }]
           this.divices2=res;
+          this.device2.show();
         } else {
           this.divices2=res;
         this.device2.show();
@@ -240,11 +241,23 @@ export class WindowComponent implements OnInit {
       // debugger
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any [])=>{
-        this.divices3=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device3.show();
+      .subscribe((res: any )=>{
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices3=res;
+          this.device3.show();
+        } else {
+          this.divices3=res;
+          this.device3.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -253,11 +266,23 @@ export class WindowComponent implements OnInit {
       // debugger
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any [])=>{
-        this.divices4=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device4.show();
+      .subscribe((res: any )=>{
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices4=res;
+          this.device4.show();
+        } else {
+          this.divices4=res;
+          this.device4.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -266,11 +291,23 @@ export class WindowComponent implements OnInit {
       // debugger
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any [])=>{
-        this.divices5=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device5.show();
+      .subscribe((res: any )=>{
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices5=res;
+          this.device5.show();
+        } else {
+          this.divices5=res;
+          this.device5.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -279,11 +316,23 @@ export class WindowComponent implements OnInit {
       // debugger
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any [])=>{
-        this.divices6=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device6.show();
+      .subscribe((res: any )=>{
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices6=res;
+          this.device6.show();
+        } else {
+          this.divices6=res;
+          this.device6.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -292,11 +341,23 @@ export class WindowComponent implements OnInit {
       // debugger
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any [])=>{
-        this.divices7=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device7.show();
+      .subscribe((res: any )=>{
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices7=res;
+          this.device7.show();
+        } else {
+          this.divices7=res;
+          this.device7.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -305,11 +366,23 @@ export class WindowComponent implements OnInit {
       // debugger
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any [])=>{
-        this.divices8=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device8.show();
+      .subscribe((res: any )=>{
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices8=res;
+          this.device8.show();
+        } else {
+          this.divices8=res;
+          this.device8.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -318,11 +391,23 @@ export class WindowComponent implements OnInit {
       // debugger
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any [])=>{
-        this.divices9=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device9.show();
+      .subscribe((res: any )=>{
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices9=res;
+          this.device9.show();
+        } else {
+          this.divices9=res;
+          this.device9.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -331,11 +416,23 @@ export class WindowComponent implements OnInit {
       // debugger
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any [])=>{
-        this.divices10=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device10.show();
+      .subscribe((res: any )=>{
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices10=res;
+          this.device10.show();
+        } else {
+          this.divices10=res;
+          this.device10.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -345,10 +442,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices11=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device11.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices11=res;
+          this.device11.show();
+        } else {
+          this.divices11=res;
+          this.device11.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -358,10 +467,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices12=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device12.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices12=res;
+          this.device12.show();
+        } else {
+          this.divices12=res;
+          this.device12.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -371,10 +492,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices13=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device13.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices13=res;
+          this.device13.show();
+        } else {
+          this.divices13=res;
+          this.device13.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -384,10 +517,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices14=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device14.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices14=res;
+          this.device14.show();
+        } else {
+          this.divices14=res;
+          this.device14.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -397,10 +542,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices15=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device15.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices15=res;
+          this.device15.show();
+        } else {
+          this.divices15=res;
+          this.device15.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -410,10 +567,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices16=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device16.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+           this.divices16=res;
+          this.device16.show();
+        } else {
+          this.divices16=res;
+          this.device16.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -423,10 +592,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices17=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device17.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices17=res;
+          this.device17.show();
+        } else {
+          this.divices17=res;
+          this.device17.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -436,10 +617,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices18=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device18.show();
-        // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices18=res;
+          this.device18.show();
+        } else {
+          this.divices18=res;
+          this.device18.show();
+          // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+       
       });
     }
 
@@ -449,10 +642,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices19=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device19.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices19=res;
+          this.device19.show();
+        } else {
+          this.divices19=res;
+          this.device19.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -462,10 +667,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices20=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device20.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices20=res;
+          this.device20.show();
+        } else {
+          this.divices20=res;
+          this.device20.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -475,10 +692,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices21=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device21.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices21=res;
+          this.device21.show();
+        } else {
+          this.divices21=res;
+          this.device21.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -488,10 +717,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices22=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device22.show();
-        // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices22=res;
+          this.device22.show();
+        } else {
+          this.divices22=res;
+          this.device22.show();
+          // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+       
       });
     }
 
@@ -501,10 +742,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices23=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device23.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices23=res;
+          this.device23.show();
+        } else {
+          this.divices23=res;
+          this.device23.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -514,10 +767,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices24=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device24.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices24=res;
+          this.device24.show();
+        } else {
+          this.divices24=res;
+          this.device24.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -527,10 +792,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices25=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device25.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices25=res;
+          this.device25.show();
+        } else {
+          this.divices25=res;
+          this.device25.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -540,10 +817,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices26=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device26.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices26=res;
+          this.device26.show();
+        } else {
+          this.divices26=res;
+          this.device26.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -553,10 +842,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices27=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device27.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices27=res;
+          this.device27.show();
+        } else {
+          this.divices27=res;
+          this.device27.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -566,10 +867,23 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices28=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device28.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices28=res;
+          this.device28.show();
+          
+        } else {
+          this.divices28=res;
+          this.device28.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -579,10 +893,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices29=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device29.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices29=res;
+          this.device29.show();
+        } else {
+          this.divices29=res;
+          this.device29.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -592,10 +918,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices30=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device30.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices30=res;
+          this.device30.show();
+        } else {
+          this.divices30=res;
+          this.device30.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -605,10 +943,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices31=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device31.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices31=res;
+          this.device31.show();
+        } else {
+          this.divices31=res;
+          this.device31.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -618,10 +968,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices32=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device32.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices32=res;
+          this.device32.show();
+        } else {
+          this.divices32=res;
+          this.device32.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -631,10 +993,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices33=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device33.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices33=res;
+          this.device33.show();
+        } else {
+          this.divices33=res;
+          this.device33.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -644,10 +1018,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices34=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device34.show();
-        // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices34=res;
+          this.device34.show();
+        } else {
+          this.divices34=res;
+          this.device34.show();
+          // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+       
       });
     }
 
@@ -657,10 +1043,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices35=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device35.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices35=res;
+          this.device35.show();
+        } else {
+          this.divices35=res;
+          this.device35.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 
@@ -670,10 +1068,22 @@ export class WindowComponent implements OnInit {
       this.http.get(this.api.apiUrlNode1 + '/apideviceconsume?DeviceId='+ idDevice)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any)=>{
-        this.divices36=res;
-        // console.log('Zons:', res , 'states', this.states[0]?.Color);
-        this.device36.show();
+        if(typeof res.DeviceId === 'string'){
+          res = [{
+            Estado: "Off",
+            // DeviceId: 148,
+            TiempoOn: "0",
+            Consumo: "0",
+            TiempoOff: 0
+          }]
+          this.divices36=res;
+          this.device36.show();
+        } else {
+          this.divices36=res;
+          this.device36.show();
         // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
+        }
+        
       });
     }
 

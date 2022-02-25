@@ -1,0 +1,57 @@
+<nb-card>
+    <nb-card-header>
+        Mensajes AMS
+    </nb-card-header>
+  
+    <nb-card-body>
+      <!-- <ng2-smart-table
+      class="dash-smart-table"
+      [settings]="settings"
+      [source]="funData"
+      (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table> -->
+
+    <div class="overlay">
+      <div class="spinner-border" *ngIf="loading"></div>
+      <b *ngIf="loading" style="margin-top: 4rem; margin-left: -3rem">Cargando...</b>
+    </div>
+    <br>
+
+    <ejs-grid [dataSource]='amsData' [allowPaging]="true"
+    [pageSettings]="pageSettings"
+    [filterSettings]="filterOptions"
+    [toolbar]='toolbarOptions'
+    [showColumnChooser]= 'true'
+    [allowFiltering]="true"
+    allowSorting="true"
+    allowResizing= "true">
+      <e-columns>
+          <e-column field='Flight_Notification_Type' headerText='Flight_Notification_Type' minWidth='120' maxWidth='300' width=130></e-column>
+          <e-column field='Flight_Notification_RegisterTime' headerText='Flight_Notification_RegisterTime' minWidth='120' maxWidth='300' type='date' format="dd/MM/yyyy hh:mm:ss a" width=120></e-column>
+          <e-column field='Flight_FlightId_FlightKind' headerText='Flight_FlightId_FlightKind' width=100></e-column>
+          <e-column field='Flight_FlightId_AirlineDesignator_IATA' headerText='Flight_FlightId_AirlineDesignator_IATA' width=100></e-column>
+          <e-column field='Flight_FlightId_FlightNumber' headerText='Flight_FlightId_FlightNumber' width=100></e-column>
+          <e-column field='Flight_FlightId_ScheduledDate' headerText='Flight_FlightId_ScheduledDate' width=100></e-column>
+          <e-column field='Flight_FlightState_ScheduledTime' headerText='Flight_FlightState_ScheduledTime' width=100></e-column>
+          <e-column field='Flight_FlightState_AircraftType_AircraftTypeId_AircraftTypeCode_IATA' headerText='AircraftTypeCode_IATA' width=100></e-column>
+          <e-column field='Flight_FlightState_AircraftType_AircraftTypeId_AircraftTypeCode_ICAO' headerText='AircraftTypeCode_ICAO' width=100></e-column>
+          <e-column field='Flight_FlightState_Aircraft_AircraftId_Registration' headerText='AircraftId_Registration' width=100></e-column>
+          <e-column field='Flight_FlightState_Route_ViaPoints_RouteViaPoint_sequenceNumber' headerText='RouteViaPoint_sequenceNumber' width=100></e-column>
+          <e-column field='Flight_FlightState_Route_ViaPoints_RouteViaPoint_AirportCode_IATA' headerText='AirportCode_IATA' width=100></e-column>
+          <e-column field='Flight_FlightState_Route_ViaPoints_RouteViaPoint_AirportCode_ICAO' headerText='AirportCode_ICAO' width=100></e-column>
+          <e-column field='Flight_FlightState_propertyName_FlightUniqueID' headerText='FlightUniqueID' width=100></e-column>
+          <e-column field='Flight_FlightState_ChuteSlots_ChuteSlot_propertyName_StartTime' headerText='propertyName_StartTime' width=100></e-column>
+          <e-column field='Flight_FlightState_ChuteSlots_ChuteSlot_propertyName_EndTime' headerText='propertyName_EndTime' width=100></e-column>
+          <e-column field='Flight_FlightState_ChuteSlots_ChuteSlot_propertyName_Category' headerText='propertyName_Category' width=100></e-column>
+          <e-column field='Flight_FlightState_ChuteSlots_ChuteSlot_Chute_propertyName_Name' headerText='propertyName_Name' width=100></e-column>
+          <e-column field='Flight_FlightChanges_Change_propertyName_Chutes_OldValue' headerText='Chutes_OldValue' width=100></e-column>
+          <e-column field='Flight_FlightChanges_Change_propertyName_Chutes_NewValue' headerText='Chutes_NewValue' width=100></e-column>
+          <e-column field='Flight_FlightChanges_Change_ChuteSlotsChange_OldValue_ChuteSlot_StartTime' headerText='ChuteSlot_StartTime' width=100></e-column>
+          <e-column field='Flight_FlightChanges_Change_ChuteSlotsChange_OldValue_ChuteSlot_EndTime' headerText='ChuteSlot_EndTime' width=100></e-column>
+          <e-column field='Flight_FlightChanges_Change_ChuteSlotsChange_NewValue_ChuteSlot_StartTime' headerText='NewValue_ChuteSlot_StartTime' width=100></e-column>
+          <e-column field='Flight_FlightChanges_Change_ChuteSlotsChange_NewValue_ChuteSlot_EndTime' headerText='NewValue_ChuteSlot_EndTime' width=100></e-column>
+      </e-columns>
+  </ejs-grid>
+
+      </nb-card-body>
+    </nb-card>

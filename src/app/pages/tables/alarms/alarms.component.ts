@@ -147,19 +147,19 @@ export class AlarmsComponent implements OnDestroy {
     this.filterOptions = {
       type: 'Menu',
    };
-  //  this.editSettings = { allowEditing: false, allowAdding: false, allowDeleting: true , newRowPosition: 'Top' };
-  // this.editSettings = { allowEditing: false, allowDeleting: true};
-   this.toolbar = [
-    //  {text: 'Delete', prefixIcon: 'fas fa-check'},
-   { text: 'Reconocer alarmas', tooltipText: 'Click', prefixIcon: 'fas fa-check-double', id: 'Click' }];
-   this.Chargealarms();
-   this.ChargeHistoryData();
-   this.commands = [
+  
+  this.Chargealarms();
+  this.ChargeHistoryData(); 
 
-    // { type: 'Edit', buttonOption: { cssClass: 'e-flat', iconCss: 'e-edit e-icons' } },
-    { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'fas fa-check' } },
-    { type: 'Save', buttonOption: { cssClass: 'e-flat', iconCss: 'e-update e-icons' } },
-    { type: 'Cancel', buttonOption: { cssClass: 'e-flat', iconCss: 'e-cancel-icon e-icons' } }];
+   this.toolbar = [
+      //  {text: 'Delete', prefixIcon: 'fas fa-check'},
+     { text: 'Reconocer alarmas', tooltipText: 'Click', prefixIcon: 'fas fa-check-double', id: 'Click' }];
+
+     this.commands = [
+      // { type: 'Edit', buttonOption: { cssClass: 'e-flat', iconCss: 'e-edit e-icons' } },
+      { type: 'Delete', buttonOption: { cssClass: 'e-flat', iconCss: 'fas fa-check' } },
+      { type: 'Save', buttonOption: { cssClass: 'e-flat', iconCss: 'e-update e-icons' } },
+      { type: 'Cancel', buttonOption: { cssClass: 'e-flat', iconCss: 'e-cancel-icon e-icons' } }];
   
   }
 
@@ -173,7 +173,7 @@ export class AlarmsComponent implements OnDestroy {
 clickHandler(args: ClickEventArgs): void {
   if (args.item.id === 'Click') {
     // console.log('click: ', args);
-    debugger
+    // debugger
     this.reconocer();
       // alert('Custom Toolbar Click...');
   }
@@ -206,9 +206,10 @@ actionBegin(args) {
     
     .pipe(takeWhile(() => this.alive))
     .subscribe((res: any) => {
-      //  console.log("alarmId", res);
+       console.log("alarmId", res);
        if (res) {
         this.toastrService.success('', '¡Alarma solucionada!'); 
+        this.Chargealarms();
         this.source.refresh();
       } else {
         this.toastrService.danger('', 'Algo salio mal.');

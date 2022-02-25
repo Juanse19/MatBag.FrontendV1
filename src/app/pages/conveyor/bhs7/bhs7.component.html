@@ -2658,18 +2658,24 @@
     </div>
 
     <div class="col-md-6">
+        
         <div>
-            <nb-card style="height: 21rem;">
+            <nb-card style="height: 26rem;">
                 <nb-card-header>
                     <h3>Tracking</h3>
                 </nb-card-header>
                 <nb-card-body>
+                    <div class="overlay">
+                        <div class="spinner-border" *ngIf="loading"></div>
+                        <b *ngIf="loading" style="margin-top: 4rem; margin-left: -3rem">Cargando...</b>
+                      </div>
+                      <br>
                 <ejs-grid [dataSource]='osrData' [allowPaging]="true" [pageSettings]='pageSettings' [filterSettings]='filterOptions' [allowFiltering]="true">
                     <e-columns>
-                        <e-column field='Bagtag' headerText='Bagtag' width=130></e-column>
+                        <e-column field='Id' headerText='Id' width=100></e-column>
+                        <e-column field='ATR' headerText='ATR' width=100></e-column>
                         <e-column field='BagId' headerText='BagId' width=120></e-column>
-                        <e-column field='Device' headerText='Device' width=100></e-column>
-                        <e-column field='Log' headerText='Log' width=100></e-column>
+                        <e-column field='BagTag' headerText='Bagtag' width=130></e-column>
                     </e-columns>
                 </ejs-grid>
             </nb-card-body>

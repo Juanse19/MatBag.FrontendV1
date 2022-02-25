@@ -18,55 +18,87 @@ export class PagesMenu {
   getMenu(): Observable<NbMenuItem[]> {
     const dashboardMenu = [
       {
-        title: 'BHS Salida',
+        title: 'Dashboard',
         icon: 'monitor-outline',
         link: '/pages/iot-dashboard',
         children: [
-          {
-            title: 'Dashboard Salida', 
-            link: '/pages/iot-dashboard',
-          },
+          
           { 
-            title: 'Security Feed Check In',
+            title: 'BHS Salida',
             link: '/pages/conveyor/bhs5',
-          },
-          {
-            title: 'Security Feed',
-            link: '/pages/conveyor/bhs2',
-          },
-          {
-            title: 'Crossover',
-            link: '/pages/conveyor/bhs10',
+            children: [
+              {
+                title: 'Dashboard Salida', 
+                link: '/pages/conveyor/BhsSalidas',
+              },
+              { 
+                title: 'Security Feed Check In',
+                link: '/pages/conveyor/bhs5',
+              },
+              {
+                title: 'Security Feed',
+                link: '/pages/conveyor/bhs2',
+              },
+              {
+                title: 'Crossover',
+                link: '/pages/conveyor/bhs10',
+              },
+    
+              {
+                title: 'Transfer Line',
+                link: '/pages/conveyor/bhs1',
+              },
+              {
+                title: 'Make Up',
+                link: '/pages/conveyor/bhs3',
+              },
+              {
+                title: 'Alarm Line',
+                link: '/pages/conveyor/bhs4',
+              },
+              {
+                title: 'Clear Line',
+                link: '/pages/conveyor/bhs6',
+              },
+              {
+                title: 'Security Shunt',
+                link: '/pages/conveyor/bhs9', 
+              },
+              {
+                title: 'On Screen Resolution Line',
+                link: '/pages/conveyor/bhs7', 
+              },
+              {
+                title: 'Manual Encode',
+                link: '/pages/conveyor/bhs8',
+              },
+            ]
           },
 
-          {
-            title: 'Transfer Line',
-            link: '/pages/conveyor/bhs1',
+          { 
+            title: 'BHS Llegada',
+            link: '/pages/conveyor/bhs5',
+            children: [
+              {
+                title: 'Dashboard Llegada',
+                link: '/pages/conveyor/info',
+              },
+              {
+                title: 'Inbound 1',
+                link: '/pages/conveyor/ib1',
+              },
+              {
+                title: 'Inbound 2',
+                link: '/pages/conveyor/ib2',
+              },
+              {
+                title: 'Inbound 3',
+                link: '/pages/conveyor/ib3',
+              },
+            ]
           },
-          {
-            title: 'Make Up',
-            link: '/pages/conveyor/bhs3',
-          },
-          {
-            title: 'Alarm Line',
-            link: '/pages/conveyor/bhs4',
-          },
-          {
-            title: 'Clear Line',
-            link: '/pages/conveyor/bhs6',
-          },
-          {
-            title: 'Security Shunt',
-            link: '/pages/conveyor/bhs9', 
-          },
-          {
-            title: 'On Screen Resolution Line',
-            link: '/pages/conveyor/bhs7', 
-          },
-          {
-            title: 'Manual Encode',
-            link: '/pages/conveyor/bhs8',
-          },
+
+          
         ],
       },
     ];
@@ -312,7 +344,25 @@ export class PagesMenu {
         {
           title: 'Licencia',
           link: '/pages/users/licenses',
-        }
+        },
+        {
+          title: 'Integración SITA AMS',
+          // link: '/pages/sita/SitaMessage',
+          children: [
+            {
+            title: 'Recepción Notificaciónes AMS',
+            link: '/pages/sita/ParametrizacionAMS',
+          },
+        ]},
+        {
+          title: 'Integración SITA BagMessage',
+          // link: '/pages/sita/SitaMessage',
+          children: [
+            {
+            title: 'Recepción Notificaciónes BM',
+            link: '/pages/sita/ParametrizacionBM',
+          },
+        ]},
       ],
     };
 
@@ -358,7 +408,7 @@ export class PagesMenu {
 
     const cosumeMenu: NbMenuItem = {
       title: 'Consumo energético',
-      icon: 'archive-outline',
+      icon: 'activity-outline',
       // link: '/pages/analytics/analytics',
       children: [
         {
@@ -391,10 +441,14 @@ export class PagesMenu {
           link: '/pages/conveyor/accumulation',
         },
         
-        // {
-        //   title: 'Consumo energético',
-        //   link: '/pages/conveyor/energy',
-        // },
+        {
+          title: 'Induccion Mensajes AMS',
+          link: '/pages/sita/MessageAMS',
+        },
+        {
+          title: 'Induccion Mensajes BM',
+          link: '/pages/sita/MessageBM',
+        },
         // {
         //   title: 'SECURITY FEED CHECK-IN',
         //   link: '/pages/zone-teams/teamsfc',
@@ -406,9 +460,9 @@ export class PagesMenu {
       ],
     };
 
-    const paraMenu: NbMenuItem = {
+    const SchedulerMenu: NbMenuItem = {
       title: 'Asignación de aerolineas',
-      icon: 'book-outline',
+      icon: 'calendar-outline',
       // link: '/pages/charts/charts-report',
       children:[
         // {
@@ -651,7 +705,7 @@ export class PagesMenu {
           // return [...dashboardMenu, orderMenu, reportMenu, analyticsMenu, userMenu, alarmMenu, registerMenu];
           // return [...dashboardMenu, orderMenu, sicsyncroMenu, repoMenu, analyticsMenu, userMenu, alarmMenu];
           // return [...dashboardMenu, dassh2Menu, paraMenu, functionMenu, cosumeMenu, repocbisMenu, configurationMenu, alarmMenu];
-          return [...dashboardMenu, dassh2Menu, functionMenu, cosumeMenu, repocbisMenu, BSDMenu, sitaMenu, configurationMenu, alarmMenu];
+          return [...dashboardMenu, functionMenu, SchedulerMenu, cosumeMenu, repocbisMenu, configurationMenu, alarmMenu];
         } else {
           //return [...dashboardMenu, ...menu];
           return [...dashboardMenu, alarmMenu];

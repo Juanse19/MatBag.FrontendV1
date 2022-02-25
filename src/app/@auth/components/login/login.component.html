@@ -6,6 +6,8 @@
 
   <!-- <img src="./../../../../assets/images/MATEC_l_White_Logo.svg" alt="Matec" style="width: 237px; margin-left: 45%;"> -->
 
+  
+
   <a>
    
     <img src="./../../../../assets/images/MATEC l Blue Logo.png" alt="Matec" style="width: 50%; margin-left: 22%;">
@@ -29,6 +31,12 @@
 </nb-alert>
 
 <div [formGroup]="loginForm" aria-labelledby="title">
+  <div class="overlay">
+    <div class="spinner-border" *ngIf="!loading"></div>
+    <b *ngIf="!loading" style="margin-top: 4rem; margin-left: -3rem">Cargando...</b>
+  </div>
+ 
+
     <div class="form-control-group">
         <label class="label" for="input-email">Correo electrónico:</label>
         <input nbInput fullWidth id="input-email" formControlName="email" [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : 'basic'" [attr.aria-invalid]="email.invalid && email.touched ? true : null" placeholder="Correo electronico" >
@@ -54,6 +62,19 @@
     Iniciar Sesión
   </button>
 </div>
+
+<style>
+  .overlay {
+  position: fixed;
+  width: 35%;
+  /* // height: 100%;
+  // background-color: rgba(74, 74, 74, .8); */
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
 
 <!-- <section *ngIf="socialLinks && socialLinks.length > 0" class="links" aria-label="Social sign in">
   or enter with:

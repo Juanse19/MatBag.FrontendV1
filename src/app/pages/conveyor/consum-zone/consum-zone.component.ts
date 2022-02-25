@@ -259,14 +259,14 @@ export class ConsumZoneComponent implements OnInit {
       }
     
       public consumeCharge(){
-        this.http.get(this.api.apiUrlNode1 + '/GetKwhZone')
+        this.http.get(this.api.apiUrlNode1 + '/api/GetKwhZone')
         .pipe(takeWhile(() => this.alive))
         .subscribe((res: any)=>{
           this.consumeData = res;
           // console.log('consume Zons', this.consumeData);
         });
       }
-
+ 
       public consumeZoneCharge(){
         this.http.get(this.api.apiUrlNode1 + '/consume')
         .pipe(takeWhile(() => this.alive))

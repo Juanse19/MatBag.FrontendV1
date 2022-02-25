@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Sf1.8Component } from './sf1.8.component';
+import { Sf1_8Component } from './sf1.8.component';
 
-describe('Sf1.8Component', () => {
-  let component: Sf1.8Component;
-  let fixture: ComponentFixture<Sf1.8Component>;
+describe('Sf1_8Component', () => {
+  let component: Sf1_8Component;
+  let fixture: ComponentFixture<Sf1_8Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Sf1.8Component ]
+      declarations: [ Sf1_8Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Sf1.8Component);
+    fixture = TestBed.createComponent(Sf1_8Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

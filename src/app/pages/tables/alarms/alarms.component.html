@@ -13,14 +13,14 @@
                 (toolbarClick)='clickHandler($event)' [toolbar]='toolbar' (actionComplete)="actionComplete($event)" allowTextWrap='true'-->
  
                 <ejs-grid [dataSource]='Alarm' [editSettings]='editSettings' (toolbarClick)='clickHandler($event)' [toolbar]='toolbar'  (actionBegin)="actionBegin($event)"  [allowPaging]="true"
-                [pageSettings]="pageSettings" [filterSettings]="filterOptions" allowTextWrap="true"
+                [pageSettings]="pageSettings" allowSorting='true' [filterSettings]="filterOptions" allowTextWrap="true"
                 [allowFiltering]="true" height='350'>
                     <e-columns>
                         <e-column field='Message' headerText='Mensaje' width=180 isPrimaryKey='true'></e-column>
                         <e-column field='Level' headerText='Nivel' width=85></e-column>
                         <e-column field='UserId' headerText='Usuario' width=100></e-column>
                         <e-column field='TimeStamp' headerText='Fecha' width=90 type="date" format="dd/MM/yyyy hh:mm:ss a"></e-column>
-                        <e-column headerText='Administrar Alarmas' width='100' [commands]='commands'></e-column>
+                        <e-column headerText='Administrar Alarmas' width='100' textAlign='center' [commands]='commands'></e-column>
                     </e-columns>
                 </ejs-grid>
 

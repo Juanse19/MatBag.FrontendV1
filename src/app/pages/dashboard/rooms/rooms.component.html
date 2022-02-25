@@ -7,7 +7,8 @@
              class="collapse"
              [hidden]="isCollapsed()">
     </nb-icon>
-    <ngx-system-operation [class.dark-background]="isDarkTheme" (select)="select($event)"></ngx-system-operation>
+    <!-- <ngx-system-operation [class.dark-background]="isDarkTheme" (select)="select($event)"></ngx-system-operation> -->
+    <ngx-bhs-arrival [class.dark-background]="isDarkTheme" (select)="select($event)"></ngx-bhs-arrival>
     <!-- <ngx-wcs [class.dark-background]="isDarkTheme" (select)="select($event)"></ngx-wcs>  -->
      <!-- <ngx-room-selector [class.dark-background]="isDarkTheme" (select)="select($event)"></ngx-room-selector>  -->
     <!--<ngx-player [collapsed]="isCollapsed() && breakpoint.width <= breakpoints.md"></ngx-player> -->

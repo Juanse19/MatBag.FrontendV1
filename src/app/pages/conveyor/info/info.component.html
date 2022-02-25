@@ -8547,13 +8547,13 @@ MDAwMDAwMFzJ+P8FGACXHc5AS/+n6AAAAABJRU5ErkJggg==" transform="matrix(0.24 0 0 0.2
                   </ul> -->
                     <div class="media-body" *ngFor="let zo of consumezoneData">
 
-                        <b>Nombre:</b>
-                        <p>{{zo.ZoneName}}</p>
+                        <!-- <b>Nombre:</b>
+                        <p>{{zo.ZoneName}}</p> -->
 
                         <!-- <b>Id equipo:</b>
                         <p>{{zo.ZoneId}}</p> -->
 
-                        <b>Estado:</b>
+                        <!-- <b>Estado:</b>
                         <p>{{zo.Estado}}</p>
 
                         <b>Consumo (KWH):</b>
@@ -8566,7 +8566,15 @@ MDAwMDAwMFzJ+P8FGACXHc5AS/+n6AAAAABJRU5ErkJggg==" transform="matrix(0.24 0 0 0.2
                         <p>{{zo.TiempoOn}} </p>
 
                         <b>TiempoOff:</b>
-                        <p>{{zo.TiempoOff}} </p>
+                        <p>{{zo.TiempoOff}} </p> -->
+                        
+                        <pre ><b>Nombre:</b>           {{zo.ZoneName}}</pre>
+                        <pre class="pre"><b>Estado:</b>           {{zo.Estado}}</pre>
+                        <pre class="pre"><b>Consumo (KWH):</b>    {{zo.Consumo | number: '1.0-0'}} </pre>
+                        <pre class="pre"><b>Cantidad Maletas:</b> {{zo.ContadorMaletas}} </pre>
+                        <pre class="pre"><b>TiempoOn:</b>         {{zo.TiempoOn}} </pre>
+                        <pre class="pre"><b>TiempoOff:</b>        {{zo.TiempoOff}} </pre>
+
                     </div>
                 </ng-template>
 
@@ -8583,13 +8591,13 @@ MDAwMDAwMFzJ+P8FGACXHc5AS/+n6AAAAABJRU5ErkJggg==" transform="matrix(0.24 0 0 0.2
                   </ul> -->
                     <div class="media-body" *ngFor="let opt of zoneData">
 
-                        <b>Nombre:</b>
-                        <p>{{opt.ZoneName}}</p>
+                        <!-- <b>Nombre:</b>
+                        <p>{{opt.ZoneName}}</p> -->
 
                         <!-- <b>Id equipo:</b>
                         <p>{{opt.ZoneId}}</p> -->
 
-                        <b>Estado:</b>
+                        <!-- <b>Estado:</b>
                         <p>{{opt.Estado}}</p>
 
                         <b>Consumo (KWH):</b>
@@ -8602,7 +8610,15 @@ MDAwMDAwMFzJ+P8FGACXHc5AS/+n6AAAAABJRU5ErkJggg==" transform="matrix(0.24 0 0 0.2
                         <p>{{opt.TiempoOn}} </p>
 
                         <b>TiempoOff:</b>
-                        <p>{{opt.TiempoOff}} </p>
+                        <p>{{opt.TiempoOff}} </p> -->
+
+                        <pre ><b>Nombre:</b>           {{opt.ZoneName}}</pre>
+                        <pre class="pre"><b>Estado:</b>           {{opt.Estado}}</pre>
+                        <pre class="pre"><b>Consumo (KWH):</b>    {{opt.Consumo | number: '1.0-0'}} </pre>
+                        <pre class="pre"><b>Cantidad Maletas:</b> {{opt.ContadorMaletas}} </pre>
+                        <pre class="pre"><b>TiempoOn:</b>         {{opt.TiempoOn}} </pre>
+                        <pre class="pre"><b>TiempoOff:</b>        {{opt.TiempoOff}} </pre>
+
                     </div>
                 </ng-template>
             </ejs-dialog>
@@ -8613,11 +8629,11 @@ MDAwMDAwMFzJ+P8FGACXHc5AS/+n6AAAAABJRU5ErkJggg==" transform="matrix(0.24 0 0 0.2
               <ng-template #content *ngIf="zoData">
                     <div class="media-body" *ngFor="let option of zoData">
 
-                        <b>Nombre:</b>
-                        <p>{{option.ZoneName}}</p>
- 
-                        <!-- <b>Id equipo:</b>
+                      <!-- <b>Id equipo:</b>
                         <p>{{option.ZoneId}}</p> -->
+                        
+                        <!-- <b>Nombre:</b>
+                        <p>{{option.ZoneName}}</p>
 
                         <b>Estado:</b>
                         <p>{{option.Estado}}</p>
@@ -8632,7 +8648,16 @@ MDAwMDAwMFzJ+P8FGACXHc5AS/+n6AAAAABJRU5ErkJggg==" transform="matrix(0.24 0 0 0.2
                         <p>{{option.TiempoOn}} </p>
 
                         <b>TiempoOff:</b>
-                        <p>{{option.TiempoOff}} </p>
+                        <p>{{option.TiempoOff}} </p> -->
+
+                        
+                        <pre ><b>Nombre:</b>           {{option.ZoneName}}</pre>
+                        <pre class="pre"><b>Estado:</b>           {{option.Estado}}</pre>
+                        <pre class="pre"><b>Consumo (KWH):</b>    {{option.Consumo | number: '1.0-0'}} </pre>
+                        <pre class="pre"><b>Cantidad Maletas:</b> {{option.ContadorMaletas}} </pre>
+                        <pre class="pre"><b>TiempoOn:</b>         {{option.TiempoOn}} </pre>
+                        <pre class="pre"><b>TiempoOff:</b>        {{option.TiempoOff}} </pre>
+
                     </div>
                 </ng-template>
             </ejs-dialog>

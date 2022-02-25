@@ -21,7 +21,7 @@ import {EMAIL_PATTERN, NgxResetPasswordComponent, NUMBERS_PATTERN} from '../../.
 import {NbAuthOAuth2JWTToken, NbTokenService} from '@nebular/auth';
 import {UserStore} from '../../../@core/stores/user.store';
 import { HttpService } from '../../../@core/backend/common/api/http.service';
-import {ApiGetService} from '../../../@auth/components/register/apiGet.services';
+import { ApiGetService } from "../../../@core/backend/common/api/apiGet.services";
 import { NbAccessChecker } from '@nebular/security';
 import * as crypto from 'crypto-js'; 
 

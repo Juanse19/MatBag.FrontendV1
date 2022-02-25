@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 // import { Dashboardv2Data } from '../../../@core/interfaces/iot/dashboardv2';
 import {
   NgxFilterByNumberComponent,
@@ -12,11 +12,25 @@ import { interval } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { GridComponent, PageSettingsModel, FilterSettingsModel } from '@syncfusion/ej2-angular-grids';
 
+// export interface Fun {
+//   Conveyor: string;
+//   Fecha_Hora_Activ: string;
+//   TiempoEncendido: string;
+//   tiempo_Paro: string;
+// }
+
 export interface Fun {
-  Conveyor: string;
-  Fecha_Hora_Activ: string;
-  TiempoEncendido: string;
-  tiempo_Paro: string;
+  DeviceName: string,
+  CreatedDate: string,
+  Off: number,
+  On: number,
+  On_Rev: number,
+  Falla: number,
+  Acumulacion: number,
+  Atascado: number,
+  Ahorro: number,
+  Bloqueado: number,
+  Seccionador_Off: number
 }
  
 @Component({
@@ -36,6 +50,10 @@ export class FunctioningComponent implements OnInit {
 
   private alive = true;
 
+  public loading: boolean;
+
+  @ViewChild('grid') public grid: GridComponent;
+ 
   settings = {
     mode: 'external',
     actions: {
@@ -77,7 +95,7 @@ export class FunctioningComponent implements OnInit {
   constructor(public apiGetComp: ApiGetService,
     private http: HttpClient,
     private api: HttpService) {
-      
+      this.loading = true;
     }
 
     ngOnInit() {
@@ -94,7 +112,8 @@ export class FunctioningComponent implements OnInit {
         .pipe(takeWhile(() => this.alive))
         .subscribe((res: any) => {
           // tslint:disable-next-line: no-console
-          console.log('funData: ', res);
+          // console.log('funData: ', res);
+          this.loading = false;
           this.funData = res;
         });
         const contador = interval(40000)
@@ -103,6 +122,7 @@ export class FunctioningComponent implements OnInit {
           .pipe(takeWhile(() => this.alive))
           .subscribe((res: any) => {
             this.funData = res;
+            this.loading = false;
           });
         });
       }
@@ -124,6 +144,10 @@ export class FunctioningComponent implements OnInit {
       });
   
     }
+
+    dataBound() {
+      this.grid.autoFitColumns(['DeviceName', 'CreatedDate']);
+  }
 
     ngOnDestroy() {
       this.alive = false;

@@ -37,7 +37,7 @@ export class Bhs8Component implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/pages/iot-dashboard'],{skipLocationChange: true});
+    this.router.navigate(['/pages/conveyor/BhsSalidas']);
     return false;
   } 
 

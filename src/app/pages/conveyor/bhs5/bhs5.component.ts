@@ -39,7 +39,7 @@ export class Bhs5Component implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/pages/iot-dashboard']);
+    this.router.navigate(['/pages/conveyor/BhsSalidas']);
     return false;
   }
 

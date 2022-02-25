@@ -59,6 +59,8 @@ import { ConsumZoneComponent } from './consum-zone/consum-zone.component';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 import { ProgressBarAllModule } from '@syncfusion/ej2-angular-progressbar';
 import { BsdComponent } from './bsd/bsd.component';
+import { BhsSalidasComponent } from './bhs-salidas/bhs-salidas.component';
+import { SchedulerSitaComponent } from './scheduler-sita/scheduler-sita.component';
 
 
 @NgModule({
@@ -91,6 +93,8 @@ import { BsdComponent } from './bsd/bsd.component';
     ElectricityChartComponent,
     ConsumZoneComponent,
     BsdComponent,
+    BhsSalidasComponent,
+    SchedulerSitaComponent,
   ],
   imports: [
     CommonModule,

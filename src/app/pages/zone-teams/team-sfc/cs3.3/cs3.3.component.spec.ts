@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Cs3.3Component } from './cs3.3.component';
+import { Cs3_3Component } from './cs3.3.component';
 
-describe('Cs3.3Component', () => {
-  let component: Cs3.3Component;
-  let fixture: ComponentFixture<Cs3.3Component>;
+describe('Cs3_3Component', () => {
+  let component: Cs3_3Component;
+  let fixture: ComponentFixture<Cs3_3Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Cs3.3Component ]
+      declarations: [ Cs3_3Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Cs3.3Component);
+    fixture = TestBed.createComponent(Cs3_3Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

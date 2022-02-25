@@ -4,7 +4,7 @@ import {  Zones } from '../_interfaces/MatBag.model';
 import { HttpService } from '../../../@core/backend/common/api/http.service';
 import { HttpClient } from '@angular/common/http';
 import { switchMap, takeWhile } from 'rxjs/operators';
-import { DialogComponent, ResizeDirections } from '@syncfusion/ej2-angular-popups';
+import { DialogComponent, AnimationSettingsModel, ResizeDirections } from '@syncfusion/ej2-angular-popups';
 import { EmitType } from '@syncfusion/ej2-base';
 
 export interface Consumezones {
@@ -37,6 +37,8 @@ export class InfoComponent implements OnInit {
   private alive=true;
 
   public showCloseIcon: Boolean = true ;
+
+  public animationSettings: AnimationSettingsModel = { effect: 'None' };
 
   constructor(private router: Router,
     private http: HttpClient,
@@ -120,10 +122,26 @@ export class InfoComponent implements OnInit {
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevice)
     .pipe()
     .subscribe((res: any [])=>{
+      if (res.length === 0) {
+        res = [{
+          // ZoneId: 0,
+          ZoneName: "IB01",
+          Estado: "0",
+          Consumo: "0",
+          ContadorMaletas: "0",
+          TiempoOn: 0,
+          TiempoOff: 0,
+          }]
+          this.consumezoneData=res;
+          this.ejDialog.show();
+          this.ejDialog.position = { X: 165.438, Y: 257.813 };
+      } else {
       this.consumezoneData=res;
       this.ejDialog.show();
-      console.log('Zons1:', res , 'states');
+      // console.log('Zons1:', res , 'states');
       this.ejDialog.position = { X: 165.438, Y: 257.813 };
+      }
+      
     });
   }
 
@@ -135,10 +153,26 @@ export class InfoComponent implements OnInit {
     this.http.get(this.api.apiUrlNode1 + '/apiZoneFrontConsume?zone='+ idDevices)
     .pipe()
     .subscribe((res: any [])=>{
+      if (res.length === 0) {
+        res = [{
+          // ZoneId: 0,
+          ZoneName: "IB02",
+          Estado: "0",
+          Consumo: "0",
+          ContadorMaletas: "0",
+          TiempoOn: 0,
+          TiempoOff: 0,
+          }]
+          this.zoneData=res;
+          this.ejDialog1.show();
+          this.ejDialog1.position = { X: 438.438, Y: 74.2083 };
+      } else {
       this.zoneData=res;
       this.ejDialog1.show();
-      console.log('Zons:', this.zoneData , 'states');
+      // console.log('Zons:', this.zoneData , 'states');
       this.ejDialog1.position = { X: 438.438, Y: 74.2083 };
+      }
+      
     });
   }
 
@@ -160,13 +194,13 @@ export class InfoComponent implements OnInit {
           TiempoOn: 0,
           TiempoOff: 0,
           }]
-          this.zoData=res;
+        this.zoData=res;
         this.ejDialog2.show();
         this.ejDialog2.position = { X: 807.313, Y: 317.208};
       } else {
         this.zoData=res;
         this.ejDialog2.show();
-        // console.log('Zons:', res , 'states');
+        console.log('Zons:', res );
         this.ejDialog2.position = { X: 807.313, Y: 317.208};
       }
       

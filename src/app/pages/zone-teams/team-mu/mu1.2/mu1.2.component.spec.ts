@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Mu1.2Component } from './mu1.2.component';
+import { Mu1_2Component } from './mu1.2.component';
 
-describe('Mu1.2Component', () => {
-  let component: Mu1.2Component;
-  let fixture: ComponentFixture<Mu1.2Component>;
+describe('Mu1_2Component', () => {
+  let component: Mu1_2Component;
+  let fixture: ComponentFixture<Mu1_2Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Mu1.2Component ]
+      declarations: [ Mu1_2Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Mu1.2Component);
+    fixture = TestBed.createComponent(Mu1_2Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
