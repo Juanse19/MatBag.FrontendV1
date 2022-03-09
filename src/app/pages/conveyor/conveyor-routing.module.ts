@@ -25,6 +25,8 @@ import { EnergyComponent } from './energy/energy.component';
 import { ConsumZoneComponent } from './consum-zone/consum-zone.component';
 import { BsdComponent } from './bsd/bsd.component';
 import { BhsSalidasComponent } from './bhs-salidas/bhs-salidas.component';
+import { SchedulerSitaComponent } from './scheduler-sita/scheduler-sita.component';
+import { ReaderefficiencyComponent } from './readerefficiency/readerefficiency.component';
 
 const routes: Routes = [
   {
@@ -96,6 +98,10 @@ const routes: Routes = [
         component: SchedulerComponent,
       },
       {
+        path: 'schedulerSita',
+        component: SchedulerSitaComponent,
+      },
+      {
         path: 'ib1',
         component: Ib1Component,
       },
@@ -126,6 +132,10 @@ const routes: Routes = [
       {
         path: 'BhsSalidas',
         component: BhsSalidasComponent,
+      },
+      {
+        path: 'Readerefficiency',
+        component: ReaderefficiencyComponent,
       },
     ],
   },

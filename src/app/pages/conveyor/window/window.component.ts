@@ -202,6 +202,7 @@ export class WindowComponent implements OnInit {
         }else{
           this.divices1=res;
           this.device1.show();
+          console.log('divices1: ', this.divices1);
           // console.log('Test: ', this.divices1);
           // this.ejDialogTX.position = { X: 171.33, Y: 100.14 };
         }

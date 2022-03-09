@@ -19,7 +19,7 @@
                     <!-- <b>Id equipo:</b>
                     <p>{{tx1?.DeviceId}}</p> -->
 
-                    <b>Estado:</b>
+                    <!-- <b>Estado:</b>
                     <p>{{tx1?.Estado}}</p>
 
                     <b>Consumo (KWH):</b>
@@ -29,8 +29,13 @@
                     <p>{{tx1?.TiempoOn}}</p>
 
                     <b>Tiempo apagado:</b>
-                    <p>{{tx1?.TiempoOff}}</p>
-
+                    <p>{{tx1?.TiempoOff}}</p> -->
+                    <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
                     <!-- <pre style="padding: 0.5625em 0.625em; margin-top: -0.10rem;"><b>Id equipo:</b>        {{tx1?.DeviceId}}</pre>
                     <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Estado:</b>            {{tx1?.Estado}}</pre>
                     <pre style="padding: 0.5625em 0.625em; margin-top: -1.9rem;"><b>Consumo (KWH):</b>     {{tx1?.Consumo}}</pre>
@@ -57,7 +62,7 @@
 
                 <img class="align-self-center mr-3" src="./assets/img/band.png" width="75px" alt="Card " />
 
-                <div class="media-body" *ngFor="let tx1 of divices2">
+                <div class="media-body" *ngFor="let tx2 of divices2">
 
                     <!-- <b>Nombre:</b>
                 <p>{{option.ZoneName}}</p> -->
@@ -65,7 +70,7 @@
                     <!-- <b>Id equipo:</b>
                     <p>{{tx1.DeviceId}}</p> -->
 
-                    <b>Estado:</b>
+                    <!-- <b>Estado:</b>
                     <p>{{tx1.Estado}}</p>
 
                     <b>Consumo (KWH):</b>
@@ -75,7 +80,14 @@
                     <p>{{tx1.TiempoOn}}</p>
 
                     <b>Tiempo apagado:</b>
-                    <p>{{tx1.TiempoOff}}</p>
+                    <p>{{tx1.TiempoOff}}</p> -->
+                    <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx2?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx2?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx2?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx2?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx2?.TiempoOff}} </pre>
+
                 </div>
             </div>
         </ng-template>
@@ -97,7 +109,7 @@
 
                 <img class="align-self-center mr-3" src="./assets/img/band.png" width="75px" alt="Card " />
 
-                <div class="media-body" *ngFor="let tx1 of divices3">
+                <div class="media-body" *ngFor="let tx3 of divices3">
 
                     <!-- <b>Nombre:</b>
                 <p>{{option.ZoneName}}</p> -->
@@ -105,7 +117,7 @@
                     <!-- <b>Id equipo:</b>
                     <p>{{tx1.DeviceId}}</p> -->
 
-                    <b>Estado:</b>
+                    <!-- <b>Estado:</b>
                     <p>{{tx1.Estado}}</p>
 
                     <b>Consumo (KWH):</b>
@@ -115,7 +127,14 @@
                     <p>{{tx1.TiempoOn}}</p>
 
                     <b>Tiempo apagado:</b>
-                    <p>{{tx1.TiempoOff}}</p>
+                    <p>{{tx1.TiempoOff}}</p> -->
+                    <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx3?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx3?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx3?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx3?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx3?.TiempoOff}} </pre>
+
                 </div>
             </div>
         </ng-template>
@@ -137,7 +156,7 @@
 
                 <img class="align-self-center mr-3" src="./assets/img/band.png" width="75px" alt="Card " />
 
-                <div class="media-body" *ngFor="let tx1 of divices4">
+                <div class="media-body" *ngFor="let tx4 of divices4">
 
                     <!-- <b>Nombre:</b>
                 <p>{{option.ZoneName}}</p> -->
@@ -145,7 +164,7 @@
                     <!-- <b>Id equipo:</b>
                     <p>{{tx1.DeviceId}}</p> -->
 
-                    <b>Estado:</b>
+                    <!-- <b>Estado:</b>
                     <p>{{tx1.Estado}}</p>
 
                     <b>Consumo (KWH):</b>
@@ -155,7 +174,15 @@
                     <p>{{tx1.TiempoOn}}</p>
 
                     <b>Tiempo apagado:</b>
-                    <p>{{tx1.TiempoOff}}</p>
+                    <p>{{tx1.TiempoOff}}</p> -->
+
+                    <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx4?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx4?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx4?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx4?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx4?.TiempoOff}} </pre>
+
                 </div>
             </div>
         </ng-template>
@@ -185,7 +212,7 @@
                     <!-- <b>Id equipo:</b>
                     <p>{{tx1.DeviceId}}</p> -->
 
-                    <b>Estado:</b>
+                    <!-- <b>Estado:</b>
                     <p>{{tx1.Estado}}</p>
 
                     <b>Consumo (KWH):</b>
@@ -195,7 +222,15 @@
                     <p>{{tx1.TiempoOn}}</p>
 
                     <b>Tiempo apagado:</b>
-                    <p>{{tx1.TiempoOff}}</p>
+                    <p>{{tx1.TiempoOff}}</p> -->
+
+                    <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
                 </div>
             </div>
         </ng-template>
@@ -225,7 +260,7 @@
                     <!-- <b>Id equipo:</b>
                     <p>{{tx1.DeviceId}}</p> -->
 
-                    <b>Estado:</b>
+                    <!-- <b>Estado:</b>
                     <p>{{tx1.Estado}}</p>
 
                     <b>Consumo (KWH):</b>
@@ -235,7 +270,15 @@
                     <p>{{tx1.TiempoOn}}</p>
 
                     <b>Tiempo apagado:</b>
-                    <p>{{tx1.TiempoOff}}</p>
+                    <p>{{tx1.TiempoOff}}</p> -->
+
+                    <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
                 </div>
             </div>
         </ng-template>
@@ -265,7 +308,7 @@
                     <!-- <b>Id equipo:</b>
                     <p>{{tx1.DeviceId}}</p> -->
 
-                    <b>Estado:</b>
+                    <!-- <b>Estado:</b>
                     <p>{{tx1.Estado}}</p>
 
                     <b>Consumo (KWH):</b>
@@ -275,7 +318,15 @@
                     <p>{{tx1.TiempoOn}}</p>
 
                     <b>Tiempo apagado:</b>
-                    <p>{{tx1.TiempoOff}}</p>
+                    <p>{{tx1.TiempoOff}}</p> -->
+
+                    <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
                 </div>
             </div>
         </ng-template>
@@ -305,7 +356,7 @@
                     <!-- <b>Id equipo:</b>
                     <p>{{tx1.DeviceId}}</p> -->
 
-                    <b>Estado:</b>
+                    <!-- <b>Estado:</b>
                     <p>{{tx1.Estado}}</p>
 
                     <b>Consumo (KWH):</b>
@@ -315,7 +366,15 @@
                     <p>{{tx1.TiempoOn}}</p>
 
                     <b>Tiempo apagado:</b>
-                    <p>{{tx1.TiempoOff}}</p>
+                    <p>{{tx1.TiempoOff}}</p> -->
+
+                    <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
                 </div>
             </div>
         </ng-template>
@@ -344,7 +403,7 @@
                     <!-- <b>Id equipo:</b>
                     <p>{{tx1.DeviceId}}</p> -->
 
-                    <b>Estado:</b>
+                    <!-- <b>Estado:</b>
                     <p>{{tx1.Estado}}</p>
 
                     <b>Consumo (KWH):</b>
@@ -354,7 +413,15 @@
                     <p>{{tx1.TiempoOn}}</p>
 
                     <b>Tiempo apagado:</b>
-                    <p>{{tx1.TiempoOff}}</p>
+                    <p>{{tx1.TiempoOff}}</p> -->
+
+                    <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
                 </div>
             </div>
         </ng-template>
@@ -384,7 +451,7 @@
                     <!-- <b>Id equipo:</b>
                     <p>{{tx1.DeviceId}}</p> -->
 
-                    <b>Estado:</b>
+                    <!-- <b>Estado:</b>
                     <p>{{tx1.Estado}}</p>
 
                     <b>Consumo (KWH):</b>
@@ -394,7 +461,15 @@
                     <p>{{tx1.TiempoOn}}</p>
 
                     <b>Tiempo apagado:</b>
-                    <p>{{tx1.TiempoOff}}</p>
+                    <p>{{tx1.TiempoOff}}</p> -->
+
+                    <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
                 </div>
             </div>
         </ng-template>
@@ -423,7 +498,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -433,7 +508,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -462,7 +545,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -472,7 +555,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -501,7 +592,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -511,7 +602,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -540,7 +639,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -550,7 +649,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -579,7 +686,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -589,7 +696,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -618,7 +733,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -628,7 +743,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -657,7 +780,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -667,7 +790,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -696,7 +827,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -706,7 +837,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -735,7 +874,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -745,7 +884,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -774,7 +921,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -784,7 +931,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+                
             </div>
             </div>
         </ng-template>
@@ -813,7 +968,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -823,7 +978,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -852,7 +1015,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -862,7 +1025,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -891,7 +1062,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -901,7 +1072,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -930,7 +1109,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -940,7 +1119,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -969,7 +1156,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -979,7 +1166,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -1008,7 +1203,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -1018,7 +1213,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+                
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>          {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>          {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>   {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>        {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>       {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -1047,7 +1250,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -1057,7 +1260,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>          {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>          {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>   {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>        {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>       {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -1086,7 +1297,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -1096,7 +1307,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>          {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>          {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>   {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>        {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>       {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -1125,7 +1344,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -1135,7 +1354,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -1164,7 +1391,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -1174,7 +1401,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -1203,7 +1438,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -1213,7 +1448,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -1242,7 +1485,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -1252,7 +1495,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -1281,7 +1532,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -1291,7 +1542,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -1320,7 +1579,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -1330,7 +1589,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -1359,7 +1626,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -1369,7 +1636,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>
@@ -1398,7 +1673,7 @@
                 <!-- <b>Id equipo:</b>
                 <p>{{tx1.DeviceId}}</p> -->
 
-                <b>Estado:</b>
+                <!-- <b>Estado:</b>
                 <p>{{tx1.Estado}}</p>
 
                 <b>Consumo (KWH):</b>
@@ -1408,7 +1683,15 @@
                 <p>{{tx1.TiempoOn}}</p>
 
                 <b>Tiempo apagado:</b>
-                <p>{{tx1.TiempoOff}}</p>
+                <p>{{tx1.TiempoOff}}</p> -->
+
+                <br><br>
+                    <pre class="pre"><b>Nombre:</b>         {{tx1?.Name}}</pre>
+                    <pre class="pre"><b>Estado:</b>         {{tx1?.Estado}}</pre>
+                    <pre class="pre"><b>Consumo (KWH):</b>  {{tx1?.Consumo | number: '1.0-0'}} </pre>
+                    <pre class="pre"><b>TiempoOn:</b>       {{tx1?.TiempoOn}} </pre>
+                    <pre class="pre"><b>TiempoOff:</b>      {{tx1?.TiempoOff}} </pre>
+
             </div>
             </div>
         </ng-template>

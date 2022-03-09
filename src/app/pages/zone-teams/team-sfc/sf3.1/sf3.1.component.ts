@@ -239,7 +239,7 @@ dataSF3(){
       // data.SF3_1_KWh = 0;
       // data.SF3_1_CorrienteActualMotor = 0;
     } else {
-    this.TeamSF3_1 = data
+    this.TeamSF3_1 = data[0]
     // this.dataSF3_1 = TeamSF3_1
     // this.velocidadSf3_1 =  this.decimalPipe.transform( this.TeamSF3_1.SF3_1_VelocidadActualMotor, '1.0-0') ?? 0;
     this.velocidadSf3_1 =  this.TeamSF3_1.SF3_1_VelocidadActualMotor ?? 0;

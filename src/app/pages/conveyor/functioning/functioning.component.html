@@ -15,8 +15,12 @@
     </div>
     <br />
 
-    <ejs-grid [dataSource]="funData" [allowPaging]="true" [pageSettings]="pageSettings" [filterSettings]="filterOptions"
-      [allowFiltering]="true" allowSorting="true" allowResizing="true" (dataBound)='dataBound()' >
+    <ejs-grid [dataSource]="funData" [allowPaging]="true" [pageSettings]="pageSettings" 
+    [filterSettings]="filterOptions" 
+    [showColumnChooser]= 'true'
+    [allowFiltering]="true"
+    allowSorting="true"
+    allowResizing= "true" >
       <e-columns>
         <e-column field="DeviceName" headerText="Conveyor" width="130"></e-column>
         <e-column field="CreatedDate" headerText="Fecha Activación" type="date" format="dd/MM/yyyy hh:mm:ss a"

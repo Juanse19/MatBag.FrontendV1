@@ -2,26 +2,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ConveyorRoutingModule } from './conveyor-routing.module';
-import { NbCardModule, 
-         NbButtonModule, 
-         NbIconModule, 
+import { NbCardModule,
+         NbButtonModule,
+         NbIconModule,
          NbInputModule,
          NbSpinnerModule,
-         NbTreeGridModule, 
-         NbTabsetModule, 
-         NbTooltipModule, 
-         NbPopoverModule, 
-         NbSelectModule, 
-         NbDatepickerModule, 
+         NbTreeGridModule,
+         NbTabsetModule,
+         NbTooltipModule,
+         NbPopoverModule,
+         NbSelectModule,
+         NbDatepickerModule,
          NbCheckboxModule, } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { ThemeModule } from '../../@theme/theme.module';  
+import { ThemeModule } from '../../@theme/theme.module';
 import { ConveyorComponent } from './conveyor.component';
 import { TeamComponent } from './team/team.component';
 import { FunctioningComponent } from './functioning/functioning.component';
 import { AccumulationComponent } from './accumulation/accumulation.component';
 import { AssignComponent } from './assign/assign.component';
-import { InfoComponent } from './info/info.component'; 
+import { InfoComponent } from './info/info.component';
 import { Bhs1Component } from './bhs1/bhs1.component';
 import { Bhs2Component } from './bhs2/bhs2.component';
 import { Bhs3Component } from './bhs3/bhs3.component';
@@ -32,14 +32,14 @@ import { Bhs7Component } from './bhs7/bhs7.component';
 import { Bhs8Component } from './bhs8/bhs8.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 // import {DxSchedulerModule} from 'devextreme-angular';
-import { ScheduleAllModule, RecurrenceEditorAllModule } from '@syncfusion/ej2-angular-schedule';
+import { ScheduleAllModule, RecurrenceEditorAllModule, DayService, WeekService, WorkWeekService, MonthService, AgendaService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 import { FormsModule } from '@angular/forms';
 import { Ib1Component } from './ib1/ib1.component';
 import { Ib2Component } from './ib2/ib2.component';
 import { Ib3Component } from './ib3/ib3.component';
 import { Bhs9Component } from './bhs9/bhs9.component';
-import { GridModule } from '@syncfusion/ej2-angular-grids';
-import { PageService, SortService, FilterService, GroupService } from '@syncfusion/ej2-angular-grids';
+import { FilterService, GridModule } from '@syncfusion/ej2-angular-grids';
+import { PageService, SortService, GroupService } from '@syncfusion/ej2-angular-grids';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WindowFormComponent } from './scheduler/window-form/window-form.component';
 import { DropDownListAllModule } from '@syncfusion/ej2-angular-dropdowns';
@@ -61,11 +61,18 @@ import { ProgressBarAllModule } from '@syncfusion/ej2-angular-progressbar';
 import { BsdComponent } from './bsd/bsd.component';
 import { BhsSalidasComponent } from './bhs-salidas/bhs-salidas.component';
 import { SchedulerSitaComponent } from './scheduler-sita/scheduler-sita.component';
+import { NumericTextBoxAllModule, TextBoxAllModule } from '@syncfusion/ej2-angular-inputs';
+import { DatePickerAllModule, TimePickerAllModule, DateTimePickerAllModule } from '@syncfusion/ej2-angular-calendars';
+import { AppComponent } from '../../app.component';
+import { SplitterModule } from '@syncfusion/ej2-angular-layouts';
+import { GanttAllModule } from '@syncfusion/ej2-angular-gantt';
+// import { FilterService,ToolbarService } from '@syncfusion/ej2-angular-gantt';
+import { ReaderefficiencyComponent } from './readerefficiency/readerefficiency.component';
 
 
 @NgModule({
   declarations: [
-    TeamComponent, 
+    TeamComponent,
     FunctioningComponent,
     ConveyorComponent,
     AccumulationComponent,
@@ -95,6 +102,7 @@ import { SchedulerSitaComponent } from './scheduler-sita/scheduler-sita.componen
     BsdComponent,
     BhsSalidasComponent,
     SchedulerSitaComponent,
+    ReaderefficiencyComponent,
   ],
   imports: [
     CommonModule,
@@ -107,7 +115,7 @@ import { SchedulerSitaComponent } from './scheduler-sita/scheduler-sita.componen
     // ThemeModule,
     NbTabsetModule,
     Ng2SmartTableModule,
-    ThemeModule, 
+    ThemeModule,
     NbCardModule,
     NbIconModule,
     NbTabsetModule,
@@ -133,13 +141,30 @@ import { SchedulerSitaComponent } from './scheduler-sita/scheduler-sita.componen
     NbSpinnerModule,
     DropDownListModule,
     ProgressBarAllModule,
+    DatePickerAllModule,
+    TimePickerAllModule,
+    DateTimePickerAllModule,
+    SplitterModule,
+    // GanttModule,
+    // GanttAllModule
+    // NumericTextBoxAllModule,
+    // TextBoxAllModule
   ],
-  providers: [
-    PageService,
-    SortService,
-    FilterService,
-    GroupService,
-    CategoryService, 
-    LineSeriesService]
+  // providers: [
+  //   PageService,
+  //   SortService,
+  //   FilterService,
+  //   GroupService,
+  //   CategoryService,
+  //   LineSeriesService,
+  //   DayService,
+  //   WeekService,
+  //   WorkWeekService,
+  //   MonthService,
+  //   AgendaService,
+  //   MonthAgendaService
+  // ],
+  // providers: [FilterService,ToolbarService],
+  bootstrap: [ConveyorComponent],
 })
 export class ConveyorModule { }

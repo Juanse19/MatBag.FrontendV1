@@ -440,7 +440,10 @@ export class PagesMenu {
           title: 'Paros por acumulación',
           link: '/pages/conveyor/accumulation',
         },
-        
+        {
+          title: 'Eficiencia ATR´S', 
+          link: '/pages/conveyor/Readerefficiency',
+        },
         {
           title: 'Induccion Mensajes AMS',
           link: '/pages/sita/MessageAMS',
@@ -465,14 +468,22 @@ export class PagesMenu {
       icon: 'calendar-outline',
       // link: '/pages/charts/charts-report',
       children:[
-        // {
-        //   title: 'Window',
-        //   link: '/pages/conveyor/window',
-        // },
         {
-          title: 'Scheduler',
-          link: '/pages/conveyor/scheduler',
+          title: 'SchedulerPia',
+          link: '/pages/gantt/SchedulerPia',
         },
+           {
+          title: 'Gantt',
+          link: '/pages/gantt',
+        },
+        // {
+        //   title: 'Scheduler',
+        //   link: '/pages/conveyor/scheduler',
+        // },
+        // {
+        //   title: 'SchedulerSita',
+        //   link: '/pages/sita/SchedulerPalmerola',
+        // },
       ],
     };
 
@@ -509,12 +520,12 @@ export class PagesMenu {
         //   title: 'reportdesigner ',
         //   link: '/pages/reports-pia/bold',
         // },
+        // {
+        //   title: 'Informe resumen diario',
+        //   link: '/pages/reports-pia/tracking',
+        // },
         {
           title: 'Informe resumen diario',
-          link: '/pages/reports-pia/tracking',
-        },
-        {
-          title: 'Informe resumen diario por hora',
           link: '/pages/reports-pia/report1',
         },
         {
@@ -533,21 +544,25 @@ export class PagesMenu {
           title: 'Informe seguimiento de PEC',
           link: '/pages/reports-pia/report5',
         },
-        {
-          title: 'Informe equipaje CBRA',
-          link: '/pages/reports-pia/report6',
-        },
-        {
-          title: 'Informe de rendimiento por hora BHS ( Througput)',
-          link: '/pages/reports-pia/report7',
-        },
+        // {
+        //   title: 'Informe equipaje CBRA',
+        //   link: '/pages/reports-pia/report6',
+        // },
+        // {
+        //   title: 'Informe de rendimiento por hora BHS ( Througput)',
+        //   link: '/pages/reports-pia/report7',
+        // },
         {
           title: 'Informe resumen diario por hora',
           link: '/pages/reports-pia/report8',
         },
+        // {
+        //   title: 'volumen de equipaje',
+        //   link: '/pages/reports-pia/BoldReport',
+        // },
         {
-          title: 'volumen de equipaje',
-          link: '/pages/reports-pia/BoldReport',
+          title: 'Informe diario',
+          link: '/pages/reports-pia/report10',
         },
         // {
         //   title: 'volumen de equipaje ',
@@ -683,19 +698,19 @@ export class PagesMenu {
     };
 
     const BSDMenu: NbMenuItem = {
-      title: 'Pantalla de estado equipaje',
-      icon: 'book-outline',
-      // link: '/pages/charts/charts-report',
-      children:[
-        // {
-        //   title: 'Window',
-        //   link: '/pages/conveyor/window',
-        // },
-        {
-          title: 'BSD',
-          link: '/pages/conveyor/bsd',
-        },
-      ],
+      title: 'MatControl',
+      icon: 'monitor-outline',
+      link: '/pages/conveyor/bsd',
+      // children:[
+      //   {
+      //     title: 'Gantt',
+      //     link: '/pages/gantt',
+      //   },
+      //   {
+      //     title: 'Scada',
+      //     link: '/pages/conveyor/bsd',
+      //   },
+      // ],
     };
 
     return this.accessChecker.isGranted('view', 'fullMenu')
@@ -705,7 +720,7 @@ export class PagesMenu {
           // return [...dashboardMenu, orderMenu, reportMenu, analyticsMenu, userMenu, alarmMenu, registerMenu];
           // return [...dashboardMenu, orderMenu, sicsyncroMenu, repoMenu, analyticsMenu, userMenu, alarmMenu];
           // return [...dashboardMenu, dassh2Menu, paraMenu, functionMenu, cosumeMenu, repocbisMenu, configurationMenu, alarmMenu];
-          return [...dashboardMenu, functionMenu, SchedulerMenu, cosumeMenu, repocbisMenu, configurationMenu, alarmMenu];
+          return [...dashboardMenu, functionMenu, SchedulerMenu, cosumeMenu, repocbisMenu, BSDMenu, configurationMenu, alarmMenu];
         } else {
           //return [...dashboardMenu, ...menu];
           return [...dashboardMenu, alarmMenu];

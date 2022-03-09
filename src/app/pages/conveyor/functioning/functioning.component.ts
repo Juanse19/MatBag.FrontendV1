@@ -116,7 +116,7 @@ export class FunctioningComponent implements OnInit {
           this.loading = false;
           this.funData = res;
         });
-        const contador = interval(40000)
+        const contador = interval(50000)
         contador.subscribe((n) => {
           this.http.get(this.api.apiUrlNode1 + '/api/GetEfficiencyTimeExecConveyor')
           .pipe(takeWhile(() => this.alive))
@@ -144,10 +144,6 @@ export class FunctioningComponent implements OnInit {
       });
   
     }
-
-    dataBound() {
-      this.grid.autoFitColumns(['DeviceName', 'CreatedDate']);
-  }
 
     ngOnDestroy() {
       this.alive = false;

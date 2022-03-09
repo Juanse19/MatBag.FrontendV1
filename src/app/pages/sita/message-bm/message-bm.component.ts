@@ -15,28 +15,28 @@ import {
 } from "@syncfusion/ej2-angular-grids";
 
 interface bagMessage {
-  Id: number;
-  Standard_Message_Identifier: string;
-  Change_Status_Indicator: string;
-  Version_Supplementary_Data: string;
-  Outbound_Flight_Information: string;
-  Inbound_Flight_Information: string;
-  Onward_Flight_Information: string;
-  Baggage_Tag_Details: string;
-  Check_in_Location_Information: string;
-  Reconciliation_Data: string;
-  Handling_Location: string;
-  Pieces_Weight_Dimensions_Type_Data: string;
-  Passenger_Name: string;
-  Ground_Transport: string;
-  Frequent_Traveller_Numb: string;
-  Corporate_Group_Name: string;
-  Automated_PNR_Address: string;
-  Baggage_Tag_Printer_ID: string;
-  Default_Message_Printer: string;
-  Baggage_Exception_Data: string;
-  Internal_Airline_Data: string;
-  Baggage_Security_Screening: string;
+  Id?: number;
+  Standard_Message_Identifier?: string;
+  Change_Status_Indicator?: string;
+  Version_Supplementary_Data?: string;
+  Outbound_Flight_Information?: string;
+  Inbound_Flight_Information?: string;
+  Onward_Flight_Information?: string;
+  Baggage_Tag_Details?: string;
+  Check_in_Location_Information?: string;
+  Reconciliation_Data?: string;
+  Handling_Location?: string;
+  Pieces_Weight_Dimensions_Type_Data?: string;
+  Passenger_Name?: string;
+  Ground_Transport?: string;
+  Frequent_Traveller_Numb?: string;
+  Corporate_Group_Name?: string;
+  Automated_PNR_Address?: string;
+  Baggage_Tag_Printer_ID?: string;
+  Default_Message_Printer?: string;
+  Baggage_Exception_Data?: string;
+  Internal_Airline_Data?: string;
+  Baggage_Security_Screening?: string;
 }
 
 @Component({

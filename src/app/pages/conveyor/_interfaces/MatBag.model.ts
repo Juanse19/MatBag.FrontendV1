@@ -30,9 +30,9 @@ export interface states {
 
 // Band information by zone
 export interface teams{
-    id?: string,
-    name?: string,
-    estado?: string,
+    DeviceId?: string,
+    Name?: string,
+    Estado?: string,
     TiempoOn?: string,
     TiempoOff?: string
     Consumo?: string,

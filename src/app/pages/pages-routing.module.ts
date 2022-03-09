@@ -52,7 +52,21 @@ const routes: Routes = [{
     {
       path: 'conveyor',
       loadChildren: () => import('./conveyor/conveyor.module')
-        .then(m => m.ConveyorModule),
+        .then(m => m.ConveyorModule)
+        .catch(err => console.error(err))
+    },
+    // {
+    //   path: 'gantt',
+    //   loadChildren: () => import('./gantt-schedule/gantt-schedule.module')
+    //     .then(m => m.GanttScheduleModule),
+    // },
+    {
+      path: 'gantt',
+      loadChildren: () =>
+        import('./gantt-schedule/gantt-schedule.module')
+          .then((a) => {
+            return a.GanttScheduleModule; })
+            .catch(err => console.error(err))
     },
     {
       path: 'zone-teams',
@@ -67,7 +81,8 @@ const routes: Routes = [{
     {
       path: 'sita',
       loadChildren: () => import('./sita/sita.module')
-        .then(m => m.SitaModule),
+        .then((m) => m.SitaModule)
+        .catch( err => console.log('Oh no!', err))
     },
     // {
     //   path: 'animation',

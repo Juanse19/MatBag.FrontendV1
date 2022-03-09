@@ -79,11 +79,11 @@ export class Bhs5Component implements OnInit {
     )
     .subscribe((res: any) => {
         this.states  = res;
-        // console.log('status:', res);
+        console.log('status:',  this.states );
     });
   }
 
-  ClicSf1_1() {
+  ClicSf1_1() { 
     this.dialog.opendevice1(148);
   }
 

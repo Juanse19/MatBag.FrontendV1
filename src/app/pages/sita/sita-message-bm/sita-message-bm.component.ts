@@ -17,18 +17,18 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 interface confi {
-  Id: number,
-  Parameter: string,
-  Value: string,
-  CreateDate: string,
-  UpdateDate: string,
-  State: number,
+  Id?: number,
+  Parameter?: string,
+  Value?: string,
+  CreateDate?: string,
+  UpdateDate?: string,
+  State?: number,
  }
 
  interface conC {
-  Id: number,
-  Parameter: string,
-  Value: string,
+  Id?: number,
+  Parameter?: string,
+  Value?: string,
  }
 
  let conConf: conC;

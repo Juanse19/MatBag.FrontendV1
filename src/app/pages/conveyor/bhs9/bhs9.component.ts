@@ -76,7 +76,7 @@ export class Bhs9Component implements OnInit {
     )
     .subscribe((res: any) => {
         this.states  = res;
-        // console.log('status:', res);
+        console.log('status:', this.states);
     });
   }
 

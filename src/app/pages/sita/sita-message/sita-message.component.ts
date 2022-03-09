@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Injectable, OnInit, ViewChild } from '@angular/core';
 import { interval } from 'rxjs';
 import { LocalDataSource } from 'ng2-smart-table';
 import { ApiGetService } from '../../../@core/backend/common/api/apiGet.services';
@@ -17,29 +17,32 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
  
 interface confi {
-  Id: number,
-  Parameter: string,
-  Value: string,
-  CreateDate: string,
-  UpdateDate: string,
-  State: number,
+  Id?: number,
+  Parameter?: string,
+  Value?: string,
+  CreateDate?: string,
+  UpdateDate?: string,
+  State?: number,
  }
 
   interface conC {
-    Id: number,
-    Parameter: string,
-    Value: string,
+    Id?: number,
+    Parameter?: string,
+    Value?: string,
   }
 
  let conConf: conC;
 
  let REFERE: confi[]
 
+ @Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'ngx-sita-message',
   templateUrl: './sita-message.component.html',
   providers: [ToolbarService, EditService, PageService, SortService, CommandColumnService],
-  styleUrls: ['./sita-message.component.scss']
+  // styleUrls: ['./sita-message.component.scss']
 })
 export class SitaMessageComponent implements OnInit {
 

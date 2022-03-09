@@ -27,8 +27,8 @@ const PAGES_COMPONENTS = [
     DashboardModule,
     NbMenuModule,
     MiscellaneousModule,
-    ScheduleAllModule, 
-    RecurrenceEditorAllModule,
+    // ScheduleAllModule, 
+    // RecurrenceEditorAllModule,
     AuthModule.forRoot(),
   ],
   declarations: [

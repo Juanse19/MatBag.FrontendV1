@@ -28,7 +28,7 @@ export class BhsSalidasComponent implements OnInit {
 
    mostarTX: boolean;
    mostarSF: boolean;
-   mostarSFC = false;
+   mostarSFC: boolean;
    mostarSS: boolean;
    mostarMU: boolean;
    mostarAL: boolean;
@@ -105,7 +105,7 @@ export class BhsSalidasComponent implements OnInit {
     @ViewChild('ejDialogME') ejDialogME: DialogComponent;
     @ViewChild('ejDialogXO') ejDialogXO: DialogComponent;
     // Create element reference for dialog target element.
-    @ViewChild('container', { read: ElementRef, static: true }) container: ElementRef;
+    // @ViewChild('container', { read: ElementRef, static: true }) container: ElementRef;
     // The Dialog shows within the target element.
     public targetElement: HTMLElement;
     // This will resize the dialog in all the directions.
@@ -134,7 +134,7 @@ export class BhsSalidasComponent implements OnInit {
 
       // Initialize the Dialog component's target element.
       public initilaizeTarget: EmitType<object> = () => {
-        this.targetElement = this.container.nativeElement.parentElement;
+        // this.targetElement = this.container.nativeElement.parentElement;
         // this.resizeHandleDirection = ['All'];
           }
 

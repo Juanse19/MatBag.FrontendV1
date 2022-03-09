@@ -263,7 +263,7 @@ export class ConsumZoneComponent implements OnInit {
         .pipe(takeWhile(() => this.alive))
         .subscribe((res: any)=>{
           this.consumeData = res;
-          // console.log('consume Zons', this.consumeData);
+          console.log('consume Zons', this.consumeData);
         });
       }
  

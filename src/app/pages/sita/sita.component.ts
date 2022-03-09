@@ -9,18 +9,13 @@ import { Router } from "@angular/router";
   `,
 })
 
-export class SitaComponent implements OnDestroy {
-  alive: boolean = true;
+export class SitaComponent  {
+ 
 
   constructor(
-    private http: HttpClient,
-    private router: Router,
   ) {}
 
   ngOnInit(): void {}
 
-
-  ngOnDestroy(): void {
-    this.alive = false;
-  }
+ 
 }

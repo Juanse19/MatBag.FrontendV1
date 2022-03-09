@@ -4,17 +4,18 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 // import { Priority, Resource, Appointment, ScheduleService } from './schedule.service';
 import { extend } from '@syncfusion/ej2-base';
 import {
-    TimelineViewsService, AgendaService, GroupModel, EventSettingsModel, ResizeService, DragAndDropService, ScheduleComponent, PrintService, WeekService, MonthService, TimelineMonthService, View, ActionEventArgs, ToolbarActionArgs, ExportOptions
+    TimelineViewsService, AgendaService, GroupModel, EventSettingsModel, ResizeService, DragAndDropService, ScheduleComponent, PrintService, WeekService, MonthService, TimelineMonthService, View, ActionEventArgs, ToolbarActionArgs, ExportOptions, RenderCellEventArgs
 } from '@syncfusion/ej2-angular-schedule';
 // import { timelineResourceData, resourceData } from './data';
 import { DataManager, ODataV4Adaptor, Query, UrlAdaptor } from '@syncfusion/ej2-data';
-import { takeWhile } from 'rxjs/operators';
+import { takeWhile, timeout } from 'rxjs/operators';
 import { HttpService } from '../../../@core/backend/common/api/http.service';
 import { HttpClient } from '@angular/common/http';
 import { Banda5, zons, states, departures } from '../_interfaces/MatBag.model';
 import { NbWindowService } from '@nebular/theme';
 import { WindowFormComponent } from './window-form/window-form.component';
 import { ItemModel } from '@syncfusion/ej2-angular-navigations';
+import { interval } from 'rxjs';
 
 
 interface carrusel {
@@ -41,10 +42,27 @@ interface airline {
     .timeline-resource-grouping.e-schedule .e-agenda-view .e-resource-column {
         width: 100px;
         height: 50px;
-    }
+    }.timeline-resource.e-schedule .e-timeline-view .e-resource-left-td {
+  vertical-align: bottom;
+}
+
+.timeline-resource.e-schedule.e-device .e-timeline-view .e-resource-left-td {
+  width: 75px;
+}
+
+.timeline-resource.e-schedule .e-timeline-view .e-resource-left-td {
+  width: 240px;
+}
+
+.timeline-resource.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
+  display: flex;
+  font-weight: 500;
+  padding: 0;
+  height: 36px;
+}
     `],
-    encapsulation: ViewEncapsulation.None,
-    providers: [TimelineViewsService, AgendaService, ResizeService, DragAndDropService, MonthService]
+    // encapsulation: ViewEncapsulation.None,
+    // providers: [TimelineViewsService, AgendaService, ResizeService, DragAndDropService, MonthService]
     // providers: [WeekService, MonthService, AgendaService, TimelineViewsService, TimelineMonthService ],
 })
 export class SchedulerComponent implements OnInit {
@@ -79,8 +97,13 @@ export class SchedulerComponent implements OnInit {
 
   public selectedDate: Date = new Date();
 
+  // public group: GroupModel = {
+  //     resources: ['Projects', 'Categories']
+  // };
+
   public group: GroupModel = {
-      resources: ['Projects', 'Categories']
+    enableCompactView: false,
+    resources: ['MeetingRoom', 'Projects', 'Categories']
   };
  
 //   public projectDataSource: Object[] = [
@@ -103,10 +126,10 @@ export class SchedulerComponent implements OnInit {
     url: 'https://10.120.18.8:1880/timelineResourceData',
     adaptor: new ODataV4Adaptor,
     crossDomain: true
- });
+ }); 
 
  public airCharge(){
-    this.http.get(this.api.apiUrlNode1 + '/GetAir')
+    this.http.get(this.api.apiUrlNode1 + '/GetAirs')
     .pipe(takeWhile(() => this.alive))
     .subscribe((res: airline[]=[])=>{
       this.airline=res;
@@ -115,7 +138,7 @@ export class SchedulerComponent implements OnInit {
   }
 
  public carruselCharge(){
-    this.http.get(this.api.apiUrlNode1 + '/GetMakeUpList')
+    this.http.get(this.api.apiUrlNode1 + '/GetMakeUpListNew')
     .pipe(takeWhile(() => this.alive))
     .subscribe((res: carrusel[]=[])=>{
       this.car=res;
@@ -124,41 +147,55 @@ export class SchedulerComponent implements OnInit {
   }
   
   private resourceData: DataManager = new DataManager({
-    url: 'https://10.120.18.8:1880/resourceDatas',
+    url: 'https://10.120.18.8:1880/resourceDataNew',
     adaptor: new ODataV4Adaptor,
     crossDomain: true,
  });
 
   private resourceDatas: DataManager = new DataManager({
-    url: 'https://10.120.18.8:1880/resourceData',
+    url: 'https://10.120.18.8:1880/resourceDataNew',
     adaptor: new ODataV4Adaptor,
     crossDomain: false,
     offline: true,
  });   
 
  
+public urls: string = 'https://10.120.18.8:1880';
 
  private dataManagers: DataManager = new DataManager({
-  url: 'https://10.120.18.8:1880/resourceData', // 'controller/actions'
-  crudUrl: 'https://10.120.18.8:1880/ResourceDataUpdate',
+  url: `${this.urls}/resourceDataNew`, // 'controller/actions'
+  crudUrl: 'https://10.120.18.8:1880/ResourceDataUpdateNew',
   adaptor: new UrlAdaptor,
   crossDomain: false,
   // offline: true
 });
 
   open(){
-   
-      this.eventSettings
+    const contador = interval(100000)
+      contador.subscribe((n) => {
+        this.eventSettings
+        this.airCharge();
       console.log('testDivaces', this.eventSettings);
+      });
+      
   }
 
   public eventSettings: EventSettingsModel = { 
     
+    // dataSource: this.dataManagers as unknown as Record<string, any>[],
     dataSource: this.dataManagers,
     enableTooltip: true, 
     // dataSource: <Object[]>extend(this.dataManagers, this.resourceDatas, false)
   
   };
+
+  public onRenderCell(args: RenderCellEventArgs): void {
+    
+    if (args.elementType === 'emptyCells' && args.element.classList.contains('e-resource-left-td')) {
+      const target: HTMLElement = args.element.querySelector('.e-resource-text') as HTMLElement;
+      target.innerHTML = '<div class="text">Airline</div><div class="groupId">Make up</div><div class="color">color</div>';
+    }
+  }
 
 // public dataQuery: Query = new Query().from("Events").addParams('readOnly', 'true');
 
@@ -209,7 +246,7 @@ public onActionExcelBegin(args: ActionEventArgs & ToolbarActionArgs): void {
     args.items.push(exportItem);
   }
 }
-
+ 
 public onExportClick(): void {
   const exportValues: ExportOptions = { fields: ['Id', 'Subject', 'StartTime', 'EndTime'] };
   this.scheduleObj.exportToExcel(exportValues);

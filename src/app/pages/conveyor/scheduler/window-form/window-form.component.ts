@@ -85,6 +85,7 @@ export class WindowFormComponent implements OnInit {
   }
 
   public fields: Object = { text: 'text', value: 'id' };
+  public fields1: Object = { text: 'text', value: 'text' };
 
   initForm() {
     this.airForm = this.fb.group({
@@ -108,7 +109,7 @@ ChangeAir() {
 }
 
 changeCarr() {
-  this.http.get(this.api.apiUrlNode1 + '/GetMakeUpList')
+  this.http.get(this.api.apiUrlNode1 + '/GetMakeUpListNew')
     .pipe(takeWhile(() => this.alive))
     .subscribe((res: any)=>{
       this.carrData=res;
@@ -143,7 +144,7 @@ saveData(){
   if (MAKEData == undefined) {
     this.handleWrongResponse();
   }else{
-    this.apiGetComp.PostJson(this.api.apiUrlNode1 + '/PostDataResource', MAKEData).subscribe((res:any)=>{
+    this.apiGetComp.PostJson(this.api.apiUrlNode1 + '/PostDataResourceNew', MAKEData).subscribe((res:any)=>{
     this.handleSuccessResponse();
   });
 }

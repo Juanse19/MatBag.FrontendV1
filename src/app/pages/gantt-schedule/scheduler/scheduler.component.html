@@ -1,0 +1,29 @@
+<!-- <div class="control-section">
+    <ejs-gantt id="ganttDefault" height="430px" [dataSource]="data" [taskFields]="taskSettings" [allowSelection]="true"
+        [labelSettings]="labelSettings" height="400px" [projectStartDate]="projectStartDate" [projectEndDate]="projectEndDate"
+        [highlightWeekends]="true">
+    </ejs-gantt>
+</div>
+
+<br><br> -->
+
+<button
+        ejs-button
+        class="btn btn-primary"
+        status="info"
+        nbButton
+        (click)="openWindowForm()"
+      >
+        Agregar
+      </button> 
+
+<div class="control-section">
+    <ejs-gantt id="ganttDefault" height="430px" [dataSource]="ganttData" [taskFields]="taskSettings" 
+     [columns]="columns" [dayWorkingTime]="dayWorkingTime" [treeColumnIndex]="1"  [includeWeekend]="true"
+    [timelineSettings]="timelineSettings"  durationUnit="Hour"
+    dateFormat="dd-MM-yyyy hh:mm a" height="70%"  [labelSettings]="labelSettings" 
+    [highlightWeekends]="true" [gridLines]="gridLines" [allowSelection]="true" (actionComplete)="onActionComplete($event)"
+    [allowFiltering]="true" [allowSorting]="true" [allowResizing]="true" [splitterSettings]="splitterSettings" 
+    (toolbarClick)="toolbarClick($event)">
+    </ejs-gantt>
+</div>

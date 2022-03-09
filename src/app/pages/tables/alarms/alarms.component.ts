@@ -162,7 +162,7 @@ export class AlarmsComponent implements OnDestroy {
       { type: 'Cancel', buttonOption: { cssClass: 'e-flat', iconCss: 'e-cancel-icon e-icons' } }];
   
   }
-
+ 
 
 //   commandClick(args: CommandClickEventArgs): void {
 //     debugger
@@ -329,7 +329,7 @@ Delete(event): void {
       cancelButtonColor: '#d33',
       confirmButtonText: '¡Sí, Reconocer!'
     }).then(result => {
-      debugger 
+      // debugger 
       if (result.value) {
       const currentUserId = this.userStore.getUser().id;
           var respons = 
