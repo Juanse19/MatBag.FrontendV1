@@ -1827,7 +1827,7 @@ var AlarmsComponent = /** @class */ (function () {
                     cancelButtonColor: '#d33',
                     confirmButtonText: '¡Sí, Reconocer!'
                 }).then(function (result) {
-                    debugger;
+                    // debugger 
                     if (result.value) {
                         var currentUserId = _this.userStore.getUser().id;
                         var respons = {

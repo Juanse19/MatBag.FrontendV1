@@ -45,7 +45,8 @@ export class Bhs4Component implements OnInit {
   ngOnInit(): void {
     // this.banda4NameCharge();
     this.bandaNameCharge();
-    this.bandaStateCharge();
+    // this.bandaStateCharge();
+    this.bandaStatesCharge();
     // this.ChangeTeam();
     // this.teamsCharge();
     // this.bandaCharge();
@@ -89,6 +90,17 @@ export class Bhs4Component implements OnInit {
       this.divice=res;
       // console.log('Zons:', res , 'states');
       
+    });
+  }
+
+  public bandaStatesCharge(){
+
+    this.http.get(this.api.apiUrlNode1 + '/apizonestate?zone=zona5')
+    .pipe(takeWhile(() => this.alive))
+    .subscribe((res:any)=>{
+      this.states  = res;
+      this.bandaStateCharge();
+      console.log('static:', this.states);
     });
   }
 

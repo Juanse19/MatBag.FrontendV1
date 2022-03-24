@@ -87,15 +87,15 @@ export class AccumulationComponent  {
     this.loading = false;
     this.acumuData = res;
   });
-  const contador = interval(60000)
-  contador.subscribe((n) => {
-    this.http.get(this.api.apiUrlNode1 + '/aco')
-    .pipe(takeWhile(() => this.alive))
-    .subscribe((res: any) => {
-      this.acumuData = res;
-      this.loading = false;
-    });
-  });
+  // const contador = interval(60000)
+  // contador.subscribe((n) => {
+  //   this.http.get(this.api.apiUrlNode1 + '/aco')
+  //   .pipe(takeWhile(() => this.alive))
+  //   .subscribe((res: any) => {
+  //     this.acumuData = res;
+  //     this.loading = false;
+  //   });
+  // });
 }
 
  ngOnDestroy() {

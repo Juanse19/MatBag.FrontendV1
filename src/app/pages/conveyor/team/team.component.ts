@@ -4,9 +4,9 @@ import { NgxFilterByNumberComponent } from "../../../@components/custom-smart-ta
 import { LocalDataSource } from "ng2-smart-table";
 import { ApiGetService } from "../../../@core/backend/common/api/apiGet.services";
 import { HttpService } from "../../../@core/backend/common/api/http.service";
-import { takeWhile } from "rxjs/operators";
+import { switchMap, takeWhile } from "rxjs/operators";
 import { NbAccessChecker } from "@nebular/security";
-import { interval } from "rxjs";
+import { interval, Subscription } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import {
   GridComponent,
@@ -52,50 +52,11 @@ export class TeamComponent implements OnInit {
  
   public groupSettings: { [x: string]: Object } = { showDropArea: false, columns: ['ZoneName'] };
 
+  intervalSubscriptionTeam: Subscription;
+
   public refresh: Boolean;
     @ViewChild('grid')
     public grid: GridComponent;
-
-  settings = {
-    mode: "external",
-    actions: {
-      add: false,
-      edit: false,
-      delete: false,
-    },
-
-    columns: {
-      desc: {
-        title: "Conveyors",
-        type: "string",
-      },
-      State: {
-        title: "Estado",
-        type: "string",
-      },
-      power: {
-        title: "Energia",
-        filter: {
-          type: "custom",
-          component: NgxFilterByNumberComponent,
-        },
-      },
-      current: {
-        title: "Corriente",
-        filter: {
-          type: "custom",
-          component: NgxFilterByNumberComponent,
-        },
-      },
-      failure: {
-        title: "Mensaje",
-        type: "string",
-      },
-    },
-  };
-
-  source1: LocalDataSource = new LocalDataSource();
-  // public teamData: Team[];
 
   constructor(
     public apiGetComp: ApiGetService,
@@ -123,16 +84,35 @@ export class TeamComponent implements OnInit {
         // console.log('teamsData: ', res);
         this.loading = false;
         this.teamsData = res;
+        this.bandaTeamCharge();
       });
-    const contador = interval(60000);
-    contador.subscribe((n) => {
-      this.http
-        .get(this.api.apiUrlNode1 + "/api/team")
-        .pipe(takeWhile(() => this.alive))
-        .subscribe((res: any) => {
-          this.loading = false;
-          this.teamsData = res;
-        });
+    // const contador = interval(60000);
+    // contador.subscribe((n) => {
+    //   this.http
+    //     .get(this.api.apiUrlNode1 + "/api/team")
+    //     .pipe(takeWhile(() => this.alive))
+    //     .subscribe((res: any) => {
+    //       this.loading = false;
+    //       this.teamsData = res;
+    //       console.log('teamsData: ', this.teamsData);
+    //     });
+    // });
+  }
+
+  public bandaTeamCharge(){
+
+    if (this.intervalSubscriptionTeam) {
+      this.intervalSubscriptionTeam.unsubscribe();
+    }
+    
+    this.intervalSubscriptionTeam = interval(6000)
+    .pipe(
+      takeWhile(() => this.alive),
+      switchMap(() => this.http.get(this.api.apiUrlNode1 + '/api/team')),
+    )
+    .subscribe((res: any) => {
+      this.teamsData = res;
+        console.log('Equipos:', this.teamsData);
     });
   }
 

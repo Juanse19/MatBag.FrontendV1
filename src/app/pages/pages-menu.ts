@@ -468,12 +468,12 @@ export class PagesMenu {
       icon: 'calendar-outline',
       // link: '/pages/charts/charts-report',
       children:[
-        {
-          title: 'SchedulerPia',
-          link: '/pages/gantt/SchedulerPia',
-        },
+        // {
+        //   title: 'SchedulerPia',
+        //   link: '/pages/gantt/SchedulerPia',
+        // },
            {
-          title: 'Gantt',
+          title: 'Vuelos',
           link: '/pages/gantt',
         },
         // {
@@ -561,7 +561,7 @@ export class PagesMenu {
         //   link: '/pages/reports-pia/BoldReport',
         // },
         {
-          title: 'Informe diario',
+          title: 'Informe mensual',
           link: '/pages/reports-pia/report10',
         },
         // {
@@ -719,7 +719,7 @@ export class PagesMenu {
           // return [...dashboardMenu, orderMenu, userMenu, ...menu,registerMenu];
           // return [...dashboardMenu, orderMenu, reportMenu, analyticsMenu, userMenu, alarmMenu, registerMenu];
           // return [...dashboardMenu, orderMenu, sicsyncroMenu, repoMenu, analyticsMenu, userMenu, alarmMenu];
-          // return [...dashboardMenu, dassh2Menu, paraMenu, functionMenu, cosumeMenu, repocbisMenu, configurationMenu, alarmMenu];
+          // return [...dashboardMenu, dassh2Menu, SchedulerMenu, paraMenu, functionMenu, cosumeMenu, repocbisMenu, configurationMenu, alarmMenu];
           return [...dashboardMenu, functionMenu, SchedulerMenu, cosumeMenu, repocbisMenu, BSDMenu, configurationMenu, alarmMenu];
         } else {
           //return [...dashboardMenu, ...menu];

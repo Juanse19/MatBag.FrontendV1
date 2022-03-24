@@ -183,7 +183,7 @@ var Cl1_1Component = /** @class */ (function () {
     };
     Cl1_1Component.prototype.changeCL1_1 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_1')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_1')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -195,12 +195,13 @@ var Cl1_1Component = /** @class */ (function () {
                 res.CL1_1_KWh = 0;
             }
             else {
-                _this.TeamCL1_1 = res;
+                _this.TeamCL1_1 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_1 = this.decimalPipe.transform(this.TeamCL1_1?.CL1_1_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_1);
                 _this.velocidadCL1_1 = (_b = (_a = _this.TeamCL1_1) === null || _a === void 0 ? void 0 : _a.CL1_1_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_1();
         });
     };
     Cl1_1Component.prototype.dataCL1_1 = function () {
@@ -209,7 +210,7 @@ var Cl1_1Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_1'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_1'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -220,7 +221,7 @@ var Cl1_1Component = /** @class */ (function () {
                 res.CL1_1_KWh = 0;
             }
             else {
-                _this.TeamCL1_1 = res;
+                _this.TeamCL1_1 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_1 = (_b = (_a = _this.TeamCL1_1) === null || _a === void 0 ? void 0 : _a.CL1_1_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -235,7 +236,7 @@ var Cl1_1Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_1", 2, "display", "block", "height", "150px"], ["gaugeCL1_1", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_1Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_1", 2, "display", "block", "height", "150px"], ["gaugeCL1_1", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_1Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_1 ");
@@ -268,13 +269,14 @@ var Cl1_1Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -289,9 +291,9 @@ var Cl1_1Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_1 == null ? null : ctx.TeamCL1_1.CL1_1_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_1 == null ? null : ctx.TeamCL1_1.CL1_1_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_1 == null ? null : ctx.TeamCL1_1.CL1_1_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_1 == null ? null : ctx.TeamCL1_1.CL1_1_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_1 == null ? null : ctx.TeamCL1_1.CL1_1_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuMS9jbDEuMS5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Cl1_1Component;
 }());
@@ -494,7 +496,7 @@ var Cl1_10Component = /** @class */ (function () {
     };
     Cl1_10Component.prototype.changeCL1_10 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_10')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_10')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -506,12 +508,13 @@ var Cl1_10Component = /** @class */ (function () {
                 res.CL1_10_KWh = 0;
             }
             else {
-                _this.TeamCL1_10 = res;
+                _this.TeamCL1_10 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_10 = this.decimalPipe.transform(this.TeamCL1_10?.CL1_10_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_10);
                 _this.velocidadCL1_10 = (_b = (_a = _this.TeamCL1_10) === null || _a === void 0 ? void 0 : _a.CL1_10_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_10();
         });
     };
     Cl1_10Component.prototype.dataCL1_10 = function () {
@@ -520,7 +523,7 @@ var Cl1_10Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_10'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_10'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -531,7 +534,7 @@ var Cl1_10Component = /** @class */ (function () {
                 res.CL1_10_KWh = 0;
             }
             else {
-                _this.TeamCL1_10 = res;
+                _this.TeamCL1_10 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_10 = (_b = (_a = _this.TeamCL1_10) === null || _a === void 0 ? void 0 : _a.CL1_10_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -546,7 +549,7 @@ var Cl1_10Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_10", 2, "display", "block", "height", "150px"], ["gaugeCL1_10", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_10Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_10", 2, "display", "block", "height", "150px"], ["gaugeCL1_10", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_10Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_10 ");
@@ -579,13 +582,14 @@ var Cl1_10Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -600,9 +604,9 @@ var Cl1_10Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_10 == null ? null : ctx.TeamCL1_10.CL1_10_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_10 == null ? null : ctx.TeamCL1_10.CL1_10_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_10 == null ? null : ctx.TeamCL1_10.CL1_10_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_10 == null ? null : ctx.TeamCL1_10.CL1_10_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_10 == null ? null : ctx.TeamCL1_10.CL1_10_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuMTAvY2wxLjEwLmNvbXBvbmVudC5zY3NzIn0= */"] });
     return Cl1_10Component;
 }());
@@ -805,7 +809,7 @@ var Cl1_11Component = /** @class */ (function () {
     };
     Cl1_11Component.prototype.changeCL1_11 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_11')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_11')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -817,12 +821,13 @@ var Cl1_11Component = /** @class */ (function () {
                 res.CL1_11_KWh = 0;
             }
             else {
-                _this.TeamCL1_11 = res;
+                _this.TeamCL1_11 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_11 = this.decimalPipe.transform(this.TeamCL1_11?.CL1_11_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_11);
                 _this.velocidadCL1_11 = (_b = (_a = _this.TeamCL1_11) === null || _a === void 0 ? void 0 : _a.CL1_11_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_11();
         });
     };
     Cl1_11Component.prototype.dataCL1_11 = function () {
@@ -831,7 +836,7 @@ var Cl1_11Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_11'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_11'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -842,7 +847,7 @@ var Cl1_11Component = /** @class */ (function () {
                 res.CL1_11_KWh = 0;
             }
             else {
-                _this.TeamCL1_11 = res;
+                _this.TeamCL1_11 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_11 = (_b = (_a = _this.TeamCL1_11) === null || _a === void 0 ? void 0 : _a.CL1_11_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -857,7 +862,7 @@ var Cl1_11Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_11", 2, "display", "block", "height", "150px"], ["gaugeCL1_11", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_11Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_11", 2, "display", "block", "height", "150px"], ["gaugeCL1_11", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_11Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_11 ");
@@ -890,13 +895,14 @@ var Cl1_11Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -911,9 +917,9 @@ var Cl1_11Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_11 == null ? null : ctx.TeamCL1_11.CL1_11_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_11 == null ? null : ctx.TeamCL1_11.CL1_11_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_11 == null ? null : ctx.TeamCL1_11.CL1_11_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_11 == null ? null : ctx.TeamCL1_11.CL1_11_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_11 == null ? null : ctx.TeamCL1_11.CL1_11_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuMTEvY2wxLjExLmNvbXBvbmVudC5zY3NzIn0= */"] });
     return Cl1_11Component;
 }());
@@ -1116,7 +1122,7 @@ var Cl1_12Component = /** @class */ (function () {
     };
     Cl1_12Component.prototype.changeCL1_12 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_12')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_12')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -1128,12 +1134,13 @@ var Cl1_12Component = /** @class */ (function () {
                 res.CL1_12_KWh = 0;
             }
             else {
-                _this.TeamCL1_12 = res;
+                _this.TeamCL1_12 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_12 = this.decimalPipe.transform(this.TeamCL1_12?.CL1_12_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_12);
                 _this.velocidadCL1_12 = (_b = (_a = _this.TeamCL1_12) === null || _a === void 0 ? void 0 : _a.CL1_12_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_12();
         });
     };
     Cl1_12Component.prototype.dataCL1_12 = function () {
@@ -1142,7 +1149,7 @@ var Cl1_12Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_12'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_12'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -1153,7 +1160,7 @@ var Cl1_12Component = /** @class */ (function () {
                 res.CL1_12_KWh = 0;
             }
             else {
-                _this.TeamCL1_12 = res;
+                _this.TeamCL1_12 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_12 = (_b = (_a = _this.TeamCL1_12) === null || _a === void 0 ? void 0 : _a.CL1_12_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -1168,7 +1175,7 @@ var Cl1_12Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_12", 2, "display", "block", "height", "150px"], ["gaugeCL1_12", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_12Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_12", 2, "display", "block", "height", "150px"], ["gaugeCL1_12", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_12Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_12 ");
@@ -1201,13 +1208,14 @@ var Cl1_12Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1222,9 +1230,9 @@ var Cl1_12Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_12 == null ? null : ctx.TeamCL1_12.CL1_12_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_12 == null ? null : ctx.TeamCL1_12.CL1_12_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_12 == null ? null : ctx.TeamCL1_12.CL1_12_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_12 == null ? null : ctx.TeamCL1_12.CL1_12_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_12 == null ? null : ctx.TeamCL1_12.CL1_12_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuMTIvY2wxLjEyLmNvbXBvbmVudC5zY3NzIn0= */"] });
     return Cl1_12Component;
 }());
@@ -1427,7 +1435,7 @@ var Cl1_13Component = /** @class */ (function () {
     };
     Cl1_13Component.prototype.changeCL1_13 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_13')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_13')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -1439,12 +1447,13 @@ var Cl1_13Component = /** @class */ (function () {
                 res.CL1_13_KWh = 0;
             }
             else {
-                _this.TeamCL1_13 = res;
+                _this.TeamCL1_13 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_13 = this.decimalPipe.transform(this.TeamCL1_13?.CL1_13_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_13);
                 _this.velocidadCL1_13 = (_b = (_a = _this.TeamCL1_13) === null || _a === void 0 ? void 0 : _a.CL1_13_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_13();
         });
     };
     Cl1_13Component.prototype.dataCL1_13 = function () {
@@ -1453,7 +1462,7 @@ var Cl1_13Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_13'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_13'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -1464,7 +1473,7 @@ var Cl1_13Component = /** @class */ (function () {
                 res.CL1_13_KWh = 0;
             }
             else {
-                _this.TeamCL1_13 = res;
+                _this.TeamCL1_13 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_13 = (_b = (_a = _this.TeamCL1_13) === null || _a === void 0 ? void 0 : _a.CL1_13_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -1479,7 +1488,7 @@ var Cl1_13Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_13", 2, "display", "block", "height", "150px"], ["gaugeCL1_13", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_13Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_13", 2, "display", "block", "height", "150px"], ["gaugeCL1_13", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_13Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_13 ");
@@ -1512,13 +1521,14 @@ var Cl1_13Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1533,9 +1543,9 @@ var Cl1_13Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_13 == null ? null : ctx.TeamCL1_13.CL1_13_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_13 == null ? null : ctx.TeamCL1_13.CL1_13_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_13 == null ? null : ctx.TeamCL1_13.CL1_13_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_13 == null ? null : ctx.TeamCL1_13.CL1_13_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_13 == null ? null : ctx.TeamCL1_13.CL1_13_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuMTMvY2wxLjEzLmNvbXBvbmVudC5zY3NzIn0= */"] });
     return Cl1_13Component;
 }());
@@ -2049,7 +2059,7 @@ var Cl1_15Component = /** @class */ (function () {
     };
     Cl1_15Component.prototype.changeCL1_15 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_15')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_15')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -2061,12 +2071,13 @@ var Cl1_15Component = /** @class */ (function () {
                 res.CL1_15_KWh = 0;
             }
             else {
-                _this.TeamCL1_15 = res;
+                _this.TeamCL1_15 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_15 = this.decimalPipe.transform(this.TeamCL1_15?.CL1_15_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_15);
                 _this.velocidadCL1_15 = (_b = (_a = _this.TeamCL1_15) === null || _a === void 0 ? void 0 : _a.CL1_15_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_15();
         });
     };
     Cl1_15Component.prototype.dataCL1_15 = function () {
@@ -2075,7 +2086,7 @@ var Cl1_15Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_15'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_15'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -2086,7 +2097,7 @@ var Cl1_15Component = /** @class */ (function () {
                 res.CL1_15_KWh = 0;
             }
             else {
-                _this.TeamCL1_15 = res;
+                _this.TeamCL1_15 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_15 = (_b = (_a = _this.TeamCL1_15) === null || _a === void 0 ? void 0 : _a.CL1_15_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -2101,7 +2112,7 @@ var Cl1_15Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_15", 2, "display", "block", "height", "150px"], ["gaugeCL1_15", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_15Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_15", 2, "display", "block", "height", "150px"], ["gaugeCL1_15", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_15Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_15 ");
@@ -2134,13 +2145,14 @@ var Cl1_15Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2155,9 +2167,9 @@ var Cl1_15Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_15 == null ? null : ctx.TeamCL1_15.CL1_15_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_15 == null ? null : ctx.TeamCL1_15.CL1_15_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_15 == null ? null : ctx.TeamCL1_15.CL1_15_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_15 == null ? null : ctx.TeamCL1_15.CL1_15_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_15 == null ? null : ctx.TeamCL1_15.CL1_15_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuMTUvY2wxLjE1LmNvbXBvbmVudC5zY3NzIn0= */"] });
     return Cl1_15Component;
 }());
@@ -2360,7 +2372,7 @@ var Cl1_16Component = /** @class */ (function () {
     };
     Cl1_16Component.prototype.changeCL1_16 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_16')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_16')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -2372,12 +2384,13 @@ var Cl1_16Component = /** @class */ (function () {
                 res.CL1_16_KWh = 0;
             }
             else {
-                _this.TeamCL1_16 = res;
+                _this.TeamCL1_16 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_16 = this.decimalPipe.transform(this.TeamCL1_16?.CL1_16_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_16);
                 _this.velocidadCL1_16 = (_b = (_a = _this.TeamCL1_16) === null || _a === void 0 ? void 0 : _a.CL1_16_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_16();
         });
     };
     Cl1_16Component.prototype.dataCL1_16 = function () {
@@ -2386,7 +2399,7 @@ var Cl1_16Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_16'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_16'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -2397,7 +2410,7 @@ var Cl1_16Component = /** @class */ (function () {
                 res.CL1_16_KWh = 0;
             }
             else {
-                _this.TeamCL1_16 = res;
+                _this.TeamCL1_16 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_16 = (_b = (_a = _this.TeamCL1_16) === null || _a === void 0 ? void 0 : _a.CL1_16_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -2412,7 +2425,7 @@ var Cl1_16Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_16", 2, "display", "block", "height", "150px"], ["gaugeCL1_16", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_16Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_16", 2, "display", "block", "height", "150px"], ["gaugeCL1_16", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_16Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_16 ");
@@ -2445,13 +2458,14 @@ var Cl1_16Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2466,9 +2480,9 @@ var Cl1_16Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_16 == null ? null : ctx.TeamCL1_16.CL1_16_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_16 == null ? null : ctx.TeamCL1_16.CL1_16_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_16 == null ? null : ctx.TeamCL1_16.CL1_16_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_16 == null ? null : ctx.TeamCL1_16.CL1_16_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_16 == null ? null : ctx.TeamCL1_16.CL1_16_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuMTYvY2wxLjE2LmNvbXBvbmVudC5zY3NzIn0= */"] });
     return Cl1_16Component;
 }());
@@ -2671,7 +2685,7 @@ var Cl1_17Component = /** @class */ (function () {
     };
     Cl1_17Component.prototype.changeCL1_17 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_17')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_17')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -2683,12 +2697,13 @@ var Cl1_17Component = /** @class */ (function () {
                 res.CL1_17_KWh = 0;
             }
             else {
-                _this.TeamCL1_17 = res;
+                _this.TeamCL1_17 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_17 = this.decimalPipe.transform(this.TeamCL1_17?.CL1_17_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_17);
                 _this.velocidadCL1_17 = (_b = (_a = _this.TeamCL1_17) === null || _a === void 0 ? void 0 : _a.CL1_17_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_17();
         });
     };
     Cl1_17Component.prototype.dataCL1_17 = function () {
@@ -2697,7 +2712,7 @@ var Cl1_17Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_17'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_17'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -2708,7 +2723,7 @@ var Cl1_17Component = /** @class */ (function () {
                 res.CL1_17_KWh = 0;
             }
             else {
-                _this.TeamCL1_17 = res;
+                _this.TeamCL1_17 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_17 = (_b = (_a = _this.TeamCL1_17) === null || _a === void 0 ? void 0 : _a.CL1_17_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -2723,7 +2738,7 @@ var Cl1_17Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_17", 2, "display", "block", "height", "150px"], ["gaugeCL1_17", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_17Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_17", 2, "display", "block", "height", "150px"], ["gaugeCL1_17", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_17Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_17 ");
@@ -2756,13 +2771,14 @@ var Cl1_17Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2777,9 +2793,9 @@ var Cl1_17Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_17 == null ? null : ctx.TeamCL1_17.CL1_17_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_17 == null ? null : ctx.TeamCL1_17.CL1_17_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_17 == null ? null : ctx.TeamCL1_17.CL1_17_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_17 == null ? null : ctx.TeamCL1_17.CL1_17_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_17 == null ? null : ctx.TeamCL1_17.CL1_17_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuMTcvY2wxLjE3LmNvbXBvbmVudC5zY3NzIn0= */"] });
     return Cl1_17Component;
 }());
@@ -2982,7 +2998,7 @@ var Cl1_18Component = /** @class */ (function () {
     };
     Cl1_18Component.prototype.changeCL1_18 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_18')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_18')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -2994,12 +3010,13 @@ var Cl1_18Component = /** @class */ (function () {
                 res.CL1_18_KWh = 0;
             }
             else {
-                _this.TeamCL1_18 = res;
+                _this.TeamCL1_18 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_18 = this.decimalPipe.transform(this.TeamCL1_18?.CL1_18_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_18);
                 _this.velocidadCL1_18 = (_b = (_a = _this.TeamCL1_18) === null || _a === void 0 ? void 0 : _a.CL1_18_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_18();
         });
     };
     Cl1_18Component.prototype.dataCL1_18 = function () {
@@ -3008,7 +3025,7 @@ var Cl1_18Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_18'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_18'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -3019,7 +3036,7 @@ var Cl1_18Component = /** @class */ (function () {
                 res.CL1_18_KWh = 0;
             }
             else {
-                _this.TeamCL1_18 = res;
+                _this.TeamCL1_18 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_18 = (_b = (_a = _this.TeamCL1_18) === null || _a === void 0 ? void 0 : _a.CL1_18_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -3034,7 +3051,7 @@ var Cl1_18Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_18", 2, "display", "block", "height", "150px"], ["gaugeCL1_18", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_18Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_18", 2, "display", "block", "height", "150px"], ["gaugeCL1_18", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_18Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_18 ");
@@ -3067,13 +3084,14 @@ var Cl1_18Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -3088,9 +3106,9 @@ var Cl1_18Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_18 == null ? null : ctx.TeamCL1_18.CL1_18_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_18 == null ? null : ctx.TeamCL1_18.CL1_18_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_18 == null ? null : ctx.TeamCL1_18.CL1_18_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_18 == null ? null : ctx.TeamCL1_18.CL1_18_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_18 == null ? null : ctx.TeamCL1_18.CL1_18_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuMTgvY2wxLjE4LmNvbXBvbmVudC5zY3NzIn0= */"] });
     return Cl1_18Component;
 }());
@@ -3293,7 +3311,7 @@ var Cl1_2Component = /** @class */ (function () {
     };
     Cl1_2Component.prototype.changeCL1_2 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_2')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_2')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -3305,12 +3323,13 @@ var Cl1_2Component = /** @class */ (function () {
                 res.CL1_2_KWh = 0;
             }
             else {
-                _this.TeamCL1_2 = res;
+                _this.TeamCL1_2 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_2 = this.decimalPipe.transform(this.TeamCL1_2?.CL1_2_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_2);
                 _this.velocidadCL1_2 = (_b = (_a = _this.TeamCL1_2) === null || _a === void 0 ? void 0 : _a.CL1_2_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_2();
         });
     };
     Cl1_2Component.prototype.dataCL1_2 = function () {
@@ -3319,7 +3338,7 @@ var Cl1_2Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_2'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_2'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -3330,7 +3349,7 @@ var Cl1_2Component = /** @class */ (function () {
                 res.CL1_2_KWh = 0;
             }
             else {
-                _this.TeamCL1_2 = res;
+                _this.TeamCL1_2 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_2 = (_b = (_a = _this.TeamCL1_2) === null || _a === void 0 ? void 0 : _a.CL1_2_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -3345,7 +3364,7 @@ var Cl1_2Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_2", 2, "display", "block", "height", "150px"], ["gaugeCL1_2", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_2Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_2", 2, "display", "block", "height", "150px"], ["gaugeCL1_2", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_2Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_2 ");
@@ -3378,13 +3397,14 @@ var Cl1_2Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -3399,9 +3419,9 @@ var Cl1_2Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_2 == null ? null : ctx.TeamCL1_2.CL1_2_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_2 == null ? null : ctx.TeamCL1_2.CL1_2_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_2 == null ? null : ctx.TeamCL1_2.CL1_2_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_2 == null ? null : ctx.TeamCL1_2.CL1_2_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_2 == null ? null : ctx.TeamCL1_2.CL1_2_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuMi9jbDEuMi5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Cl1_2Component;
 }());
@@ -3604,7 +3624,7 @@ var Cl1_3Component = /** @class */ (function () {
     };
     Cl1_3Component.prototype.changeCL1_3 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_3')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_3')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -3616,12 +3636,13 @@ var Cl1_3Component = /** @class */ (function () {
                 res.CL1_3_KWh = 0;
             }
             else {
-                _this.TeamCL1_3 = res;
+                _this.TeamCL1_3 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_3 = this.decimalPipe.transform(this.TeamCL1_3?.CL1_3_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_3);
                 _this.velocidadCL1_3 = (_b = (_a = _this.TeamCL1_3) === null || _a === void 0 ? void 0 : _a.CL1_3_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_3();
         });
     };
     Cl1_3Component.prototype.dataCL1_3 = function () {
@@ -3630,7 +3651,7 @@ var Cl1_3Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_3'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_3'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -3641,7 +3662,7 @@ var Cl1_3Component = /** @class */ (function () {
                 res.CL1_3_KWh = 0;
             }
             else {
-                _this.TeamCL1_3 = res;
+                _this.TeamCL1_3 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_3 = (_b = (_a = _this.TeamCL1_3) === null || _a === void 0 ? void 0 : _a.CL1_3_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -3656,7 +3677,7 @@ var Cl1_3Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_3", 2, "display", "block", "height", "150px"], ["gaugeCL1_3", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_3Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_3", 2, "display", "block", "height", "150px"], ["gaugeCL1_3", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_3Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_3 ");
@@ -3689,13 +3710,14 @@ var Cl1_3Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -3710,9 +3732,9 @@ var Cl1_3Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_3 == null ? null : ctx.TeamCL1_3.CL1_3_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_3 == null ? null : ctx.TeamCL1_3.CL1_3_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_3 == null ? null : ctx.TeamCL1_3.CL1_3_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_3 == null ? null : ctx.TeamCL1_3.CL1_3_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_3 == null ? null : ctx.TeamCL1_3.CL1_3_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuMy9jbDEuMy5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Cl1_3Component;
 }());
@@ -3915,7 +3937,7 @@ var Cl1_4Component = /** @class */ (function () {
     };
     Cl1_4Component.prototype.changeCL1_4 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_4')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_4')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -3927,12 +3949,13 @@ var Cl1_4Component = /** @class */ (function () {
                 res.CL1_4_KWh = 0;
             }
             else {
-                _this.TeamCL1_4 = res;
+                _this.TeamCL1_4 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_4 = this.decimalPipe.transform(this.TeamCL1_4?.CL1_4_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_4);
                 _this.velocidadCL1_4 = (_b = (_a = _this.TeamCL1_4) === null || _a === void 0 ? void 0 : _a.CL1_4_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_4();
         });
     };
     Cl1_4Component.prototype.dataCL1_4 = function () {
@@ -3941,7 +3964,7 @@ var Cl1_4Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_4'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_4'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -3952,7 +3975,7 @@ var Cl1_4Component = /** @class */ (function () {
                 res.CL1_4_KWh = 0;
             }
             else {
-                _this.TeamCL1_4 = res;
+                _this.TeamCL1_4 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_4 = (_b = (_a = _this.TeamCL1_4) === null || _a === void 0 ? void 0 : _a.CL1_4_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -3967,7 +3990,7 @@ var Cl1_4Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_4", 2, "display", "block", "height", "150px"], ["gaugeCL1_4", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_4Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_4", 2, "display", "block", "height", "150px"], ["gaugeCL1_4", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_4Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_4 ");
@@ -4000,13 +4023,14 @@ var Cl1_4Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4021,9 +4045,9 @@ var Cl1_4Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_4 == null ? null : ctx.TeamCL1_4.CL1_4_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_4 == null ? null : ctx.TeamCL1_4.CL1_4_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_4 == null ? null : ctx.TeamCL1_4.CL1_4_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_4 == null ? null : ctx.TeamCL1_4.CL1_4_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_4 == null ? null : ctx.TeamCL1_4.CL1_4_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuNC9jbDEuNC5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Cl1_4Component;
 }());
@@ -4226,7 +4250,7 @@ var Cl1_5Component = /** @class */ (function () {
     };
     Cl1_5Component.prototype.changeCL1_5 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_5')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_5')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -4238,12 +4262,13 @@ var Cl1_5Component = /** @class */ (function () {
                 res.CL1_5_KWh = 0;
             }
             else {
-                _this.TeamCL1_5 = res;
+                _this.TeamCL1_5 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_5 = this.decimalPipe.transform(this.TeamCL1_5?.CL1_5_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_5);
                 _this.velocidadCL1_5 = (_b = (_a = _this.TeamCL1_5) === null || _a === void 0 ? void 0 : _a.CL1_5_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_5();
         });
     };
     Cl1_5Component.prototype.dataCL1_5 = function () {
@@ -4252,7 +4277,7 @@ var Cl1_5Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_5'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_5'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -4263,7 +4288,7 @@ var Cl1_5Component = /** @class */ (function () {
                 res.CL1_5_KWh = 0;
             }
             else {
-                _this.TeamCL1_5 = res;
+                _this.TeamCL1_5 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_5 = (_b = (_a = _this.TeamCL1_5) === null || _a === void 0 ? void 0 : _a.CL1_5_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -4278,7 +4303,7 @@ var Cl1_5Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_5", 2, "display", "block", "height", "150px"], ["gaugeCL1_5", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_5Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_5", 2, "display", "block", "height", "150px"], ["gaugeCL1_5", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_5Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_5 ");
@@ -4311,13 +4336,14 @@ var Cl1_5Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4332,9 +4358,9 @@ var Cl1_5Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_5 == null ? null : ctx.TeamCL1_5.CL1_5_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_5 == null ? null : ctx.TeamCL1_5.CL1_5_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_5 == null ? null : ctx.TeamCL1_5.CL1_5_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_5 == null ? null : ctx.TeamCL1_5.CL1_5_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_5 == null ? null : ctx.TeamCL1_5.CL1_5_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuNS9jbDEuNS5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Cl1_5Component;
 }());
@@ -4537,7 +4563,7 @@ var Cl1_6Component = /** @class */ (function () {
     };
     Cl1_6Component.prototype.changeCL1_6 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_6')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_6')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -4549,12 +4575,13 @@ var Cl1_6Component = /** @class */ (function () {
                 res.CL1_6_KWh = 0;
             }
             else {
-                _this.TeamCL1_6 = res;
+                _this.TeamCL1_6 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_6 = this.decimalPipe.transform(this.TeamCL1_6?.CL1_6_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_6);
                 _this.velocidadCL1_6 = (_b = (_a = _this.TeamCL1_6) === null || _a === void 0 ? void 0 : _a.CL1_6_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_6();
         });
     };
     Cl1_6Component.prototype.dataCL1_6 = function () {
@@ -4563,7 +4590,7 @@ var Cl1_6Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_6'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_6'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -4574,7 +4601,7 @@ var Cl1_6Component = /** @class */ (function () {
                 res.CL1_6_KWh = 0;
             }
             else {
-                _this.TeamCL1_6 = res;
+                _this.TeamCL1_6 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_6 = (_b = (_a = _this.TeamCL1_6) === null || _a === void 0 ? void 0 : _a.CL1_6_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -4589,7 +4616,7 @@ var Cl1_6Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_6", 2, "display", "block", "height", "150px"], ["gaugeCL1_6", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_6Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_6", 2, "display", "block", "height", "150px"], ["gaugeCL1_6", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_6Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_6 ");
@@ -4622,13 +4649,14 @@ var Cl1_6Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4643,9 +4671,9 @@ var Cl1_6Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_6 == null ? null : ctx.TeamCL1_6.CL1_6_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_6 == null ? null : ctx.TeamCL1_6.CL1_6_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_6 == null ? null : ctx.TeamCL1_6.CL1_6_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_6 == null ? null : ctx.TeamCL1_6.CL1_6_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_6 == null ? null : ctx.TeamCL1_6.CL1_6_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuNi9jbDEuNi5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Cl1_6Component;
 }());
@@ -4848,7 +4876,7 @@ var Cl1_7Component = /** @class */ (function () {
     };
     Cl1_7Component.prototype.changeCL1_7 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_7')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_7')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -4860,12 +4888,13 @@ var Cl1_7Component = /** @class */ (function () {
                 res.CL1_7_KWh = 0;
             }
             else {
-                _this.TeamCL1_7 = res;
+                _this.TeamCL1_7 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_7 = this.decimalPipe.transform(this.TeamCL1_7?.CL1_7_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_7);
                 _this.velocidadCL1_7 = (_b = (_a = _this.TeamCL1_7) === null || _a === void 0 ? void 0 : _a.CL1_7_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_7();
         });
     };
     Cl1_7Component.prototype.dataCL1_7 = function () {
@@ -4874,7 +4903,7 @@ var Cl1_7Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_7'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_7'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -4885,7 +4914,7 @@ var Cl1_7Component = /** @class */ (function () {
                 res.CL1_7_KWh = 0;
             }
             else {
-                _this.TeamCL1_7 = res;
+                _this.TeamCL1_7 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_7 = (_b = (_a = _this.TeamCL1_7) === null || _a === void 0 ? void 0 : _a.CL1_7_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -4900,7 +4929,7 @@ var Cl1_7Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_7", 2, "display", "block", "height", "150px"], ["gaugeCL1_7", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_7Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_7", 2, "display", "block", "height", "150px"], ["gaugeCL1_7", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_7Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_7 ");
@@ -4933,13 +4962,14 @@ var Cl1_7Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4954,9 +4984,9 @@ var Cl1_7Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_7 == null ? null : ctx.TeamCL1_7.CL1_7_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_7 == null ? null : ctx.TeamCL1_7.CL1_7_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_7 == null ? null : ctx.TeamCL1_7.CL1_7_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_7 == null ? null : ctx.TeamCL1_7.CL1_7_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_7 == null ? null : ctx.TeamCL1_7.CL1_7_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuNy9jbDEuNy5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Cl1_7Component;
 }());
@@ -5159,7 +5189,7 @@ var Cl1_8Component = /** @class */ (function () {
     };
     Cl1_8Component.prototype.changeCL1_8 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_8')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_8')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -5171,12 +5201,13 @@ var Cl1_8Component = /** @class */ (function () {
                 res.CL1_8_KWh = 0;
             }
             else {
-                _this.TeamCL1_8 = res;
+                _this.TeamCL1_8 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadCL1_8 = this.decimalPipe.transform(this.TeamCL1_8?.CL1_8_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamCL1_8);
                 _this.velocidadCL1_8 = (_b = (_a = _this.TeamCL1_8) === null || _a === void 0 ? void 0 : _a.CL1_8_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataCL1_8();
         });
     };
     Cl1_8Component.prototype.dataCL1_8 = function () {
@@ -5185,7 +5216,7 @@ var Cl1_8Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_8'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_8'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -5196,7 +5227,7 @@ var Cl1_8Component = /** @class */ (function () {
                 res.CL1_8_KWh = 0;
             }
             else {
-                _this.TeamCL1_8 = res;
+                _this.TeamCL1_8 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_8 = (_b = (_a = _this.TeamCL1_8) === null || _a === void 0 ? void 0 : _a.CL1_8_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -5211,7 +5242,7 @@ var Cl1_8Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_8", 2, "display", "block", "height", "150px"], ["gaugeCL1_8", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_8Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_8", 2, "display", "block", "height", "150px"], ["gaugeCL1_8", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_8Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_8 ");
@@ -5244,13 +5275,14 @@ var Cl1_8Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -5265,9 +5297,9 @@ var Cl1_8Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_8 == null ? null : ctx.TeamCL1_8.CL1_8_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_8 == null ? null : ctx.TeamCL1_8.CL1_8_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_8 == null ? null : ctx.TeamCL1_8.CL1_8_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_8 == null ? null : ctx.TeamCL1_8.CL1_8_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_8 == null ? null : ctx.TeamCL1_8.CL1_8_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuOC9jbDEuOC5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Cl1_8Component;
 }());
@@ -5470,7 +5502,7 @@ var Cl1_9Component = /** @class */ (function () {
     };
     Cl1_9Component.prototype.changeCL1_9 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CL1_9')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CL1_9')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -5482,11 +5514,12 @@ var Cl1_9Component = /** @class */ (function () {
                 res.CL1_9_KWh = 0;
             }
             else {
-                _this.TeamCL1_9 = res;
+                _this.TeamCL1_9 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_9 = (_b = _this.decimalPipe.transform((_a = _this.TeamCL1_9) === null || _a === void 0 ? void 0 : _a.CL1_9_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SF1_1:', _this.TeamCL1_9);
             }
+            _this.dataCL1_9();
         });
     };
     Cl1_9Component.prototype.dataCL1_9 = function () {
@@ -5495,7 +5528,7 @@ var Cl1_9Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CL1_9'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CL1_9'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
@@ -5506,7 +5539,7 @@ var Cl1_9Component = /** @class */ (function () {
                 res.CL1_9_KWh = 0;
             }
             else {
-                _this.TeamCL1_9 = res;
+                _this.TeamCL1_9 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCL1_9 = (_b = _this.decimalPipe.transform((_a = _this.TeamCL1_9) === null || _a === void 0 ? void 0 : _a.CL1_9_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('CL1_9:', (_c = _this.TeamCL1_9) === null || _c === void 0 ? void 0 : _c.CL1_9_VelocidadActualMotor);
@@ -5522,7 +5555,7 @@ var Cl1_9Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataCL1_9", 2, "display", "block", "height", "150px"], ["gaugeCL1_9", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_9Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataCL1_9", 2, "display", "block", "height", "150px"], ["gaugeCL1_9", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Cl1_9Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " CL1_9 ");
@@ -5555,13 +5588,14 @@ var Cl1_9Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -5576,9 +5610,9 @@ var Cl1_9Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamCL1_9 == null ? null : ctx.TeamCL1_9.CL1_9_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamCL1_9 == null ? null : ctx.TeamCL1_9.CL1_9_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamCL1_9 == null ? null : ctx.TeamCL1_9.CL1_9_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamCL1_9 == null ? null : ctx.TeamCL1_9.CL1_9_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamCL1_9 == null ? null : ctx.TeamCL1_9.CL1_9_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1jbC9jbDEuOS9jbDEuOS5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Cl1_9Component;
 }());

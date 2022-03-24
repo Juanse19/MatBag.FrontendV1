@@ -16,7 +16,7 @@ import {
   NbDatepickerModule,
   NbCheckboxModule,
 } from "@nebular/theme";
-
+import { ThemeModule } from '../../@theme/theme.module';
 import { GanttScheduleRoutingModule } from './gantt-schedule-routing.module';
 import { GanttScheduleComponent } from './gantt-schedule.component';
 import { GanttAllModule } from '@syncfusion/ej2-angular-gantt';
@@ -27,10 +27,14 @@ import { GanttModule } from '@syncfusion/ej2-angular-gantt';
 // import { SchedulerSitaComponent } from './scheduler-sita/scheduler-sita.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
-
+import { WindowsSchedulerComponent } from './windows-scheduler/windows-scheduler.component';
+import { DatePickerAllModule, TimePickerAllModule, DateTimePickerAllModule } from '@syncfusion/ej2-angular-calendars';
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { DropDownListAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
 @NgModule({
-  declarations: [GanttScheduleComponent, SchedulerganttComponent,  SchedulerComponent],
+  declarations: [GanttScheduleComponent, SchedulerganttComponent,  SchedulerComponent, WindowsSchedulerComponent],
   imports: [
     CommonModule,
     NbCardModule,
@@ -42,12 +46,23 @@ import { DialogModule } from '@syncfusion/ej2-angular-popups';
     NbListModule,
     NbIconModule,
     NbSpinnerModule,
+    NbActionsModule,
+    NbButtonModule,
     NbDatepickerModule,
     NbCheckboxModule,
     GanttScheduleRoutingModule,
     GanttAllModule,
     DialogModule,
+    ThemeModule,
+    NbDatepickerModule.forRoot(),
+    DatePickerAllModule, 
+    TimePickerAllModule, 
+    DateTimePickerAllModule,
+    DateTimePickerModule,
+    DatePickerModule,
+    DropDownListAllModule,
   ],
-  providers: [ EditService , FilterService, SortService, SelectionService,ToolbarService,DayMarkersService ]
+  providers: [ EditService , FilterService, SortService, SelectionService,ToolbarService,DayMarkersService ],
+  bootstrap: [GanttScheduleModule],
 })
 export class GanttScheduleModule { }

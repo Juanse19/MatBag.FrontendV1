@@ -3,39 +3,53 @@ import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { ApiGetService } from '../../../@core/backend/common/api/apiGet.services';
 import { HttpService } from '../../../@core/backend/common/api/http.service';
-import { takeWhile } from 'rxjs/operators';
+import { switchMap, takeWhile } from 'rxjs/operators';
 import { NbAccessChecker } from '@nebular/security';
-import { interval } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { GridComponent, PageSettingsModel, FilterSettingsModel, ToolbarItems, CommandModel } from '@syncfusion/ej2-angular-grids';
 import { ResizeService } from '@syncfusion/ej2-angular-grids';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NbToastrService } from '@nebular/theme';
+import { DatePipe } from '@angular/common';
 
 export interface ams {
-      Id: number,
-      Flight_Notification_Type: string,
-      Flight_Notification_RegisterTime: string,
-      Flight_FlightId_FlightKind: string,
-      Flight_FlightId_AirlineDesignator_IATA: string,
-      Flight_FlightId_FlightNumber: string,
-      Flight_FlightId_ScheduledDate: string,
-      Flight_FlightState_ScheduledTime: string,
-      Flight_FlightState_AircraftType_AircraftTypeId_AircraftTypeCode_IATA: string,
-      Flight_FlightState_AircraftType_AircraftTypeId_AircraftTypeCode_ICAO: string,
-      Flight_FlightState_Aircraft_AircraftId_Registration: string,
-      Flight_FlightState_Route_ViaPoints_RouteViaPoint_sequenceNumber: string,
-      Flight_FlightState_Route_ViaPoints_RouteViaPoint_AirportCode_IATA: string,
-      Flight_FlightState_Route_ViaPoints_RouteViaPoint_AirportCode_ICAO: string,
-      Flight_FlightState_propertyName_FlightUniqueID: string,
-      Flight_FlightState_ChuteSlots_ChuteSlot_propertyName_StartTime: string,
-      Flight_FlightState_ChuteSlots_ChuteSlot_propertyName_EndTime: string,
-      Flight_FlightState_ChuteSlots_ChuteSlot_propertyName_Category: string,
-      Flight_FlightState_ChuteSlots_ChuteSlot_Chute_propertyName_Name: string,
-      Flight_FlightChanges_Change_propertyName_Chutes_OldValue: string,
-      Flight_FlightChanges_Change_propertyName_Chutes_NewValue: string,
-      Flight_FlightChanges_Change_ChuteSlotsChange_OldValue_ChuteSlot_StartTime: string,
-      Flight_FlightChanges_Change_ChuteSlotsChange_OldValue_ChuteSlot_EndTime: string,
-      Flight_FlightChanges_Change_ChuteSlotsChange_NewValue_ChuteSlot_StartTime: string,
-      Flight_FlightChanges_Change_ChuteSlotsChange_NewValue_ChuteSlot_EndTime: string,
+  Id: number,
+  CreatedDate: string,
+  UpdatedDate: string,
+  DataVersion: string,
+  FlightIdFlightKind: string,
+  FlightIdAirlineDesignatorIATA: string,
+  FlightIdAirlineDesignatorICAO: string,
+  FlightIdFlightNumber: string,
+  FlightIdScheduledDate: string,
+  FlightIdAirportCodeIATA: string,
+  FlightIdAirportCodeICAO: string,
+  FlightStateScheduledTime: string,
+  FlightStateLinkedFlightFlightIdFlightKind: string,
+  FlightStateLinkedFlightFlightIdFlightKindIATA: string,
+  FlightStateLinkedFlightFlightIdFlightKindICAO: string,
+  FlightStateLinkedFlightFlightIdFlightNumber: string,
+  FlightStateLinkedFlightFlightIdScheduledDate: string,
+  FlightStateLinkedFlightFlightIdAirportCodeIATA: string,
+  FlightStateLinkedFlightFlightIdAirportCodeICAO: string,
+  FlightStateLinkedFlightFlightUniqueID: string,
+  FlightStateLinkedFlightScheduledTime: string,
+  FlightStateAircraftTypeAircraftTypeIdAircraftTypeCodeIATA: string,
+  FlightStateAircraftTypeAircraftTypeIdAircraftTypeCodeICAO: string,
+  FlightStateAircraftTypeName: string,
+  FlightStateAircraftAircraftIdRegistration: string,
+  FlightStateAircraftIsRetired: string,
+  FlightStateRouteattributescustomsType: string,
+  FlightStateRouteViaPointsRouteViaPointattributessequenceNumber: string,
+  FlightStateRouteViaPointsAirportCodeIATA: string,
+  FlightStateRouteViaPointsAirportCodeICAO: string,
+  FlightStateFlightUniqueID: string,
+  FlightStateChuteSlotsChuteSlotStartTime: string,
+  FlightStateChuteSlotsChuteSlotEndTime: string,
+  FlightStateChuteSlotsChuteSlotChuteName: string,
+  FlightStateChuteSlotsChuteSlotChuteExternalName: string,
+  SITAAMSFlightsResultWebServiceResultApiResponseID: number,
 }
 
 @Component({
@@ -47,6 +61,8 @@ export interface ams {
 export class MessageAMSComponent implements OnInit {
  
   ams = [];
+
+  public airForm: FormGroup;
 
   public amsData: ams[] = [];
 
@@ -72,11 +88,18 @@ export class MessageAMSComponent implements OnInit {
 
   public header: string;
   
+  intervalSubscriptionAms: Subscription;
+
+  get StartTime() { return this.airForm.get('StartTime'); }
+  get EndTime() { return this.airForm.get('EndTime'); }
 
   constructor(
+    private fb: FormBuilder,
     public apiGetComp: ApiGetService,
     private http: HttpClient,
-    private api: HttpService
+    private api: HttpService,
+    private miDatePipe: DatePipe,
+    private toastrService: NbToastrService,
     ) {
       this.loading = true;
     }
@@ -88,6 +111,62 @@ export class MessageAMSComponent implements OnInit {
       this.filterOptions = {
       type: 'Menu',
    }
+   this.initForm();
+  }
+
+  initForm() {
+    this.airForm = this.fb.group({
+      StartTime: ['', Validators.required],
+      EndTime: ['', Validators.required],
+    });
+  }
+
+  date(StartTime: string, EndTime: string){ 
+    // debugger
+
+    const fechaFormateada = this.miDatePipe.transform(StartTime, 'yyyy-MM-dd h:mm:ss a z');
+    const fechaFormateadaeTD = this.miDatePipe.transform(EndTime, 'yyyy-MM-dd h:mm:ss a zzzz');
+
+    console.log('fechaSTD: ', fechaFormateada);
+    console.log('fechaETD: ', fechaFormateadaeTD);
+
+    console.log('test: ', StartTime);
+
+    if (fechaFormateada == null && fechaFormateadaeTD == null) {
+      
+      this.toastrService.warning('', 'No pusiste la fecha.');
+
+    }else if (fechaFormateadaeTD < fechaFormateada ) {
+
+      this.toastrService.warning('', 'La fecha no puede ser menor.');
+
+    } 
+    else if ( fechaFormateada > fechaFormateadaeTD) {
+     
+      this.toastrService.warning('', 'La fecha no puede ser mayor.');
+
+    } 
+    else {
+      this.http.get(this.api.apiUrlNode1 + '/api/date?from='+ fechaFormateada + '&to=' + fechaFormateadaeTD)
+    .pipe(takeWhile(() => this.alive))
+    .subscribe((res: any)=>{
+      
+    });
+
+    let respons =
+        {
+          form: fechaFormateada,
+          to: fechaFormateadaeTD
+        }
+  
+        this.apiGetComp.PostJson(this.api.apiUrlNode1 + '/api/dates', respons)
+          .pipe(takeWhile(() => this.alive))
+          .subscribe((res: any) => {
+            // this.toastrService.success('', '¡Se edito licencia con exito!'); 
+            }); 
+
+    }
+
   }
 
   chargeDataAMS() {
@@ -134,15 +213,33 @@ export class MessageAMSComponent implements OnInit {
     //   }
     this.amsData = res;
     this.loading = false;
+    this.bandaAMSCharge();
     });
-    const contador = interval(40000)
-    contador.subscribe((n) => {
-      this.http.get(this.api.apiUrlNode1 + '/api/notificationAMS')
-      .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any) => {
-        this.amsData = res;
-        this.loading = false;
-      });
+    // const contador = interval(40000)
+    // contador.subscribe((n) => {
+    //   this.http.get(this.api.apiUrlNode1 + '/api/notificationAMS')
+    //   .pipe(takeWhile(() => this.alive))
+    //   .subscribe((res: any) => {
+    //     this.amsData = res;
+    //     this.loading = false;
+    //   });
+    // });
+  }
+
+  public bandaAMSCharge(){
+
+    if (this.intervalSubscriptionAms) {
+      this.intervalSubscriptionAms.unsubscribe();
+    }
+    
+    this.intervalSubscriptionAms = interval(16000)
+    .pipe(
+      takeWhile(() => this.alive),
+      switchMap(() => this.http.get(this.api.apiUrlNode1 + '/api/notificationAMS')),
+    )
+    .subscribe((res: any) => {
+      this.amsData = res;
+        console.log('Equipos:', this.amsData);
     });
   }
 

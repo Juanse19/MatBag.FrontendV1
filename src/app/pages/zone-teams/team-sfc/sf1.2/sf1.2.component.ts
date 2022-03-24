@@ -118,7 +118,7 @@ public tooltipInterval1: number;
 
   ngOnInit(): void {
     this.changeSF1_2();
-    this.dataSF1_2()
+    
   }
 
   gauge(){
@@ -205,7 +205,7 @@ public tooltipInterval1: number;
 
 
   changeSF1_2() {
-    this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF1_2')
+    this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SF1_2')
     .pipe(takeWhile(() => this.alive))
     .subscribe((res: any)=>{
       if (JSON.stringify(res)=='{}') {
@@ -216,12 +216,13 @@ public tooltipInterval1: number;
         // res.SF1_2_voltaje = 0;
         // res.SF1_2_KWh = 0;
       } else {
-      this.TeamSF1_2 = res
+      this.TeamSF1_2 = res[0]
       // this.dataSF1_1 = TeamSF1_1
       // this.velocidadSF1_2 = this.decimalPipe.transform(this.TeamSF1_2?.SF1_2_VelocidadActualMotor, '1.0-0') ?? 0;
       this.velocidadSF1_2 = this.TeamSF1_2?.SF1_2_VelocidadActualMotor ?? 0;
       // console.log('SF1_2:', this.TeamSF1_2);
     }
+    this.dataSF1_2()
     });
   }
 
@@ -233,7 +234,7 @@ public tooltipInterval1: number;
     this.intervalSubscriptionItems = interval(10000)
     .pipe(
       takeWhile(() => this.alive),
-      switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF1_2'))
+      switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SF1_2'))
     )
     .subscribe((res: any) => {
       if (JSON.stringify(res)=='{}') {
@@ -244,7 +245,7 @@ public tooltipInterval1: number;
             // res.SF1_2_voltaje = 0;
             // res.SF1_2_KWh = 0;
           } else {
-            this.TeamSF1_2 = res
+            this.TeamSF1_2 = res[0]
             // this.dataSF1_1 = TeamSF1_1
             // this.velocidadSF1_2 = this.decimalPipe.transform(this.TeamSF1_2?.SF1_2_VelocidadActualMotor) ?? 0;
             this.velocidadSF1_2 = this.TeamSF1_2?.SF1_2_VelocidadActualMotor ?? 0;

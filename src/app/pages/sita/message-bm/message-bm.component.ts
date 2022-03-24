@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { LocalDataSource } from "ng2-smart-table";
 import { ApiGetService } from "../../../@core/backend/common/api/apiGet.services";
 import { HttpService } from "../../../@core/backend/common/api/http.service";
-import { takeWhile } from "rxjs/operators";
+import { switchMap, takeWhile } from "rxjs/operators";
 import { NbAccessChecker } from "@nebular/security";
-import { interval } from "rxjs";
+import { interval, Subscription } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import {
   GridComponent,
@@ -70,6 +70,8 @@ export class MessageBMComponent implements OnInit {
 
   public header: string;
 
+  intervalSubscriptionBm: Subscription;
+
   constructor(
     public apiGetComp: ApiGetService,
     private http: HttpClient,
@@ -94,15 +96,33 @@ export class MessageBMComponent implements OnInit {
         // console.log('acoData: ', res);
         this.loading = false;
         this.bagMessageData = res;
+        this.bandaBmCharge();
       });
-      const contador = interval(60000)
-      contador.subscribe((n) => {
-        this.http.get(this.api.apiUrlNode1 + '/api/notificationBM')
-        .pipe(takeWhile(() => this.alive))
-        .subscribe((res: any) => {
-          this.bagMessageData = res;
-          this.loading = false;
-        });
+      // const contador = interval(60000)
+      // contador.subscribe((n) => {
+      //   this.http.get(this.api.apiUrlNode1 + '/api/notificationBM')
+      //   .pipe(takeWhile(() => this.alive))
+      //   .subscribe((res: any) => {
+      //     this.bagMessageData = res;
+      //     this.loading = false;
+      //   });
+      // });
+    }
+
+    public bandaBmCharge(){
+
+      if (this.intervalSubscriptionBm) {
+        this.intervalSubscriptionBm.unsubscribe();
+      }
+      
+      this.intervalSubscriptionBm = interval(16000)
+      .pipe(
+        takeWhile(() => this.alive),
+        switchMap(() => this.http.get(this.api.apiUrlNode1 + '/api/notificationBM')),
+      )
+      .subscribe((res: any) => {
+        this.bagMessageData = res;
+          // console.log('Equipos:', this.bagMessageData);
       });
     }
 

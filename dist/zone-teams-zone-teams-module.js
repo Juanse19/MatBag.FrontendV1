@@ -45655,7 +45655,7 @@ var ImageDecoder = /** @class */ (function () {
 /*!************************************************************************************************************************************************!*\
   !*** ./node_modules/@syncfusion/ej2-angular-circulargauge/node_modules/@syncfusion/ej2-pdf-export/src/implementation/graphics/images/index.js ***!
   \************************************************************************************************************************************************/
-/*! exports provided: ByteArray, ImageFormat, ImageDecoder, PdfBitmap, PdfImage */
+/*! exports provided: PdfBitmap, PdfImage, ByteArray, ImageFormat, ImageDecoder */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66963,7 +66963,7 @@ var Cs1_3Component = /** @class */ (function () {
     };
     Cs1_3Component.prototype.changeCS1_3M01 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CS1_3M01')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CS1_3M01')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -66975,7 +66975,7 @@ var Cs1_3Component = /** @class */ (function () {
                 res.CS1_3M01_KWh = 0;
             }
             else {
-                _this.TeamCS1_3M01 = res;
+                _this.TeamCS1_3M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS1_3M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS1_3M01) === null || _a === void 0 ? void 0 : _a.CS1_3M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SF1_1:', _this.TeamCS1_3M01);
@@ -66988,7 +66988,7 @@ var Cs1_3Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CS1_3M01'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CS1_3M01'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
@@ -66999,7 +66999,7 @@ var Cs1_3Component = /** @class */ (function () {
                 res.CS1_3M01_KWh = 0;
             }
             else {
-                _this.TeamCS1_3M01 = res;
+                _this.TeamCS1_3M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS1_3M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS1_3M01) === null || _a === void 0 ? void 0 : _a.CS1_3M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('CS1_3M01:', (_c = _this.TeamCS1_3M01) === null || _c === void 0 ? void 0 : _c.CS1_3M01_VelocidadActualMotor);
@@ -67278,7 +67278,7 @@ var Cs1_4Component = /** @class */ (function () {
     };
     Cs1_4Component.prototype.changeCS1_4M01 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CS1_4M01')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CS1_4M01')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -67290,11 +67290,12 @@ var Cs1_4Component = /** @class */ (function () {
                 res.CS1_4M01_KWh = 0;
             }
             else {
-                _this.TeamCS1_4M01 = res;
+                _this.TeamCS1_4M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS1_4M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS1_4M01) === null || _a === void 0 ? void 0 : _a.CS1_4M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SF1_1:', _this.TeamCS1_4M01);
             }
+            _this.dataCS1_4M01();
         });
     };
     Cs1_4Component.prototype.dataCS1_4M01 = function () {
@@ -67303,7 +67304,7 @@ var Cs1_4Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CS1_4M01'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CS1_4M01'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
@@ -67314,7 +67315,7 @@ var Cs1_4Component = /** @class */ (function () {
                 res.CS1_4M01_KWh = 0;
             }
             else {
-                _this.TeamCS1_4M01 = res;
+                _this.TeamCS1_4M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS1_4M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS1_4M01) === null || _a === void 0 ? void 0 : _a.CS1_4M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('CS1_4M01:', (_c = _this.TeamCS1_4M01) === null || _c === void 0 ? void 0 : _c.CS1_4M01_VelocidadActualMotor);
@@ -67593,7 +67594,7 @@ var Cs1_5Component = /** @class */ (function () {
     };
     Cs1_5Component.prototype.changeCS1_5M01 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CS1_5M01')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CS1_5M01')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -67605,11 +67606,12 @@ var Cs1_5Component = /** @class */ (function () {
                 res.CS1_5M01_KWh = 0;
             }
             else {
-                _this.TeamCS1_5M01 = res;
+                _this.TeamCS1_5M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS1_5M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS1_5M01) === null || _a === void 0 ? void 0 : _a.CS1_5M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SF1_1:', _this.TeamCS1_5M01);
             }
+            _this.dataCS1_5M01();
         });
     };
     Cs1_5Component.prototype.dataCS1_5M01 = function () {
@@ -67618,7 +67620,7 @@ var Cs1_5Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CS1_5M01'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CS1_5M01'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
@@ -67629,7 +67631,7 @@ var Cs1_5Component = /** @class */ (function () {
                 res.CS1_5M01_KWh = 0;
             }
             else {
-                _this.TeamCS1_5M01 = res;
+                _this.TeamCS1_5M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS1_5M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS1_5M01) === null || _a === void 0 ? void 0 : _a.CS1_5M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('CS1_5M01:', (_c = _this.TeamCS1_5M01) === null || _c === void 0 ? void 0 : _c.CS1_5M01_VelocidadActualMotor);
@@ -67908,7 +67910,7 @@ var Cs1_6Component = /** @class */ (function () {
     };
     Cs1_6Component.prototype.changeCS1_6M01 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CS1_6M01')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CS1_6M01')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -67920,11 +67922,12 @@ var Cs1_6Component = /** @class */ (function () {
                 res.CS1_6M01_KWh = 0;
             }
             else {
-                _this.TeamCS1_6M01 = res;
+                _this.TeamCS1_6M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS1_6M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS1_6M01) === null || _a === void 0 ? void 0 : _a.CS1_6M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SF1_1:', _this.TeamCS1_6M01);
             }
+            _this.dataCS1_6M01();
         });
     };
     Cs1_6Component.prototype.dataCS1_6M01 = function () {
@@ -67933,18 +67936,18 @@ var Cs1_6Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CS1_6M01'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CS1_6M01'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
-                console.log('no hay data CS1_6M01');
+                // console.log('no hay data CS1_6M01');
                 res.CS1_6M01_VelocidadActualMotor = 0;
                 res.CS1_6M01_CorrienteActualMotor = 0;
                 res.CS1_6M01_PotenciaActualMotor = 0;
                 res.CS1_6M01_KWh = 0;
             }
             else {
-                _this.TeamCS1_6M01 = res;
+                _this.TeamCS1_6M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS1_6M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS1_6M01) === null || _a === void 0 ? void 0 : _a.CS1_6M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('CS1_6M01:', (_c = _this.TeamCS1_6M01) === null || _c === void 0 ? void 0 : _c.CS1_6M01_VelocidadActualMotor);
@@ -68223,23 +68226,24 @@ var Cs1_7Component = /** @class */ (function () {
     };
     Cs1_7Component.prototype.changeCS1_7M01 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CS1_7M01')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CS1_7M01')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
-                console.log('No hay data CS1_7M01');
+                // console.log('No hay data CS1_7M01');
                 res.CS1_7M01_VelocidadActualMotor = 0;
                 res.CS1_7M01_CorrienteActualMotor = 0;
                 res.CS1_7M01_PotenciaActualMotor = 0;
                 res.CS1_7M01_KWh = 0;
             }
             else {
-                _this.TeamCS1_7M01 = res;
+                _this.TeamCS1_7M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS1_7M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS1_7M01) === null || _a === void 0 ? void 0 : _a.CS1_7M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SF1_1:', _this.TeamCS1_7M01);
             }
+            _this.dataCS1_7M01();
         });
     };
     Cs1_7Component.prototype.dataCS1_7M01 = function () {
@@ -68248,18 +68252,18 @@ var Cs1_7Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CS1_7M01'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CS1_7M01'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
-                console.log('no hay data CS1_7M01');
+                // console.log('no hay data CS1_7M01');
                 res.CS1_7M01_VelocidadActualMotor = 0;
                 res.CS1_7M01_CorrienteActualMotor = 0;
                 res.CS1_7M01_PotenciaActualMotor = 0;
                 res.CS1_7M01_KWh = 0;
             }
             else {
-                _this.TeamCS1_7M01 = res;
+                _this.TeamCS1_7M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS1_7M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS1_7M01) === null || _a === void 0 ? void 0 : _a.CS1_7M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('CS1_7M01:', (_c = _this.TeamCS1_7M01) === null || _c === void 0 ? void 0 : _c.CS1_7M01_VelocidadActualMotor);
@@ -69154,7 +69158,7 @@ var Cs3_3Component = /** @class */ (function () {
     };
     Cs3_3Component.prototype.changeCS3_3M01 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CS3_3M01')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CS3_3M01')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -69166,11 +69170,12 @@ var Cs3_3Component = /** @class */ (function () {
                 res.CS3_3M01_KWh = 0;
             }
             else {
-                _this.TeamCS3_3M01 = res;
+                _this.TeamCS3_3M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS3_3M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS3_3M01) === null || _a === void 0 ? void 0 : _a.CS3_3M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SF1_1:', _this.TeamCS3_3M01);
             }
+            _this.dataCS3_3M01();
         });
     };
     Cs3_3Component.prototype.dataCS3_3M01 = function () {
@@ -69179,7 +69184,7 @@ var Cs3_3Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CS3_3M01'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CS3_3M01'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
@@ -69190,7 +69195,7 @@ var Cs3_3Component = /** @class */ (function () {
                 res.CS3_3M01_KWh = 0;
             }
             else {
-                _this.TeamCS3_3M01 = res;
+                _this.TeamCS3_3M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS3_3M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS3_3M01) === null || _a === void 0 ? void 0 : _a.CS3_3M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('CS3_3M01:', (_c = _this.TeamCS3_3M01) === null || _c === void 0 ? void 0 : _c.CS3_3M01_VelocidadActualMotor);
@@ -69469,7 +69474,7 @@ var Cs3_4Component = /** @class */ (function () {
     };
     Cs3_4Component.prototype.changeCS3_4M01 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CS3_4M01')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CS3_4M01')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -69481,11 +69486,12 @@ var Cs3_4Component = /** @class */ (function () {
                 res.CS3_4M01_KWh = 0;
             }
             else {
-                _this.TeamCS3_4M01 = res;
+                _this.TeamCS3_4M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS3_4M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS3_4M01) === null || _a === void 0 ? void 0 : _a.CS3_4M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SF1_1:', _this.TeamCS3_4M01);
             }
+            _this.dataCS3_4M01();
         });
     };
     Cs3_4Component.prototype.dataCS3_4M01 = function () {
@@ -69494,18 +69500,18 @@ var Cs3_4Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CS3_4M01'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CS3_4M01'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
-                console.log('no hay data CS3_4M01');
+                // console.log('no hay data CS3_4M01');
                 res.CS3_4M01_VelocidadActualMotor = 0;
                 res.CS3_4M01_CorrienteActualMotor = 0;
                 res.CS3_4M01_PotenciaActualMotor = 0;
                 res.CS3_4M01_KWh = 0;
             }
             else {
-                _this.TeamCS3_4M01 = res;
+                _this.TeamCS3_4M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS3_4M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS3_4M01) === null || _a === void 0 ? void 0 : _a.CS3_4M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('CS3_4M01:', (_c = _this.TeamCS3_4M01) === null || _c === void 0 ? void 0 : _c.CS3_4M01_VelocidadActualMotor);
@@ -69784,7 +69790,7 @@ var Cs3_5Component = /** @class */ (function () {
     };
     Cs3_5Component.prototype.changeCS3_5M01 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CS3_5M01')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CS3_5M01')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -69796,11 +69802,12 @@ var Cs3_5Component = /** @class */ (function () {
                 res.CS3_5M01_KWh = 0;
             }
             else {
-                _this.TeamCS3_5M01 = res;
+                _this.TeamCS3_5M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS3_5M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS3_5M01) === null || _a === void 0 ? void 0 : _a.CS3_5M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SF1_1:', _this.TeamCS3_5M01);
             }
+            _this.dataCS3_5M01();
         });
     };
     Cs3_5Component.prototype.dataCS3_5M01 = function () {
@@ -69809,7 +69816,7 @@ var Cs3_5Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CS3_5M01'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CS3_5M01'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
@@ -69820,7 +69827,7 @@ var Cs3_5Component = /** @class */ (function () {
                 res.CS3_5M01_KWh = 0;
             }
             else {
-                _this.TeamCS3_5M01 = res;
+                _this.TeamCS3_5M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS3_5M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS3_5M01) === null || _a === void 0 ? void 0 : _a.CS3_5M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('CS3_5M01:', (_c = _this.TeamCS3_5M01) === null || _c === void 0 ? void 0 : _c.CS3_5M01_VelocidadActualMotor);
@@ -70099,7 +70106,7 @@ var Cs3_6Component = /** @class */ (function () {
     };
     Cs3_6Component.prototype.changeCS3_6M01 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CS3_6M01')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CS3_6M01')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -70111,11 +70118,12 @@ var Cs3_6Component = /** @class */ (function () {
                 res.CS3_6M01_KWh = 0;
             }
             else {
-                _this.TeamCS3_6M01 = res;
+                _this.TeamCS3_6M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS3_6M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS3_6M01) === null || _a === void 0 ? void 0 : _a.CS3_6M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SF1_1:', _this.TeamCS3_6M01);
             }
+            _this.dataCS3_6M01();
         });
     };
     Cs3_6Component.prototype.dataCS3_6M01 = function () {
@@ -70124,18 +70132,18 @@ var Cs3_6Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CS3_6M01'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CS3_6M01'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
-                console.log('no hay data CS3_6M01');
+                // console.log('no hay data CS3_6M01');
                 res.CS3_6M01_VelocidadActualMotor = 0;
                 res.CS3_6M01_CorrienteActualMotor = 0;
                 res.CS3_6M01_PotenciaActualMotor = 0;
                 res.CS3_6M01_KWh = 0;
             }
             else {
-                _this.TeamCS3_6M01 = res;
+                _this.TeamCS3_6M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS3_6M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS3_6M01) === null || _a === void 0 ? void 0 : _a.CS3_6M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('CS3_6M01:', (_c = _this.TeamCS3_6M01) === null || _c === void 0 ? void 0 : _c.CS3_6M01_VelocidadActualMotor);
@@ -70414,23 +70422,24 @@ var Cs3_7Component = /** @class */ (function () {
     };
     Cs3_7Component.prototype.changeCS3_7M01 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/CS3_7M01')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/CS3_7M01')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
-                console.log('No hay data CS3_7M01');
+                // console.log('No hay data CS3_7M01');
                 res.CS3_7M01_VelocidadActualMotor = 0;
                 res.CS3_7M01_CorrienteActualMotor = 0;
                 res.CS3_7M01_PotenciaActualMotor = 0;
                 res.CS3_7M01_KWh = 0;
             }
             else {
-                _this.TeamCS3_7M01 = res;
+                _this.TeamCS3_7M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS3_7M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS3_7M01) === null || _a === void 0 ? void 0 : _a.CS3_7M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SF1_1:', _this.TeamCS3_7M01);
             }
+            _this.dataCS3_7M01();
         });
     };
     Cs3_7Component.prototype.dataCS3_7M01 = function () {
@@ -70439,18 +70448,18 @@ var Cs3_7Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/CS3_7M01'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/CS3_7M01'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
-                console.log('no hay data CS3_7M01');
+                // console.log('no hay data CS3_7M01');
                 res.CS3_7M01_VelocidadActualMotor = 0;
                 res.CS3_7M01_CorrienteActualMotor = 0;
                 res.CS3_7M01_PotenciaActualMotor = 0;
                 res.CS3_7M01_KWh = 0;
             }
             else {
-                _this.TeamCS3_7M01 = res;
+                _this.TeamCS3_7M01 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadCS3_7M01 = (_b = _this.decimalPipe.transform((_a = _this.TeamCS3_7M01) === null || _a === void 0 ? void 0 : _a.CS3_7M01_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('CS3_7M01:', (_c = _this.TeamCS3_7M01) === null || _c === void 0 ? void 0 : _c.CS3_7M01_VelocidadActualMotor);
@@ -70662,7 +70671,7 @@ var Sf1_1Component = /** @class */ (function () {
     }
     Sf1_1Component.prototype.ngOnInit = function () {
         this.changeSF1_1();
-        this.dataSF1();
+        // this.dataSF1()
     };
     Sf1_1Component.prototype.gauge = function () {
         if (document.getElementById('sample-data')) {
@@ -70755,6 +70764,7 @@ var Sf1_1Component = /** @class */ (function () {
                 _this.velocidadSf1_1 = (_b = (_a = _this.TeamSF1_1) === null || _a === void 0 ? void 0 : _a.SF1_1_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('Api/SF1_1:', _this.TeamSF1_1);
             }
+            _this.dataSF1();
         });
     };
     Sf1_1Component.prototype.dataSF1 = function () {
@@ -70792,7 +70802,7 @@ var Sf1_1Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.sf1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "container_1", 2, "display", "block", "height", "150px"], ["gauge1", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Sf1_1Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "container_1", 2, "display", "block", "height", "150px"], ["gauge1", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Sf1_1Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " SF1-1 ");
@@ -70825,13 +70835,14 @@ var Sf1_1Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -70846,9 +70857,9 @@ var Sf1_1Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamSF1_1 == null ? null : ctx.TeamSF1_1.SF1_1_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamSF1_1 == null ? null : ctx.TeamSF1_1.SF1_1_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamSF1_1 == null ? null : ctx.TeamSF1_1.SF1_1_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamSF1_1 == null ? null : ctx.TeamSF1_1.SF1_1_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamSF1_1 == null ? null : ctx.TeamSF1_1.SF1_1_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1zZmMvc2YxLjEvc2YxLjEuY29tcG9uZW50LnNjc3MifQ== */"], encapsulation: 2 });
     Sf1_1Component.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: Sf1_1Component, factory: Sf1_1Component.ɵfac, providedIn: 'root' });
     return Sf1_1Component;
@@ -70984,7 +70995,6 @@ var Sf1_2Component = /** @class */ (function () {
     }
     Sf1_2Component.prototype.ngOnInit = function () {
         this.changeSF1_2();
-        this.dataSF1_2();
     };
     Sf1_2Component.prototype.gauge = function () {
         if (document.getElementById('sample-data')) {
@@ -71058,7 +71068,7 @@ var Sf1_2Component = /** @class */ (function () {
     };
     Sf1_2Component.prototype.changeSF1_2 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF1_2')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SF1_2')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -71071,12 +71081,13 @@ var Sf1_2Component = /** @class */ (function () {
                 // res.SF1_2_KWh = 0;
             }
             else {
-                _this.TeamSF1_2 = res;
+                _this.TeamSF1_2 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadSF1_2 = this.decimalPipe.transform(this.TeamSF1_2?.SF1_2_VelocidadActualMotor, '1.0-0') ?? 0;
                 _this.velocidadSF1_2 = (_b = (_a = _this.TeamSF1_2) === null || _a === void 0 ? void 0 : _a.SF1_2_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
                 // console.log('SF1_2:', this.TeamSF1_2);
             }
+            _this.dataSF1_2();
         });
     };
     Sf1_2Component.prototype.dataSF1_2 = function () {
@@ -71085,7 +71096,7 @@ var Sf1_2Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(10000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/SF1_2'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/SF1_2'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -71097,7 +71108,7 @@ var Sf1_2Component = /** @class */ (function () {
                 // res.SF1_2_KWh = 0;
             }
             else {
-                _this.TeamSF1_2 = res;
+                _this.TeamSF1_2 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadSF1_2 = this.decimalPipe.transform(this.TeamSF1_2?.SF1_2_VelocidadActualMotor) ?? 0;
                 _this.velocidadSF1_2 = (_b = (_a = _this.TeamSF1_2) === null || _a === void 0 ? void 0 : _a.SF1_2_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
@@ -71114,7 +71125,7 @@ var Sf1_2Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 31, vars: 12, consts: [["id", "sample-dataSF1_2", 2, "display", "block", "height", "150px"], ["gaugeSF1_2", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Sf1_2Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 33, vars: 16, consts: [["id", "sample-dataSF1_2", 2, "display", "block", "height", "150px"], ["gaugeSF1_2", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Sf1_2Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " SF1_2 ");
@@ -71145,19 +71156,21 @@ var Sf1_2Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "Potencia:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](22, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "pre", 5);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Voltaje:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "pre", 5);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "pre", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](30, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](32, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -71170,11 +71183,11 @@ var Sf1_2Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("  ", ctx.TeamSF1_2 == null ? null : ctx.TeamSF1_2.SF1_2_CorrienteActualMotor, "  \u00A0 ");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamSF1_2 == null ? null : ctx.TeamSF1_2.SF1_2_PotenciaActualMotor, " \u00A0 W");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamSF1_2 == null ? null : ctx.TeamSF1_2.SF1_2_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](30, 10, ctx.TeamSF1_2 == null ? null : ctx.TeamSF1_2.SF1_2_KWh), "   kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](22, 10, ctx.TeamSF1_2 == null ? null : ctx.TeamSF1_2.SF1_2_PotenciaActualMotor), " \u00A0 W");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 12, ctx.TeamSF1_2 == null ? null : ctx.TeamSF1_2.SF1_2_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](32, 14, ctx.TeamSF1_2 == null ? null : ctx.TeamSF1_2.SF1_2_KWh), "   kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1zZmMvc2YxLjIvc2YxLjIuY29tcG9uZW50LnNjc3MifQ== */"], encapsulation: 2 });
     Sf1_2Component.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: Sf1_2Component, factory: Sf1_2Component.ɵfac, providedIn: 'root' });
     return Sf1_2Component;
@@ -71320,7 +71333,6 @@ var Sf3_1Component = /** @class */ (function () {
     Sf3_1Component.prototype.ngOnInit = function () {
         this.changeSF3_1();
         // this.test3();
-        this.dataSF3();
     };
     Sf3_1Component.prototype.test3 = function () {
         var _this = this;
@@ -71384,7 +71396,7 @@ var Sf3_1Component = /** @class */ (function () {
     };
     Sf3_1Component.prototype.changeSF3_1 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF3_1')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SF3_1')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (data) {
             var _a;
@@ -71396,12 +71408,13 @@ var Sf3_1Component = /** @class */ (function () {
                 // data.SF3_1_CorrienteActualMotor = 0;
             }
             else {
-                _this.TeamSF3_1 = data;
+                _this.TeamSF3_1 = data[0];
                 // this.dataSF3_1 = TeamSF3_1
                 // this.velocidadSf3_1 =  this.decimalPipe.transform( this.TeamSF3_1.SF3_1_VelocidadActualMotor, '1.0-0') ?? 0;
                 _this.velocidadSf3_1 = (_a = _this.TeamSF3_1.SF3_1_VelocidadActualMotor, (_a !== null && _a !== void 0 ? _a : 0));
                 // console.log('SF3:', this.velocidadSf3_1);
             }
+            _this.dataSF3();
         });
     };
     Sf3_1Component.prototype.dataSF3 = function () {
@@ -71410,7 +71423,7 @@ var Sf3_1Component = /** @class */ (function () {
             this.intervalSubscriptionItems3.unsubscribe();
         }
         this.intervalSubscriptionItems3 = Object(rxjs__WEBPACK_IMPORTED_MODULE_7__["interval"])(10000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/SF3_1'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/SF3_1'); }))
             .subscribe(function (data) {
             var _a;
             if (JSON.stringify(data) == '{}') {
@@ -71438,7 +71451,7 @@ var Sf3_1Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.sf3_1 = _t.first);
-        } }, decls: 31, vars: 12, consts: [["id", "sample-data", 2, "display", "block", "height", "150px"], ["gauge3", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Sf3_1Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 32, vars: 14, consts: [["id", "sample-data", 2, "display", "block", "height", "150px"], ["gauge3", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Sf3_1Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " SF3-1 ");
@@ -71475,13 +71488,14 @@ var Sf3_1Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](26, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](30, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](31, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -71496,9 +71510,9 @@ var Sf3_1Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamSF3_1 == null ? null : ctx.TeamSF3_1.SF3_1_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamSF3_1 == null ? null : ctx.TeamSF3_1.SF3_1_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](30, 10, ctx.TeamSF3_1 == null ? null : ctx.TeamSF3_1.SF3_1_KWh), "   kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](26, 10, ctx.TeamSF3_1 == null ? null : ctx.TeamSF3_1.SF3_1_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](31, 12, ctx.TeamSF3_1 == null ? null : ctx.TeamSF3_1.SF3_1_KWh), "   kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1zZmMvc2YzLjEvc2YzLjEuY29tcG9uZW50LnNjc3MifQ== */"], encapsulation: 2 });
     Sf3_1Component.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: Sf3_1Component, factory: Sf3_1Component.ɵfac, providedIn: 'root' });
     return Sf3_1Component;
@@ -71709,24 +71723,25 @@ var Sf3_2Component = /** @class */ (function () {
     };
     Sf3_2Component.prototype.changeSF3_2 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF3_2')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SF3_2')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
-                console.log('No hay data SF3_2');
+                // console.log('No hay data SF3_2');
                 res.SF3_2_VelocidadActualMotor = 0;
                 res.SF3_2_CorrienteActualMotor = 0;
                 res.SF3_2_PotenciaActualMotor = 0;
                 res.SF3_2_KWh = 0;
             }
             else {
-                _this.TeamSF3_2 = res;
+                _this.TeamSF3_2 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadSF3_2 = this.decimalPipe.transform(this.TeamSF3_2?.SF3_2_VelocidadActualMotor) ?? 0;
                 // console.log('SF1_1:', this.TeamSF3_2);
                 _this.velocidadSF3_2 = (_b = (_a = _this.TeamSF3_2) === null || _a === void 0 ? void 0 : _a.SF3_2_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
+            _this.dataSF3_2();
         });
     };
     Sf3_2Component.prototype.dataSF3_2 = function () {
@@ -71735,18 +71750,18 @@ var Sf3_2Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/SF3_2'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/SF3_2'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
-                console.log('no hay data SF3_2');
+                // console.log('no hay data SF3_2');
                 res.SF3_2_VelocidadActualMotor = 0;
                 res.SF3_2_CorrienteActualMotor = 0;
                 res.SF3_2_PotenciaActualMotor = 0;
                 res.SF3_2_KWh = 0;
             }
             else {
-                _this.TeamSF3_2 = res;
+                _this.TeamSF3_2 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadSF3_2 = (_b = (_a = _this.TeamSF3_2) === null || _a === void 0 ? void 0 : _a.SF3_2_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -71761,7 +71776,7 @@ var Sf3_2Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 12, consts: [["id", "sample-dataSF3_2", 2, "display", "block", "height", "150px"], ["gaugeSF3_2", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Sf3_2Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 14, consts: [["id", "sample-dataSF3_2", 2, "display", "block", "height", "150px"], ["gaugeSF3_2", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Sf3_2Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " SF3_2 ");
@@ -71794,13 +71809,14 @@ var Sf3_2Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -71815,9 +71831,9 @@ var Sf3_2Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamSF3_2 == null ? null : ctx.TeamSF3_2.SF3_2_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamSF3_2 == null ? null : ctx.TeamSF3_2.SF3_2_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 10, ctx.TeamSF3_2 == null ? null : ctx.TeamSF3_2.SF3_2_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 10, ctx.TeamSF3_2 == null ? null : ctx.TeamSF3_2.SF3_2_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 12, ctx.TeamSF3_2 == null ? null : ctx.TeamSF3_2.SF3_2_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: [".fontDes {\n  float: right;\n  padding-left: 5px;\n  color: #424242;\n  font-size: 20px;\n}\n\n.fontDes1 {\n  color: #9E9E9E;\n  font-size: 16px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvem9uZS10ZWFtcy90ZWFtLXNmYy9zZjMuMi9DOlxcVXNlcnNcXGpsb3NhZGFcXERvY3VtZW50c1xcTWF0QmFnLkZyb250ZW5kVjEvc3JjXFxhcHBcXHBhZ2VzXFx6b25lLXRlYW1zXFx0ZWFtLXNmY1xcc2YzLjJcXHNmMy4yLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9wYWdlcy96b25lLXRlYW1zL3RlYW0tc2ZjL3NmMy4yL3NmMy4yLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksWUFBWTtFQUNaLGlCQUFpQjtFQUNqQixjQUFjO0VBQ2QsZUFBZTtBQ0NuQjs7QURFQTtFQUNJLGNBQWM7RUFDZCxlQUFlO0FDQ25CIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvem9uZS10ZWFtcy90ZWFtLXNmYy9zZjMuMi9zZjMuMi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mb250RGVzIHtcclxuICAgIGZsb2F0OiByaWdodDtcclxuICAgIHBhZGRpbmctbGVmdDogNXB4O1xyXG4gICAgY29sb3I6ICM0MjQyNDI7XHJcbiAgICBmb250LXNpemU6IDIwcHg7XHJcbn1cclxuXHJcbi5mb250RGVzMSB7XHJcbiAgICBjb2xvcjogIzlFOUU5RTtcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxufSIsIi5mb250RGVzIHtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nLWxlZnQ6IDVweDtcbiAgY29sb3I6ICM0MjQyNDI7XG4gIGZvbnQtc2l6ZTogMjBweDtcbn1cblxuLmZvbnREZXMxIHtcbiAgY29sb3I6ICM5RTlFOUU7XG4gIGZvbnQtc2l6ZTogMTZweDtcbn1cbiJdfQ== */"], encapsulation: 2 });
     Sf3_2Component.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: Sf3_2Component, factory: Sf3_2Component.ɵfac, providedIn: 'root' });
     return Sf3_2Component;
@@ -72355,7 +72371,7 @@ var Ss1_1Component = /** @class */ (function () {
     };
     Ss1_1Component.prototype.changeSS1_1 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SS1_1')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SS1_1')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -72367,7 +72383,7 @@ var Ss1_1Component = /** @class */ (function () {
                 res.SS1_1_KWh = 0;
             }
             else {
-                _this.TeamSS1_1 = res;
+                _this.TeamSS1_1 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadSS1_1 = (_b = _this.decimalPipe.transform((_a = _this.TeamSS1_1) === null || _a === void 0 ? void 0 : _a.SS1_1_VelocidadActualMotor, '1.0-0'), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SS1_1:', _this.velocidadSS1_1);
@@ -72380,7 +72396,7 @@ var Ss1_1Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/SS1_1'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/SS1_1'); }))
             .subscribe(function (res) {
             var _a, _b, _c;
             if (JSON.stringify(res) == '{}') {
@@ -72391,7 +72407,7 @@ var Ss1_1Component = /** @class */ (function () {
                 res.OSR1_1_KWh = 0;
             }
             else {
-                _this.TeamSS1_1 = res;
+                _this.TeamSS1_1 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadSS1_1 = (_b = _this.decimalPipe.transform((_a = _this.TeamSS1_1) === null || _a === void 0 ? void 0 : _a.SS1_1_VelocidadActualMotor), (_b !== null && _b !== void 0 ? _b : 0));
                 console.log('SS1_1:', (_c = _this.TeamSS1_1) === null || _c === void 0 ? void 0 : _c.SS1_1_VelocidadActualMotor);
@@ -72407,7 +72423,7 @@ var Ss1_1Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 13, consts: [["id", "sample-data", 2, "display", "block", "height", "150px"], ["gaugeSS1", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_1Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 15, consts: [["id", "sample-data", 2, "display", "block", "height", "150px"], ["gaugeSS1", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_1Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " SS1-1 ");
@@ -72440,13 +72456,14 @@ var Ss1_1Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -72461,9 +72478,9 @@ var Ss1_1Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamSS1_1 == null ? null : ctx.TeamSS1_1.SS1_1_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamSS1_1 == null ? null : ctx.TeamSS1_1.SS1_1_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 11, ctx.TeamSS1_1 == null ? null : ctx.TeamSS1_1.SS1_1_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 11, ctx.TeamSS1_1 == null ? null : ctx.TeamSS1_1.SS1_1_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 13, ctx.TeamSS1_1 == null ? null : ctx.TeamSS1_1.SS1_1_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1zcy9zczEuMS9zczEuMS5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Ss1_1Component;
 }());
@@ -72666,7 +72683,7 @@ var Ss1_2Component = /** @class */ (function () {
     };
     Ss1_2Component.prototype.changeSS1_2 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SS1_2')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SS1_2')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -72678,12 +72695,13 @@ var Ss1_2Component = /** @class */ (function () {
                 res.SS1_2_KWh = 0;
             }
             else {
-                _this.TeamSS1_2 = res;
+                _this.TeamSS1_2 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadSS1_2 = this.decimalPipe.transform(this.TeamSS1_2?.SS1_2_VelocidadActualMotor) ?? 0;
                 _this.velocidadSS1_2 = (_b = (_a = _this.TeamSS1_2) === null || _a === void 0 ? void 0 : _a.SS1_2_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
                 // console.log('SF1_1:', this.TeamSF1_1);
             }
+            _this.dataSS1_2();
         });
     };
     Ss1_2Component.prototype.dataSS1_2 = function () {
@@ -72692,7 +72710,7 @@ var Ss1_2Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/SS1_2'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/SS1_2'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -72703,7 +72721,7 @@ var Ss1_2Component = /** @class */ (function () {
                 res.OSR1_2_KWh = 0;
             }
             else {
-                _this.TeamSS1_2 = res;
+                _this.TeamSS1_2 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadSS1_2 = (_b = (_a = _this.TeamSS1_2) === null || _a === void 0 ? void 0 : _a.SS1_2_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
                 // console.log('SS1_2:', this.TeamSS1_2?.SS1_2_VelocidadActualMotor);
@@ -72719,7 +72737,7 @@ var Ss1_2Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 13, consts: [["id", "sample-dataSS2", 2, "display", "block", "height", "150px"], ["gaugeSS2", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_2Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 15, consts: [["id", "sample-dataSS2", 2, "display", "block", "height", "150px"], ["gaugeSS2", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_2Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " SS1-2 ");
@@ -72752,13 +72770,14 @@ var Ss1_2Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -72773,9 +72792,9 @@ var Ss1_2Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamSS1_2 == null ? null : ctx.TeamSS1_2.SS1_2_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamSS1_2 == null ? null : ctx.TeamSS1_2.SS1_2_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 11, ctx.TeamSS1_2 == null ? null : ctx.TeamSS1_2.SS1_2_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 11, ctx.TeamSS1_2 == null ? null : ctx.TeamSS1_2.SS1_2_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 13, ctx.TeamSS1_2 == null ? null : ctx.TeamSS1_2.SS1_2_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1zcy9zczEuMi9zczEuMi5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Ss1_2Component;
 }());
@@ -72978,7 +72997,7 @@ var Ss1_3Component = /** @class */ (function () {
     };
     Ss1_3Component.prototype.changeSS1_3 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SS1_3')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SS1_3')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -72990,7 +73009,7 @@ var Ss1_3Component = /** @class */ (function () {
                 res.SS1_3_KWh = 0;
             }
             else {
-                _this.TeamSS1_3 = res;
+                _this.TeamSS1_3 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadSS1_3 = this.decimalPipe.transform(this.TeamSS1_3?.SS1_3_VelocidadActualMotor) ?? 0;
                 _this.velocidadSS1_3 = (_b = (_a = _this.TeamSS1_3) === null || _a === void 0 ? void 0 : _a.SS1_3_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
@@ -73030,7 +73049,7 @@ var Ss1_3Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 13, consts: [["id", "sample-dataSS3", 2, "display", "block", "height", "150px"], ["gaugeSS3", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_3Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 15, consts: [["id", "sample-dataSS3", 2, "display", "block", "height", "150px"], ["gaugeSS3", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_3Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " SS1-3 ");
@@ -73063,13 +73082,14 @@ var Ss1_3Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -73084,9 +73104,9 @@ var Ss1_3Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamSS1_3 == null ? null : ctx.TeamSS1_3.SS1_3_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamSS1_3 == null ? null : ctx.TeamSS1_3.SS1_3_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 11, ctx.TeamSS1_3 == null ? null : ctx.TeamSS1_3.SS1_3_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 11, ctx.TeamSS1_3 == null ? null : ctx.TeamSS1_3.SS1_3_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 13, ctx.TeamSS1_3 == null ? null : ctx.TeamSS1_3.SS1_3_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1zcy9zczEuMy9zczEuMy5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Ss1_3Component;
 }());
@@ -73290,7 +73310,7 @@ var Ss1_4Component = /** @class */ (function () {
     };
     Ss1_4Component.prototype.changeSS1_4 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SS1_4')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SS1_4')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -73302,7 +73322,7 @@ var Ss1_4Component = /** @class */ (function () {
                 res.SS1_4_KWh = 0;
             }
             else {
-                _this.TeamSS1_4 = res;
+                _this.TeamSS1_4 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadSS1_4 = this.decimalPipe.transform(this.TeamSS1_4?.SS1_4_VelocidadActualMotor) ?? 0;
                 _this.velocidadSS1_4 = (_b = (_a = _this.TeamSS1_4) === null || _a === void 0 ? void 0 : _a.SS1_4_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
@@ -73316,7 +73336,7 @@ var Ss1_4Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/SS1_4'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/SS1_4'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -73327,7 +73347,7 @@ var Ss1_4Component = /** @class */ (function () {
                 res.OSR1_4_KWh = 0;
             }
             else {
-                _this.TeamSS1_4 = res;
+                _this.TeamSS1_4 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadSS1_4 = (_b = (_a = _this.TeamSS1_4) === null || _a === void 0 ? void 0 : _a.SS1_4_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -73342,7 +73362,7 @@ var Ss1_4Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 13, consts: [["id", "sample-dataSS4", 2, "display", "block", "height", "150px"], ["gaugeSS4", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_4Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 15, consts: [["id", "sample-dataSS4", 2, "display", "block", "height", "150px"], ["gaugeSS4", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_4Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " SS1-4 ");
@@ -73375,13 +73395,14 @@ var Ss1_4Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -73396,9 +73417,9 @@ var Ss1_4Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamSS1_4 == null ? null : ctx.TeamSS1_4.SS1_4_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamSS1_4 == null ? null : ctx.TeamSS1_4.SS1_4_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 11, ctx.TeamSS1_4 == null ? null : ctx.TeamSS1_4.SS1_4_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 11, ctx.TeamSS1_4 == null ? null : ctx.TeamSS1_4.SS1_4_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 13, ctx.TeamSS1_4 == null ? null : ctx.TeamSS1_4.SS1_4_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1zcy9zczEuNC9zczEuNC5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Ss1_4Component;
 }());
@@ -73602,7 +73623,7 @@ var Ss1_5Component = /** @class */ (function () {
     };
     Ss1_5Component.prototype.changeSS1_5 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SS1_5')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SS1_5')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -73614,12 +73635,13 @@ var Ss1_5Component = /** @class */ (function () {
                 res.SS1_5_KWh = 0;
             }
             else {
-                _this.TeamSS1_5 = res;
+                _this.TeamSS1_5 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadSS1_5 = this.decimalPipe.transform(this.TeamSS1_5?.SS1_5_VelocidadActualMotor) ?? 0;
                 _this.velocidadSS1_5 = (_b = (_a = _this.TeamSS1_5) === null || _a === void 0 ? void 0 : _a.SS1_5_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
                 // console.log('SF1_1:', this.TeamSF1_1);
             }
+            _this.dataSS1_5();
         });
     };
     Ss1_5Component.prototype.dataSS1_5 = function () {
@@ -73628,7 +73650,7 @@ var Ss1_5Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/SS1_5'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/SS1_5'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -73639,7 +73661,7 @@ var Ss1_5Component = /** @class */ (function () {
                 res.OSR1_5_KWh = 0;
             }
             else {
-                _this.TeamSS1_5 = res;
+                _this.TeamSS1_5 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadSS1_5 = (_b = (_a = _this.TeamSS1_5) === null || _a === void 0 ? void 0 : _a.SS1_5_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -73654,7 +73676,7 @@ var Ss1_5Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 13, consts: [["id", "sample-dataSS5", 2, "display", "block", "height", "150px"], ["gaugeSS5", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_5Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 15, consts: [["id", "sample-dataSS5", 2, "display", "block", "height", "150px"], ["gaugeSS5", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_5Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " SS1-5 ");
@@ -73687,13 +73709,14 @@ var Ss1_5Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -73708,9 +73731,9 @@ var Ss1_5Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamSS1_5 == null ? null : ctx.TeamSS1_5.SS1_5_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamSS1_5 == null ? null : ctx.TeamSS1_5.SS1_5_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 11, ctx.TeamSS1_5 == null ? null : ctx.TeamSS1_5.SS1_5_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 11, ctx.TeamSS1_5 == null ? null : ctx.TeamSS1_5.SS1_5_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 13, ctx.TeamSS1_5 == null ? null : ctx.TeamSS1_5.SS1_5_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1zcy9zczEuNS9zczEuNS5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Ss1_5Component;
 }());
@@ -73914,7 +73937,7 @@ var Ss1_6Component = /** @class */ (function () {
     };
     Ss1_6Component.prototype.changeSS1_5 = function () {
         var _this = this;
-        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SS1_6')
+        this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SS1_6')
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }))
             .subscribe(function (res) {
             var _a, _b;
@@ -73926,12 +73949,13 @@ var Ss1_6Component = /** @class */ (function () {
                 res.SS1_6_KWh = 0;
             }
             else {
-                _this.TeamSS1_6 = res;
+                _this.TeamSS1_6 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 // this.velocidadSS1_6 = this.decimalPipe.transform(this.TeamSS1_6?.SS1_6_VelocidadActualMotor) ?? 0;
                 _this.velocidadSS1_6 = (_b = (_a = _this.TeamSS1_6) === null || _a === void 0 ? void 0 : _a.SS1_6_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
                 // console.log('SF1_1:', this.TeamSF1_1);
             }
+            _this.dataSS1_6();
         });
     };
     Ss1_6Component.prototype.dataSS1_6 = function () {
@@ -73940,7 +73964,7 @@ var Ss1_6Component = /** @class */ (function () {
             this.intervalSubscriptionItems.unsubscribe();
         }
         this.intervalSubscriptionItems = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["interval"])(3000)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/SS1_6'); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function () { return _this.apiGetComp.GetJson(_this.api.apiUrlNode1 + '/api/SS1_6'); }))
             .subscribe(function (res) {
             var _a, _b;
             if (JSON.stringify(res) == '{}') {
@@ -73951,7 +73975,7 @@ var Ss1_6Component = /** @class */ (function () {
                 res.OSR1_6_KWh = 0;
             }
             else {
-                _this.TeamSS1_6 = res;
+                _this.TeamSS1_6 = res[0];
                 // this.dataSF1_1 = TeamSF1_1
                 _this.velocidadSS1_6 = (_b = (_a = _this.TeamSS1_6) === null || _a === void 0 ? void 0 : _a.SS1_6_VelocidadActualMotor, (_b !== null && _b !== void 0 ? _b : 0));
             }
@@ -73966,7 +73990,7 @@ var Ss1_6Component = /** @class */ (function () {
         } if (rf & 2) {
             var _t;
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.osr1_1 = _t.first);
-        } }, decls: 28, vars: 13, consts: [["id", "sample-dataSS6", 2, "display", "block", "height", "150px"], ["gaugeSS6", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_6Component_Template(rf, ctx) { if (rf & 1) {
+        } }, decls: 29, vars: 15, consts: [["id", "sample-dataSS6", 2, "display", "block", "height", "150px"], ["gaugeSS6", ""], ["startAngle", "260", "endAngle", "100", 3, "majorTicks", "minorTicks", "labelStyle", "lineStyle", "ranges", "pointers"], ["angle", "180", "radius", "30%", "zIndex", "1", 3, "content"], [2, "margin-left", "23%", "margin-top", "-0%", "padding-top", "-40px", "padding-block-start", "-98px"], [2, "padding", "0.5625em 0.625em", "margin-top", "-0.10rem"], [2, "padding", "0.5625em 0.625em", "margin-top", "-1.9rem"]], template: function Ss1_6Component_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " SS1-6 ");
@@ -73999,13 +74023,14 @@ var Ss1_6Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Voltaje:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](23, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "pre", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "b");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Consumo:");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "pre", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "b");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Consumo:");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](27, "number");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](28, "number");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -74020,9 +74045,9 @@ var Ss1_6Component = /** @class */ (function () {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("   ", ctx.TeamSS1_6 == null ? null : ctx.TeamSS1_6.SS1_6_PotenciaActualMotor, " \u00A0 W");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", ctx.TeamSS1_6 == null ? null : ctx.TeamSS1_6.SS1_6_voltaje, "   VAC ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](27, 11, ctx.TeamSS1_6 == null ? null : ctx.TeamSS1_6.SS1_6_KWh), "  \u00A0 kwh ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](23, 11, ctx.TeamSS1_6 == null ? null : ctx.TeamSS1_6.SS1_6_voltaje), "   VAC ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("    ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](28, 13, ctx.TeamSS1_6 == null ? null : ctx.TeamSS1_6.SS1_6_KWh), "  \u00A0 kwh ");
         } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["CircularGaugeComponent"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxesDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AxisDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationsDirective"], _syncfusion_ej2_angular_circulargauge__WEBPACK_IMPORTED_MODULE_3__["AnnotationDirective"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["DecimalPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3pvbmUtdGVhbXMvdGVhbS1zcy9zczEuNi9zczEuNi5jb21wb25lbnQuc2NzcyJ9 */"] });
     return Ss1_6Component;
 }());

@@ -127,7 +127,7 @@ public tooltipInterval3: number;
   ngOnInit(): void {
     this.changeSF3_1();
     // this.test3();
-    this.dataSF3();
+    
   }
 
   test3(){
@@ -201,7 +201,7 @@ public tooltipInterval3: number;
 }
 
 changeSF3_1(): void {
-  this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF3_1')
+  this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SF3_1')
   .pipe(takeWhile(() => this.alive))
   .subscribe((data: any)=>{
     if (JSON.stringify(data)=='{}') {
@@ -211,13 +211,13 @@ changeSF3_1(): void {
       // data.SF3_1_KWh = 0;
       // data.SF3_1_CorrienteActualMotor = 0;
     } else {
-    this.TeamSF3_1 = data
+    this.TeamSF3_1 = data[0]
     // this.dataSF3_1 = TeamSF3_1
     // this.velocidadSf3_1 =  this.decimalPipe.transform( this.TeamSF3_1.SF3_1_VelocidadActualMotor, '1.0-0') ?? 0;
     this.velocidadSf3_1 =  this.TeamSF3_1.SF3_1_VelocidadActualMotor ?? 0;
     // console.log('SF3:', this.velocidadSf3_1);
     }
-
+    this.dataSF3();
   });
 }
 
@@ -229,7 +229,7 @@ dataSF3(){
   this.intervalSubscriptionItems3 = interval(10000)
   .pipe(
     takeWhile(() => this.alive),
-    switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF3_1'))
+    switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SF3_1'))
   )
   .subscribe((data: any) => {
     if (JSON.stringify(data)=='{}') {

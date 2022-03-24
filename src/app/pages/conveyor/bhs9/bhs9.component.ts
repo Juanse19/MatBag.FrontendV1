@@ -33,7 +33,8 @@ export class Bhs9Component implements OnInit {
 
   ngOnInit(): void {
     this.bandaNameCharge();
-    this.bandaStateCharge();
+    // this.bandaStateCharge();
+    this.bandaStatesCharge();
   }
 
   back() {
@@ -60,6 +61,17 @@ export class Bhs9Component implements OnInit {
       this.divice=res;
       // console.log('Zons:', res , 'states');
       
+    });
+  }
+
+  public bandaStatesCharge(){
+
+    this.http.get(this.api.apiUrlNode1 + '/apizonestate?zone=zona2')
+    .pipe(takeWhile(() => this.alive))
+    .subscribe((res:any)=>{
+      this.states  = res;
+      this.bandaStateCharge();
+      console.log('static:', this.states);
     });
   }
 

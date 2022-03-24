@@ -25,7 +25,7 @@ import '@boldreports/javascript-reporting-controls/Scripts/bold.report-designer.
 // data-visualization
 import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.bulletgraph.min';
 import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.chart.min';
-import { GanttAllModule } from '@syncfusion/ej2-angular-gantt';
+// import { GanttAllModule } from '@syncfusion/ej2-angular-gantt';
 
 import {
   NbChatModule,
@@ -63,7 +63,7 @@ import {
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     BoldReportDesignerModule,
-    GanttAllModule,
+    // GanttAllModule,
   ],
   bootstrap: [AppComponent],
   providers: [],

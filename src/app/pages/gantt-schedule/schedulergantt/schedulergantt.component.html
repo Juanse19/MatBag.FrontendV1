@@ -7,7 +7,7 @@
         class="btn btn-primary"
         status="info"
         nbButton
-        (click)="openWindowForm()"
+        (click)="openWindow()"
       >
         Agregar
       </button> -->
@@ -38,27 +38,36 @@
                       </div> -->
                       <div class="form-group col-md-12">
                           <div class="e-float-input e-control-wrapper" >
-                              <input formControlName="Parameter"  id="Parameter" name="Parameter" class="field left" readonly type="text" >
+                              <input formControlName="Subject" [(ngModel)]="enctexto" id="Subject" name="Subject" class="field left" readonly type="text" >
                               <span class="e-float-line"></span>
-                              <label class="e-float-text e-label-top" for="Parameter">Mensaje Queue</label>
+                              <label class="e-float-text e-label-top" for="Subject">Subject</label>
                           </div>
                       </div>
                       <div class="form-group col-md-12">
                           <div class="e-float-input e-control-wrapper" >
-                              <input formControlName="Value"  id="Value" name="Value" type="text" >
+                              <input formControlName="taskName" [(ngModel)]="taskName" id="taskName" name="taskName" type="text" >
                               <span class="e-float-line"></span>
-                              <label class="e-float-text e-label-top" for="Value">Nombre Queue Local</label>
+                              <label class="e-float-text e-label-top" for="taskName">taskName</label>
                           </div>
                       </div>
-                      <div>
+                      <!-- <div class="form-group col-md-12">
+                        <div class="e-float-input e-control-wrapper" >
+                            <input formControlName="Value"  id="Value" name="Value" type="text" >
+                            <span class="e-float-line"></span>
+                            <label class="e-float-text e-label-top" for="Value">Nombre Queue Local</label>
+                        </div>
+                    </div> -->
+                      <!-- <div>
                           <button nbButton status="info" (click)="updateData()" hero>Actualizar</button>
-                      </div>
+                      </div> -->
                   </div> 
               </div>
           </ng-template>
       </ejs-dialog>
   </div>
-
+  <div class='root-container'>
+    <ngx-windows-scheduler></ngx-windows-scheduler>
+</div>
 </div>
 </nb-card-body>
 </nb-card>

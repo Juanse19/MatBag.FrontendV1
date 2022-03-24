@@ -201,7 +201,7 @@ public tooltipInterval1: number;
 
 
   changeSF1_11() {
-    this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF1_11')
+    this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SF1_11')
     .pipe(takeWhile(() => this.alive))
     .subscribe((res: any)=>{
       if (JSON.stringify(res)=='{}') {
@@ -211,12 +211,13 @@ public tooltipInterval1: number;
         res.SF1_11_PotenciaActualMotor = 0;
         res.SF1_11_KWh = 0;
       } else {
-      this.TeamSF1_11 = res
+      this.TeamSF1_11 = res[0]
       // this.dataSF1_1 = TeamSF1_1
       // this.velocidadSF1_11 = this.decimalPipe.transform(this.TeamSF1_11?.SF1_11_VelocidadActualMotor) ?? 0;
       // console.log('SF1_1:', this.TeamSF1_11);
       this.velocidadSF1_11 = this.TeamSF1_11?.SF1_11_VelocidadActualMotor ?? 0;
     }
+    this.dataSF1_11();
     });
   }
 
@@ -228,7 +229,7 @@ public tooltipInterval1: number;
     this.intervalSubscriptionItems = interval(3000)
     .pipe(
       takeWhile(() => this.alive),
-      switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/SF1_11'))
+      switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/SF1_11'))
     )
     .subscribe((res: any) => {
       if (JSON.stringify(res)=='{}') {
@@ -238,7 +239,7 @@ public tooltipInterval1: number;
             res.SF1_11_PotenciaActualMotor = 0;
             res.SF1_11_KWh = 0;
           } else {
-            this.TeamSF1_11 = res
+            this.TeamSF1_11 = res[0]
             // this.dataSF1_1 = TeamSF1_1
             this.velocidadSF1_11 = this.TeamSF1_11?.SF1_11_VelocidadActualMotor ?? 0;
           }

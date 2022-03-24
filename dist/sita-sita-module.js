@@ -17,8 +17,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/http.js");
 /* harmony import */ var _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @syncfusion/ej2-angular-grids */ "./node_modules/@syncfusion/ej2-angular-grids/__ivy_ngcc__/@syncfusion/ej2-angular-grids.es5.js");
-/* harmony import */ var _nebular_theme__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @nebular/theme */ "./node_modules/@nebular/theme/__ivy_ngcc__/fesm5/index.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm5/forms.js");
+/* harmony import */ var _nebular_theme__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @nebular/theme */ "./node_modules/@nebular/theme/__ivy_ngcc__/fesm5/index.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/common.js");
+/* harmony import */ var _syncfusion_ej2_angular_calendars__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @syncfusion/ej2-angular-calendars */ "./node_modules/@syncfusion/ej2-angular-calendars/__ivy_ngcc__/@syncfusion/ej2-angular-calendars.es5.js");
 
 
 
@@ -33,25 +35,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function MessageAMSComponent_div_5_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 28);
+
+
+
+
+
+function MessageAMSComponent_div_20_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 43);
 } }
-function MessageAMSComponent_b_6_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 29);
+function MessageAMSComponent_b_21_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 44);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Cargando...");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 var MessageAMSComponent = /** @class */ (function () {
-    function MessageAMSComponent(apiGetComp, http, api) {
+    function MessageAMSComponent(fb, apiGetComp, http, api, miDatePipe, toastrService) {
+        this.fb = fb;
         this.apiGetComp = apiGetComp;
         this.http = http;
         this.api = api;
+        this.miDatePipe = miDatePipe;
+        this.toastrService = toastrService;
         this.ams = [];
         this.amsData = [];
         this.alive = true;
         this.showCloseIcon = this.alive;
         this.loading = true;
     }
+    Object.defineProperty(MessageAMSComponent.prototype, "StartTime", {
+        get: function () { return this.airForm.get('StartTime'); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MessageAMSComponent.prototype, "EndTime", {
+        get: function () { return this.airForm.get('EndTime'); },
+        enumerable: true,
+        configurable: true
+    });
     MessageAMSComponent.prototype.ngOnInit = function () {
         this.chargeDataAMS();
         this.toolbarOptions = ['ColumnChooser'];
@@ -59,6 +79,46 @@ var MessageAMSComponent = /** @class */ (function () {
         this.filterOptions = {
             type: 'Menu',
         };
+        this.initForm();
+    };
+    MessageAMSComponent.prototype.initForm = function () {
+        this.airForm = this.fb.group({
+            StartTime: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required],
+            EndTime: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required],
+        });
+    };
+    MessageAMSComponent.prototype.date = function (StartTime, EndTime) {
+        // debugger
+        var _this = this;
+        var fechaFormateada = this.miDatePipe.transform(StartTime, 'yyyy-MM-dd h:mm:ss a z');
+        var fechaFormateadaeTD = this.miDatePipe.transform(EndTime, 'yyyy-MM-dd h:mm:ss a zzzz');
+        console.log('fechaSTD: ', fechaFormateada);
+        console.log('fechaETD: ', fechaFormateadaeTD);
+        console.log('test: ', StartTime);
+        if (fechaFormateada == null && fechaFormateadaeTD == null) {
+            this.toastrService.warning('', 'No pusiste la fecha.');
+        }
+        else if (fechaFormateadaeTD < fechaFormateada) {
+            this.toastrService.warning('', 'La fecha no puede ser menor.');
+        }
+        else if (fechaFormateada > fechaFormateadaeTD) {
+            this.toastrService.warning('', 'La fecha no puede ser mayor.');
+        }
+        else {
+            this.http.get(this.api.apiUrlNode1 + '/api/date?from=' + fechaFormateada + '&to=' + fechaFormateadaeTD)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeWhile"])(function () { return _this.alive; }))
+                .subscribe(function (res) {
+            });
+            var respons = {
+                form: fechaFormateada,
+                to: fechaFormateadaeTD
+            };
+            this.apiGetComp.PostJson(this.api.apiUrlNode1 + '/api/dates', respons)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeWhile"])(function () { return _this.alive; }))
+                .subscribe(function (res) {
+                // this.toastrService.success('', '¡Se edito licencia con exito!'); 
+            });
+        }
     };
     MessageAMSComponent.prototype.chargeDataAMS = function () {
         var _this = this;
@@ -103,70 +163,118 @@ var MessageAMSComponent = /** @class */ (function () {
             //   }
             _this.amsData = res;
             _this.loading = false;
+            _this.bandaAMSCharge();
         });
-        var contador = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["interval"])(40000);
-        contador.subscribe(function (n) {
-            _this.http.get(_this.api.apiUrlNode1 + '/api/notificationAMS')
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeWhile"])(function () { return _this.alive; }))
-                .subscribe(function (res) {
-                _this.amsData = res;
-                _this.loading = false;
-            });
+        // const contador = interval(40000)
+        // contador.subscribe((n) => {
+        //   this.http.get(this.api.apiUrlNode1 + '/api/notificationAMS')
+        //   .pipe(takeWhile(() => this.alive))
+        //   .subscribe((res: any) => {
+        //     this.amsData = res;
+        //     this.loading = false;
+        //   });
+        // });
+    };
+    MessageAMSComponent.prototype.bandaAMSCharge = function () {
+        var _this = this;
+        if (this.intervalSubscriptionAms) {
+            this.intervalSubscriptionAms.unsubscribe();
+        }
+        this.intervalSubscriptionAms = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["interval"])(16000)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function () { return _this.http.get(_this.api.apiUrlNode1 + '/api/notificationAMS'); }))
+            .subscribe(function (res) {
+            _this.amsData = res;
+            console.log('Equipos:', _this.amsData);
         });
     };
     MessageAMSComponent.prototype.ngOnDestroy = function () {
         this.alive = false;
     };
-    MessageAMSComponent.ɵfac = function MessageAMSComponent_Factory(t) { return new (t || MessageAMSComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_core_backend_common_api_apiGet_services__WEBPACK_IMPORTED_MODULE_1__["ApiGetService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_core_backend_common_api_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"])); };
-    MessageAMSComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MessageAMSComponent, selectors: [["ngx-message-ams"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([_syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["ResizeService"]])], decls: 34, vars: 9, consts: [[1, "overlay"], ["class", "spinner-border", 4, "ngIf"], ["style", "margin-top: 4rem; margin-left: -3rem", 4, "ngIf"], ["allowSorting", "true", "allowResizing", "true", 3, "dataSource", "allowPaging", "pageSettings", "filterSettings", "toolbar", "showColumnChooser", "allowFiltering"], ["field", "Flight_Notification_Type", "headerText", "Flight_Notification_Type", "minWidth", "120", "maxWidth", "300", "width", "130"], ["field", "Flight_Notification_RegisterTime", "headerText", "Flight_Notification_RegisterTime", "minWidth", "120", "maxWidth", "300", "type", "date", "format", "dd/MM/yyyy hh:mm:ss a", "width", "120"], ["field", "Flight_FlightId_FlightKind", "headerText", "Flight_FlightId_FlightKind", "width", "100"], ["field", "Flight_FlightId_AirlineDesignator_IATA", "headerText", "Flight_FlightId_AirlineDesignator_IATA", "width", "100"], ["field", "Flight_FlightId_FlightNumber", "headerText", "Flight_FlightId_FlightNumber", "width", "100"], ["field", "Flight_FlightId_ScheduledDate", "headerText", "Flight_FlightId_ScheduledDate", "width", "100"], ["field", "Flight_FlightState_ScheduledTime", "headerText", "Flight_FlightState_ScheduledTime", "width", "100"], ["field", "Flight_FlightState_AircraftType_AircraftTypeId_AircraftTypeCode_IATA", "headerText", "AircraftTypeCode_IATA", "width", "100"], ["field", "Flight_FlightState_AircraftType_AircraftTypeId_AircraftTypeCode_ICAO", "headerText", "AircraftTypeCode_ICAO", "width", "100"], ["field", "Flight_FlightState_Aircraft_AircraftId_Registration", "headerText", "AircraftId_Registration", "width", "100"], ["field", "Flight_FlightState_Route_ViaPoints_RouteViaPoint_sequenceNumber", "headerText", "RouteViaPoint_sequenceNumber", "width", "100"], ["field", "Flight_FlightState_Route_ViaPoints_RouteViaPoint_AirportCode_IATA", "headerText", "AirportCode_IATA", "width", "100"], ["field", "Flight_FlightState_Route_ViaPoints_RouteViaPoint_AirportCode_ICAO", "headerText", "AirportCode_ICAO", "width", "100"], ["field", "Flight_FlightState_propertyName_FlightUniqueID", "headerText", "FlightUniqueID", "width", "100"], ["field", "Flight_FlightState_ChuteSlots_ChuteSlot_propertyName_StartTime", "headerText", "propertyName_StartTime", "width", "100"], ["field", "Flight_FlightState_ChuteSlots_ChuteSlot_propertyName_EndTime", "headerText", "propertyName_EndTime", "width", "100"], ["field", "Flight_FlightState_ChuteSlots_ChuteSlot_propertyName_Category", "headerText", "propertyName_Category", "width", "100"], ["field", "Flight_FlightState_ChuteSlots_ChuteSlot_Chute_propertyName_Name", "headerText", "propertyName_Name", "width", "100"], ["field", "Flight_FlightChanges_Change_propertyName_Chutes_OldValue", "headerText", "Chutes_OldValue", "width", "100"], ["field", "Flight_FlightChanges_Change_propertyName_Chutes_NewValue", "headerText", "Chutes_NewValue", "width", "100"], ["field", "Flight_FlightChanges_Change_ChuteSlotsChange_OldValue_ChuteSlot_StartTime", "headerText", "ChuteSlot_StartTime", "width", "100"], ["field", "Flight_FlightChanges_Change_ChuteSlotsChange_OldValue_ChuteSlot_EndTime", "headerText", "ChuteSlot_EndTime", "width", "100"], ["field", "Flight_FlightChanges_Change_ChuteSlotsChange_NewValue_ChuteSlot_StartTime", "headerText", "NewValue_ChuteSlot_StartTime", "width", "100"], ["field", "Flight_FlightChanges_Change_ChuteSlotsChange_NewValue_ChuteSlot_EndTime", "headerText", "NewValue_ChuteSlot_EndTime", "width", "100"], [1, "spinner-border"], [2, "margin-top", "4rem", "margin-left", "-3rem"]], template: function MessageAMSComponent_Template(rf, ctx) { if (rf & 1) {
+    MessageAMSComponent.ɵfac = function MessageAMSComponent_Factory(t) { return new (t || MessageAMSComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_core_backend_common_api_apiGet_services__WEBPACK_IMPORTED_MODULE_1__["ApiGetService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_core_backend_common_api_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_9__["DatePipe"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbToastrService"])); };
+    MessageAMSComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MessageAMSComponent, selectors: [["ngx-message-ams"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([_syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["ResizeService"]])], decls: 59, vars: 10, consts: [["novalidate", "", "id", "formId", 1, "form-inline", 3, "formGroup"], [1, "form-group", "mx-sm-4", "mb-3"], ["formControlName", "StartTime", "id", "StartTime", "data-name", "StartTime", "format", "M/dd/yy h:mm:ss a", "placeholder", "Hora de inicio", "floatLabelType", "Always", "required", "", 1, "e-field"], ["formControlName", "EndTime", "id", "EndTime", "data-name", "EndTime", "format", "yyyy-MM-dd h:mm:ss a", "name", "datetime", "placeholder", "Hora de finalizaci\u00F3n", "floatLabelType", "Always", "required", "", 1, "e-field"], ["nbButton", "", "status", "primary ", 1, "btn", "btn-primary", 2, "margin-top", "26px", 3, "click"], [1, "overlay"], ["class", "spinner-border", 4, "ngIf"], ["style", "margin-top: 4rem; margin-left: -3rem", 4, "ngIf"], ["allowSorting", "true", "allowResizing", "true", 3, "dataSource", "allowPaging", "pageSettings", "filterSettings", "toolbar", "showColumnChooser", "allowFiltering"], ["field", "FlightIdFlightKind", "headerText", "FlightIdFlightKind", "minWidth", "120", "maxWidth", "300", "width", "130"], ["field", "FlightIdAirlineDesignatorIATA", "headerText", "FlightIdAirlineDesignatorIATA", "minWidth", "120", "maxWidth", "300", "type", "date", "format", "dd/MM/yyyy hh:mm:ss a", "width", "120"], ["field", "FlightIdAirlineDesignatorICAO", "headerText", "FlightIdAirlineDesignatorICAO", "width", "100"], ["field", "FlightIdFlightNumber", "headerText", "FlightIdFlightNumber", "width", "100"], ["field", "FlightIdScheduledDate", "headerText", "FlightIdScheduledDate", "width", "100"], ["field", "FlightIdAirportCodeIATA", "headerText", "FlightIdAirportCodeIATA", "width", "100"], ["field", "FlightIdAirportCodeICAO", "headerText", "FlightIdAirportCodeICAO", "width", "100"], ["field", "FlightStateScheduledTime", "headerText", "FlightStateScheduledTime", "width", "100"], ["field", "FlightStateLinkedFlightFlightIdFlightKind", "headerText", "FlightStateLinkedFlightFlightIdFlightKind", "width", "100"], ["field", "FlightStateLinkedFlightFlightIdFlightKindIATA", "headerText", "FlightStateLinkedFlightFlightIdFlightKindIATA", "width", "100"], ["field", "FlightStateLinkedFlightFlightIdFlightKindICAO", "headerText", "FlightStateLinkedFlightFlightIdFlightKindICAO", "width", "100"], ["field", "FlightStateLinkedFlightFlightIdFlightNumber", "headerText", "FlightStateLinkedFlightFlightIdFlightNumber", "width", "100"], ["field", "FlightStateLinkedFlightFlightIdScheduledDate", "headerText", "FlightStateLinkedFlightFlightIdScheduledDate", "width", "100"], ["field", "FlightStateLinkedFlightFlightIdAirportCodeIATA", "headerText", "FlightStateLinkedFlightFlightIdAirportCodeIATA", "width", "100"], ["field", "FlightStateLinkedFlightFlightIdAirportCodeICAO", "headerText", "FlightStateLinkedFlightFlightIdAirportCodeICAO", "width", "100"], ["field", "FlightStateLinkedFlightFlightUniqueID", "headerText", "FlightStateLinkedFlightFlightUniqueID", "width", "100"], ["field", "FlightStateLinkedFlightScheduledTime", "headerText", "FlightStateLinkedFlightScheduledTime", "width", "100"], ["field", "FlightStateAircraftTypeAircraftTypeIdAircraftTypeCodeIATA", "headerText", "FlightStateAircraftTypeAircraftTypeIdAircraftTypeCodeIATA", "width", "100"], ["field", "FlightStateAircraftTypeAircraftTypeIdAircraftTypeCodeICAO", "headerText", "FlightStateAircraftTypeAircraftTypeIdAircraftTypeCodeICAO", "width", "100"], ["field", "FlightStateAircraftTypeName", "headerText", "FlightStateAircraftTypeName", "width", "100"], ["field", "FlightStateAircraftAircraftIdRegistration", "headerText", "FlightStateAircraftAircraftIdRegistration", "width", "100"], ["field", "FlightStateAircraftIsRetired", "headerText", "FlightStateAircraftIsRetired", "width", "100"], ["field", "FlightStateRouteattributescustomsType", "headerText", "FlightStateRouteattributescustomsType", "width", "100"], ["field", "FlightStateRouteViaPointsRouteViaPointattributessequenceNumber", "headerText", "FlightStateRouteViaPointsRouteViaPointattributessequenceNumber", "width", "100"], ["field", "FlightStateRouteViaPointsAirportCodeIATA", "headerText", "FlightStateRouteViaPointsAirportCodeIATA", "width", "100"], ["field", "FlightStateRouteViaPointsAirportCodeICAO", "headerText", "FlightStateRouteViaPointsAirportCodeICAO", "width", "100"], ["field", "FlightStateFlightUniqueID", "headerText", "FlightStateFlightUniqueID", "width", "100"], ["field", "FlightStateChuteSlotsChuteSlotStartTime", "headerText", "FlightStateChuteSlotsChuteSlotStartTime", "width", "100"], ["field", "FlightStateChuteSlotsChuteSlotEndTime", "headerText", "FlightStateChuteSlotsChuteSlotEndTime", "width", "100"], ["field", "FlightStateChuteSlotsChuteSlotChuteName", "headerText", "FlightStateChuteSlotsChuteSlotChuteName", "width", "100"], ["field", "FlightStateChuteSlotsChuteSlotChuteExternalName", "headerText", "FlightStateChuteSlotsChuteSlotChuteExternalName", "width", "100"], ["field", "SITAAMSFlightsResultWebServiceResultApiResponseID", "headerText", "SITAAMSFlightsResultWebServiceResultApiResponseID", "width", "100"], ["field", "CreatedDate", "headerText", "CreatedDate", "width", "100"], ["field", "UpdatedDate", "headerText", "UpdatedDate", "width", "100"], [1, "spinner-border"], [2, "margin-top", "4rem", "margin-left", "-3rem"]], template: function MessageAMSComponent_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nb-card");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "nb-card-header");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Mensajes AMS ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Inducci\u00F3n Manual SITA\n");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "nb-card-body");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 0);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, MessageAMSComponent_div_5_Template, 1, 0, "div", 1);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, MessageAMSComponent_b_6_Template, 2, 0, "b", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "form", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "ejs-datetimepicker", 2);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "br");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "ejs-grid", 3);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "e-columns");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "e-column", 4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "e-column", 5);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "e-column", 6);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "e-column", 7);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "e-column", 8);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "e-column", 9);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "e-column", 10);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "e-column", 11);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](18, "e-column", 12);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "e-column", 13);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](20, "e-column", 14);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](21, "e-column", 15);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](22, "e-column", 16);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](23, "e-column", 17);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](24, "e-column", 18);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "e-column", 19);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](26, "e-column", 20);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "e-column", 21);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](28, "e-column", 22);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](29, "e-column", 23);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](30, "e-column", 24);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](31, "e-column", 25);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](32, "e-column", 26);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](33, "e-column", 27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "ejs-datetimepicker", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "br");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MessageAMSComponent_Template_button_click_11_listener() { return ctx.date(ctx.airForm.controls.StartTime.value, ctx.airForm.controls.EndTime.value); });
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Cosultar");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "br");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "br");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "nb-card");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "nb-card-header");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, " Mensajes AMS ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "nb-card-body");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "div", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, MessageAMSComponent_div_20_Template, 1, 0, "div", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](21, MessageAMSComponent_b_21_Template, 2, 0, "b", 7);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](22, "br");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "ejs-grid", 8);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "e-columns");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "e-column", 9);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](26, "e-column", 10);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "e-column", 11);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](28, "e-column", 12);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](29, "e-column", 13);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](30, "e-column", 14);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](31, "e-column", 15);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](32, "e-column", 16);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](33, "e-column", 17);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](34, "e-column", 18);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "e-column", 19);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](36, "e-column", 20);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](37, "e-column", 21);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](38, "e-column", 22);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "e-column", 23);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](40, "e-column", 24);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](41, "e-column", 25);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](42, "e-column", 26);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](43, "e-column", 27);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](44, "e-column", 28);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](45, "e-column", 29);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](46, "e-column", 30);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](47, "e-column", 31);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](48, "e-column", 32);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](49, "e-column", 33);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](50, "e-column", 34);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](51, "e-column", 35);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](52, "e-column", 36);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](53, "e-column", 37);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](54, "e-column", 38);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](55, "e-column", 39);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](56, "e-column", 40);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](57, "e-column", 41);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](58, "e-column", 42);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         } if (rf & 2) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.airForm);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](16);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.loading);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.loading);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dataSource", ctx.amsData)("allowPaging", true)("pageSettings", ctx.pageSettings)("filterSettings", ctx.filterOptions)("toolbar", ctx.toolbarOptions)("showColumnChooser", true)("allowFiltering", true);
-        } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_7__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_7__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_7__["NbCardBodyComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["GridComponent"], _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["ColumnsDirective"], _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["AggregateColumnsDirective"], _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["ColumnDirective"], _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["AggregateColumnDirective"]], styles: [".overlay[_ngcontent-%COMP%] {\n  position: fixed;\n  width: 78%;\n  z-index: 10;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvc2l0YS9tZXNzYWdlLWFtcy9DOlxcVXNlcnNcXGpsb3NhZGFcXERvY3VtZW50c1xcTWF0QmFnLkZyb250ZW5kVjEvc3JjXFxhcHBcXHBhZ2VzXFxzaXRhXFxtZXNzYWdlLWFtc1xcbWVzc2FnZS1hbXMuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3NpdGEvbWVzc2FnZS1hbXMvbWVzc2FnZS1hbXMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxlQUFlO0VBQ2YsVUFBVTtFQUdWLFdBQVc7RUFDWCxhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLHVCQUF1QjtBQ0QzQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3NpdGEvbWVzc2FnZS1hbXMvbWVzc2FnZS1hbXMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIub3ZlcmxheSB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB3aWR0aDogNzglO1xyXG4gICAgLy8gaGVpZ2h0OiAxMDAlO1xyXG4gICAgLy8gYmFja2dyb3VuZC1jb2xvcjogcmdiYSg3NCwgNzQsIDc0LCAuOCk7XHJcbiAgICB6LWluZGV4OiAxMDtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbn0iLCIub3ZlcmxheSB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgd2lkdGg6IDc4JTtcbiAgei1pbmRleDogMTA7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuIl19 */"] });
+        } }, directives: [_nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardHeaderComponent"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbCardBodyComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormGroupDirective"], _syncfusion_ej2_angular_calendars__WEBPACK_IMPORTED_MODULE_10__["DateTimePickerComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["RequiredValidator"], _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbButtonComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["GridComponent"], _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["ColumnsDirective"], _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["AggregateColumnsDirective"], _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["ColumnDirective"], _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["AggregateColumnDirective"]], styles: [".overlay[_ngcontent-%COMP%] {\n  position: fixed;\n  width: 78%;\n  z-index: 10;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.form-inline[_ngcontent-%COMP%]   [fullWidth][_ngcontent-%COMP%] {\n  flex: 1;\n}\n\n.form-inline[_ngcontent-%COMP%]    > *[_ngcontent-%COMP%] {\n  margin: 0 1.5rem 1.5rem 0;\n}\n\n#form[_ngcontent-%COMP%] {\n  margin-left: 05px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvc2l0YS9tZXNzYWdlLWFtcy9DOlxcVXNlcnNcXGpsb3NhZGFcXERvY3VtZW50c1xcTWF0QmFnLkZyb250ZW5kVjEvc3JjXFxhcHBcXHBhZ2VzXFxzaXRhXFxtZXNzYWdlLWFtc1xcbWVzc2FnZS1hbXMuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3NpdGEvbWVzc2FnZS1hbXMvbWVzc2FnZS1hbXMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxlQUFlO0VBQ2YsVUFBVTtFQUdWLFdBQVc7RUFDWCxhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLHVCQUF1QjtBQ0QzQjs7QURJQTtFQUNJLE9BQU87QUNEWDs7QURJQTtFQUNJLHlCQUF5QjtBQ0Q3Qjs7QURJQTtFQUNJLGlCQUFpQjtBQ0RyQiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3NpdGEvbWVzc2FnZS1hbXMvbWVzc2FnZS1hbXMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIub3ZlcmxheSB7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB3aWR0aDogNzglO1xyXG4gICAgLy8gaGVpZ2h0OiAxMDAlO1xyXG4gICAgLy8gYmFja2dyb3VuZC1jb2xvcjogcmdiYSg3NCwgNzQsIDc0LCAuOCk7XHJcbiAgICB6LWluZGV4OiAxMDtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbn1cclxuXHJcbi5mb3JtLWlubGluZSBbZnVsbFdpZHRoXSB7XHJcbiAgICBmbGV4OiAxO1xyXG59XHJcblxyXG4uZm9ybS1pbmxpbmU+KiB7XHJcbiAgICBtYXJnaW46IDAgMS41cmVtIDEuNXJlbSAwO1xyXG59XHJcblxyXG4jZm9ybSB7XHJcbiAgICBtYXJnaW4tbGVmdDogMDVweDtcclxufSIsIi5vdmVybGF5IHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB3aWR0aDogNzglO1xuICB6LWluZGV4OiAxMDtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbi5mb3JtLWlubGluZSBbZnVsbFdpZHRoXSB7XG4gIGZsZXg6IDE7XG59XG5cbi5mb3JtLWlubGluZSA+ICoge1xuICBtYXJnaW46IDAgMS41cmVtIDEuNXJlbSAwO1xufVxuXG4jZm9ybSB7XG4gIG1hcmdpbi1sZWZ0OiAwNXB4O1xufVxuIl19 */"] });
     return MessageAMSComponent;
 }());
 
@@ -178,7 +286,7 @@ var MessageAMSComponent = /** @class */ (function () {
                 styleUrls: ['./message-ams.component.scss'],
                 providers: [_syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_6__["ResizeService"]]
             }]
-    }], function () { return [{ type: _core_backend_common_api_apiGet_services__WEBPACK_IMPORTED_MODULE_1__["ApiGetService"] }, { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] }, { type: _core_backend_common_api_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"] }]; }, null); })();
+    }], function () { return [{ type: _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormBuilder"] }, { type: _core_backend_common_api_apiGet_services__WEBPACK_IMPORTED_MODULE_1__["ApiGetService"] }, { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] }, { type: _core_backend_common_api_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"] }, { type: _angular_common__WEBPACK_IMPORTED_MODULE_9__["DatePipe"] }, { type: _nebular_theme__WEBPACK_IMPORTED_MODULE_8__["NbToastrService"] }]; }, null); })();
 
 
 /***/ }),
@@ -249,15 +357,28 @@ var MessageBMComponent = /** @class */ (function () {
             // console.log('acoData: ', res);
             _this.loading = false;
             _this.bagMessageData = res;
+            _this.bandaBmCharge();
         });
-        var contador = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["interval"])(60000);
-        contador.subscribe(function (n) {
-            _this.http.get(_this.api.apiUrlNode1 + '/api/notificationBM')
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeWhile"])(function () { return _this.alive; }))
-                .subscribe(function (res) {
-                _this.bagMessageData = res;
-                _this.loading = false;
-            });
+        // const contador = interval(60000)
+        // contador.subscribe((n) => {
+        //   this.http.get(this.api.apiUrlNode1 + '/api/notificationBM')
+        //   .pipe(takeWhile(() => this.alive))
+        //   .subscribe((res: any) => {
+        //     this.bagMessageData = res;
+        //     this.loading = false;
+        //   });
+        // });
+    };
+    MessageBMComponent.prototype.bandaBmCharge = function () {
+        var _this = this;
+        if (this.intervalSubscriptionBm) {
+            this.intervalSubscriptionBm.unsubscribe();
+        }
+        this.intervalSubscriptionBm = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["interval"])(16000)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function () { return _this.http.get(_this.api.apiUrlNode1 + '/api/notificationBM'); }))
+            .subscribe(function (res) {
+            _this.bagMessageData = res;
+            // console.log('Equipos:', this.bagMessageData);
         });
     };
     MessageBMComponent.prototype.ngOnDestroy = function () {
@@ -600,8 +721,9 @@ var SitaMessageBMComponent = /** @class */ (function () {
             _this.dataConfigu = res;
             REFERE = res;
             _this.dataRefe = REFERE;
-            console.log("Configuration:", _this.dataConfigu);
-            console.log("dataRefe:", _this.dataRefe);
+            _this.bandaMCharge();
+            // console.log("Configuration:", this.dataConfigu);
+            // console.log("dataRefe:", this.dataRefe);
         });
     };
     SitaMessageBMComponent.prototype.chargeData = function () {
@@ -613,13 +735,25 @@ var SitaMessageBMComponent = /** @class */ (function () {
             // console.log('teamsData: ', res);
             _this.dataConfigu2 = res;
         });
-        var contador = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(40000);
-        contador.subscribe(function (n) {
-            _this.http.get(_this.api.apiUrlNode1 + '/api/recepcionBM')
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeWhile"])(function () { return _this.alive; }))
-                .subscribe(function (res) {
-                _this.dataConfigu2 = res;
-            });
+        // const contador = interval(40000)
+        // contador.subscribe((n) => {
+        //   this.http.get(this.api.apiUrlNode1 + '/api/recepcionBM')
+        //   .pipe(takeWhile(() => this.alive))
+        //   .subscribe((res: any) => {
+        //     this.dataConfigu2 = res;
+        //   });
+        // });
+    };
+    SitaMessageBMComponent.prototype.bandaMCharge = function () {
+        var _this = this;
+        if (this.intervalSubscriptionM) {
+            this.intervalSubscriptionM.unsubscribe();
+        }
+        this.intervalSubscriptionM = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(16000)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function () { return _this.http.get(_this.api.apiUrlNode1 + '/api/recepcionBM'); }))
+            .subscribe(function (res) {
+            _this.dataConfigu = res;
+            // console.log('Equipos:', this.bagMessageData);
         });
     };
     SitaMessageBMComponent.prototype.ngOnDestroy = function () {
@@ -971,14 +1105,27 @@ var SitaMessageComponent = /** @class */ (function () {
             // tslint:disable-next-line: no-console
             // console.log('teamsData: ', res);
             _this.dataConfigu1 = res;
+            _this.bandaMCharge();
         });
-        var contador = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(40000);
-        contador.subscribe(function (n) {
-            _this.http.get(_this.api.apiUrlNode1 + '/api/recepcion')
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeWhile"])(function () { return _this.alive; }))
-                .subscribe(function (res) {
-                _this.dataConfigu1 = res;
-            });
+        // const contador = interval(40000)
+        // contador.subscribe((n) => {
+        //   this.http.get(this.api.apiUrlNode1 + '/api/recepcion')
+        //   .pipe(takeWhile(() => this.alive))
+        //   .subscribe((res: any) => {
+        //     this.dataConfigu1 = res;
+        //   });
+        // });
+    };
+    SitaMessageComponent.prototype.bandaMCharge = function () {
+        var _this = this;
+        if (this.intervalSubscriptionM) {
+            this.intervalSubscriptionM.unsubscribe();
+        }
+        this.intervalSubscriptionM = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(16000)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function () { return _this.http.get(_this.api.apiUrlNode1 + '/api/recepcion'); }))
+            .subscribe(function (res) {
+            _this.dataConfigu1 = res;
+            // console.log('Equipos:', this.bagMessageData);
         });
     };
     SitaMessageComponent.prototype.ngOnDestroy = function () {
@@ -1172,11 +1319,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sita_message_sita_message_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sita-message/sita-message.component */ "./src/app/pages/sita/sita-message/sita-message.component.ts");
 /* harmony import */ var _sita_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sita.component */ "./src/app/pages/sita/sita.component.ts");
 /* harmony import */ var _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @syncfusion/ej2-angular-grids */ "./node_modules/@syncfusion/ej2-angular-grids/__ivy_ngcc__/@syncfusion/ej2-angular-grids.es5.js");
-/* harmony import */ var _syncfusion_ej2_angular_popups__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @syncfusion/ej2-angular-popups */ "./node_modules/@syncfusion/ej2-angular-popups/__ivy_ngcc__/@syncfusion/ej2-angular-popups.es5.js");
-/* harmony import */ var _message_ams_message_ams_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./message-ams/message-ams.component */ "./src/app/pages/sita/message-ams/message-ams.component.ts");
-/* harmony import */ var _syncfusion_ej2_angular_progressbar__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @syncfusion/ej2-angular-progressbar */ "./node_modules/@syncfusion/ej2-angular-progressbar/__ivy_ngcc__/@syncfusion/ej2-angular-progressbar.es5.js");
-/* harmony import */ var _message_bm_message_bm_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./message-bm/message-bm.component */ "./src/app/pages/sita/message-bm/message-bm.component.ts");
-/* harmony import */ var _sita_message_bm_sita_message_bm_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./sita-message-bm/sita-message-bm.component */ "./src/app/pages/sita/sita-message-bm/sita-message-bm.component.ts");
+/* harmony import */ var _syncfusion_ej2_angular_dropdowns__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @syncfusion/ej2-angular-dropdowns */ "./node_modules/@syncfusion/ej2-angular-dropdowns/__ivy_ngcc__/@syncfusion/ej2-angular-dropdowns.es5.js");
+/* harmony import */ var _syncfusion_ej2_angular_navigations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @syncfusion/ej2-angular-navigations */ "./node_modules/@syncfusion/ej2-angular-navigations/__ivy_ngcc__/@syncfusion/ej2-angular-navigations.es5.js");
+/* harmony import */ var _syncfusion_ej2_angular_calendars__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @syncfusion/ej2-angular-calendars */ "./node_modules/@syncfusion/ej2-angular-calendars/__ivy_ngcc__/@syncfusion/ej2-angular-calendars.es5.js");
+/* harmony import */ var _syncfusion_ej2_angular_popups__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @syncfusion/ej2-angular-popups */ "./node_modules/@syncfusion/ej2-angular-popups/__ivy_ngcc__/@syncfusion/ej2-angular-popups.es5.js");
+/* harmony import */ var _message_ams_message_ams_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./message-ams/message-ams.component */ "./src/app/pages/sita/message-ams/message-ams.component.ts");
+/* harmony import */ var _syncfusion_ej2_angular_progressbar__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @syncfusion/ej2-angular-progressbar */ "./node_modules/@syncfusion/ej2-angular-progressbar/__ivy_ngcc__/@syncfusion/ej2-angular-progressbar.es5.js");
+/* harmony import */ var _message_bm_message_bm_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./message-bm/message-bm.component */ "./src/app/pages/sita/message-bm/message-bm.component.ts");
+/* harmony import */ var _sita_message_bm_sita_message_bm_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./sita-message-bm/sita-message-bm.component */ "./src/app/pages/sita/sita-message-bm/sita-message-bm.component.ts");
+
+
+
+
+
 
 
 
@@ -1215,25 +1370,25 @@ var SitaModule = /** @class */ (function () {
                 // NbListModule,
                 // NbIconModule,
                 // NbSpinnerModule,
-                // NbDatepickerModule,
+                _nebular_theme__WEBPACK_IMPORTED_MODULE_2__["NbDatepickerModule"],
                 // NbCheckboxModule,
                 // ThemeModule,
                 _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_7__["GridModule"],
-                // DropDownListAllModule,
-                // ToolbarModule,
-                // DateTimePickerModule,
-                // DropDownListModule,
-                // DatePickerModule,
-                _syncfusion_ej2_angular_popups__WEBPACK_IMPORTED_MODULE_8__["DialogModule"],
+                _syncfusion_ej2_angular_dropdowns__WEBPACK_IMPORTED_MODULE_8__["DropDownListAllModule"],
+                _syncfusion_ej2_angular_navigations__WEBPACK_IMPORTED_MODULE_9__["ToolbarModule"],
+                _syncfusion_ej2_angular_calendars__WEBPACK_IMPORTED_MODULE_10__["DateTimePickerModule"],
+                _syncfusion_ej2_angular_dropdowns__WEBPACK_IMPORTED_MODULE_8__["DropDownListModule"],
+                _syncfusion_ej2_angular_calendars__WEBPACK_IMPORTED_MODULE_10__["DatePickerModule"],
+                _syncfusion_ej2_angular_popups__WEBPACK_IMPORTED_MODULE_11__["DialogModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
-                _syncfusion_ej2_angular_progressbar__WEBPACK_IMPORTED_MODULE_10__["ProgressBarAllModule"],
+                _syncfusion_ej2_angular_progressbar__WEBPACK_IMPORTED_MODULE_13__["ProgressBarAllModule"],
             ]] });
     return SitaModule;
 }());
 
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](SitaModule, { declarations: [_sita_component__WEBPACK_IMPORTED_MODULE_6__["SitaComponent"], _sita_message_sita_message_component__WEBPACK_IMPORTED_MODULE_5__["SitaMessageComponent"], _message_ams_message_ams_component__WEBPACK_IMPORTED_MODULE_9__["MessageAMSComponent"], _message_bm_message_bm_component__WEBPACK_IMPORTED_MODULE_11__["MessageBMComponent"],
-        _sita_message_bm_sita_message_bm_component__WEBPACK_IMPORTED_MODULE_12__["SitaMessageBMComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](SitaModule, { declarations: [_sita_component__WEBPACK_IMPORTED_MODULE_6__["SitaComponent"], _sita_message_sita_message_component__WEBPACK_IMPORTED_MODULE_5__["SitaMessageComponent"], _message_ams_message_ams_component__WEBPACK_IMPORTED_MODULE_12__["MessageAMSComponent"], _message_bm_message_bm_component__WEBPACK_IMPORTED_MODULE_14__["MessageBMComponent"],
+        _sita_message_bm_sita_message_bm_component__WEBPACK_IMPORTED_MODULE_15__["SitaMessageBMComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
         _sita_routing_module__WEBPACK_IMPORTED_MODULE_4__["SitaRoutingModule"],
         _nebular_theme__WEBPACK_IMPORTED_MODULE_2__["NbActionsModule"],
         _nebular_theme__WEBPACK_IMPORTED_MODULE_2__["NbButtonModule"],
@@ -1246,24 +1401,24 @@ var SitaModule = /** @class */ (function () {
         // NbListModule,
         // NbIconModule,
         // NbSpinnerModule,
-        // NbDatepickerModule,
+        _nebular_theme__WEBPACK_IMPORTED_MODULE_2__["NbDatepickerModule"],
         // NbCheckboxModule,
         // ThemeModule,
         _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_7__["GridModule"],
-        // DropDownListAllModule,
-        // ToolbarModule,
-        // DateTimePickerModule,
-        // DropDownListModule,
-        // DatePickerModule,
-        _syncfusion_ej2_angular_popups__WEBPACK_IMPORTED_MODULE_8__["DialogModule"],
+        _syncfusion_ej2_angular_dropdowns__WEBPACK_IMPORTED_MODULE_8__["DropDownListAllModule"],
+        _syncfusion_ej2_angular_navigations__WEBPACK_IMPORTED_MODULE_9__["ToolbarModule"],
+        _syncfusion_ej2_angular_calendars__WEBPACK_IMPORTED_MODULE_10__["DateTimePickerModule"],
+        _syncfusion_ej2_angular_dropdowns__WEBPACK_IMPORTED_MODULE_8__["DropDownListModule"],
+        _syncfusion_ej2_angular_calendars__WEBPACK_IMPORTED_MODULE_10__["DatePickerModule"],
+        _syncfusion_ej2_angular_popups__WEBPACK_IMPORTED_MODULE_11__["DialogModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
-        _syncfusion_ej2_angular_progressbar__WEBPACK_IMPORTED_MODULE_10__["ProgressBarAllModule"]] }); })();
+        _syncfusion_ej2_angular_progressbar__WEBPACK_IMPORTED_MODULE_13__["ProgressBarAllModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SitaModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
-                declarations: [_sita_component__WEBPACK_IMPORTED_MODULE_6__["SitaComponent"], _sita_message_sita_message_component__WEBPACK_IMPORTED_MODULE_5__["SitaMessageComponent"], _message_ams_message_ams_component__WEBPACK_IMPORTED_MODULE_9__["MessageAMSComponent"], _message_bm_message_bm_component__WEBPACK_IMPORTED_MODULE_11__["MessageBMComponent"],
-                    _sita_message_bm_sita_message_bm_component__WEBPACK_IMPORTED_MODULE_12__["SitaMessageBMComponent"]],
+                declarations: [_sita_component__WEBPACK_IMPORTED_MODULE_6__["SitaComponent"], _sita_message_sita_message_component__WEBPACK_IMPORTED_MODULE_5__["SitaMessageComponent"], _message_ams_message_ams_component__WEBPACK_IMPORTED_MODULE_12__["MessageAMSComponent"], _message_bm_message_bm_component__WEBPACK_IMPORTED_MODULE_14__["MessageBMComponent"],
+                    _sita_message_bm_sita_message_bm_component__WEBPACK_IMPORTED_MODULE_15__["SitaMessageBMComponent"]],
                 imports: [
                     _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
                     _sita_routing_module__WEBPACK_IMPORTED_MODULE_4__["SitaRoutingModule"],
@@ -1278,19 +1433,19 @@ var SitaModule = /** @class */ (function () {
                     // NbListModule,
                     // NbIconModule,
                     // NbSpinnerModule,
-                    // NbDatepickerModule,
+                    _nebular_theme__WEBPACK_IMPORTED_MODULE_2__["NbDatepickerModule"],
                     // NbCheckboxModule,
                     // ThemeModule,
                     _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_7__["GridModule"],
-                    // DropDownListAllModule,
-                    // ToolbarModule,
-                    // DateTimePickerModule,
-                    // DropDownListModule,
-                    // DatePickerModule,
-                    _syncfusion_ej2_angular_popups__WEBPACK_IMPORTED_MODULE_8__["DialogModule"],
+                    _syncfusion_ej2_angular_dropdowns__WEBPACK_IMPORTED_MODULE_8__["DropDownListAllModule"],
+                    _syncfusion_ej2_angular_navigations__WEBPACK_IMPORTED_MODULE_9__["ToolbarModule"],
+                    _syncfusion_ej2_angular_calendars__WEBPACK_IMPORTED_MODULE_10__["DateTimePickerModule"],
+                    _syncfusion_ej2_angular_dropdowns__WEBPACK_IMPORTED_MODULE_8__["DropDownListModule"],
+                    _syncfusion_ej2_angular_calendars__WEBPACK_IMPORTED_MODULE_10__["DatePickerModule"],
+                    _syncfusion_ej2_angular_popups__WEBPACK_IMPORTED_MODULE_11__["DialogModule"],
                     _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                     _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
-                    _syncfusion_ej2_angular_progressbar__WEBPACK_IMPORTED_MODULE_10__["ProgressBarAllModule"],
+                    _syncfusion_ej2_angular_progressbar__WEBPACK_IMPORTED_MODULE_13__["ProgressBarAllModule"],
                 ],
                 providers: [
                     _syncfusion_ej2_angular_grids__WEBPACK_IMPORTED_MODULE_7__["PageService"],

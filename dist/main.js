@@ -11946,6 +11946,168 @@ var NgxLoginComponent = /** @class */ (function () {
             rememberMe: this.fb.control(false),
         });
     };
+    // login(): void {
+    //   // debugger
+    //   this.user = this.loginForm.value;
+    //   this.errors = [];
+    //   this.messages = [];
+    //   this.submitted = true;
+    //   let currentUserId = this.userStore.getUser()?.id;
+    //   if (currentUserId === undefined) {
+    //     currentUserId = 1;
+    //   } else {
+    //     currentUserId;
+    //   }
+    //   // console.log("este es el usuario: ",this.userStore.getUser().firstName);
+    //   var respons = {
+    //     user: this.user.email,
+    //     message: "Inicio sesión",
+    //     users: currentUserId,
+    //   };
+    //   this.apiGetComp
+    //     .PostJson(this.api.apiUrlNode1 + "/postSaveAlarmUser", respons)
+    //     .pipe(takeWhile(() => this.alive))
+    //     .subscribe((res: any) => {
+    //       //  console.log("Envió: ", res);
+    //     });
+    //   // debugger
+    //   this.apiGetComp
+    //     .GetJson(
+    //       this.api.apiUrlNode1 + "/api/getlEmailuser?Email=" + this.user.email
+    //     )
+    //     .subscribe((res: any) => {
+    //       this.validData = res;
+    //       // debugger
+    //       // console.log('Email ValidData: ', this.validData[0].Id)
+    //       // console.log('Email ValidData: ', this.validData[0].States)
+    //       // debugger
+    //       if (
+    //         (this.validData[0].Lat === 0 &&
+    //           this.validData[0].Licens_id === "1" &&
+    //           this.validData[0].States === 1) ||
+    //         this.validData[0].Lat === null
+    //       ) {
+    //         // debugger;
+    //         var respon = {
+    //           user: this.validData[0].Id,
+    //           sesion: 1,
+    //         };
+    //         this.apiGetComp
+    //           .PostJson(this.api.apiUrlNode1 + "/updateSesion", respon)
+    //           .pipe(takeWhile(() => this.alive))
+    //           .subscribe((res: any) => {
+    //             //  console.log("Envió: ", res);
+    //           });
+    //         this.service
+    //           .authenticate(this.strategy, this.user)
+    //           .subscribe((result: NbAuthResult) => {
+    //             this.submitted = false;
+    //             // this.loading = false;
+    //             if (result.isSuccess()) {
+    //               this.messages = result.getMessages();
+    //               // this.loading = false;
+    //               this.initUserService.initCurrentUser().subscribe();
+    //             } else {
+    //               this.errors = result.getErrors();
+    //             }
+    //             const redirect = result.getRedirect();
+    //             if (redirect) {
+    //               setTimeout(() => {
+    //                 return this.router.navigateByUrl(redirect);
+    //               }, this.redirectDelay);
+    //             }
+    //             this.cd.detectChanges();
+    //           });
+    //       } else if (this.validData[0].Licens_id === "2") {
+    //         // debugger
+    //         console.log("licencia de usuario inactiva");
+    //         this.toasterService.danger(
+    //           "",
+    //           `¡Licencia Inactiva, por favor comuniquese con el administrador!`
+    //         );
+    //       } else if (this.validData[0].Licens_id === null) {
+    //         console.log("No tiene tiene licencia ");
+    //         this.toasterService.danger("", `¡No tiene tiene licencia!`);
+    //       } else if (
+    //         this.validData[0].States === 2 ||
+    //         this.validData[0].States === null
+    //       ) {
+    //         console.log("Usuario Inactivo");
+    //         this.toasterService.danger("", `¡Usuario Inactivo!`);
+    //       } else {
+    //         Swal.fire({
+    //           title: "Sesión encontrada",
+    //           text: `Actualmente tienes una sesión iniciada en nuestra plataforma, debes finalizar para continuar.  
+    //           ¿Desea cerrar la sesión activa?`,
+    //           // timer: 10000,
+    //           icon: "success",
+    //           showCancelButton: true,
+    //           confirmButtonColor: "#3085d6",
+    //           cancelButtonColor: "#d33",
+    //           confirmButtonText: "SI",
+    //           cancelButtonText: "No",
+    //         }).then((result) => {
+    //           if (result.value) {
+    //             let timers = 4500;
+    //             var respon = {
+    //               user: this.validData[0].Id,
+    //               sesion: 0,
+    //             };
+    //             this.apiGetComp
+    //               .PostJson(this.api.apiUrlNode1 + "/updateSesion", respon)
+    //               .pipe(takeWhile(() => this.alive))
+    //               .subscribe((res: any) => {
+    //                 console.log("Se actualizó: ", res);
+    //               });
+    //             // Swal.fire(
+    //             //   '¡Sesión cerrada',
+    //             //   'La sesión que tenías abierta se he cerrado exitosamente, ahora puedes ingresar nuevamente.',
+    //             //   'warning',
+    //             Swal.fire({
+    //               title: "¡Cargando!",
+    //               text: "Esperando que se cierre la sesión",
+    //               allowEscapeKey: false,
+    //               allowOutsideClick: false,
+    //               timer: timers,
+    //               onOpen: () => {
+    //                 Swal.showLoading();
+    //               },
+    //             }).then((result) => {
+    //               if (result.value === this.timer) {
+    //                 // debugger;
+    //                 console.log("closed by timer!!!!");
+    //                 this.apiGetComp
+    //                   .GetJson(
+    //                     this.api.apiUrlNode1 +
+    //                       "/api/getlEmailuser?Email=" +
+    //                       this.user.email
+    //                   )
+    //                   .pipe(takeWhile(() => this.alive))
+    //                   .subscribe((res: any) => {
+    //                     this.validData = res;
+    //                     if (this.validData[0].Lat == 1) {
+    //                       Swal.fire({
+    //                         title: "El usuario continua con la sesión, Vuelva ha intentar!",
+    //                         icon: "warning",
+    //                         timer: 2000,
+    //                         showConfirmButton: false,
+    //                       });
+    //                     } else {
+    //                       Swal.fire({
+    //                         title: "Se finalizó la sesión, Ya puede ¡iniciar sesión!",
+    //                         icon: "success",
+    //                         timer: 2000,
+    //                         showConfirmButton: false,
+    //                       });
+    //                     }
+    //                   });
+    //               }
+    //             });
+    //           }
+    //         });
+    //       }
+    //     });
+    // }
     NgxLoginComponent.prototype.login = function () {
         var _this = this;
         var _a;
@@ -11974,136 +12136,279 @@ var NgxLoginComponent = /** @class */ (function () {
             //  console.log("Envió: ", res);
         });
         // debugger
-        this.apiGetComp
-            .GetJson(this.api.apiUrlNode1 + "/api/getlEmailuser?Email=" + this.user.email)
-            .subscribe(function (res) {
-            _this.validData = res;
+        this.service
+            .authenticate(this.strategy, this.user)
+            .subscribe(function (result) {
+            _this.submitted = false;
+            // this.loading = false;
             // debugger
-            // console.log('Email ValidData: ', this.validData[0].Id)
-            // console.log('Email ValidData: ', this.validData[0].States)
-            // debugger
-            if ((_this.validData[0].Lat === 0 &&
-                _this.validData[0].Licens_id === "1" &&
-                _this.validData[0].States === 1) ||
-                _this.validData[0].Lat === null) {
-                // debugger;
-                var respon = {
-                    user: _this.validData[0].Id,
-                    sesion: 1,
-                };
-                _this.apiGetComp
-                    .PostJson(_this.api.apiUrlNode1 + "/updateSesion", respon)
-                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeWhile"])(function () { return _this.alive; }))
-                    .subscribe(function (res) {
-                    //  console.log("Envió: ", res);
-                });
-                _this.service
-                    .authenticate(_this.strategy, _this.user)
-                    .subscribe(function (result) {
-                    _this.submitted = false;
-                    // this.loading = false;
-                    if (result.isSuccess()) {
-                        _this.messages = result.getMessages();
-                        // this.loading = false;
-                        _this.initUserService.initCurrentUser().subscribe();
-                    }
-                    else {
-                        _this.errors = result.getErrors();
-                    }
-                    var redirect = result.getRedirect();
-                    if (redirect) {
+            if (result.isSuccess()) {
+                debugger;
+                _this.messages = result.getMessages();
+                // this.loading = false;
+                _this.initUserService.initCurrentUser().subscribe();
+                console.log('Correctó');
+            }
+            else {
+                debugger;
+                _this.errors = result.getErrors();
+                console.log('Contraseña incorrecta');
+            }
+            _this.apiGetComp
+                .GetJson(_this.api.apiUrlNode1 + "/api/getlEmailuser?Email=" + _this.user.email)
+                .subscribe(function (res) {
+                _this.validData = res;
+                // debugger
+                // console.log('Email ValidData: ', this.validData[0].Id)
+                // console.log('Email ValidData: ', this.validData[0].States)
+                // debugger
+                if ((_this.validData[0].Lat === 0 &&
+                    _this.validData[0].Licens_id === "1" &&
+                    _this.validData[0].States === 1) ||
+                    _this.validData[0].Lat === null) {
+                    // debugger;
+                    var respon = {
+                        user: _this.validData[0].Id,
+                        sesion: 1,
+                    };
+                    _this.apiGetComp
+                        .PostJson(_this.api.apiUrlNode1 + "/updateSesion", respon)
+                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeWhile"])(function () { return _this.alive; }))
+                        .subscribe(function (res) {
+                        //  console.log("Envió: ", res);
+                    });
+                    debugger;
+                    console.log('Inicia sesion');
+                    var redirect_1 = result.getRedirect();
+                    if (redirect_1) {
                         setTimeout(function () {
-                            return _this.router.navigateByUrl(redirect);
+                            return _this.router.navigateByUrl(redirect_1);
                         }, _this.redirectDelay);
                     }
                     _this.cd.detectChanges();
-                });
-            }
-            else if (_this.validData[0].Licens_id === "2") {
-                // debugger
-                console.log("licencia de usuario inactiva");
-                _this.toasterService.danger("", "\u00A1Licencia Inactiva, por favor comuniquese con el administrador!");
-            }
-            else if (_this.validData[0].Licens_id === null) {
-                console.log("No tiene tiene licencia ");
-                _this.toasterService.danger("", "\u00A1No tiene tiene licencia!");
-            }
-            else if (_this.validData[0].States === 2 ||
-                _this.validData[0].States === null) {
-                console.log("Usuario Inactivo");
-                _this.toasterService.danger("", "\u00A1Usuario Inactivo!");
-            }
-            else {
-                sweetalert2__WEBPACK_IMPORTED_MODULE_13___default.a.fire({
-                    title: "Sesión encontrada",
-                    text: "Actualmente tienes una sesi\u00F3n iniciada en nuestra plataforma, debes finalizar para continuar.  \n            \u00BFDesea cerrar la sesi\u00F3n activa?",
-                    // timer: 10000,
-                    icon: "success",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "SI",
-                    cancelButtonText: "No",
-                }).then(function (result) {
-                    if (result.value) {
-                        var timers = 4500;
-                        var respon = {
-                            user: _this.validData[0].Id,
-                            sesion: 0,
-                        };
-                        _this.apiGetComp
-                            .PostJson(_this.api.apiUrlNode1 + "/updateSesion", respon)
-                            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeWhile"])(function () { return _this.alive; }))
-                            .subscribe(function (res) {
-                            console.log("Se actualizó: ", res);
-                        });
-                        // Swal.fire(
-                        //   '¡Sesión cerrada',
-                        //   'La sesión que tenías abierta se he cerrado exitosamente, ahora puedes ingresar nuevamente.',
-                        //   'warning',
-                        sweetalert2__WEBPACK_IMPORTED_MODULE_13___default.a.fire({
-                            title: "¡Cargando!",
-                            text: "Esperando que se cierre la sesión",
-                            allowEscapeKey: false,
-                            allowOutsideClick: false,
-                            timer: timers,
-                            onOpen: function () {
-                                sweetalert2__WEBPACK_IMPORTED_MODULE_13___default.a.showLoading();
-                            },
-                        }).then(function (result) {
-                            if (result.value === _this.timer) {
-                                // debugger;
-                                console.log("closed by timer!!!!");
-                                _this.apiGetComp
-                                    .GetJson(_this.api.apiUrlNode1 +
-                                    "/api/getlEmailuser?Email=" +
-                                    _this.user.email)
-                                    .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeWhile"])(function () { return _this.alive; }))
-                                    .subscribe(function (res) {
-                                    _this.validData = res;
-                                    if (_this.validData[0].Lat == 1) {
-                                        sweetalert2__WEBPACK_IMPORTED_MODULE_13___default.a.fire({
-                                            title: "El usuario continua con la sesión, Vuelva ha intentar!",
-                                            icon: "warning",
-                                            timer: 2000,
-                                            showConfirmButton: false,
-                                        });
-                                    }
-                                    else {
-                                        sweetalert2__WEBPACK_IMPORTED_MODULE_13___default.a.fire({
-                                            title: "Se finalizó la sesión, Ya puede ¡iniciar sesión!",
-                                            icon: "success",
-                                            timer: 2000,
-                                            showConfirmButton: false,
-                                        });
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
-            }
+                }
+                else if (_this.validData[0].Licens_id === "2") {
+                    // debugger
+                    console.log("licencia de usuario inactiva");
+                    _this.toasterService.danger("", "\u00A1Licencia Inactiva, por favor comuniquese con el administrador!");
+                }
+                else if (_this.validData[0].Licens_id === null) {
+                    console.log("No tiene tiene licencia ");
+                    _this.toasterService.danger("", "\u00A1No tiene tiene licencia!");
+                }
+                else if (_this.validData[0].States === 2 ||
+                    _this.validData[0].States === null) {
+                    console.log("Usuario Inactivo");
+                    _this.toasterService.danger("", "\u00A1Usuario Inactivo!");
+                }
+                else {
+                    sweetalert2__WEBPACK_IMPORTED_MODULE_13___default.a.fire({
+                        title: "Sesión encontrada",
+                        text: "Actualmente tienes una sesi\u00F3n iniciada en nuestra plataforma, debes finalizar para continuar.  \n            \u00BFDesea cerrar la sesi\u00F3n activa?",
+                        // timer: 10000,
+                        icon: "success",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "SI",
+                        cancelButtonText: "No",
+                    }).then(function (result) {
+                        if (result.value) {
+                            var timers = 4500;
+                            var respon = {
+                                user: _this.validData[0].Id,
+                                sesion: 0,
+                            };
+                            _this.apiGetComp
+                                .PostJson(_this.api.apiUrlNode1 + "/updateSesion", respon)
+                                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeWhile"])(function () { return _this.alive; }))
+                                .subscribe(function (res) {
+                                console.log("Se actualizó: ", res);
+                            });
+                            // Swal.fire(
+                            //   '¡Sesión cerrada',
+                            //   'La sesión que tenías abierta se he cerrado exitosamente, ahora puedes ingresar nuevamente.',
+                            //   'warning',
+                            sweetalert2__WEBPACK_IMPORTED_MODULE_13___default.a.fire({
+                                title: "¡Cargando!",
+                                text: "Esperando que se cierre la sesión",
+                                allowEscapeKey: false,
+                                allowOutsideClick: false,
+                                timer: timers,
+                                onOpen: function () {
+                                    sweetalert2__WEBPACK_IMPORTED_MODULE_13___default.a.showLoading();
+                                },
+                            }).then(function (result) {
+                                if (result.value === _this.timer) {
+                                    // debugger;
+                                    console.log("closed by timer!!!!");
+                                    _this.apiGetComp
+                                        .GetJson(_this.api.apiUrlNode1 +
+                                        "/api/getlEmailuser?Email=" +
+                                        _this.user.email)
+                                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["takeWhile"])(function () { return _this.alive; }))
+                                        .subscribe(function (res) {
+                                        _this.validData = res;
+                                        if (_this.validData[0].Lat == 1) {
+                                            sweetalert2__WEBPACK_IMPORTED_MODULE_13___default.a.fire({
+                                                title: "El usuario continua con la sesión, Vuelva ha intentar!",
+                                                icon: "warning",
+                                                timer: 2000,
+                                                showConfirmButton: false,
+                                            });
+                                        }
+                                        else {
+                                            sweetalert2__WEBPACK_IMPORTED_MODULE_13___default.a.fire({
+                                                title: "Se finalizó la sesión, Ya puede ¡iniciar sesión!",
+                                                icon: "success",
+                                                timer: 2000,
+                                                showConfirmButton: false,
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
         });
+        // this.apiGetComp
+        //   .GetJson(
+        //     this.api.apiUrlNode1 + "/api/getlEmailuser?Email=" + this.user.email
+        //   )
+        //   .subscribe((res: any) => {
+        //     this.validData = res;
+        //     // debugger
+        //     // console.log('Email ValidData: ', this.validData[0].Id)
+        //     // console.log('Email ValidData: ', this.validData[0].States)
+        //     // debugger
+        //     if (
+        //       (this.validData[0].Lat === 0 &&
+        //         this.validData[0].Licens_id === "1" &&
+        //         this.validData[0].States === 1) ||
+        //       this.validData[0].Lat === null
+        //     ) {
+        //       // debugger;
+        //       var respon = {
+        //         user: this.validData[0].Id,
+        //         sesion: 1,
+        //       };
+        //       this.apiGetComp
+        //         .PostJson(this.api.apiUrlNode1 + "/updateSesion", respon)
+        //         .pipe(takeWhile(() => this.alive))
+        //         .subscribe((res: any) => {
+        //           //  console.log("Envió: ", res);
+        //         });
+        //       this.service
+        //         .authenticate(this.strategy, this.user)
+        //         .subscribe((result: NbAuthResult) => {
+        //           this.submitted = false;
+        //           // this.loading = false;
+        //           if (result.isSuccess()) {
+        //             this.messages = result.getMessages();
+        //             // this.loading = false;
+        //             this.initUserService.initCurrentUser().subscribe();
+        //           } else {
+        //             this.errors = result.getErrors();
+        //           }
+        //           const redirect = result.getRedirect();
+        //           if (redirect) {
+        //             setTimeout(() => {
+        //               return this.router.navigateByUrl(redirect);
+        //             }, this.redirectDelay);
+        //           }
+        //           this.cd.detectChanges();
+        //         });
+        //     } else if (this.validData[0].Licens_id === "2") {
+        //       // debugger
+        //       console.log("licencia de usuario inactiva");
+        //       this.toasterService.danger(
+        //         "",
+        //         `¡Licencia Inactiva, por favor comuniquese con el administrador!`
+        //       );
+        //     } else if (this.validData[0].Licens_id === null) {
+        //       console.log("No tiene tiene licencia ");
+        //       this.toasterService.danger("", `¡No tiene tiene licencia!`);
+        //     } else if (
+        //       this.validData[0].States === 2 ||
+        //       this.validData[0].States === null
+        //     ) {
+        //       console.log("Usuario Inactivo");
+        //       this.toasterService.danger("", `¡Usuario Inactivo!`);
+        //     } else {
+        //       Swal.fire({
+        //         title: "Sesión encontrada",
+        //         text: `Actualmente tienes una sesión iniciada en nuestra plataforma, debes finalizar para continuar.  
+        //         ¿Desea cerrar la sesión activa?`,
+        //         // timer: 10000,
+        //         icon: "success",
+        //         showCancelButton: true,
+        //         confirmButtonColor: "#3085d6",
+        //         cancelButtonColor: "#d33",
+        //         confirmButtonText: "SI",
+        //         cancelButtonText: "No",
+        //       }).then((result) => {
+        //         if (result.value) {
+        //           let timers = 4500;
+        //           var respon = {
+        //             user: this.validData[0].Id,
+        //             sesion: 0,
+        //           };
+        //           this.apiGetComp
+        //             .PostJson(this.api.apiUrlNode1 + "/updateSesion", respon)
+        //             .pipe(takeWhile(() => this.alive))
+        //             .subscribe((res: any) => {
+        //               console.log("Se actualizó: ", res);
+        //             });
+        //           // Swal.fire(
+        //           //   '¡Sesión cerrada',
+        //           //   'La sesión que tenías abierta se he cerrado exitosamente, ahora puedes ingresar nuevamente.',
+        //           //   'warning',
+        //           Swal.fire({
+        //             title: "¡Cargando!",
+        //             text: "Esperando que se cierre la sesión",
+        //             allowEscapeKey: false,
+        //             allowOutsideClick: false,
+        //             timer: timers,
+        //             onOpen: () => {
+        //               Swal.showLoading();
+        //             },
+        //           }).then((result) => {
+        //             if (result.value === this.timer) {
+        //               // debugger;
+        //               console.log("closed by timer!!!!");
+        //               this.apiGetComp
+        //                 .GetJson(
+        //                   this.api.apiUrlNode1 +
+        //                     "/api/getlEmailuser?Email=" +
+        //                     this.user.email
+        //                 )
+        //                 .pipe(takeWhile(() => this.alive))
+        //                 .subscribe((res: any) => {
+        //                   this.validData = res;
+        //                   if (this.validData[0].Lat == 1) {
+        //                     Swal.fire({
+        //                       title: "El usuario continua con la sesión, Vuelva ha intentar!",
+        //                       icon: "warning",
+        //                       timer: 2000,
+        //                       showConfirmButton: false,
+        //                     });
+        //                   } else {
+        //                     Swal.fire({
+        //                       title: "Se finalizó la sesión, Ya puede ¡iniciar sesión!",
+        //                       icon: "success",
+        //                       timer: 2000,
+        //                       showConfirmButton: false,
+        //                     });
+        //                   }
+        //                 });
+        //             }
+        //           });
+        //         }
+        //       });
+        //     }
+        //   });
     };
     NgxLoginComponent.prototype.getConfigValue = function (key) {
         return Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getDeepFromObject"])(this.options, key, null);
@@ -22604,8 +22909,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _boldreports_javascript_reporting_controls_Scripts_data_visualization_ej_bulletgraph_min__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_boldreports_javascript_reporting_controls_Scripts_data_visualization_ej_bulletgraph_min__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _boldreports_javascript_reporting_controls_Scripts_data_visualization_ej_chart_min__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.chart.min */ "./node_modules/@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.chart.min.js");
 /* harmony import */ var _boldreports_javascript_reporting_controls_Scripts_data_visualization_ej_chart_min__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_boldreports_javascript_reporting_controls_Scripts_data_visualization_ej_chart_min__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _syncfusion_ej2_angular_gantt__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @syncfusion/ej2-angular-gantt */ "./node_modules/@syncfusion/ej2-angular-gantt/__ivy_ngcc__/@syncfusion/ej2-angular-gantt.es5.js");
-/* harmony import */ var _nebular_theme__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @nebular/theme */ "./node_modules/@nebular/theme/__ivy_ngcc__/fesm5/index.js");
+/* harmony import */ var _nebular_theme__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @nebular/theme */ "./node_modules/@nebular/theme/__ivy_ngcc__/fesm5/index.js");
 /*
  * Copyright (c) Akveo 2019. All Rights Reserved.
  * Licensed under the Single Application / Multi Application License.
@@ -22631,7 +22935,7 @@ __webpack_require__.r(__webpack_exports__);
 // data-visualization
 
 
-
+// import { GanttAllModule } from '@syncfusion/ej2-angular-gantt';
 
 
 
@@ -22652,19 +22956,18 @@ var AppModule = /** @class */ (function () {
                 // DialogModule,
                 // RecurrenceEditorAllModule,
                 _auth_auth_module__WEBPACK_IMPORTED_MODULE_8__["AuthModule"].forRoot(),
-                _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbSidebarModule"].forRoot(),
-                _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbMenuModule"].forRoot(),
-                _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbDatepickerModule"].forRoot(),
-                _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbDialogModule"].forRoot(),
-                _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbWindowModule"].forRoot(),
-                _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbToastrModule"].forRoot(),
-                _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbChatModule"].forRoot({
+                _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbSidebarModule"].forRoot(),
+                _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbMenuModule"].forRoot(),
+                _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbDatepickerModule"].forRoot(),
+                _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbDialogModule"].forRoot(),
+                _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbWindowModule"].forRoot(),
+                _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbToastrModule"].forRoot(),
+                _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbChatModule"].forRoot({
                     messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
                 }),
                 _core_core_module__WEBPACK_IMPORTED_MODULE_4__["CoreModule"].forRoot(),
                 _theme_theme_module__WEBPACK_IMPORTED_MODULE_7__["ThemeModule"].forRoot(),
                 _boldreports_angular_reporting_components__WEBPACK_IMPORTED_MODULE_9__["BoldReportDesignerModule"],
-                _syncfusion_ej2_angular_gantt__WEBPACK_IMPORTED_MODULE_14__["GanttAllModule"],
             ]] });
     return AppModule;
 }());
@@ -22672,8 +22975,7 @@ var AppModule = /** @class */ (function () {
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["BrowserAnimationsModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
-        _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"], _auth_auth_module__WEBPACK_IMPORTED_MODULE_8__["AuthModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbSidebarModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbMenuModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbDatepickerModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbDialogModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbWindowModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbToastrModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbChatModule"], _core_core_module__WEBPACK_IMPORTED_MODULE_4__["CoreModule"], _theme_theme_module__WEBPACK_IMPORTED_MODULE_7__["ThemeModule"], _boldreports_angular_reporting_components__WEBPACK_IMPORTED_MODULE_9__["BoldReportDesignerModule"],
-        _syncfusion_ej2_angular_gantt__WEBPACK_IMPORTED_MODULE_14__["GanttAllModule"]] }); })();
+        _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"], _auth_auth_module__WEBPACK_IMPORTED_MODULE_8__["AuthModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbSidebarModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbMenuModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbDatepickerModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbDialogModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbWindowModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbToastrModule"], _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbChatModule"], _core_core_module__WEBPACK_IMPORTED_MODULE_4__["CoreModule"], _theme_theme_module__WEBPACK_IMPORTED_MODULE_7__["ThemeModule"], _boldreports_angular_reporting_components__WEBPACK_IMPORTED_MODULE_9__["BoldReportDesignerModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"],
         args: [{
@@ -22688,19 +22990,18 @@ var AppModule = /** @class */ (function () {
                     // DialogModule,
                     // RecurrenceEditorAllModule,
                     _auth_auth_module__WEBPACK_IMPORTED_MODULE_8__["AuthModule"].forRoot(),
-                    _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbSidebarModule"].forRoot(),
-                    _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbMenuModule"].forRoot(),
-                    _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbDatepickerModule"].forRoot(),
-                    _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbDialogModule"].forRoot(),
-                    _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbWindowModule"].forRoot(),
-                    _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbToastrModule"].forRoot(),
-                    _nebular_theme__WEBPACK_IMPORTED_MODULE_15__["NbChatModule"].forRoot({
+                    _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbSidebarModule"].forRoot(),
+                    _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbMenuModule"].forRoot(),
+                    _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbDatepickerModule"].forRoot(),
+                    _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbDialogModule"].forRoot(),
+                    _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbWindowModule"].forRoot(),
+                    _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbToastrModule"].forRoot(),
+                    _nebular_theme__WEBPACK_IMPORTED_MODULE_14__["NbChatModule"].forRoot({
                         messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
                     }),
                     _core_core_module__WEBPACK_IMPORTED_MODULE_4__["CoreModule"].forRoot(),
                     _theme_theme_module__WEBPACK_IMPORTED_MODULE_7__["ThemeModule"].forRoot(),
                     _boldreports_angular_reporting_components__WEBPACK_IMPORTED_MODULE_9__["BoldReportDesignerModule"],
-                    _syncfusion_ej2_angular_gantt__WEBPACK_IMPORTED_MODULE_14__["GanttAllModule"],
                 ],
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]],
                 providers: [],
@@ -23369,12 +23670,14 @@ var environment = {
     // apiUrlNode: 'http://10.100.22.48:1880',
     // apiUrlNode1: 'https://10.120.18.8:1880',
     // apiTeam: 'http://localhost:3000',
-    apiUrl: 'https://xpl-matbag-app01:3001/api',
+    apiUrl: 'http://10.120.18.8:3001/api',
     apiUrlMat: 'http://10.100.22.48:5001/api',
     apiUrlMatSignalR: 'http://10.100.22.48:5001',
     apiUrlNode: 'http://10.100.22.48:1880',
-    apiUrlNode1: 'https://xpl-matbag-app01:1880',
+    apiUrlNode1: 'http://10.120.18.15:1881',
     apiTeam: 'http://localhost:3000',
+    // http://10.120.18.15:1881/
+    // http://10.120.18.8:3001/
     testUser: {
         // tslint:disable
         token: {

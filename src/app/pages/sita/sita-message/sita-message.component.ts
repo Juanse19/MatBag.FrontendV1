@@ -1,11 +1,11 @@
 import { Component, ElementRef, Injectable, OnInit, ViewChild } from '@angular/core';
-import { interval } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { LocalDataSource } from 'ng2-smart-table';
 import { ApiGetService } from '../../../@core/backend/common/api/apiGet.services';
 import { HttpService } from '../../../@core/backend/common/api/http.service';
 import { GridComponent, SortService, PageSettingsModel, FilterSettingsModel, ToolbarItems, CommandModel, ToolbarService, EditService, PageService, CommandColumnService, DialogEditEventArgs, SaveEventArgs } from '@syncfusion/ej2-angular-grids';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
-import { takeWhile } from 'rxjs/operators';
+import { switchMap, takeWhile } from 'rxjs/operators';
 import { NbAccessChecker } from '@nebular/security';
 import { UserStore } from '../../../@core/stores/user.store';
 import { NbToastrService } from '@nebular/theme';
@@ -74,6 +74,8 @@ export class SitaMessageComponent implements OnInit {
 
   @ViewChild('ejDialogTX') ejDialogTX: DialogComponent;
   @ViewChild('container', { read: ElementRef, static: true }) container: ElementRef;
+
+  intervalSubscriptionM: Subscription;
 
   constructor(
     private api: HttpService,
@@ -292,14 +294,32 @@ debugger
       // tslint:disable-next-line: no-console
       // console.log('teamsData: ', res);
       this.dataConfigu1 = res;
+      this.bandaMCharge();
     });
-    const contador = interval(40000)
-    contador.subscribe((n) => {
-      this.http.get(this.api.apiUrlNode1 + '/api/recepcion')
-      .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any) => {
-        this.dataConfigu1 = res;
-      });
+    // const contador = interval(40000)
+    // contador.subscribe((n) => {
+    //   this.http.get(this.api.apiUrlNode1 + '/api/recepcion')
+    //   .pipe(takeWhile(() => this.alive))
+    //   .subscribe((res: any) => {
+    //     this.dataConfigu1 = res;
+    //   });
+    // });
+  }
+
+  public bandaMCharge(){
+
+    if (this.intervalSubscriptionM) {
+      this.intervalSubscriptionM.unsubscribe();
+    }
+    
+    this.intervalSubscriptionM = interval(16000)
+    .pipe(
+      takeWhile(() => this.alive),
+      switchMap(() => this.http.get(this.api.apiUrlNode1 + '/api/recepcion')),
+    )
+    .subscribe((res: any) => {
+      this.dataConfigu1 = res;
+        // console.log('Equipos:', this.bagMessageData);
     });
   }
 

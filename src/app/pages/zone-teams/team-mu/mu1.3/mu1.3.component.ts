@@ -201,7 +201,7 @@ public tooltipInterval1: number;
 
 
   changeMU1_3() {
-    this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/MU1_3')
+    this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/MU1_3')
     .pipe(takeWhile(() => this.alive))
     .subscribe((res: any)=>{
       if (JSON.stringify(res)=='{}') {
@@ -211,10 +211,11 @@ public tooltipInterval1: number;
         res.MU1_3_PotenciaActualMotor = 0;
         res.MU1_3_KWh = 0;
       } else {
-      this.TeamMU1_3 = res
+      this.TeamMU1_3 = res[0]
       // this.dataSF1_1 = TeamSF1_1
       this.velocidadMU1_3 = this.TeamMU1_3?.MU1_3_VelocidadActualMotor ?? 0;
     }
+    this.dataMU1_3();
     });
   }
 
@@ -226,7 +227,7 @@ public tooltipInterval1: number;
     this.intervalSubscriptionItems = interval(3000)
     .pipe(
       takeWhile(() => this.alive),
-      switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/MU1_3'))
+      switchMap( () => this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/MU1_3'))
     )
     .subscribe((res: any) => {
       if (JSON.stringify(res)=='{}') {
@@ -236,7 +237,7 @@ public tooltipInterval1: number;
             res.MU1_3_PotenciaActualMotor = 0;
             res.MU1_3_KWh = 0;
           } else {
-            this.TeamMU1_3 = res
+            this.TeamMU1_3 = res[0]
             // this.dataSF1_1 = TeamSF1_1
             this.velocidadMU1_3 = this.TeamMU1_3?.MU1_3_VelocidadActualMotor ?? 0;
           }

@@ -1,11 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { interval } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { LocalDataSource } from 'ng2-smart-table';
 import { ApiGetService } from '../../../@core/backend/common/api/apiGet.services';
 import { HttpService } from '../../../@core/backend/common/api/http.service';
 import { GridComponent, SortService, PageSettingsModel, FilterSettingsModel, ToolbarItems, CommandModel, ToolbarService, EditService, PageService, CommandColumnService, DialogEditEventArgs, SaveEventArgs } from '@syncfusion/ej2-angular-grids';
 import { ClickEventArgs } from '@syncfusion/ej2-navigations';
-import { takeWhile } from 'rxjs/operators';
+import { switchMap, takeWhile } from 'rxjs/operators';
 import { NbAccessChecker } from '@nebular/security';
 import { UserStore } from '../../../@core/stores/user.store';
 import { NbToastrService } from '@nebular/theme';
@@ -71,6 +71,8 @@ export class SitaMessageBMComponent implements OnInit {
 
   @ViewChild('ejDialogTX') ejDialogTX: DialogComponent;
   @ViewChild('container', { read: ElementRef, static: true }) container: ElementRef;
+
+  intervalSubscriptionM: Subscription;
 
   constructor(
     private api: HttpService,
@@ -276,8 +278,9 @@ debugger
       this.dataConfigu = res;
       REFERE = res;
       this.dataRefe = REFERE;
-      console.log("Configuration:", this.dataConfigu);
-      console.log("dataRefe:", this.dataRefe);
+      this.bandaMCharge();
+      // console.log("Configuration:", this.dataConfigu);
+      // console.log("dataRefe:", this.dataRefe);
     });
 
   }
@@ -290,13 +293,30 @@ debugger
       // console.log('teamsData: ', res);
       this.dataConfigu2 = res;
     });
-    const contador = interval(40000)
-    contador.subscribe((n) => {
-      this.http.get(this.api.apiUrlNode1 + '/api/recepcionBM')
-      .pipe(takeWhile(() => this.alive))
-      .subscribe((res: any) => {
-        this.dataConfigu2 = res;
-      });
+    // const contador = interval(40000)
+    // contador.subscribe((n) => {
+    //   this.http.get(this.api.apiUrlNode1 + '/api/recepcionBM')
+    //   .pipe(takeWhile(() => this.alive))
+    //   .subscribe((res: any) => {
+    //     this.dataConfigu2 = res;
+    //   });
+    // });
+  }
+
+  public bandaMCharge(){
+
+    if (this.intervalSubscriptionM) {
+      this.intervalSubscriptionM.unsubscribe();
+    }
+    
+    this.intervalSubscriptionM = interval(16000)
+    .pipe(
+      takeWhile(() => this.alive),
+      switchMap(() => this.http.get(this.api.apiUrlNode1 + '/api/recepcionBM')),
+    )
+    .subscribe((res: any) => {
+      this.dataConfigu = res;
+        // console.log('Equipos:', this.bagMessageData);
     });
   }
 

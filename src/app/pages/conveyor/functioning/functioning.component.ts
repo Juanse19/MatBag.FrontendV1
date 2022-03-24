@@ -6,9 +6,9 @@ import {
 import { LocalDataSource } from 'ng2-smart-table';
 import { ApiGetService } from '../../../@core/backend/common/api/apiGet.services';
 import { HttpService } from '../../../@core/backend/common/api/http.service';
-import { takeWhile } from 'rxjs/operators';
+import { switchMap, takeWhile } from 'rxjs/operators';
 import { NbAccessChecker } from '@nebular/security';
-import { interval } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { GridComponent, PageSettingsModel, FilterSettingsModel } from '@syncfusion/ej2-angular-grids';
 
@@ -52,45 +52,9 @@ export class FunctioningComponent implements OnInit {
 
   public loading: boolean;
 
+  intervalSubscriptionFun: Subscription;
+
   @ViewChild('grid') public grid: GridComponent;
- 
-  settings = {
-    mode: 'external',
-    actions: {
-      add: false,
-      edit: false,
-      delete: false,
-    },
-
-    columns: {
-      
-      conveyor: {
-        title: 'Conveyors',
-        type: 'string',
-      },
-      fecha_Hora_Activ: {
-        title: 'Hora Activación',
-        type: 'string',
-      },
-      tiempoEncendido: {
-        title: 'Tiempo Encendido',
-        filter: {
-          type: 'custom',
-          component: NgxFilterByNumberComponent,
-        },
-      },
-      tiempo_Paro: {
-        title: 'Duración ultimo paro',
-        filter: {
-          type: 'custom',
-          component: NgxFilterByNumberComponent,
-        },
-      },
-    },
-  };
-
-  source1: LocalDataSource = new LocalDataSource();
-  
 
   constructor(public apiGetComp: ApiGetService,
     private http: HttpClient,
@@ -107,43 +71,45 @@ export class FunctioningComponent implements OnInit {
    }
       }
 
+      
+
       chargeData() {
         this.http.get(this.api.apiUrlNode1 + '/api/GetEfficiencyTimeExecConveyor')
         .pipe(takeWhile(() => this.alive))
         .subscribe((res: any) => {
-          // tslint:disable-next-line: no-console
-          // console.log('funData: ', res);
           this.loading = false;
           this.funData = res;
+          this.bandaFunCharge();
+          console.log('funData: ', res);
         });
-        const contador = interval(50000)
-        contador.subscribe((n) => {
-          this.http.get(this.api.apiUrlNode1 + '/api/GetEfficiencyTimeExecConveyor')
-          .pipe(takeWhile(() => this.alive))
-          .subscribe((res: any) => {
-            this.funData = res;
-            this.loading = false;
-          });
-        });
+        // const contador = interval(50000)
+        // contador.subscribe((n) => {
+        //   this.http.get(this.api.apiUrlNode1 + '/api/GetEfficiencyTimeExecConveyor')
+        //   .pipe(takeWhile(() => this.alive))
+        //   .subscribe((res: any) => {
+        //     this.funData = res;
+        //     this.loading = false;
+        //     console.log('funData: ', this.funData);
+        //   });
+        // });
       }
 
-    ChargeFunData() {
-      this.apiGetComp.GetJson(this.api.apiUrlMatbox + '/Dashboardv1/GetTimeEffic').subscribe((res: any) => {
-        //REPORTOCUPATION=res;
-        console.log("TeamData:", res);
-        this.funData = res;
-        this.source1.load(res);
-      });
-      const contador = interval(60000)
-      contador.subscribe((n) => {
-        this.apiGetComp.GetJson(this.api.apiUrlMatbox + '/Dashboardv1/GetTimeEffic').subscribe((res: any) => {
-          //REPORTOCUPATION=res;
+      public bandaFunCharge(){
+
+        if (this.intervalSubscriptionFun) {
+          this.intervalSubscriptionFun.unsubscribe();
+        }
+        
+        this.intervalSubscriptionFun = interval(6000)
+        .pipe(
+          takeWhile(() => this.alive),
+          switchMap(() => this.http.get(this.api.apiUrlNode1 + '/api/GetEfficiencyTimeExecConveyor')),
+        )
+        .subscribe((res: any) => {
           this.funData = res;
-          this.source1.load(res);
+            console.log('funcionamiento:', this.funData);
         });
-      });
-  
-    }
+      }
 
     ngOnDestroy() {
       this.alive = false;

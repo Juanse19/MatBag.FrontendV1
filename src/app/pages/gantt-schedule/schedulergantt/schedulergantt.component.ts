@@ -11,9 +11,10 @@ import { CheckBox } from '@syncfusion/ej2-buttons';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
 import { DatePicker, DateTimePicker } from '@syncfusion/ej2-angular-calendars';
 import { MaskedTextBox, NumericTextBox, TextBox } from '@syncfusion/ej2-inputs';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { EmitType } from '@syncfusion/ej2-base';
+import { WindowsSchedulerComponent } from './../windows-scheduler/windows-scheduler.component';
 
 interface gantt {
   Id?: number;
@@ -58,9 +59,20 @@ export class SchedulerganttComponent implements OnInit {
     public orderForm: FormGroup;
     mostrar: Boolean;
   public showCloseIcon: Boolean = true;
+  enctexto: string;
 
   @ViewChild('ejDialogTX') ejDialogTX: DialogComponent;
   @ViewChild('container', { read: ElementRef, static: true }) container: ElementRef;
+  @ViewChild(WindowsSchedulerComponent, { static: true }) public dialog: WindowsSchedulerComponent;
+  @ViewChild(WindowsSchedulerComponent, { static: true }) public dialog1: WindowsSchedulerComponent;
+
+  get Subject() { return this.orderForm.get('Subject')}
+  get taskName() { return this.orderForm.get('taskName')}
+  get make() { return this.orderForm.get('make')}
+  get IATA() { return this.orderForm.get('IATA')}
+  get StartTime() { return this.orderForm.get('StartTime')}
+  get EndTime() { return this.orderForm.get('EndTime')}
+  
 
     public divElement: any;
     public inputs = {
@@ -76,6 +88,7 @@ export class SchedulerganttComponent implements OnInit {
   constructor(private http: HttpClient,
     private api: HttpService,
     private windowService: NbWindowService,
+    public dialogWindows: WindowsSchedulerComponent,
     public apiGetComp: ApiGetService,) { 
       this.ChargeSchedulerData();
      }
@@ -88,7 +101,7 @@ export class SchedulerganttComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskSettings = {
-      id: "taskID",
+      id: "Id",
       name: "taskName",
       startDate: "StartTime",
       endDate: "EndTime",
@@ -100,22 +113,31 @@ export class SchedulerganttComponent implements OnInit {
       child: "Children",
     };
 
+    this.orderForm = new FormGroup({
+      Id: new FormControl,
+      Subject: new FormControl(),
+      taskName: new FormControl()
+   });
+
     this.editSettings = {
       allowAdding: true,
-      allowEditing: true,
+      allowEditing: false,
       allowDeleting: true,
       allowTaskbarEditing: true,
       showDeleteConfirmDialog: true
   };
-  this.toolbar = ['Add', 'Edit', 'Update', 'Delete', 'Cancel'];
+  // this.toolbar = ['Add', 'Edit', 'Update', 'Delete', 'Cancel'];
+  this.toolbar = ['Add', 'Update', 'Delete', 'Cancel'];
     
     this.columns = [
-      { field: "taskID", visible: false },
+      { field: "Id", visible: false },
+      { field: "taskID", headerText: "taskID", width: "120" },
       { field: "make", headerText: "MU", width: "120" },
       { field: "Subject", headerText: "Vuelo", width: "120" },
+      { field: "taskName", headerText: "Aerolinea", width: "120" },
       { field: "IATA", headerText: "IATA", width: "120" },
-      { field: "StartTime", headerText: "Fecha", format: { format: 'dd/MM/yyyy', type: 'date'} },
-      { field: "EndTime", headerText: "Fecha End", format: { format: 'dd/MM/yyyy', type: 'date'} },
+      { field: "StartTime", headerText: "STD", format: { format: 'dd-MM-yyyy hh:mm a', type: 'date'} },
+      { field: "EndTime", headerText: "ETD", format: { format: 'dd-MM-yyyy hh:mm a', type: 'date'} },
     ];
 
     this.splitterSettings = {
@@ -136,7 +158,7 @@ export class SchedulerganttComponent implements OnInit {
       timelineUnitSize: 70,
       topTier: {
         unit: "Day",
-        format: "MMM, dd, yyyy",
+        format: "MMM, dd, yyyy, hh, mm",
       },
       bottomTier: {
         unit: "Hour",
@@ -171,6 +193,29 @@ public initilaizeTarget: EmitType<object> = () => {
     this.windowService.open(WindowFormComponent, { title: `` });
   }
 
+  public openWindow(){
+    // debugger
+    this.dialog.opendevice1();
+  }
+
+  createFormGroup(data: gantt): FormGroup {
+    return new FormGroup({
+      // Id: new FormControl(data.Id, Validators.required),
+      Subject: new FormControl(data.Subject, Validators.required),
+      taskName: new FormControl(data.taskName, Validators.required)
+
+    });
+}
+
+  loadUser(id?) {
+    debugger
+      this.orderForm.setValue({
+        id: this.ganttSheduData[0].Id ? this.ganttSheduData[0].Id : '',
+        role: this.ganttSheduData[0].Subject ? this.ganttSheduData[0].Subject : '',
+        firstName: this.ganttSheduData[0].taskName ? this.ganttSheduData[0].taskName : '',
+      });
+    
+    }
 
   public actionBegin(args) {
     if (args.requestType === "beforeOpenAddDialog" ) {
@@ -178,7 +223,13 @@ public initilaizeTarget: EmitType<object> = () => {
       this.openWindowForm();
     } else if (args.requestType === "beforeOpenEditDialog"){
       args.cancel = true;
+      this.enctexto = args.rowData.taskData.Subject;
           this.ejDialogTX.show();
+          this.orderForm.setValue({
+            Id: args.rowData.taskData.Id ? args.rowData.taskData.Id : '',
+            Subject: args.rowData.taskData.Subject ? args.rowData.taskData.Subject : '',
+            taskName: args.rowData.taskData.taskName ? args.rowData.taskData.taskName : '',
+          });
       console.log('args Open edit', args);
     }
 };
@@ -189,13 +240,13 @@ actionComplete(args) {
     console.log('Se guardo');
   } else if (args.requestType === 'delete'){
     console.log('Args', args);
-    console.log('Eliminado', args.data[0].taskID);
+    console.log('Eliminado', args.data[0].taskData.Id);
     console.log('Delete');
     var respons = 
             {
-            Id: args.data[0].taskID
+            Id: args.data[0].taskData.Id
             };
-      this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/deleteFlight?Id=' + args.data[0].taskID)
+      this.apiGetComp.GetJson(this.api.apiUrlNode1 + '/api/deleteFlight?Id=' + args.data[0].taskData.Id)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any) => {
         console.log('Se envió');

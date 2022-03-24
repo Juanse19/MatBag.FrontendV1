@@ -73,7 +73,8 @@ export class Bhs1Component implements OnInit {
   ngOnInit(): void {
     // this.banda1NameCharge();
     this.bandaNameCharge();
-    this.bandaStateCharge();
+    // this.bandaStateCharge();
+    this.bandaStatesCharge();
     // this.initilaizeTarget();
   }
 
@@ -109,6 +110,17 @@ export class Bhs1Component implements OnInit {
       this.divice=res;
       // console.log('Zons:', res , 'states', this.states[0]?.Color);
       
+    });
+  }
+
+  public bandaStatesCharge(){
+
+    this.http.get(this.api.apiUrlNode1 + '/apizonestate?zone=zona13')
+    .pipe(takeWhile(() => this.alive))
+    .subscribe((res:any)=>{
+      this.states  = res;
+      this.bandaStateCharge();
+      console.log('static:', this.states);
     });
   }
 

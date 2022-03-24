@@ -32,7 +32,8 @@ export class Ib2Component implements OnInit {
 
   ngOnInit(): void {
     this.bandaNameCharge();
-    this.bandaStateCharge();
+    // this.bandaStateCharge();
+    this.bandaStatesCharge();
   }
 
   back() {
@@ -57,6 +58,17 @@ export class Ib2Component implements OnInit {
       this.divice=res;
       // console.log('Zons:', res , 'states');
       
+    });
+  }
+
+  public bandaStatesCharge(){
+
+    this.http.get(this.api.apiUrlNode1 + '/apizonestate?zone=zona8')
+    .pipe(takeWhile(() => this.alive))
+    .subscribe((res:any)=>{
+      this.states  = res;
+      this.bandaStateCharge();
+      console.log('static:', this.states);
     });
   }
 

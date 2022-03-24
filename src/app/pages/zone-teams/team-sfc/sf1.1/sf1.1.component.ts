@@ -127,7 +127,7 @@ public tooltipInterval1: number;
 
   ngOnInit(): void {
     this.changeSF1_1();
-    this.dataSF1()
+    // this.dataSF1()
     
   }
 
@@ -233,6 +233,7 @@ public tooltipInterval1: number;
       this.velocidadSf1_1 = this.TeamSF1_1?.SF1_1_VelocidadActualMotor ?? 0;
       console.log('Api/SF1_1:', this.TeamSF1_1);
     }
+    this.dataSF1();
     });
   }
 

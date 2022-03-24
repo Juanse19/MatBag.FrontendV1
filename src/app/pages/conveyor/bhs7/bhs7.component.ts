@@ -62,7 +62,8 @@ export class Bhs7Component implements OnInit {
     // this.bandaNameCharge();
     this.bandaNameOsrCharge();
     this.chargeData();
-    this.bandaStateCharge();
+    // this.bandaStateCharge();
+    this.bandaStatesCharge();
     this.pageSettings = { 
       // pageSizes: true,
       pageSize: 5 };
@@ -108,6 +109,17 @@ export class Bhs7Component implements OnInit {
       this.divice=res;
       // console.log('Zons:', res , 'states');
       
+    });
+  }
+
+  public bandaStatesCharge(){
+
+    this.http.get(this.api.apiUrlNode1 + '/apizonestate?zone=zona3')
+    .pipe(takeWhile(() => this.alive))
+    .subscribe((res:any)=>{
+      this.states  = res;
+      this.bandaStateCharge();
+      console.log('static:', this.states);
     });
   }
 
