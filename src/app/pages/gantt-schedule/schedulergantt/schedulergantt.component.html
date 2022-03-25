@@ -1,4 +1,20 @@
 <nb-card>
+    <nb-card-body>
+    <form [formGroup]="airForm" class="form-inline" novalidate id="formId">
+        <div class="form-group mx-sm-4 mb-3">
+          <ejs-datepicker formControlName="StartDates" id="StartDates"  [(ngModel)]="StartDates" class="e-field" data-name="StartDates"  placeholder='Fecha Inicio' floatLabelType='Always' required>
+          </ejs-datepicker>
+      </div>
+      <br>
+  <div class="form-group mx-sm-4 mb-3">
+    <ejs-datepicker formControlName="EndDate" id="EndDate" [(ngModel)]="EndDate" class="e-field" data-name="EndDate"  placeholder='Fecha de Fin' floatLabelType='Always' required>
+    </ejs-datepicker>
+</div>
+    <button nbButton status="primary " class="btn btn-primary" style="margin-top: 4px;" (click)="date(airForm.controls.StartDates.value, airForm.controls.EndDate.value)">Cosultar</button>
+    <br>
+    <br>
+    </form>
+</nb-card-body>
 
 <nb-card-body>
 <div class="control-section">
@@ -35,17 +51,17 @@
                               <span class="e-float-line"></span>
                               <label class="e-float-text e-label-top" for="Id">Id</label>
                           </div>
-                      </div> -->
+                      </div> --> 
                       <div class="form-group col-md-12">
                           <div class="e-float-input e-control-wrapper" >
-                              <input formControlName="Subject" [(ngModel)]="enctexto" id="Subject" name="Subject" class="field left" readonly type="text" >
+                              <input formControlName="Subject"  id="Subject" name="Subject" class="field left" readonly type="text" >
                               <span class="e-float-line"></span>
                               <label class="e-float-text e-label-top" for="Subject">Subject</label>
                           </div>
                       </div>
                       <div class="form-group col-md-12">
                           <div class="e-float-input e-control-wrapper" >
-                              <input formControlName="taskName" [(ngModel)]="taskName" id="taskName" name="taskName" type="text" >
+                              <input formControlName="taskName"  id="taskName" name="taskName" type="text" >
                               <span class="e-float-line"></span>
                               <label class="e-float-text e-label-top" for="taskName">taskName</label>
                           </div>

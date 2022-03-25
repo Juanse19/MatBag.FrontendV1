@@ -94,7 +94,7 @@ var MessageAMSComponent = /** @class */ (function () {
         var fechaFormateadaeTD = this.miDatePipe.transform(EndTime, 'yyyy-MM-dd h:mm:ss a zzzz');
         console.log('fechaSTD: ', fechaFormateada);
         console.log('fechaETD: ', fechaFormateadaeTD);
-        console.log('test: ', StartTime);
+        // console.log('test: ', StartTime);
         if (fechaFormateada == null && fechaFormateadaeTD == null) {
             this.toastrService.warning('', 'No pusiste la fecha.');
         }
@@ -109,15 +109,16 @@ var MessageAMSComponent = /** @class */ (function () {
                 .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeWhile"])(function () { return _this.alive; }))
                 .subscribe(function (res) {
             });
-            var respons = {
-                form: fechaFormateada,
-                to: fechaFormateadaeTD
-            };
-            this.apiGetComp.PostJson(this.api.apiUrlNode1 + '/api/dates', respons)
-                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeWhile"])(function () { return _this.alive; }))
-                .subscribe(function (res) {
-                // this.toastrService.success('', '¡Se edito licencia con exito!'); 
-            });
+            // let respons =
+            //     {
+            //       form: fechaFormateada,
+            //       to: fechaFormateadaeTD
+            //     }
+            //     this.apiGetComp.PostJson(this.api.apiUrlNode1 + '/api/dates', respons)
+            //       .pipe(takeWhile(() => this.alive))
+            //       .subscribe((res: any) => {
+            //         // this.toastrService.success('', '¡Se edito licencia con exito!'); 
+            //         }); 
         }
     };
     MessageAMSComponent.prototype.chargeDataAMS = function () {
@@ -184,7 +185,7 @@ var MessageAMSComponent = /** @class */ (function () {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeWhile"])(function () { return _this.alive; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function () { return _this.http.get(_this.api.apiUrlNode1 + '/api/notificationAMS'); }))
             .subscribe(function (res) {
             _this.amsData = res;
-            console.log('Equipos:', _this.amsData);
+            // console.log('Equipos:', this.amsData);
         });
     };
     MessageAMSComponent.prototype.ngOnDestroy = function () {

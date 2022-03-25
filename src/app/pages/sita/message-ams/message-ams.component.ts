@@ -130,7 +130,7 @@ export class MessageAMSComponent implements OnInit {
     console.log('fechaSTD: ', fechaFormateada);
     console.log('fechaETD: ', fechaFormateadaeTD);
 
-    console.log('test: ', StartTime);
+    // console.log('test: ', StartTime);
 
     if (fechaFormateada == null && fechaFormateadaeTD == null) {
       
@@ -153,17 +153,17 @@ export class MessageAMSComponent implements OnInit {
       
     });
 
-    let respons =
-        {
-          form: fechaFormateada,
-          to: fechaFormateadaeTD
-        }
+    // let respons =
+    //     {
+    //       form: fechaFormateada,
+    //       to: fechaFormateadaeTD
+    //     }
   
-        this.apiGetComp.PostJson(this.api.apiUrlNode1 + '/api/dates', respons)
-          .pipe(takeWhile(() => this.alive))
-          .subscribe((res: any) => {
-            // this.toastrService.success('', '¡Se edito licencia con exito!'); 
-            }); 
+    //     this.apiGetComp.PostJson(this.api.apiUrlNode1 + '/api/dates', respons)
+    //       .pipe(takeWhile(() => this.alive))
+    //       .subscribe((res: any) => {
+    //         // this.toastrService.success('', '¡Se edito licencia con exito!'); 
+    //         }); 
 
     }
 
@@ -239,7 +239,7 @@ export class MessageAMSComponent implements OnInit {
     )
     .subscribe((res: any) => {
       this.amsData = res;
-        console.log('Equipos:', this.amsData);
+        // console.log('Equipos:', this.amsData);
     });
   }
 

@@ -45655,7 +45655,7 @@ var ImageDecoder = /** @class */ (function () {
 /*!************************************************************************************************************************************************!*\
   !*** ./node_modules/@syncfusion/ej2-angular-circulargauge/node_modules/@syncfusion/ej2-pdf-export/src/implementation/graphics/images/index.js ***!
   \************************************************************************************************************************************************/
-/*! exports provided: PdfBitmap, PdfImage, ByteArray, ImageFormat, ImageDecoder */
+/*! exports provided: ByteArray, ImageFormat, ImageDecoder, PdfBitmap, PdfImage */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

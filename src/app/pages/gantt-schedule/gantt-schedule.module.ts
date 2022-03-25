@@ -32,6 +32,7 @@ import { DatePickerAllModule, TimePickerAllModule, DateTimePickerAllModule } fro
 import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { DropDownListAllModule } from '@syncfusion/ej2-angular-dropdowns';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [GanttScheduleComponent, SchedulerganttComponent,  SchedulerComponent, WindowsSchedulerComponent],
@@ -61,6 +62,8 @@ import { DropDownListAllModule } from '@syncfusion/ej2-angular-dropdowns';
     DateTimePickerModule,
     DatePickerModule,
     DropDownListAllModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [ EditService , FilterService, SortService, SelectionService,ToolbarService,DayMarkersService ],
   bootstrap: [GanttScheduleModule],

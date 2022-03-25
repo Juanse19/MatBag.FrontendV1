@@ -81,7 +81,7 @@ export class Bhs10Component implements OnInit {
     .subscribe((res:any)=>{
       this.states  = res;
       this.bandaStateCharge();
-      console.log('static:', this.states);
+      // console.log('static:', this.states);
     });
   }
 

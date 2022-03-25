@@ -74,7 +74,7 @@ export class Bhs5Component implements OnInit {
     .subscribe((res:any)=>{
       this.states  = res;
       this.bandaStateCharge();
-      console.log('static:', this.states);
+      // console.log('static:', this.states);
     });
   }
 
@@ -91,7 +91,7 @@ export class Bhs5Component implements OnInit {
     )
     .subscribe((res: any) => {
         this.states  = res;
-        console.log('status:',  this.states );
+        // console.log('status:',  this.states );
     });
   }
 

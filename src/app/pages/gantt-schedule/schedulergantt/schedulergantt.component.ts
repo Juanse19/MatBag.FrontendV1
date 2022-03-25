@@ -11,10 +11,12 @@ import { CheckBox } from '@syncfusion/ej2-buttons';
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
 import { DatePicker, DateTimePicker } from '@syncfusion/ej2-angular-calendars';
 import { MaskedTextBox, NumericTextBox, TextBox } from '@syncfusion/ej2-inputs';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { EmitType } from '@syncfusion/ej2-base';
 import { WindowsSchedulerComponent } from './../windows-scheduler/windows-scheduler.component';
+import { NbToastrService } from '@nebular/theme';
+import { DatePipe } from '@angular/common';
 
 interface gantt {
   Id?: number;
@@ -23,8 +25,9 @@ interface gantt {
   IATA?: string;
   StartTime?: string;
   EndTime?: string;
-  make?: string;
+  ChuteName?: string;
   taskID?: string;
+
 }
 
 let GANTTLIST: gantt[];
@@ -40,8 +43,8 @@ let GANTTLIST: gantt[];
 
 export class SchedulerganttComponent implements OnInit {
 
- 
-    public taskSettings: object;
+  public airForm: FormGroup;
+  public taskSettings: object;
   public columns: object[];
   public splitterSettings: object;
   public toolbar: object;
@@ -60,6 +63,9 @@ export class SchedulerganttComponent implements OnInit {
     mostrar: Boolean;
   public showCloseIcon: Boolean = true;
   enctexto: string;
+
+  public StartDates: Date = new Date();
+  public EndDate: Date = new Date();
 
   @ViewChild('ejDialogTX') ejDialogTX: DialogComponent;
   @ViewChild('container', { read: ElementRef, static: true }) container: ElementRef;
@@ -89,8 +95,11 @@ export class SchedulerganttComponent implements OnInit {
     private api: HttpService,
     private windowService: NbWindowService,
     public dialogWindows: WindowsSchedulerComponent,
+    private miDatePipe: DatePipe,
+    private toastrService: NbToastrService,
+    private fb: FormBuilder,
     public apiGetComp: ApiGetService,) { 
-      this.ChargeSchedulerData();
+      // this.ChargeSchedulerData();
      }
 
      public targetElement: HTMLElement;
@@ -100,6 +109,9 @@ export class SchedulerganttComponent implements OnInit {
     public initialPage: Object;
 
   ngOnInit(): void {
+    this.date(this.StartDates, this.EndDate);
+
+    this.initForm();
     this.taskSettings = {
       id: "Id",
       name: "taskName",
@@ -107,7 +119,7 @@ export class SchedulerganttComponent implements OnInit {
       endDate: "EndTime",
       duration: "Duration",
       progress: "Progress",
-      datam: "make",
+      datam: "ChuteName",
       dataI: "IATA",
       dependency: "Predecessor",
       child: "Children",
@@ -120,24 +132,24 @@ export class SchedulerganttComponent implements OnInit {
    });
 
     this.editSettings = {
-      allowAdding: true,
+      allowAdding: false,
       allowEditing: false,
-      allowDeleting: true,
-      allowTaskbarEditing: true,
-      showDeleteConfirmDialog: true
+      allowDeleting: false,
+      allowTaskbarEditing: false,
+      showDeleteConfirmDialog: false
   };
   // this.toolbar = ['Add', 'Edit', 'Update', 'Delete', 'Cancel'];
   this.toolbar = ['Add', 'Update', 'Delete', 'Cancel'];
     
     this.columns = [
       { field: "Id", visible: false },
-      { field: "taskID", headerText: "taskID", width: "120" },
-      { field: "make", headerText: "MU", width: "120" },
-      { field: "Subject", headerText: "Vuelo", width: "120" },
+      { field: "ChuteName", headerText: "MU", width: "90" },
+      { field: "Subject", headerText: "Vuelo", width: "100" },
+      { field: "IATA", headerText: "IATA", width: "90" },
+      { field: "StartTime", headerText: "STD", width: "155", format: { format: 'dd-MM-yyyy hh:mm a', type: 'date'} },
+      { field: "EndTime", headerText: "ETD", width: "155", format: { format: 'dd-MM-yyyy hh:mm a', type: 'date'} },
       { field: "taskName", headerText: "Aerolinea", width: "120" },
-      { field: "IATA", headerText: "IATA", width: "120" },
-      { field: "StartTime", headerText: "STD", format: { format: 'dd-MM-yyyy hh:mm a', type: 'date'} },
-      { field: "EndTime", headerText: "ETD", format: { format: 'dd-MM-yyyy hh:mm a', type: 'date'} },
+      { field: "taskID", headerText: "taskID", width: "120" },
     ];
 
     this.splitterSettings = {
@@ -268,6 +280,56 @@ actionBegin2(args) {
         this.openWindowForm();
       };
 
+      initForm() {
+        this.airForm = this.fb.group({
+          StartDates: ['', Validators.required],
+          EndDate: ['', Validators.required],
+        });
+      }
+
+      date(StartDates: Date, EndDate: Date){
+        debugger
+    
+        const fechaFormateada = this.miDatePipe.transform(StartDates, 'yyyy-MM-dd');
+        const fechaFormateadaeTD = this.miDatePipe.transform(EndDate, 'yyyy-MM-dd');
+    
+        // console.log('fecha: ', fechaFormateada);
+        
+    
+        // console.log('test: ', StartTime);
+    
+        if (fechaFormateada == null && fechaFormateadaeTD == null) {
+      
+          this.toastrService.warning('', 'No pusiste la fecha.');
+    
+        }else if (fechaFormateadaeTD < fechaFormateada ) {
+    
+          this.toastrService.warning('', 'La fecha no puede ser menor.');
+    
+        } else if ( fechaFormateada > fechaFormateadaeTD) {
+    
+          this.toastrService.warning('', 'La fecha no puede ser Mayor.');
+    
+        } else {
+          this.http.get(this.api.apiUrlNode1 + '/resourceDataGantt?registerDateSTD='+ fechaFormateada + '&registerDateETD=' + fechaFormateadaeTD)
+        .pipe(takeWhile(() => this.alive))
+        .subscribe((res: any)=>{
+          this.ganttData = res;
+        console.log("ShedulerganttData:", this.ganttData);
+          // if (res.length == 0){
+          //   // console.log("se encuentra vacío el arreglo")
+          //   this.toastrService.danger('', 'No ha data.');
+          //   }else {
+          //   // console.log("no lo esta")
+          //   }
+          // this.daDate=res;
+          // console.log('Da:', res );
+          
+        });
+        }
+    
+      }
+
   public ChargeSchedulerGantt() {
     if (this.intervalSubscriptionScheduleGantt) {
       this.intervalSubscriptionScheduleGantt.unsubscribe();
@@ -289,6 +351,8 @@ actionBegin2(args) {
         // console.log("ganttData:", this.ganttData);
       });
   }
+
+  
 
   ChargeSchedulerData() {
     this.http
