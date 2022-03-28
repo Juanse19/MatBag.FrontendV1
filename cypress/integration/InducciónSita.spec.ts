@@ -31,23 +31,18 @@ describe('Vuelos', () => {
   it('Wrong start date and end date.', () => {
     cy.get('[data-cy="Consult-submit-button"]').click();
     cy.get('[data-cy="date-std"]').click()
-    cy.get('[data-cy="date-std"]').type('3/23/22 12:00:00 AM')
+    cy.get('[data-cy="date-std"]').type('3/28/22 2:00:00 AM')
     cy.get('[data-cy="date-etd"]').click()
-    cy.get('[data-cy="date-etd"]').type('3/23/22 12:00:00 AM')
+    cy.get('[data-cy="date-etd"]').type('2022-03-28 12:00:00 AM')
     cy.get('[data-cy="Consult-submit-button"]').click();
   })
 
-  // it('You should check the flights by start and end date.', () => {
-  //   cy.get('[data-cy="date-std-field"]').click()
-  //   cy.get('[data-cy="date-std-field"]').clear().type('3/29/2022')
-  //   cy.get('[data-cy="date-etd-field"]').click()
-  //   cy.get('[data-cy="date-etd-field"]').clear().type('3/29/2022')
-  //   cy.get('[data-cy="consulta-submit-button"]').click();
-  //   // cy.scrollTo('bottom')
-  //   cy.get('.e-chart-scroll-container').scrollTo('right', { duration: 4000 })
-  //   cy.get('.e-gridcontent > .e-content').scrollTo('right', { duration: 4000 })
-  //   cy.get('.e-gridcontent > .e-content').scrollTo('left', { duration: 3000 })
-  //   cy.get('.e-chart-scroll-container').scrollTo('left', { duration: 3000 })
-    
-  // })
+  it(' date and end date.', () => {
+    cy.get('[data-cy="Consult-submit-button"]').click();
+    cy.get('[data-cy="date-std"]').click()
+    cy.get('[data-cy="date-std"]').clear().type('3/28/22 12:00:00 AM')
+    cy.get('[data-cy="date-etd"]').click()
+    cy.get('[data-cy="date-etd"]').clear().type('2022-03-28 2:00:00 AM')
+    cy.get('[data-cy="Consult-submit-button"]').click();
+  })
 })
