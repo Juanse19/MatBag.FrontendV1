@@ -12,6 +12,7 @@ import { ResizeService } from '@syncfusion/ej2-angular-grids';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NbToastrService } from '@nebular/theme';
 import { DatePipe } from '@angular/common';
+import Swal from 'sweetalert2';
 
 export interface ams {
   Id: number,
@@ -90,6 +91,9 @@ export class MessageAMSComponent implements OnInit {
   
   intervalSubscriptionAms: Subscription;
 
+  public StartDates: Date = new Date();
+  public EndDate: Date = new Date();
+
   get StartTime() { return this.airForm.get('StartTime'); }
   get EndTime() { return this.airForm.get('EndTime'); }
 
@@ -138,7 +142,7 @@ export class MessageAMSComponent implements OnInit {
 
     }else if (fechaFormateadaeTD < fechaFormateada ) {
 
-      this.toastrService.warning('', 'La fecha no puede ser menor.');
+      this.toastrService.warning('', 'Pon las fechas correctas.');
 
     } 
     else if ( fechaFormateada > fechaFormateadaeTD) {
@@ -147,11 +151,43 @@ export class MessageAMSComponent implements OnInit {
 
     } 
     else {
-      this.http.get(this.api.apiUrlNode1 + '/api/date?from='+ fechaFormateada + '&to=' + fechaFormateadaeTD)
-    .pipe(takeWhile(() => this.alive))
-    .subscribe((res: any)=>{
+      Swal.fire({
+        title: 'Consulta exitosa?',
+        text: `¡Consulta de las aerolineas exitosa!`,
+        icon: 'success',
+        timer: 2500,
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        // cancelButtonColor: '#d33',
+        cancelButtonText: 'Cerrar!',
+        // confirmButtonText: '¡Desea continuar!'
+      }).then(result => {
+        if (result.value) {
+         
+          
+          // this.intervalSubscriptionStatusSesion.unsubscribe();
+          
+          // console.log("Continua navegando: ", res);
+          // this.AutoLogoutCharge();
+    // Swal.fire('¡Se sincronizo Exitosamente', 'success');
+        } else {
+          // console.log('Se cierra por tiempo');
+          
+          // this.router.navigate(['/auth/logout']);
+        }
+      });
+
+    //   this.http.get(this.api.apiUrlNode1 + '/api/date?from='+ fechaFormateada + '&to=' + fechaFormateadaeTD)
+    // .pipe(takeWhile(() => this.alive))
+    // .subscribe((res: any)=>{
+
+    //   Swal.fire(
+    //     'Deleted!',
+    //     'Your file has been deleted.',
+    //     'success'
+    //   )
       
-    });
+    // });
 
     // let respons =
     //     {

@@ -17,6 +17,7 @@ import { EmitType } from '@syncfusion/ej2-base';
 import { WindowsSchedulerComponent } from './../windows-scheduler/windows-scheduler.component';
 import { NbToastrService } from '@nebular/theme';
 import { DatePipe } from '@angular/common';
+import { GanttComponent } from '@syncfusion/ej2-angular-gantt';
 
 interface gantt {
   Id?: number;
@@ -53,24 +54,27 @@ export class SchedulerganttComponent implements OnInit {
   public editDialogFields: object[];
   public labelSettings: object;
   public timelineSettings: object;
+  public eventMarkers: object[];
   // public timezoneValue: string = 'UTC-06:00';
   public dayWorkingTime: object[];
-    intervalSubscriptionScheduleGantt: Subscription;
-    private alive = true;
-    public ganttData: gantt[] = [];
-    public ganttSheduData = GANTTLIST;
-    public orderForm: FormGroup;
-    mostrar: Boolean;
+  public  intervalSubscriptionScheduleGantt: Subscription;
+  private alive = true;
+  public ganttData: gantt[] = [];
+  public ganttSheduData = GANTTLIST;
+  public orderForm: FormGroup;
+  public mostrar: Boolean;
   public showCloseIcon: Boolean = true;
-  enctexto: string;
+  public enctexto: string;
+  @ViewChild('gantt')
+  public ganttObj: GanttComponent;
 
   public StartDates: Date = new Date();
   public EndDate: Date = new Date();
 
   @ViewChild('ejDialogTX') ejDialogTX: DialogComponent;
-  @ViewChild('container', { read: ElementRef, static: true }) container: ElementRef;
-  @ViewChild(WindowsSchedulerComponent, { static: true }) public dialog: WindowsSchedulerComponent;
-  @ViewChild(WindowsSchedulerComponent, { static: true }) public dialog1: WindowsSchedulerComponent;
+  // @ViewChild('container', { read: ElementRef, static: true }) container: ElementRef;
+  // @ViewChild(WindowsSchedulerComponent, { static: true }) public dialog: WindowsSchedulerComponent;
+  // @ViewChild(WindowsSchedulerComponent, { static: true }) public dialog1: WindowsSchedulerComponent;
 
   get Subject() { return this.orderForm.get('Subject')}
   get taskName() { return this.orderForm.get('taskName')}
@@ -159,10 +163,13 @@ export class SchedulerganttComponent implements OnInit {
   //     columnIndex: 3
   // };
 
-
     this.labelSettings = {
         leftLabel: 'taskName',
     };
+
+    this.eventMarkers = [
+      { day: new Date(), label: 'Hora actual' },
+  ];
 
     this.gridLines = 'Both';
 
@@ -176,15 +183,20 @@ export class SchedulerganttComponent implements OnInit {
         unit: "Hour",
         format: "hh:mm a",
       },
+    //   bottomTier: {
+    //     unit: 'Minutes',
+    //     count: 15,
+    //     format: 'hh:mm a'
+    // },
     };
     this.dayWorkingTime = [{ from: 0, to: 24 }];
   }
   
 
   // Initialize the Dialog component's target element.
-public initilaizeTarget: EmitType<object> = () => {
-  this.targetElement = this.container.nativeElement.parentElement;
-    }
+// public initilaizeTarget: EmitType<object> = () => {
+//   this.targetElement = this.container.nativeElement.parentElement;
+//     }
 
     public hideDialog: EmitType<object> = () =>  {
       this.ejDialogTX.hide();
@@ -205,10 +217,10 @@ public initilaizeTarget: EmitType<object> = () => {
     this.windowService.open(WindowFormComponent, { title: `` });
   }
 
-  public openWindow(){
-    // debugger
-    this.dialog.opendevice1();
-  }
+  // public openWindow(){
+  //   // debugger
+  //   this.dialog.opendevice1();
+  // }
 
   createFormGroup(data: gantt): FormGroup {
     return new FormGroup({
@@ -304,7 +316,7 @@ actionBegin2(args) {
     
         }else if (fechaFormateadaeTD < fechaFormateada ) {
     
-          this.toastrService.warning('', 'La fecha no puede ser menor.');
+          this.toastrService.warning('', 'Pon las fechas correctas.');
     
         } else if ( fechaFormateada > fechaFormateadaeTD) {
     

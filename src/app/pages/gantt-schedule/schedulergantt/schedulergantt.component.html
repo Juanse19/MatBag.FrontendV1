@@ -2,15 +2,15 @@
     <nb-card-body>
     <form [formGroup]="airForm" class="form-inline" novalidate id="formId">
         <div class="form-group mx-sm-4 mb-3">
-          <ejs-datepicker formControlName="StartDates" id="StartDates"  [(ngModel)]="StartDates" class="e-field" data-name="StartDates"  placeholder='Fecha Inicio' floatLabelType='Always' required>
+          <ejs-datepicker formControlName="StartDates" id="StartDates" data-cy="date-std-field" [(ngModel)]="StartDates" class="e-field" data-name="StartDates"  placeholder='Fecha Inicio' floatLabelType='Always' required>
           </ejs-datepicker>
       </div>
       <br>
   <div class="form-group mx-sm-4 mb-3">
-    <ejs-datepicker formControlName="EndDate" id="EndDate" [(ngModel)]="EndDate" class="e-field" data-name="EndDate"  placeholder='Fecha de Fin' floatLabelType='Always' required>
+    <ejs-datepicker formControlName="EndDate" id="EndDate" data-cy="date-etd-field" [(ngModel)]="EndDate" class="e-field" data-name="EndDate"  placeholder='Fecha de Fin' floatLabelType='Always' required>
     </ejs-datepicker>
 </div>
-    <button nbButton status="primary " class="btn btn-primary" style="margin-top: 4px;" (click)="date(airForm.controls.StartDates.value, airForm.controls.EndDate.value)">Cosultar</button>
+    <button nbButton status="primary " class="btn btn-primary" data-cy="consulta-submit-button" style="margin-top: 4px;" (click)="date(airForm.controls.StartDates.value, airForm.controls.EndDate.value)">Cosultar</button>
     <br>
     <br>
     </form>
@@ -27,7 +27,7 @@
       >
         Agregar
       </button> -->
-<ejs-gantt id="ganttDefault" height="430px" [dataSource]="ganttData" [taskFields]="taskSettings" 
+<ejs-gantt id="ganttDefault" #gantt height="430px" [dataSource]="ganttData" [taskFields]="taskSettings" 
      [columns]="columns" [dayWorkingTime]="dayWorkingTime" [treeColumnIndex]="1"  [includeWeekend]="true"
     [timelineSettings]="timelineSettings"  durationUnit="Hour"
     dateFormat="dd-MM-yyyy hh:mm a" height="70%"  [labelSettings]="labelSettings" 
@@ -37,6 +37,7 @@
     (actionBegin)="actionBegin($event)" 
     (actionComplete)="actionComplete($event)"
     (actionBegin)="actionBegin2($event)"
+    
     >
     </ejs-gantt>
 

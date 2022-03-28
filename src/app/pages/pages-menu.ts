@@ -463,6 +463,19 @@ export class PagesMenu {
       ],
     };
 
+    const SchedulerMenu1: NbMenuItem = {
+      title: 'Asignación de aerolineas',
+      icon: 'calendar-outline',
+      // link: '/pages/analytics/analytics',
+      children: [
+        
+        {
+          title: 'Vuelos',
+          link: '/pages/gantt',
+        },
+      ],
+    };
+
     const SchedulerMenu: NbMenuItem = {
       title: 'Asignación de aerolineas',
       icon: 'calendar-outline',
@@ -472,7 +485,7 @@ export class PagesMenu {
         //   title: 'SchedulerPia',
         //   link: '/pages/gantt/SchedulerPia',
         // },
-           {
+        {
           title: 'Vuelos',
           link: '/pages/gantt',
         },
@@ -720,7 +733,7 @@ export class PagesMenu {
           // return [...dashboardMenu, orderMenu, reportMenu, analyticsMenu, userMenu, alarmMenu, registerMenu];
           // return [...dashboardMenu, orderMenu, sicsyncroMenu, repoMenu, analyticsMenu, userMenu, alarmMenu];
           // return [...dashboardMenu, dassh2Menu, SchedulerMenu, paraMenu, functionMenu, cosumeMenu, repocbisMenu, configurationMenu, alarmMenu];
-          return [...dashboardMenu, functionMenu, SchedulerMenu, cosumeMenu, repocbisMenu, BSDMenu, configurationMenu, alarmMenu];
+          return [...dashboardMenu, functionMenu, SchedulerMenu1, cosumeMenu, repocbisMenu, BSDMenu, configurationMenu, alarmMenu];
         } else {
           //return [...dashboardMenu, ...menu];
           return [...dashboardMenu, alarmMenu];

@@ -104,18 +104,21 @@ export class NgxLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const emailValidators = [Validators.pattern(EMAIL_PATTERN)];
+    const emailValidators = [
+      Validators.required,
+      Validators.pattern(EMAIL_PATTERN)];
     this.isEmailRequired && emailValidators.push(Validators.required);
 
     const passwordValidators = [
+      Validators.required,
       Validators.minLength(this.minLength),
       Validators.maxLength(this.maxLength),
     ];
     this.isPasswordRequired && passwordValidators.push(Validators.required);
 
     this.loginForm = this.fb.group({
-      email: this.fb.control("", [...emailValidators]),
-      password: this.fb.control("", [...passwordValidators]),
+      email: this.fb.control("", [...emailValidators, Validators.required]),
+      password: this.fb.control("", [...passwordValidators, Validators.required]),
       rememberMe: this.fb.control(false),
     });
   }
